@@ -1,5 +1,7 @@
 .vs/
 AccIII.VC.db
 AccIII/Debug/
+Debug/data.bin
+Debug/sample_time.txt
 temp/
 ipch/

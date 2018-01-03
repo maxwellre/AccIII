@@ -7,4 +7,4 @@ void USBReadData(FT_HANDLE ftHandle, DWORD readBytes, long* dwSum);
 
 void SaveDataResult(long dwSum);
 
-void SaveNum(float data_rate);
+void SaveNum(float inputValue);

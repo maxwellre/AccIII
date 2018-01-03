@@ -59,10 +59,10 @@ void SaveDataResult(long dwSum)
 	fclose(fp);
 }
 
-void SaveNum(float data_rate)
+void SaveNum(float inputValue)
 {
 	std::ofstream ofs;
-	ofs.open("data_rate.txt");
-	ofs << data_rate << std::endl;
+	ofs.open("sample_time.txt");
+	ofs << inputValue << std::endl;
 	ofs.close();
 }

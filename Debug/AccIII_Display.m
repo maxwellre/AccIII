@@ -8,7 +8,7 @@
 close all
 % [acc_data, Fs ] = decodeAccIII('data.bin',2.368);
 
-[acc_data, Fs ] = decodeAccIII('data.bin','data_rate.txt');
+[acc_data, Fs ] = decodeAccIII('data.bin','sample_time.txt');
 
 %--------------------------------------------------------------------------
 % % % Spectrum

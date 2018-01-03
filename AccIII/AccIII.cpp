@@ -29,7 +29,7 @@ int main()
 	if (ftStatus != FT_OK)
 	{
 		// FT_Open failed return;  
-		TRACE(_T("FT_Open FAILED!\r\n"));
+		//TRACE(_T("FT_Open FAILED!\r\n"));
 		printf("FT_Open FAILED!\r\n");
 	}
 	else
@@ -44,41 +44,41 @@ int main()
 	{
 		ftStatus = FT_SetLatencyTimer(ftHandle, LatencyTimer); 
 		if (ftStatus == FT_OK) {
-			TRACE(_T("FT_SetLatencyTimer OK!\r\n"));
+			//TRACE(_T("FT_SetLatencyTimer OK!\r\n"));
 			printf("FT_SetLatencyTimer Succeeded!\r\n");
 		}
 		else {
-			TRACE(_T("FT_SetLatencyTimer FAILED!\r\n"));
+			//TRACE(_T("FT_SetLatencyTimer FAILED!\r\n"));
 			printf("FT_SetLatencyTimer FAILED!\r\n");
 		}
 
 		ftStatus = FT_SetUSBParameters(ftHandle, 0x10000, 0x1);
 		if (ftStatus == FT_OK) {
-			TRACE(_T("FT_SetUSBParameters OK!\r\n"));
+			//TRACE(_T("FT_SetUSBParameters OK!\r\n"));
 			printf("FT_SetUSBParameters Succeeded!\r\n");
 		}
 		else {
-			TRACE(_T("FT_SetUSBParameters FAILED!\r\n"));
+			//TRACE(_T("FT_SetUSBParameters FAILED!\r\n"));
 			printf("FT_SetUSBParameters FAILED!\r\n");
 		}
 
 		ftStatus = FT_SetFlowControl(ftHandle, FT_FLOW_RTS_CTS, 0, 0);
 		if (ftStatus == FT_OK) {
-			TRACE(_T("FT_SetFlowControl OK!\r\n"));
+			//TRACE(_T("FT_SetFlowControl OK!\r\n"));
 			printf("FT_SetFlowControl Succeeded!\r\n");
 		}
 		else {
-			TRACE(_T("FT_SetFlowControl FAILED!\r\n"));
+			//TRACE(_T("FT_SetFlowControl FAILED!\r\n"));
 			printf("FT_SetFlowControl FAILED!\r\n");
 		}
 
 		ftStatus = FT_Purge(ftHandle, FT_PURGE_RX);
 		if (ftStatus == FT_OK) {
-			TRACE(_T("FT_Purge OK!\r\n"));
+			//TRACE(_T("FT_Purge OK!\r\n"));
 			printf("FT_Purge Succeeded!\r\n");
 		}
 		else {
-			TRACE(_T("FT_Purge FAILED!\r\n"));
+			//TRACE(_T("FT_Purge FAILED!\r\n"));
 			printf("FT_Purge FAILED!\r\n");
 		}
 
@@ -86,11 +86,11 @@ int main()
 
 		ftStatus = FT_Write(ftHandle, TxBuffer, sizeof(TxBuffer), &BytesWritten);
 		if (ftStatus == FT_OK) {
-			TRACE(_T("FT_Write OK!\r\n"));
+			//TRACE(_T("FT_Write OK!\r\n"));
 			printf("FT_Write Succeeded!\r\n");
 		}
 		else {
-			TRACE(_T("FT_Write Failed\r\n"));
+			//TRACE(_T("FT_Write Failed\r\n"));
 			printf("FT_Write Failed\r\n");
 		}
 
@@ -135,12 +135,7 @@ int main()
 		float lPassTick = lPostTime.QuadPart - lPreTime.QuadPart;
 		float lPassTime = lPassTick / (float)lFrequency.QuadPart;
 
-		float dataRate = dwSum / (lPassTime * 6 * 46);
-
-		float USB_data_speed = dwSum / (lPassTime * 1024 * 1024);
-
-		//TRACE(_T("Time passed : %f \r\n"), lPassTime);
-		//TRACE(_T("dataRate : %f \r\n"), dataRate);
+		//float USB_data_speed = dwSum / (lPassTime * 1024 * 1024);
 		//TRACE(_T("USB_data_speed : %f \r\n"), USB_data_speed);
 
 		FT_Close(ftHandle);
@@ -149,7 +144,14 @@ int main()
 		SaveDataResult(dwSum);
 		printf("File Save Done!\r\n");
 
-		SaveNum(dataRate);
+		SaveNum(lPassTime);
+
+		TRACE(_T("Time passed : %f \r\n"), lPassTime);
+
+		TRACE(_T("Data Number = %d \r\n"), dwSum/(2*6*46));
+
+		float dataRate = dwSum / (lPassTime * 2 * 6 * 46); 
+		TRACE(_T("dataRate : %f \r\n"), dataRate);
 	}
 	else
 	{
