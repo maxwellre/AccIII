@@ -1,8 +1,8 @@
 Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2016.2 (win64) Build 1577090 Thu Jun  2 16:32:40 MDT 2016
-| Date         : Thu Sep 07 14:23:38 2017
-| Host         : DESKTOP-1R4PJEI running 64-bit major release  (build 9200)
+| Tool Version : Vivado v.2016.1 (win64) Build 1538259 Fri Apr  8 15:45:27 MDT 2016
+| Date         : Wed Jan 03 15:04:43 2018
+| Host         : RETouch3-PC running 64-bit major release  (build 9200)
 | Command      : report_io -file async_245_fifo_io_placed.rpt
 | Design       : async_245_fifo
 | Device       : xc7a15t

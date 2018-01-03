@@ -55,17 +55,22 @@ hex_data = hex_data(1:(2*data_num));
 hex_data = double(reshape(hex_data, [2,data_num])); % Double
 
 check_ID = unique(hex_data(1,:));
-if (sum(abs((1:ID_Num)-check_ID)) == ID_Num)
-    disp('Passed: Number of ID is correct')
+if length(check_ID) ~= ID_Num
+    fprintf('ID: %d\n', check_ID);
+    disp('Failed: Number of ID is incorrect');
 else
-    error('Failed: Number of ID is incorrect')
+    if (sum(abs((1:ID_Num)-check_ID)) == ID_Num)
+        disp('Passed: IDs are correct')
+    else
+        disp('Failed: IDs are incorrect');
+    end
 end
 
 % Hex to decimal conversion------------------------------------------------
 wb_h = waitbar(0,'O', 'Name','Converting from HEX to DEC...');
 acc_data = cell(2*ID_Num, 1);
 samp_num = zeros(2*ID_Num, 1);
-for i = 0:(ID_Num-1)
+for i = check_ID
     waitbar(i/ID_Num,wb_h,sprintf('Processing ID %d',i));
     curr_ind = find(hex_data(1,:) == i);
     check_ind = curr_ind(1:2);
@@ -125,15 +130,22 @@ if is_disp
             'Name',sprintf('%s-axis',axis_label{ax}))
         for k = 1:length(acc_ind)
             subplot(14,3,k)
-            t = linspace(0,samp_time,samp_num(acc_ind(k)));
-            plot(t, acc_data{acc_ind(k)}(:,ax));
-            ylabel(sprintf('%d',acc_ind(k)));
-            xlim([t(1) t(end)])
-%             ylim([-16 16])
-                    ylim([-2 2])
-            box off
-            if k<42
-                xticks([])
+            if ~isempty(acc_data{acc_ind(k)})
+                t = linspace(0,samp_time,samp_num(acc_ind(k)));
+                
+                plot(t, acc_data{acc_ind(k)}(:,ax));
+                
+                ylabel(sprintf('%d',acc_ind(k)));
+                xlim([t(1) t(end)])
+                %             ylim([-16 16])
+                ylim([-3 3])
+                box off
+                if k<42
+                    xticks([])
+                end
+            else
+                text(0.2,0.5,sprintf('Acc %d is broken',acc_ind(k)),...
+                    'Color','r');
             end
         end
         xlabel('Time (Secs)')
