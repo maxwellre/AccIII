@@ -1,8 +1,8 @@
 Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2016.2 (win64) Build 1577090 Thu Jun  2 16:32:40 MDT 2016
-| Date             : Thu Sep 07 14:24:05 2017
-| Host             : DESKTOP-1R4PJEI running 64-bit major release  (build 9200)
+| Tool Version     : Vivado v.2016.1 (win64) Build 1538259 Fri Apr  8 15:45:27 MDT 2016
+| Date             : Wed Jan 03 15:05:13 2018
+| Host             : RETouch3-PC running 64-bit major release  (build 9200)
 | Command          : report_power -file async_245_fifo_power_routed.rpt -pb async_245_fifo_power_summary_routed.pb -rpx async_245_fifo_power_routed.rpx
 | Design           : async_245_fifo
 | Device           : xc7a15tftg256-1
@@ -30,8 +30,8 @@ Table of Contents
 ----------
 
 +--------------------------+-------+
-| Total On-Chip Power (W)  | 0.126 |
-| Dynamic (W)              | 0.054 |
+| Total On-Chip Power (W)  | 0.133 |
+| Dynamic (W)              | 0.061 |
 | Device Static (W)        | 0.072 |
 | Effective TJA (C/W)      | 4.9   |
 | Max Ambient (C)          | 84.4  |
@@ -50,17 +50,17 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.012 |        3 |       --- |             --- |
-| Slice Logic    |     0.011 |     7138 |       --- |             --- |
-|   LUT as Logic |     0.011 |     4181 |     10400 |           40.20 |
+| Slice Logic    |     0.012 |     7354 |       --- |             --- |
+|   LUT as Logic |     0.012 |     4348 |     10400 |           41.81 |
 |   Register     |    <0.001 |     1769 |     20800 |            8.50 |
 |   F7/F8 Muxes  |    <0.001 |       32 |     32600 |            0.10 |
 |   CARRY4       |    <0.001 |       18 |      8150 |            0.22 |
 |   Others       |     0.000 |       82 |       --- |             --- |
-| Signals        |     0.009 |     5484 |       --- |             --- |
+| Signals        |     0.010 |     5709 |       --- |             --- |
 | Block RAM      |     0.002 |        2 |        25 |            8.00 |
-| I/O            |     0.020 |       61 |       170 |           35.88 |
+| I/O            |     0.025 |       61 |       170 |           35.88 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.126 |          |           |                 |
+| Total          |     0.133 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -70,9 +70,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.044 |       0.034 |      0.010 |
-| Vccaux    |       1.800 |     0.013 |       0.001 |      0.013 |
-| Vcco33    |       3.300 |     0.007 |       0.006 |      0.001 |
+| Vccint    |       1.000 |     0.046 |       0.036 |      0.010 |
+| Vccaux    |       1.800 |     0.014 |       0.001 |      0.013 |
+| Vcco33    |       3.300 |     0.008 |       0.007 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -139,7 +139,7 @@ Table of Contents
 +----------------------------------------------------------+-----------+
 | Name                                                     | Power (W) |
 +----------------------------------------------------------+-----------+
-| async_245_fifo                                           |     0.054 |
+| async_245_fifo                                           |     0.061 |
 |   IIC_NUM_00                                             |     0.001 |
 |     U1                                                   |    <0.001 |
 |   IIC_NUM_01                                             |     0.001 |
@@ -237,7 +237,7 @@ Table of Contents
 |   sda_IOBUF[1]_inst                                      |    <0.001 |
 |   sda_IOBUF[20]_inst                                     |    <0.001 |
 |   sda_IOBUF[21]_inst                                     |    <0.001 |
-|   sda_IOBUF[22]_inst                                     |    <0.001 |
+|   sda_IOBUF[22]_inst                                     |     0.001 |
 |   sda_IOBUF[2]_inst                                      |    <0.001 |
 |   sda_IOBUF[3]_inst                                      |    <0.001 |
 |   sda_IOBUF[4]_inst                                      |    <0.001 |

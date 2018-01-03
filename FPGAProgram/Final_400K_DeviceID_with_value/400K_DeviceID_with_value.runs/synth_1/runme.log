@@ -3,60 +3,62 @@
     with args -log async_245_fifo.vds -m64 -mode batch -messageDb vivado.pb -notrace -source async_245_fifo.tcl
 
 
-****** Vivado v2016.2 (64-bit)
-  **** SW Build 1577090 on Thu Jun  2 16:32:40 MDT 2016
-  **** IP Build 1577682 on Fri Jun  3 12:00:54 MDT 2016
+****** Vivado v2016.1 (64-bit)
+  **** SW Build 1538259 on Fri Apr  8 15:45:27 MDT 2016
+  **** IP Build 1537824 on Fri Apr  8 04:28:57 MDT 2016
     ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 
 source async_245_fifo.tcl -notrace
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at D:/DProgram/Xilinx/Vivado/2016.1/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo:part0:1.0 available at D:/DProgram/Xilinx/Vivado/2016.1/data/boards/board_files/zybo/B.3/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
 Command: synth_design -top async_245_fifo -part xc7a15tftg256-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a15t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a15t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 6860 
+INFO: Helper process launched with PID 14288 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 268.805 ; gain = 61.363
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 275.840 ; gain = 68.672
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'async_245_fifo' [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/imports/new/async_245_fifo.v:22]
-INFO: [Synth 8-638] synthesizing module 'sys_rst' [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/sys_rst.v:23]
-INFO: [Synth 8-256] done synthesizing module 'sys_rst' (1#1) [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/sys_rst.v:23]
-INFO: [Synth 8-638] synthesizing module 'iic_demo' [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/iic_demo.v:22]
-INFO: [Synth 8-638] synthesizing module 'iic_savemod' [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/iic_savemod.v:23]
-	Parameter FCLK bound to: 10'b0011111010 
-	Parameter FHALF bound to: 10'b0010000000 
-	Parameter FQUARTER bound to: 10'b0000111110 
-	Parameter THIGH bound to: 10'b0000111100 
-	Parameter TLOW bound to: 10'b0010000010 
-	Parameter TR bound to: 10'b0000011110 
-	Parameter TF bound to: 10'b0000011110 
-	Parameter THD_STA bound to: 10'b0000111100 
-	Parameter TSU_STA bound to: 10'b0000111100 
-	Parameter TSU_STO bound to: 10'b0000111100 
+INFO: [Synth 8-638] synthesizing module 'async_245_fifo' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/imports/new/async_245_fifo.v:22]
+INFO: [Synth 8-638] synthesizing module 'sys_rst' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/sys_rst.v:23]
+INFO: [Synth 8-256] done synthesizing module 'sys_rst' (1#1) [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/sys_rst.v:23]
+INFO: [Synth 8-638] synthesizing module 'iic_demo' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/iic_demo.v:22]
+INFO: [Synth 8-638] synthesizing module 'iic_savemod' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/iic_savemod.v:23]
+	Parameter FCLK bound to: 10'b0000111110 
+	Parameter FHALF bound to: 10'b0000011111 
+	Parameter FQUARTER bound to: 10'b0000001111 
+	Parameter THIGH bound to: 10'b0000001111 
+	Parameter TLOW bound to: 10'b0000100000 
+	Parameter TR bound to: 10'b0000000111 
+	Parameter TF bound to: 10'b0000000111 
+	Parameter THD_STA bound to: 10'b0000001111 
+	Parameter TSU_STA bound to: 10'b0000001111 
+	Parameter TSU_STO bound to: 10'b0000001111 
 	Parameter WRFUNC1 bound to: 5'b00111 
 	Parameter WRFUNC2 bound to: 5'b01001 
 	Parameter RDFUNC bound to: 5'b10011 
-INFO: [Synth 8-155] case statement is not full and has no default [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/iic_savemod.v:80]
-INFO: [Synth 8-155] case statement is not full and has no default [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/iic_savemod.v:163]
-INFO: [Synth 8-256] done synthesizing module 'iic_savemod' (2#1) [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/iic_savemod.v:23]
-INFO: [Synth 8-155] case statement is not full and has no default [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/iic_demo.v:80]
-INFO: [Synth 8-256] done synthesizing module 'iic_demo' (3#1) [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/iic_demo.v:22]
-WARNING: [Synth 8-387] label required on module instance [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/imports/new/async_245_fifo.v:311]
-INFO: [Synth 8-638] synthesizing module 'fifo_proc' [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:22]
-INFO: [Synth 8-638] synthesizing module 'fifo_IIC' [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.runs/synth_1/.Xil/Vivado-4820-DESKTOP-1R4PJEI/realtime/fifo_IIC_stub.v:6]
-INFO: [Synth 8-256] done synthesizing module 'fifo_IIC' (4#1) [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.runs/synth_1/.Xil/Vivado-4820-DESKTOP-1R4PJEI/realtime/fifo_IIC_stub.v:6]
-INFO: [Synth 8-155] case statement is not full and has no default [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:89]
-INFO: [Synth 8-155] case statement is not full and has no default [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:205]
-WARNING: [Synth 8-5788] Register fifo_in_r_reg[0] in module fifo_proc is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:64]
-WARNING: [Synth 8-5788] Register fifo_in_r_reg[1] in module fifo_proc is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:64]
-WARNING: [Synth 8-5788] Register fifo_out_r_reg[0] in module fifo_proc is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:209]
-WARNING: [Synth 8-5788] Register fifo_out_r_reg[1] in module fifo_proc is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:209]
-INFO: [Synth 8-256] done synthesizing module 'fifo_proc' (5#1) [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:22]
-INFO: [Synth 8-638] synthesizing module 'usb_handle' [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/usb_handle.v:23]
-INFO: [Synth 8-256] done synthesizing module 'usb_handle' (6#1) [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/usb_handle.v:23]
-INFO: [Synth 8-256] done synthesizing module 'async_245_fifo' (7#1) [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/imports/new/async_245_fifo.v:22]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/iic_savemod.v:80]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/iic_savemod.v:163]
+INFO: [Synth 8-256] done synthesizing module 'iic_savemod' (2#1) [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/iic_savemod.v:23]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/iic_demo.v:80]
+INFO: [Synth 8-256] done synthesizing module 'iic_demo' (3#1) [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/iic_demo.v:22]
+WARNING: [Synth 8-387] label required on module instance [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/imports/new/async_245_fifo.v:311]
+INFO: [Synth 8-638] synthesizing module 'fifo_proc' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/fifo_proc.v:22]
+INFO: [Synth 8-638] synthesizing module 'fifo_IIC' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.runs/synth_1/.Xil/Vivado-14224-RETouch3-PC/realtime/fifo_IIC_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'fifo_IIC' (4#1) [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.runs/synth_1/.Xil/Vivado-14224-RETouch3-PC/realtime/fifo_IIC_stub.v:6]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/fifo_proc.v:89]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/fifo_proc.v:205]
+WARNING: [Synth 8-5788] Register fifo_in_r_reg[0] in module fifo_proc is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/fifo_proc.v:64]
+WARNING: [Synth 8-5788] Register fifo_in_r_reg[1] in module fifo_proc is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/fifo_proc.v:64]
+WARNING: [Synth 8-5788] Register fifo_out_r_reg[0] in module fifo_proc is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/fifo_proc.v:209]
+WARNING: [Synth 8-5788] Register fifo_out_r_reg[1] in module fifo_proc is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/fifo_proc.v:209]
+INFO: [Synth 8-256] done synthesizing module 'fifo_proc' (5#1) [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/fifo_proc.v:22]
+INFO: [Synth 8-638] synthesizing module 'usb_handle' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/usb_handle.v:23]
+INFO: [Synth 8-256] done synthesizing module 'usb_handle' (6#1) [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/usb_handle.v:23]
+INFO: [Synth 8-256] done synthesizing module 'async_245_fifo' (7#1) [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/imports/new/async_245_fifo.v:22]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 307.883 ; gain = 100.441
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 315.090 ; gain = 107.922
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -66,41 +68,41 @@ Report Check Netlist:
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 307.883 ; gain = 100.441
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 315.090 ; gain = 107.922
 ---------------------------------------------------------------------------------
-WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'fifo_IIC' instantiated as 'nolabel_line311/FIFO_IIC' [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:67]
+WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'fifo_IIC' instantiated as 'nolabel_line311/FIFO_IIC' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/fifo_proc.v:67]
 INFO: [Device 21-403] Loading part xc7a15tftg256-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.runs/synth_1/.Xil/Vivado-4820-DESKTOP-1R4PJEI/dcp/fifo_IIC_in_context.xdc] for cell 'nolabel_line311/FIFO_IIC'
-Finished Parsing XDC File [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.runs/synth_1/.Xil/Vivado-4820-DESKTOP-1R4PJEI/dcp/fifo_IIC_in_context.xdc] for cell 'nolabel_line311/FIFO_IIC'
-Parsing XDC File [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/constrs_1/new/ft2232_constraint.xdc]
-Finished Parsing XDC File [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/constrs_1/new/ft2232_constraint.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/constrs_1/new/ft2232_constraint.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/async_245_fifo_propImpl.xdc].
+Parsing XDC File [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.runs/synth_1/.Xil/Vivado-14224-RETouch3-PC/dcp/fifo_IIC_in_context.xdc] for cell 'nolabel_line311/FIFO_IIC'
+Finished Parsing XDC File [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.runs/synth_1/.Xil/Vivado-14224-RETouch3-PC/dcp/fifo_IIC_in_context.xdc] for cell 'nolabel_line311/FIFO_IIC'
+Parsing XDC File [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/constrs_1/new/ft2232_constraint.xdc]
+Finished Parsing XDC File [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/constrs_1/new/ft2232_constraint.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/constrs_1/new/ft2232_constraint.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/async_245_fifo_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/async_245_fifo_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 614.324 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 623.699 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 614.324 ; gain = 406.883
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 623.699 ; gain = 416.531
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a15tftg256-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 614.324 ; gain = 406.883
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 623.699 ; gain = 416.531
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 614.324 ; gain = 406.883
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 623.699 ; gain = 416.531
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5587] ROM size for "Go" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5587] ROM size for "Go" is below threshold of ROM address width. It will be mapped to LUTs
@@ -121,14 +123,14 @@ INFO: [Synth 8-5587] ROM size for "r_data" is below threshold of ROM address wid
 INFO: [Synth 8-5546] ROM "o_iic_en" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "usb_en" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "usb_data" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-4471] merging register 'o_start_en_reg' into 'o_led_reg' [D:/Hui/RTL/prj_ft2232h_bak_17_copy/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/usb_handle.v:65]
+INFO: [Synth 8-4471] merging register 'o_start_en_reg' into 'o_led_reg' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/usb_handle.v:65]
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "data" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "isQ" won't be mapped to RAM because it is too sparse
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 614.324 ; gain = 406.883
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 623.699 ; gain = 416.531
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -315,7 +317,7 @@ BRAMs: 50 (col length: RAMB18 60 RAMB36 30)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
-Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 614.324 ; gain = 406.883
+Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 623.699 ; gain = 416.531
 ---------------------------------------------------------------------------------
 Start Cross Boundary Optimization
 ---------------------------------------------------------------------------------
@@ -323,88 +325,88 @@ INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/isAck" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSCL" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/isAck" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSCL" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/isAck" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSCL" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/isAck" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSCL" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/isAck" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSCL" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/isAck" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSCL" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/isAck" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSCL" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "U1/isAck" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/rSCL" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/isAck" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/rSCL" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/isAck" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/rSCL" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "U1/i" won't be mapped to RAM because it is too sparse
 INFO: [Common 17-14] Message 'Synth 8-5546' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 614.324 ; gain = 406.883
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:30 . Memory (MB): peak = 623.699 ; gain = 416.531
 ---------------------------------------------------------------------------------
-Finished Parallel Reinference  : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 614.324 ; gain = 406.883
+Finished Parallel Reinference  : Time (s): cpu = 00:00:26 ; elapsed = 00:00:30 . Memory (MB): peak = 623.699 ; gain = 416.531
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -419,6 +421,10 @@ ROM:
 +------------+------------+---------------+----------------+
 |Module Name | RTL Object | Depth x Width | Implemented As | 
 +------------+------------+---------------+----------------+
+|iic_demo    | reg_addr   | 32x8          | LUT            | 
+|iic_demo    | reg_addr   | 32x8          | LUT            | 
+|iic_demo    | reg_addr   | 32x8          | LUT            | 
+|iic_demo    | reg_addr   | 32x8          | LUT            | 
 |iic_demo    | reg_addr   | 32x8          | LUT            | 
 |iic_demo    | reg_addr   | 32x8          | LUT            | 
 |iic_demo    | reg_addr   | 32x8          | LUT            | 
@@ -504,9 +510,9 @@ WARNING: [Synth 8-3332] Sequential element (j0_reg[6]) is unused and will be rem
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (nolabel_line311/\i0_reg[7] )
 WARNING: [Synth 8-3332] Sequential element (i0_reg[7]) is unused and will be removed from module fifo_proc.
 ---------------------------------------------------------------------------------
-Finished Area Optimization : Time (s): cpu = 00:00:53 ; elapsed = 00:00:57 . Memory (MB): peak = 614.324 ; gain = 406.883
+Finished Area Optimization : Time (s): cpu = 00:00:40 ; elapsed = 00:00:44 . Memory (MB): peak = 623.699 ; gain = 416.531
 ---------------------------------------------------------------------------------
-Finished Parallel Area Optimization  : Time (s): cpu = 00:00:53 ; elapsed = 00:00:57 . Memory (MB): peak = 614.324 ; gain = 406.883
+Finished Parallel Area Optimization  : Time (s): cpu = 00:00:40 ; elapsed = 00:00:44 . Memory (MB): peak = 623.699 ; gain = 416.531
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -520,10 +526,10 @@ Start Timing Optimization
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:00 ; elapsed = 00:01:05 . Memory (MB): peak = 662.516 ; gain = 455.074
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:47 ; elapsed = 00:00:52 . Memory (MB): peak = 656.879 ; gain = 449.711
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:03 ; elapsed = 00:01:08 . Memory (MB): peak = 689.988 ; gain = 482.547
+Finished Timing Optimization : Time (s): cpu = 00:00:49 ; elapsed = 00:00:54 . Memory (MB): peak = 680.918 ; gain = 473.750
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -535,16 +541,16 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:06 ; elapsed = 00:01:11 . Memory (MB): peak = 826.121 ; gain = 618.680
+Finished Technology Mapping : Time (s): cpu = 00:00:53 ; elapsed = 00:00:57 . Memory (MB): peak = 792.336 ; gain = 585.168
 ---------------------------------------------------------------------------------
-Finished Parallel Technology Mapping Optimization  : Time (s): cpu = 00:01:06 ; elapsed = 00:01:11 . Memory (MB): peak = 826.121 ; gain = 618.680
+Finished Parallel Technology Mapping Optimization  : Time (s): cpu = 00:00:53 ; elapsed = 00:00:57 . Memory (MB): peak = 792.336 ; gain = 585.168
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
 | |RTL Partition |Replication |Instances |
 +-+--------------+------------+----------+
 +-+--------------+------------+----------+
-Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:01:06 ; elapsed = 00:01:11 . Memory (MB): peak = 826.121 ; gain = 618.680
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:53 ; elapsed = 00:00:57 . Memory (MB): peak = 792.336 ; gain = 585.168
 ---------------------------------------------------------------------------------
 Start IO Insertion
 ---------------------------------------------------------------------------------
@@ -561,7 +567,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:08 ; elapsed = 00:01:12 . Memory (MB): peak = 826.121 ; gain = 618.680
+Finished IO Insertion : Time (s): cpu = 00:00:54 ; elapsed = 00:00:59 . Memory (MB): peak = 792.336 ; gain = 585.168
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -574,7 +580,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:08 ; elapsed = 00:01:12 . Memory (MB): peak = 826.121 ; gain = 618.680
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:54 ; elapsed = 00:00:59 . Memory (MB): peak = 792.336 ; gain = 585.168
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -586,25 +592,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:08 ; elapsed = 00:01:13 . Memory (MB): peak = 826.121 ; gain = 618.680
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:55 ; elapsed = 00:00:59 . Memory (MB): peak = 792.336 ; gain = 585.168
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:08 ; elapsed = 00:01:13 . Memory (MB): peak = 826.121 ; gain = 618.680
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:55 ; elapsed = 00:00:59 . Memory (MB): peak = 792.336 ; gain = 585.168
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:09 ; elapsed = 00:01:13 . Memory (MB): peak = 826.121 ; gain = 618.680
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:55 ; elapsed = 00:00:59 . Memory (MB): peak = 792.336 ; gain = 585.168
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:09 ; elapsed = 00:01:13 . Memory (MB): peak = 826.121 ; gain = 618.680
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:55 ; elapsed = 00:00:59 . Memory (MB): peak = 792.336 ; gain = 585.168
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -624,12 +630,12 @@ Report Cell Usage:
 |1     |fifo_IIC |     1|
 |2     |BUFG     |     1|
 |3     |CARRY4   |     4|
-|4     |LUT1     |   112|
-|5     |LUT2     |   486|
-|6     |LUT3     |   477|
-|7     |LUT4     |   552|
-|8     |LUT5     |   805|
-|9     |LUT6     |  2830|
+|4     |LUT1     |    89|
+|5     |LUT2     |   575|
+|6     |LUT3     |   428|
+|7     |LUT4     |   617|
+|8     |LUT5     |   908|
+|9     |LUT6     |  2861|
 |10    |MUXF7    |    33|
 |11    |FDCE     |  1535|
 |12    |FDPE     |   132|
@@ -643,63 +649,63 @@ Report Instance Areas:
 +------+------------------+---------------+------+
 |      |Instance          |Module         |Cells |
 +------+------------------+---------------+------+
-|1     |top               |               |  7077|
-|2     |  IIC_NUM_00      |iic_demo       |   283|
-|3     |    U1            |iic_savemod_43 |   235|
-|4     |  IIC_NUM_01      |iic_demo_0     |   283|
-|5     |    U1            |iic_savemod_42 |   235|
-|6     |  IIC_NUM_02      |iic_demo_1     |   283|
-|7     |    U1            |iic_savemod_41 |   235|
-|8     |  IIC_NUM_03      |iic_demo_2     |   283|
-|9     |    U1            |iic_savemod_40 |   235|
-|10    |  IIC_NUM_04      |iic_demo_3     |   283|
-|11    |    U1            |iic_savemod_39 |   236|
-|12    |  IIC_NUM_05      |iic_demo_4     |   283|
-|13    |    U1            |iic_savemod_38 |   235|
-|14    |  IIC_NUM_06      |iic_demo_5     |   283|
-|15    |    U1            |iic_savemod_37 |   235|
-|16    |  IIC_NUM_07      |iic_demo_6     |   283|
-|17    |    U1            |iic_savemod_36 |   235|
-|18    |  IIC_NUM_08      |iic_demo_7     |   283|
-|19    |    U1            |iic_savemod_35 |   235|
-|20    |  IIC_NUM_09      |iic_demo_8     |   283|
-|21    |    U1            |iic_savemod_34 |   236|
-|22    |  IIC_NUM_10      |iic_demo_9     |   283|
-|23    |    U1            |iic_savemod_33 |   235|
-|24    |  IIC_NUM_11      |iic_demo_10    |   283|
-|25    |    U1            |iic_savemod_32 |   235|
-|26    |  IIC_NUM_12      |iic_demo_11    |   283|
-|27    |    U1            |iic_savemod_31 |   235|
-|28    |  IIC_NUM_13      |iic_demo_12    |   283|
-|29    |    U1            |iic_savemod_30 |   235|
-|30    |  IIC_NUM_14      |iic_demo_13    |   283|
-|31    |    U1            |iic_savemod_29 |   236|
-|32    |  IIC_NUM_15      |iic_demo_14    |   283|
-|33    |    U1            |iic_savemod_28 |   235|
-|34    |  IIC_NUM_16      |iic_demo_15    |   283|
-|35    |    U1            |iic_savemod_27 |   235|
-|36    |  IIC_NUM_17      |iic_demo_16    |   283|
-|37    |    U1            |iic_savemod_26 |   235|
-|38    |  IIC_NUM_18      |iic_demo_17    |   283|
-|39    |    U1            |iic_savemod_25 |   235|
-|40    |  IIC_NUM_19      |iic_demo_18    |   283|
-|41    |    U1            |iic_savemod_24 |   236|
-|42    |  IIC_NUM_20      |iic_demo_19    |   283|
-|43    |    U1            |iic_savemod_23 |   235|
-|44    |  IIC_NUM_21      |iic_demo_20    |   283|
-|45    |    U1            |iic_savemod_22 |   235|
-|46    |  IIC_NUM_22      |iic_demo_21    |   283|
-|47    |    U1            |iic_savemod    |   235|
+|1     |top               |               |  7293|
+|2     |  IIC_NUM_00      |iic_demo       |   293|
+|3     |    U1            |iic_savemod_43 |   245|
+|4     |  IIC_NUM_01      |iic_demo_0     |   293|
+|5     |    U1            |iic_savemod_42 |   245|
+|6     |  IIC_NUM_02      |iic_demo_1     |   293|
+|7     |    U1            |iic_savemod_41 |   245|
+|8     |  IIC_NUM_03      |iic_demo_2     |   293|
+|9     |    U1            |iic_savemod_40 |   245|
+|10    |  IIC_NUM_04      |iic_demo_3     |   293|
+|11    |    U1            |iic_savemod_39 |   246|
+|12    |  IIC_NUM_05      |iic_demo_4     |   293|
+|13    |    U1            |iic_savemod_38 |   245|
+|14    |  IIC_NUM_06      |iic_demo_5     |   293|
+|15    |    U1            |iic_savemod_37 |   245|
+|16    |  IIC_NUM_07      |iic_demo_6     |   293|
+|17    |    U1            |iic_savemod_36 |   245|
+|18    |  IIC_NUM_08      |iic_demo_7     |   293|
+|19    |    U1            |iic_savemod_35 |   245|
+|20    |  IIC_NUM_09      |iic_demo_8     |   293|
+|21    |    U1            |iic_savemod_34 |   246|
+|22    |  IIC_NUM_10      |iic_demo_9     |   293|
+|23    |    U1            |iic_savemod_33 |   245|
+|24    |  IIC_NUM_11      |iic_demo_10    |   293|
+|25    |    U1            |iic_savemod_32 |   245|
+|26    |  IIC_NUM_12      |iic_demo_11    |   293|
+|27    |    U1            |iic_savemod_31 |   245|
+|28    |  IIC_NUM_13      |iic_demo_12    |   293|
+|29    |    U1            |iic_savemod_30 |   245|
+|30    |  IIC_NUM_14      |iic_demo_13    |   293|
+|31    |    U1            |iic_savemod_29 |   246|
+|32    |  IIC_NUM_15      |iic_demo_14    |   293|
+|33    |    U1            |iic_savemod_28 |   245|
+|34    |  IIC_NUM_16      |iic_demo_15    |   293|
+|35    |    U1            |iic_savemod_27 |   245|
+|36    |  IIC_NUM_17      |iic_demo_16    |   293|
+|37    |    U1            |iic_savemod_26 |   245|
+|38    |  IIC_NUM_18      |iic_demo_17    |   293|
+|39    |    U1            |iic_savemod_25 |   245|
+|40    |  IIC_NUM_19      |iic_demo_18    |   293|
+|41    |    U1            |iic_savemod_24 |   246|
+|42    |  IIC_NUM_20      |iic_demo_19    |   293|
+|43    |    U1            |iic_savemod_23 |   245|
+|44    |  IIC_NUM_21      |iic_demo_20    |   293|
+|45    |    U1            |iic_savemod_22 |   245|
+|46    |  IIC_NUM_22      |iic_demo_21    |   279|
+|47    |    U1            |iic_savemod    |   231|
 |48    |  SYS_RST         |sys_rst        |    15|
 |49    |  USB_Handle      |usb_handle     |   130|
 |50    |  nolabel_line311 |fifo_proc      |   361|
 +------+------------------+---------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:09 ; elapsed = 00:01:13 . Memory (MB): peak = 826.121 ; gain = 618.680
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:55 ; elapsed = 00:00:59 . Memory (MB): peak = 792.336 ; gain = 585.168
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 39 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:00 ; elapsed = 00:01:07 . Memory (MB): peak = 826.121 ; gain = 312.238
-Synthesis Optimization Complete : Time (s): cpu = 00:01:09 ; elapsed = 00:01:13 . Memory (MB): peak = 826.121 ; gain = 618.680
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:46 ; elapsed = 00:00:53 . Memory (MB): peak = 792.336 ; gain = 276.559
+Synthesis Optimization Complete : Time (s): cpu = 00:00:55 ; elapsed = 00:01:00 . Memory (MB): peak = 792.336 ; gain = 585.168
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 39 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -710,8 +716,8 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   IOBUF => IOBUF (IBUF, OBUFT): 31 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-168 Infos, 45 Warnings, 0 Critical Warnings and 0 Errors encountered.
+168 Infos, 47 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:10 ; elapsed = 00:01:13 . Memory (MB): peak = 826.121 ; gain = 618.680
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.029 . Memory (MB): peak = 826.121 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Thu Sep 07 14:23:01 2017...
+synth_design: Time (s): cpu = 00:00:56 ; elapsed = 00:01:00 . Memory (MB): peak = 792.336 ; gain = 585.168
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.041 . Memory (MB): peak = 792.336 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Wed Jan 03 15:03:55 2018...
