@@ -1,0 +1,13 @@
+#AUTO
+siglen = signal[0];
+outcount=0;
+#OUTLOOP
+count=1;
+#SIGLOOP
+output=signal[count]*0.005;
+OF output;
+count=count+1;
+JP#SIGLOOP,count<siglen;
+outcount=outcount+1;
+JP#OUTLOOP,outcount<3;
+EN

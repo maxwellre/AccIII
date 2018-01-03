@@ -1,0 +1,10 @@
+#pragma once
+//------------------------------------------------------------------------------
+
+#define DataNum 40000*24
+
+void USBReadData(FT_HANDLE ftHandle, DWORD readBytes, long* dwSum);
+
+void SaveDataResult(long dwSum);
+
+void SaveNum(float data_rate);

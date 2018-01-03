@@ -1,0 +1,25 @@
+#AUTO
+REM ---------------------------------
+REM SET SPEED AND ACCELERATION
+TM 250
+SP 25000,25000
+AC 256000,256000
+DC 256000,256000
+REM ---------------------------------
+REM 10 - 200 - 500
+sin_len=300;
+total=30000;
+REM ---------------------------------
+count=0;
+sin_i=0;
+#RUNLOOP
+REM output=@SIN[(sin_i/sin_len)*360]*0.25;
+output=@SIN[(sin_i/sin_len)*360]*0.25;
+OF output;
+count=count+1;
+sin_i=sin_i+1;
+IF(sin_i>=sin_len)
+sin_i=0;
+ENDIF
+JP#RUNLOOP,count<total
+EN
