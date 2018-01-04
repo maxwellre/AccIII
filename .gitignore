@@ -3,5 +3,6 @@ AccIII.VC.db
 AccIII/Debug/
 Debug/data.bin
 Debug/sample_time.txt
+Debug/data_rate.txt
 temp/
 ipch/

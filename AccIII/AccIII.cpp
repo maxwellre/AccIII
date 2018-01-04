@@ -144,14 +144,14 @@ int main()
 		SaveDataResult(dwSum);
 		printf("File Save Done!\r\n");
 
-		SaveNum(lPassTime);
+		SaveNum(lPassTime, "sample_time.txt");
 
 		TRACE(_T("Time passed : %f \r\n"), lPassTime);
 
 		TRACE(_T("Data Number = %d \r\n"), dwSum/(2*6*46));
 
-		float dataRate = dwSum / (lPassTime * 2 * 6 * 46); 
-		TRACE(_T("dataRate : %f \r\n"), dataRate);
+		float idDataRate = dwSum / (lPassTime * 6 * 46); // Count ID as data
+		SaveNum(idDataRate, "data_rate.txt");
 	}
 	else
 	{

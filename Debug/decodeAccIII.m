@@ -8,7 +8,8 @@
 % Outputs:
 %   1. 'acc_data' - Readed accelerometer data with unit 'g' (gravity)
 %--------------------------------------------------------------------------
-function [acc_data, Fs ] = decodeAccIII(data_path, meas_time, is_disp)
+function [acc_data, Fs ] = decodeAccIII(data_path, meas_time, yRange,...
+    is_disp)
 % Created on 09/08/2017 Based on 'readAccIII.m'
 %--------------------------------------------------------------------------
 % Configuration
@@ -41,6 +42,17 @@ else % Actual sampling frequency
 end
 
 if nargin < 3
+    yRange = 16; % Full range by default
+end
+
+if yRange <= 0
+    yRange = 0;
+elseif yRange > 16
+    yRange = 16;
+    disp('Display full range (16g)');
+end
+
+if nargin < 4
     is_disp = 1;
 end
 
@@ -137,15 +149,18 @@ if is_disp
                 
                 ylabel(sprintf('%d',acc_ind(k)));
                 xlim([t(1) t(end)])
-                %             ylim([-16 16])
-                ylim([-3 3])
+                if yRange > 0
+                    ylim([-yRange yRange])
+                end
+                
                 box off
                 if k<42
                     xticks([])
                 end
             else
-                text(0.2,0.5,sprintf('Acc %d is broken',acc_ind(k)),...
+                text(0.1,0.5,sprintf('Acc %d is broken',acc_ind(k)),...
                     'Color','r');
+                axis off
             end
         end
         xlabel('Time (Secs)')
