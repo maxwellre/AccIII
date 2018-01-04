@@ -1,7 +1,7 @@
 Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2016.1 (win64) Build 1538259 Fri Apr  8 15:45:27 MDT 2016
-| Date             : Wed Jan 03 15:05:13 2018
+| Date             : Wed Jan 03 20:03:06 2018
 | Host             : RETouch3-PC running 64-bit major release  (build 9200)
 | Command          : report_power -file async_245_fifo_power_routed.rpt -pb async_245_fifo_power_summary_routed.pb -rpx async_245_fifo_power_routed.rpx
 | Design           : async_245_fifo

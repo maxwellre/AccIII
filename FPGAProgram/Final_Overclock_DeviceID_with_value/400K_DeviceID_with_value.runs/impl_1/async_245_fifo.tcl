@@ -50,7 +50,7 @@ set rc [catch {
   create_msg_db write_bitstream.pb
   set_param xicom.use_bs_reader 1
   open_checkpoint async_245_fifo_routed.dcp
-  set_property webtalk.parent_dir {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.cache/wt} [current_project]
+  set_property webtalk.parent_dir {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_Overclock_DeviceID_with_value/400K_DeviceID_with_value.cache/wt} [current_project]
   catch { write_mem_info -force async_245_fifo.mmi }
   write_bitstream -force async_245_fifo.bit -bin_file
   catch { write_sysdef -hwdef async_245_fifo.hwdef -bitfile async_245_fifo.bit -meminfo async_245_fifo.mmi -file async_245_fifo.sysdef }

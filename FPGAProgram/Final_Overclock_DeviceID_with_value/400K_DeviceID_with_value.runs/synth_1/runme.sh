@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.runs/synth_1'
+HD_PWD='D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_Overclock_DeviceID_with_value/400K_DeviceID_with_value.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

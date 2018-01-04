@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:{D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/constrs_1/new/ft2232_constraint.xdc} rfile:../../../400K_DeviceID_with_value.srcs/constrs_1/new/ft2232_constraint.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:{D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_Overclock_DeviceID_with_value/400K_DeviceID_with_value.srcs/constrs_1/new/ft2232_constraint.xdc} rfile:../../../400K_DeviceID_with_value.srcs/constrs_1/new/ft2232_constraint.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:3 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN N14 [get_ports i_clk]
 set_property src_info {type:XDC file:1 line:14 export:INPUT save:INPUT read:READ} [current_design]

@@ -10,26 +10,26 @@ create_project -in_memory -part xc7a15tftg256-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.cache/wt} [current_project]
-set_property parent.project_path {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.xpr} [current_project]
+set_property webtalk.parent_dir {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_Overclock_DeviceID_with_value/400K_DeviceID_with_value.cache/wt} [current_project]
+set_property parent.project_path {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_Overclock_DeviceID_with_value/400K_DeviceID_with_value.xpr} [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-add_files -quiet {{d:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/ip/fifo_IIC/fifo_IIC.dcp}}
-set_property used_in_implementation false [get_files {{d:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/ip/fifo_IIC/fifo_IIC.dcp}}]
+add_files -quiet {{d:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_Overclock_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/ip/fifo_IIC/fifo_IIC.dcp}}
+set_property used_in_implementation false [get_files {{d:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_Overclock_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/ip/fifo_IIC/fifo_IIC.dcp}}]
 read_verilog -library xil_defaultlib {
-  {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/iic_savemod.v}
-  {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/iic_demo.v}
-  {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/fifo_proc.v}
-  {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/usb_handle.v}
-  {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/sys_rst.v}
-  {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/imports/new/async_245_fifo.v}
+  {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_Overclock_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/iic_savemod.v}
+  {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_Overclock_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/iic_demo.v}
+  {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_Overclock_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/fifo_proc.v}
+  {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_Overclock_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/usb_handle.v}
+  {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_Overclock_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/new/sys_rst.v}
+  {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_Overclock_DeviceID_with_value/400K_DeviceID_with_value.srcs/sources_1/imports/new/async_245_fifo.v}
 }
 foreach dcp [get_files -quiet -all *.dcp] {
   set_property used_in_implementation false $dcp
 }
-read_xdc {{D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/constrs_1/new/ft2232_constraint.xdc}}
-set_property used_in_implementation false [get_files {{D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_400K_DeviceID_with_value/400K_DeviceID_with_value.srcs/constrs_1/new/ft2232_constraint.xdc}}]
+read_xdc {{D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_Overclock_DeviceID_with_value/400K_DeviceID_with_value.srcs/constrs_1/new/ft2232_constraint.xdc}}
+set_property used_in_implementation false [get_files {{D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_Overclock_DeviceID_with_value/400K_DeviceID_with_value.srcs/constrs_1/new/ft2232_constraint.xdc}}]
 
 
 synth_design -top async_245_fifo -part xc7a15tftg256-1
