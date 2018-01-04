@@ -32,9 +32,19 @@ module iic_savemod
 	 input  [7:0]iData,
 	 output [7:0]oData
 );
-	 parameter FCLK = 10'd125, FHALF = 10'd62, FQUARTER = 10'd31; //(1/400E+3)/(1/50E+6)
+
+/*****************************800K I2C*****************************************************
+     parameter FCLK = 10'd125, FHALF = 10'd62, FQUARTER = 10'd31; //(1/400E+3)/(1/50E+6)
 	 parameter THIGH = 10'd30, TLOW = 10'd65, TR = 10'd15, TF = 10'd15;
 	 parameter THD_STA = 10'd30, TSU_STA = 10'd30, TSU_STO = 10'd30;
+**************************************************************************************/
+	 
+/********************************1.6M I2C*************************************************/
+     parameter FCLK = 10'd62, FHALF = 10'd31, FQUARTER = 10'd15; //(1/400E+3)/(1/50E+6)
+     parameter THIGH = 10'd15, TLOW = 10'd32, TR = 10'd7, TF = 10'd7;
+     parameter THD_STA = 10'd15, TSU_STA = 10'd15, TSU_STO = 10'd15;
+/***************************************************************************************/
+	 
 	 parameter WRFUNC1 = 5'd7;
 	 parameter WRFUNC2 = 5'd9, RDFUNC = 5'd19;
 	 

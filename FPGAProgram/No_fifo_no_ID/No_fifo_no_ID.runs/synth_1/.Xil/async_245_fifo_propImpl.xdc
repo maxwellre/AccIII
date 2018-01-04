@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/constrs_1/new/ft2232_constraint.xdc rfile:../../../prj_ft2232h.srcs/constrs_1/new/ft2232_constraint.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:{D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/constrs_1/new/ft2232_constraint.xdc} rfile:../../../No_fifo_no_ID.srcs/constrs_1/new/ft2232_constraint.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:3 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN N14 [get_ports i_clk]
 set_property src_info {type:XDC file:1 line:14 export:INPUT save:INPUT read:READ} [current_design]

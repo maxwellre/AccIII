@@ -23,3 +23,23 @@ set_property PROBES.FILE {} [lindex [get_hw_devices] 0]
 set_property PROGRAM.FILE {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.runs/impl_1/async_245_fifo.bit} [lindex [get_hw_devices] 0]
 program_hw_devices [lindex [get_hw_devices] 0]
 refresh_hw_device [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+close_hw
+reset_run synth_1
+launch_runs synth_1
+wait_on_run synth_1
+launch_runs impl_1
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream
+wait_on_run impl_1
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.runs/impl_1/async_245_fifo.bit} [lindex [get_hw_devices] 0]
+current_hw_device [lindex [get_hw_devices] 0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.runs/impl_1/async_245_fifo.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]

@@ -2,8 +2,8 @@
 # Vivado v2016.1 (64-bit)
 # SW Build 1538259 on Fri Apr  8 15:45:27 MDT 2016
 # IP Build 1537824 on Fri Apr  8 04:28:57 MDT 2016
-# Start of session at: Wed Jan 03 17:50:36 2018
-# Process ID: 11516
+# Start of session at: Wed Jan 03 17:49:19 2018
+# Process ID: 5448
 # Current directory: D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.runs/impl_1
 # Command line: vivado.exe -log async_245_fifo.vdi -applog -messageDb vivado.pb -mode batch -source async_245_fifo.tcl -notrace
 # Log file: D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.runs/impl_1/async_245_fifo.vdi

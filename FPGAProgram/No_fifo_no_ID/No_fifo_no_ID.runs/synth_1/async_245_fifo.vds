@@ -1,79 +1,81 @@
 #-----------------------------------------------------------
-# Vivado v2016.2 (64-bit)
-# SW Build 1577090 on Thu Jun  2 16:32:40 MDT 2016
-# IP Build 1577682 on Fri Jun  3 12:00:54 MDT 2016
-# Start of session at: Mon Aug 28 10:52:18 2017
-# Process ID: 4132
-# Current directory: D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.runs/synth_1
+# Vivado v2016.1 (64-bit)
+# SW Build 1538259 on Fri Apr  8 15:45:27 MDT 2016
+# IP Build 1537824 on Fri Apr  8 04:28:57 MDT 2016
+# Start of session at: Wed Jan 03 17:47:34 2018
+# Process ID: 13460
+# Current directory: D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.runs/synth_1
 # Command line: vivado.exe -log async_245_fifo.vds -mode batch -messageDb vivado.pb -notrace -source async_245_fifo.tcl
-# Log file: D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.runs/synth_1/async_245_fifo.vds
-# Journal file: D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.runs/synth_1\vivado.jou
+# Log file: D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.runs/synth_1/async_245_fifo.vds
+# Journal file: D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
 source async_245_fifo.tcl -notrace
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at D:/DProgram/Xilinx/Vivado/2016.1/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo:part0:1.0 available at D:/DProgram/Xilinx/Vivado/2016.1/data/boards/board_files/zybo/B.3/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
 Command: synth_design -top async_245_fifo -part xc7a15tftg256-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a15t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a15t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 1084 
+INFO: Helper process launched with PID 5684 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 268.492 ; gain = 61.328
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 275.621 ; gain = 69.254
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'async_245_fifo' [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/imports/new/async_245_fifo.v:22]
-INFO: [Synth 8-638] synthesizing module 'sys_rst' [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/sys_rst.v:23]
-INFO: [Synth 8-256] done synthesizing module 'sys_rst' (1#1) [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/sys_rst.v:23]
-INFO: [Synth 8-638] synthesizing module 'iic_demo' [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/iic_demo.v:22]
-INFO: [Synth 8-638] synthesizing module 'iic_savemod' [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/iic_savemod.v:23]
-	Parameter FCLK bound to: 10'b0001111101 
-	Parameter FHALF bound to: 10'b0000111110 
-	Parameter FQUARTER bound to: 10'b0000011111 
-	Parameter THIGH bound to: 10'b0000011110 
-	Parameter TLOW bound to: 10'b0001000001 
-	Parameter TR bound to: 10'b0000001111 
-	Parameter TF bound to: 10'b0000001111 
-	Parameter THD_STA bound to: 10'b0000011110 
-	Parameter TSU_STA bound to: 10'b0000011110 
-	Parameter TSU_STO bound to: 10'b0000011110 
+INFO: [Synth 8-638] synthesizing module 'async_245_fifo' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/imports/new/async_245_fifo.v:22]
+INFO: [Synth 8-638] synthesizing module 'sys_rst' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/sys_rst.v:23]
+INFO: [Synth 8-256] done synthesizing module 'sys_rst' (1#1) [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/sys_rst.v:23]
+INFO: [Synth 8-638] synthesizing module 'iic_demo' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/iic_demo.v:22]
+INFO: [Synth 8-638] synthesizing module 'iic_savemod' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/iic_savemod.v:23]
+	Parameter FCLK bound to: 10'b0000111110 
+	Parameter FHALF bound to: 10'b0000011111 
+	Parameter FQUARTER bound to: 10'b0000001111 
+	Parameter THIGH bound to: 10'b0000001111 
+	Parameter TLOW bound to: 10'b0000100000 
+	Parameter TR bound to: 10'b0000000111 
+	Parameter TF bound to: 10'b0000000111 
+	Parameter THD_STA bound to: 10'b0000001111 
+	Parameter TSU_STA bound to: 10'b0000001111 
+	Parameter TSU_STO bound to: 10'b0000001111 
 	Parameter WRFUNC1 bound to: 5'b00111 
 	Parameter WRFUNC2 bound to: 5'b01001 
 	Parameter RDFUNC bound to: 5'b10011 
-INFO: [Synth 8-155] case statement is not full and has no default [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/iic_savemod.v:59]
-INFO: [Synth 8-155] case statement is not full and has no default [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/iic_savemod.v:142]
-INFO: [Synth 8-256] done synthesizing module 'iic_savemod' (2#1) [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/iic_savemod.v:23]
-INFO: [Synth 8-155] case statement is not full and has no default [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/iic_demo.v:80]
-INFO: [Synth 8-256] done synthesizing module 'iic_demo' (3#1) [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/iic_demo.v:22]
-WARNING: [Synth 8-387] label required on module instance [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/imports/new/async_245_fifo.v:311]
-INFO: [Synth 8-638] synthesizing module 'fifo_proc' [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:22]
-INFO: [Synth 8-155] case statement is not full and has no default [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:53]
-WARNING: [Synth 8-3848] Net iic_data[0] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[1] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[2] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[3] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[4] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[5] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[6] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[7] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[8] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[9] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[10] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[11] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[12] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[13] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[14] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[15] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[16] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[17] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[18] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[19] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[20] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[21] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-WARNING: [Synth 8-3848] Net iic_data[22] in module/entity fifo_proc does not have driver. [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:39]
-INFO: [Synth 8-256] done synthesizing module 'fifo_proc' (4#1) [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/fifo_proc.v:22]
-INFO: [Synth 8-638] synthesizing module 'usb_handle' [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/usb_handle.v:23]
-INFO: [Synth 8-256] done synthesizing module 'usb_handle' (5#1) [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/usb_handle.v:23]
-INFO: [Synth 8-256] done synthesizing module 'async_245_fifo' (6#1) [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/imports/new/async_245_fifo.v:22]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/iic_savemod.v:69]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/iic_savemod.v:152]
+INFO: [Synth 8-256] done synthesizing module 'iic_savemod' (2#1) [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/iic_savemod.v:23]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/iic_demo.v:80]
+INFO: [Synth 8-256] done synthesizing module 'iic_demo' (3#1) [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/iic_demo.v:22]
+WARNING: [Synth 8-387] label required on module instance [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/imports/new/async_245_fifo.v:311]
+INFO: [Synth 8-638] synthesizing module 'fifo_proc' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:22]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:53]
+WARNING: [Synth 8-3848] Net iic_data[0] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[1] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[2] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[3] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[4] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[5] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[6] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[7] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[8] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[9] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[10] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[11] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[12] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[13] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[14] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[15] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[16] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[17] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[18] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[19] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[20] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[21] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+WARNING: [Synth 8-3848] Net iic_data[22] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:39]
+INFO: [Synth 8-256] done synthesizing module 'fifo_proc' (4#1) [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/fifo_proc.v:22]
+INFO: [Synth 8-638] synthesizing module 'usb_handle' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/usb_handle.v:23]
+INFO: [Synth 8-256] done synthesizing module 'usb_handle' (5#1) [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/usb_handle.v:23]
+INFO: [Synth 8-256] done synthesizing module 'async_245_fifo' (6#1) [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/imports/new/async_245_fifo.v:22]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 305.980 ; gain = 98.816
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 313.008 ; gain = 106.641
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -83,38 +85,38 @@ Report Check Netlist:
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 305.980 ; gain = 98.816
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 313.008 ; gain = 106.641
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a15tftg256-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/constrs_1/new/ft2232_constraint.xdc]
-Finished Parsing XDC File [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/constrs_1/new/ft2232_constraint.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/constrs_1/new/ft2232_constraint.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/async_245_fifo_propImpl.xdc].
+Parsing XDC File [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/constrs_1/new/ft2232_constraint.xdc]
+Finished Parsing XDC File [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/constrs_1/new/ft2232_constraint.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/constrs_1/new/ft2232_constraint.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/async_245_fifo_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/async_245_fifo_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 611.082 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 620.426 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 611.082 ; gain = 403.918
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 620.426 ; gain = 414.059
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a15tftg256-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 611.082 ; gain = 403.918
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 620.426 ; gain = 414.059
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 611.082 ; gain = 403.918
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 620.426 ; gain = 414.059
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5587] ROM size for "Go" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5587] ROM size for "Go" is below threshold of ROM address width. It will be mapped to LUTs
@@ -135,14 +137,14 @@ INFO: [Synth 8-5587] ROM size for "r_data" is below threshold of ROM address wid
 INFO: [Synth 8-5546] ROM "usb_en" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "usb_data" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "o_iic_en" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-4471] merging register 'o_start_en_reg' into 'o_led_reg' [D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.srcs/sources_1/new/usb_handle.v:65]
+INFO: [Synth 8-4471] merging register 'o_start_en_reg' into 'o_led_reg' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.srcs/sources_1/new/usb_handle.v:65]
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "data" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "isQ" won't be mapped to RAM because it is too sparse
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 611.082 ; gain = 403.918
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 620.426 ; gain = 414.059
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -310,7 +312,7 @@ BRAMs: 50 (col length: RAMB18 60 RAMB36 30)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
-Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 611.082 ; gain = 403.918
+Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 620.426 ; gain = 414.059
 ---------------------------------------------------------------------------------
 Start Cross Boundary Optimization
 ---------------------------------------------------------------------------------
@@ -318,9 +320,7 @@ INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
@@ -328,9 +328,7 @@ INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
@@ -338,9 +336,7 @@ INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
@@ -348,9 +344,7 @@ INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
@@ -358,9 +352,7 @@ INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
@@ -368,9 +360,7 @@ INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
@@ -378,9 +368,7 @@ INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
@@ -388,18 +376,32 @@ INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Common 17-14] Message 'Synth 8-5546' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:30 . Memory (MB): peak = 611.082 ; gain = 403.918
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:35 . Memory (MB): peak = 620.426 ; gain = 414.059
 ---------------------------------------------------------------------------------
-Finished Parallel Reinference  : Time (s): cpu = 00:00:26 ; elapsed = 00:00:30 . Memory (MB): peak = 611.082 ; gain = 403.918
+Finished Parallel Reinference  : Time (s): cpu = 00:00:28 ; elapsed = 00:00:35 . Memory (MB): peak = 620.426 ; gain = 414.059
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -811,9 +813,9 @@ WARNING: [Synth 8-3332] Sequential element (IIC_NUM_22/j_reg[7]) is unused and w
 WARNING: [Synth 8-3332] Sequential element (IIC_NUM_22/j_reg[6]) is unused and will be removed from module async_245_fifo.
 INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Area Optimization : Time (s): cpu = 00:00:43 ; elapsed = 00:00:48 . Memory (MB): peak = 611.082 ; gain = 403.918
+Finished Area Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:55 . Memory (MB): peak = 620.426 ; gain = 414.059
 ---------------------------------------------------------------------------------
-Finished Parallel Area Optimization  : Time (s): cpu = 00:00:43 ; elapsed = 00:00:48 . Memory (MB): peak = 611.082 ; gain = 403.918
+Finished Parallel Area Optimization  : Time (s): cpu = 00:00:48 ; elapsed = 00:00:55 . Memory (MB): peak = 620.426 ; gain = 414.059
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -827,10 +829,10 @@ Start Timing Optimization
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:50 ; elapsed = 00:00:55 . Memory (MB): peak = 664.527 ; gain = 457.363
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:56 ; elapsed = 00:01:03 . Memory (MB): peak = 660.055 ; gain = 453.688
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:52 ; elapsed = 00:00:57 . Memory (MB): peak = 689.695 ; gain = 482.531
+Finished Timing Optimization : Time (s): cpu = 00:00:58 ; elapsed = 00:01:05 . Memory (MB): peak = 684.723 ; gain = 478.355
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -842,16 +844,16 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:55 ; elapsed = 00:00:59 . Memory (MB): peak = 801.840 ; gain = 594.676
+Finished Technology Mapping : Time (s): cpu = 00:01:01 ; elapsed = 00:01:08 . Memory (MB): peak = 787.156 ; gain = 580.789
 ---------------------------------------------------------------------------------
-Finished Parallel Technology Mapping Optimization  : Time (s): cpu = 00:00:55 ; elapsed = 00:00:59 . Memory (MB): peak = 801.840 ; gain = 594.676
+Finished Parallel Technology Mapping Optimization  : Time (s): cpu = 00:01:01 ; elapsed = 00:01:08 . Memory (MB): peak = 787.156 ; gain = 580.789
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
 | |RTL Partition |Replication |Instances |
 +-+--------------+------------+----------+
 +-+--------------+------------+----------+
-Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:55 ; elapsed = 00:00:59 . Memory (MB): peak = 801.840 ; gain = 594.676
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:01:01 ; elapsed = 00:01:08 . Memory (MB): peak = 787.156 ; gain = 580.789
 ---------------------------------------------------------------------------------
 Start IO Insertion
 ---------------------------------------------------------------------------------
@@ -868,7 +870,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:56 ; elapsed = 00:01:01 . Memory (MB): peak = 801.840 ; gain = 594.676
+Finished IO Insertion : Time (s): cpu = 00:01:03 ; elapsed = 00:01:10 . Memory (MB): peak = 787.156 ; gain = 580.789
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -881,7 +883,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:56 ; elapsed = 00:01:01 . Memory (MB): peak = 801.840 ; gain = 594.676
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:03 ; elapsed = 00:01:10 . Memory (MB): peak = 787.156 ; gain = 580.789
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -893,25 +895,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:57 ; elapsed = 00:01:01 . Memory (MB): peak = 801.840 ; gain = 594.676
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:03 ; elapsed = 00:01:10 . Memory (MB): peak = 787.156 ; gain = 580.789
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:57 ; elapsed = 00:01:01 . Memory (MB): peak = 801.840 ; gain = 594.676
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:03 ; elapsed = 00:01:10 . Memory (MB): peak = 787.156 ; gain = 580.789
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:57 ; elapsed = 00:01:02 . Memory (MB): peak = 801.840 ; gain = 594.676
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:03 ; elapsed = 00:01:10 . Memory (MB): peak = 787.156 ; gain = 580.789
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:57 ; elapsed = 00:01:02 . Memory (MB): peak = 801.840 ; gain = 594.676
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:03 ; elapsed = 00:01:10 . Memory (MB): peak = 787.156 ; gain = 580.789
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -929,13 +931,13 @@ Report Cell Usage:
 +------+-------+------+
 |1     |BUFG   |     1|
 |2     |CARRY4 |     4|
-|3     |LUT1   |    86|
-|4     |LUT2   |   544|
-|5     |LUT3   |   394|
-|6     |LUT4   |   610|
-|7     |LUT5   |   812|
-|8     |LUT6   |  2707|
-|9     |MUXF7  |    12|
+|3     |LUT1   |   109|
+|4     |LUT2   |   611|
+|5     |LUT3   |   329|
+|6     |LUT4   |   629|
+|7     |LUT5   |   883|
+|8     |LUT6   |  2680|
+|9     |MUXF7  |   102|
 |10    |FDCE   |  1497|
 |11    |FDPE   |   132|
 |12    |IBUF   |     4|
@@ -947,63 +949,63 @@ Report Instance Areas:
 +------+------------------+---------------+------+
 |      |Instance          |Module         |Cells |
 +------+------------------+---------------+------+
-|1     |top               |               |  6860|
-|2     |  IIC_NUM_00      |iic_demo       |   285|
-|3     |    U1            |iic_savemod_43 |   226|
-|4     |  IIC_NUM_01      |iic_demo_0     |   285|
-|5     |    U1            |iic_savemod_42 |   226|
-|6     |  IIC_NUM_02      |iic_demo_1     |   286|
-|7     |    U1            |iic_savemod_41 |   226|
-|8     |  IIC_NUM_03      |iic_demo_2     |   285|
-|9     |    U1            |iic_savemod_40 |   226|
-|10    |  IIC_NUM_04      |iic_demo_3     |   285|
-|11    |    U1            |iic_savemod_39 |   229|
-|12    |  IIC_NUM_05      |iic_demo_4     |   286|
-|13    |    U1            |iic_savemod_38 |   226|
-|14    |  IIC_NUM_06      |iic_demo_5     |   285|
-|15    |    U1            |iic_savemod_37 |   226|
-|16    |  IIC_NUM_07      |iic_demo_6     |   285|
-|17    |    U1            |iic_savemod_36 |   226|
-|18    |  IIC_NUM_08      |iic_demo_7     |   285|
-|19    |    U1            |iic_savemod_35 |   226|
-|20    |  IIC_NUM_09      |iic_demo_8     |   285|
-|21    |    U1            |iic_savemod_34 |   229|
-|22    |  IIC_NUM_10      |iic_demo_9     |   286|
-|23    |    U1            |iic_savemod_33 |   226|
-|24    |  IIC_NUM_11      |iic_demo_10    |   285|
-|25    |    U1            |iic_savemod_32 |   226|
-|26    |  IIC_NUM_12      |iic_demo_11    |   285|
-|27    |    U1            |iic_savemod_31 |   226|
-|28    |  IIC_NUM_13      |iic_demo_12    |   286|
-|29    |    U1            |iic_savemod_30 |   226|
-|30    |  IIC_NUM_14      |iic_demo_13    |   285|
-|31    |    U1            |iic_savemod_29 |   229|
-|32    |  IIC_NUM_15      |iic_demo_14    |   285|
-|33    |    U1            |iic_savemod_28 |   226|
-|34    |  IIC_NUM_16      |iic_demo_15    |   285|
-|35    |    U1            |iic_savemod_27 |   226|
-|36    |  IIC_NUM_17      |iic_demo_16    |   285|
-|37    |    U1            |iic_savemod_26 |   226|
-|38    |  IIC_NUM_18      |iic_demo_17    |   287|
-|39    |    U1            |iic_savemod_25 |   226|
-|40    |  IIC_NUM_19      |iic_demo_18    |   285|
-|41    |    U1            |iic_savemod_24 |   229|
-|42    |  IIC_NUM_20      |iic_demo_19    |   285|
-|43    |    U1            |iic_savemod_23 |   226|
-|44    |  IIC_NUM_21      |iic_demo_20    |   277|
-|45    |    U1            |iic_savemod_22 |   218|
-|46    |  IIC_NUM_22      |iic_demo_21    |   285|
-|47    |    U1            |iic_savemod    |   226|
+|1     |top               |               |  7038|
+|2     |  IIC_NUM_00      |iic_demo       |   293|
+|3     |    U1            |iic_savemod_43 |   234|
+|4     |  IIC_NUM_01      |iic_demo_0     |   293|
+|5     |    U1            |iic_savemod_42 |   234|
+|6     |  IIC_NUM_02      |iic_demo_1     |   294|
+|7     |    U1            |iic_savemod_41 |   234|
+|8     |  IIC_NUM_03      |iic_demo_2     |   293|
+|9     |    U1            |iic_savemod_40 |   234|
+|10    |  IIC_NUM_04      |iic_demo_3     |   293|
+|11    |    U1            |iic_savemod_39 |   237|
+|12    |  IIC_NUM_05      |iic_demo_4     |   294|
+|13    |    U1            |iic_savemod_38 |   234|
+|14    |  IIC_NUM_06      |iic_demo_5     |   293|
+|15    |    U1            |iic_savemod_37 |   234|
+|16    |  IIC_NUM_07      |iic_demo_6     |   293|
+|17    |    U1            |iic_savemod_36 |   234|
+|18    |  IIC_NUM_08      |iic_demo_7     |   293|
+|19    |    U1            |iic_savemod_35 |   234|
+|20    |  IIC_NUM_09      |iic_demo_8     |   293|
+|21    |    U1            |iic_savemod_34 |   237|
+|22    |  IIC_NUM_10      |iic_demo_9     |   294|
+|23    |    U1            |iic_savemod_33 |   234|
+|24    |  IIC_NUM_11      |iic_demo_10    |   293|
+|25    |    U1            |iic_savemod_32 |   234|
+|26    |  IIC_NUM_12      |iic_demo_11    |   293|
+|27    |    U1            |iic_savemod_31 |   234|
+|28    |  IIC_NUM_13      |iic_demo_12    |   294|
+|29    |    U1            |iic_savemod_30 |   234|
+|30    |  IIC_NUM_14      |iic_demo_13    |   293|
+|31    |    U1            |iic_savemod_29 |   237|
+|32    |  IIC_NUM_15      |iic_demo_14    |   293|
+|33    |    U1            |iic_savemod_28 |   234|
+|34    |  IIC_NUM_16      |iic_demo_15    |   293|
+|35    |    U1            |iic_savemod_27 |   234|
+|36    |  IIC_NUM_17      |iic_demo_16    |   293|
+|37    |    U1            |iic_savemod_26 |   234|
+|38    |  IIC_NUM_18      |iic_demo_17    |   295|
+|39    |    U1            |iic_savemod_25 |   234|
+|40    |  IIC_NUM_19      |iic_demo_18    |   293|
+|41    |    U1            |iic_savemod_24 |   237|
+|42    |  IIC_NUM_20      |iic_demo_19    |   293|
+|43    |    U1            |iic_savemod_23 |   234|
+|44    |  IIC_NUM_21      |iic_demo_20    |   279|
+|45    |    U1            |iic_savemod_22 |   220|
+|46    |  IIC_NUM_22      |iic_demo_21    |   293|
+|47    |    U1            |iic_savemod    |   234|
 |48    |  SYS_RST         |sys_rst        |    15|
 |49    |  USB_Handle      |usb_handle     |   130|
 |50    |  nolabel_line311 |fifo_proc      |   100|
 +------+------------------+---------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:57 ; elapsed = 00:01:02 . Memory (MB): peak = 801.840 ; gain = 594.676
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:03 ; elapsed = 00:01:10 . Memory (MB): peak = 787.156 ; gain = 580.789
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 443 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:48 ; elapsed = 00:00:55 . Memory (MB): peak = 801.840 ; gain = 289.574
-Synthesis Optimization Complete : Time (s): cpu = 00:00:57 ; elapsed = 00:01:02 . Memory (MB): peak = 801.840 ; gain = 594.676
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:54 ; elapsed = 00:01:03 . Memory (MB): peak = 787.156 ; gain = 273.371
+Synthesis Optimization Complete : Time (s): cpu = 00:01:03 ; elapsed = 00:01:10 . Memory (MB): peak = 787.156 ; gain = 580.789
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 39 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -1014,8 +1016,8 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   IOBUF => IOBUF (IBUF, OBUFT): 31 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-330 Infos, 124 Warnings, 0 Critical Warnings and 0 Errors encountered.
+330 Infos, 126 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:58 ; elapsed = 00:01:02 . Memory (MB): peak = 801.840 ; gain = 594.676
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 801.840 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Mon Aug 28 10:53:24 2017...
+synth_design: Time (s): cpu = 00:01:05 ; elapsed = 00:01:11 . Memory (MB): peak = 787.156 ; gain = 580.789
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.041 . Memory (MB): peak = 787.156 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Wed Jan 03 17:48:48 2018...

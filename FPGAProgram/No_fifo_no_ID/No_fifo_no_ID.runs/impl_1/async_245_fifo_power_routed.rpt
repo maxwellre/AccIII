@@ -1,8 +1,8 @@
 Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2016.2 (win64) Build 1577090 Thu Jun  2 16:32:40 MDT 2016
-| Date             : Mon Aug 28 10:54:28 2017
-| Host             : DESKTOP-1R4PJEI running 64-bit major release  (build 9200)
+| Tool Version     : Vivado v.2016.1 (win64) Build 1538259 Fri Apr  8 15:45:27 MDT 2016
+| Date             : Wed Jan 03 17:50:18 2018
+| Host             : RETouch3-PC running 64-bit major release  (build 9200)
 | Command          : report_power -file async_245_fifo_power_routed.rpt -pb async_245_fifo_power_summary_routed.pb -rpx async_245_fifo_power_routed.rpx
 | Design           : async_245_fifo
 | Device           : xc7a15tftg256-1
@@ -30,8 +30,8 @@ Table of Contents
 ----------
 
 +--------------------------+-------+
-| Total On-Chip Power (W)  | 0.111 |
-| Dynamic (W)              | 0.039 |
+| Total On-Chip Power (W)  | 0.113 |
+| Dynamic (W)              | 0.041 |
 | Device Static (W)        | 0.072 |
 | Effective TJA (C/W)      | 4.9   |
 | Max Ambient (C)          | 84.5  |
@@ -50,16 +50,16 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.011 |        3 |       --- |             --- |
-| Slice Logic    |     0.010 |     6786 |       --- |             --- |
-|   LUT as Logic |     0.010 |     4057 |     10400 |           39.01 |
+| Slice Logic    |     0.012 |     6941 |       --- |             --- |
+|   LUT as Logic |     0.012 |     4061 |     10400 |           39.05 |
 |   Register     |    <0.001 |     1629 |     20800 |            7.83 |
+|   F7/F8 Muxes  |    <0.001 |      102 |     32600 |            0.31 |
 |   CARRY4       |    <0.001 |        4 |      8150 |            0.05 |
-|   F7/F8 Muxes  |    <0.001 |       12 |     32600 |            0.04 |
 |   Others       |     0.000 |       51 |       --- |             --- |
-| Signals        |     0.008 |     5269 |       --- |             --- |
-| I/O            |     0.010 |       61 |       170 |           35.88 |
+| Signals        |     0.009 |     5210 |       --- |             --- |
+| I/O            |     0.009 |       61 |       170 |           35.88 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.111 |          |           |                 |
+| Total          |     0.113 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -69,7 +69,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.039 |       0.029 |      0.010 |
+| Vccint    |       1.000 |     0.042 |       0.032 |      0.010 |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |
 | Vcco33    |       3.300 |     0.004 |       0.003 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -138,7 +138,7 @@ Table of Contents
 +-------------------------+-----------+
 | Name                    | Power (W) |
 +-------------------------+-----------+
-| async_245_fifo          |     0.039 |
+| async_245_fifo          |     0.041 |
 |   IIC_NUM_00            |     0.001 |
 |     U1                  |    <0.001 |
 |   IIC_NUM_01            |     0.001 |
@@ -158,7 +158,7 @@ Table of Contents
 |   IIC_NUM_08            |     0.001 |
 |     U1                  |    <0.001 |
 |   IIC_NUM_09            |     0.001 |
-|     U1                  |    <0.001 |
+|     U1                  |     0.001 |
 |   IIC_NUM_10            |     0.001 |
 |     U1                  |    <0.001 |
 |   IIC_NUM_11            |     0.001 |

@@ -11,9 +11,9 @@ echo "Please update the PATH and LD_LIBRARY_PATH variables below, before executi
 exit
 
 if [ -z "$PATH" ]; then
-  PATH=C:/Xilinx/SDK/2016.2/bin;C:/Xilinx/Vivado/2016.2/ids_lite/ISE/bin/nt64;C:/Xilinx/Vivado/2016.2/ids_lite/ISE/lib/nt64:C:/Xilinx/Vivado/2016.2/bin
+  PATH=D:/DProgram/Xilinx/SDK/2016.1/bin;D:/DProgram/Xilinx/Vivado/2016.1/ids_lite/ISE/bin/nt64;D:/DProgram/Xilinx/Vivado/2016.1/ids_lite/ISE/lib/nt64:D:/DProgram/Xilinx/Vivado/2016.1/bin
 else
-  PATH=C:/Xilinx/SDK/2016.2/bin;C:/Xilinx/Vivado/2016.2/ids_lite/ISE/bin/nt64;C:/Xilinx/Vivado/2016.2/ids_lite/ISE/lib/nt64:C:/Xilinx/Vivado/2016.2/bin:$PATH
+  PATH=D:/DProgram/Xilinx/SDK/2016.1/bin;D:/DProgram/Xilinx/Vivado/2016.1/ids_lite/ISE/bin/nt64;D:/DProgram/Xilinx/Vivado/2016.1/ids_lite/ISE/lib/nt64:D:/DProgram/Xilinx/Vivado/2016.1/bin:$PATH
 fi
 export PATH
 
@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='D:/Hui/RTL/prj_ft2232h_bak_09_get_42_sensors_data_all_good/prj_ft2232h/prj_ft2232h.runs/impl_1'
+HD_PWD='D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/No_fifo_no_ID/No_fifo_no_ID.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -41,7 +41,7 @@ EAStep()
 }
 
 # pre-commands:
-/bin/touch .init_design.begin.rst
+/bin/touch .write_bitstream.begin.rst
 EAStep vivado -log async_245_fifo.vdi -applog -m64 -messageDb vivado.pb -mode batch -source async_245_fifo.tcl -notrace
 
 
