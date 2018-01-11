@@ -21,8 +21,6 @@ void USBReadData(FT_HANDLE ftHandle, DWORD readBytes, long* dwSum)
 		if (*dwSum <= DataNum)
 		{
 			memcpy(fileBuffer + dwSum_org, RxBuffer, BytesReceived);
-			//printf("BytesReceived = %d, dwSum =%d\r\n", BytesReceived, *dwSum);	
-			//printf(".\n");
 		}
 	}
 	else
@@ -31,20 +29,6 @@ void USBReadData(FT_HANDLE ftHandle, DWORD readBytes, long* dwSum)
 		TRACE(_T("FT_Read Failed! ftStatus = %d\r\n"), ftStatus);
 	}
 }
-
-///*Save data as text file (Obsolete)*/
-//void SaveDataResult()
-//{
-//	CStdioFile DataFile(_T("Data.txt"), CStdioFile::modeCreate | CStdioFile::modeWrite);
-//
-//	for (long long i = 0; i < DataNum; i++)
-//	{
-//		CString strTmp;
-//		strTmp.Format(_T("%02x "), fileBuffer[i]);
-//		DataFile.SeekToEnd();
-//		DataFile.WriteString(strTmp.GetString());
-//	}
-//}
 
 void SaveDataResult(long dwSum)
 {

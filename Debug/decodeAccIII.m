@@ -4,7 +4,9 @@
 %   1. 'data_path' - Path of the .bin file that stores the data
 % Optional inputs:
 %   2. 'meas_time' - Path of the .txt file that stores the measurement time
-%   3. 'is_disp' - Display signals from all accelerometers if set to 1
+%   3. 'yRange' -  Range of y-axis: (0,16]. No range limit if set to 0
+%   4. 'is_disp' - Display signals from all accelerometers if set to 1
+% 
 % Outputs:
 %   1. 'acc_data' - Readed accelerometer data with unit 'g' (gravity)
 %--------------------------------------------------------------------------
@@ -23,7 +25,7 @@ acc_ind = setdiff(1:(2*ID_Num),Exclude_Acc);
 % Acquire sampling frequency (From 'file_path2')
 if nargin < 2
     samp_time = 2;
-    disp('Unknown sampling frequency');
+    disp('Unknown sampling time');
 else % Actual sampling frequency
     if ischar(meas_time)
         file_id1 = fopen(meas_time);
@@ -130,9 +132,21 @@ close(wb_h);
 
 Fs = samp_num/samp_time;
 for i = acc_ind
-    fprintf('Acc %d: Sampling frequency = %.2f Hz\n', i, Fs(i));
+    fprintf('Acc %d: Sampling frequency = %.2f Hz\n',i,Fs(i))
 end
 
+% %% Synchronization through decimation (failed)
+% min_Fs = min(Fs(Fs>0));
+% fprintf('Decimate frequency to %.2f Hz\n',min_Fs);
+% for k = 1:length(acc_ind)
+%     deci_ratio = Fs(acc_ind(k))/min_Fs;
+%     fprintf('Acc %d: Sampling frequency = %.2f Hz, decimate by %f\n',...
+%         acc_ind(k), Fs(acc_ind(k)), deci_ratio);
+%     for ax = 1:3
+%         acc_data{acc_ind(k)}(:,ax) =...
+%             decimate(acc_data{acc_ind(k)}(:,ax),deci_ratio);
+%     end
+% end
 
 %% Analysis 
 if is_disp    

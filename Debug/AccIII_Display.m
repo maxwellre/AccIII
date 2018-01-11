@@ -6,7 +6,9 @@
 % Updated on 09/05/2017 New data reading format
 %--------------------------------------------------------------------------
 close all
-[acc_data, Fs ] = decodeAccIII('data.bin','sample_time.txt',0);
+% [acc_data, Fs ] = decodeAccIII('data.bin','sample_time.txt',10);
+
+[acc_data, Fs, t] = syncAccIII('data.bin','sample_time.txt',10,1);
 
 %--------------------------------------------------------------------------
 % % % Spectrum

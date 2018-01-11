@@ -27,8 +27,7 @@ int main()
 
 	ftStatus = FT_Open(0, &ftHandle);
 	if (ftStatus != FT_OK)
-	{
-		// FT_Open failed return;  
+	{ 
 		//TRACE(_T("FT_Open FAILED!\r\n"));
 		printf("FT_Open FAILED!\r\n");
 	}
@@ -82,8 +81,6 @@ int main()
 			printf("FT_Purge FAILED!\r\n");
 		}
 
-		//access data from here
-
 		ftStatus = FT_Write(ftHandle, TxBuffer, sizeof(TxBuffer), &BytesWritten);
 		if (ftStatus == FT_OK) {
 			//TRACE(_T("FT_Write OK!\r\n"));
@@ -99,19 +96,17 @@ int main()
 		QueryPerformanceCounter(&lPreTime);
 
 		dwSum = 0;
-		//t = clock();
+
 		printf("Sampling...\n");
 		while (dwSum < DataNum)   //DataNum
 		{
 			ftStatus = FT_GetStatus(ftHandle, &RxBytes, &TxBytes, &EventDWord);
-			//printf("ftStatus = %d\n", ftStatus);
 
 			if ((ftStatus == FT_OK) && (RxBytes > 0))
 			{
 				if (RxBytes < 10000)
 				{
 					USBReadData(ftHandle, RxBytes, &dwSum);
-					//printf("dwSum = %d\n", dwSum);
 				}
 				else
 				{
@@ -129,7 +124,6 @@ int main()
 				}
 			}
 		}
-		//t = clock() - t;
 
 		QueryPerformanceCounter(&lPostTime);
 		float lPassTick = lPostTime.QuadPart - lPreTime.QuadPart;
@@ -146,12 +140,12 @@ int main()
 
 		SaveNum(lPassTime, "sample_time.txt");
 
-		TRACE(_T("Time passed : %f \r\n"), lPassTime);
+		//TRACE(_T("Time passed : %f \r\n"), lPassTime);
 
-		TRACE(_T("Data Number = %d \r\n"), dwSum/(2*6*46));
+		//TRACE(_T("Data Number = %d \r\n"), dwSum/(2*6*46));
 
-		float idDataRate = dwSum / (lPassTime * 6 * 46); // Count ID as data
-		SaveNum(idDataRate, "data_rate.txt");
+		//float idDataRate = dwSum / (lPassTime * 6 * 46); // Count ID as data
+		//SaveNum(idDataRate, "data_rate.txt");
 	}
 	else
 	{
