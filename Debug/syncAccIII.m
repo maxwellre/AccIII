@@ -85,6 +85,8 @@ check_ID = unique(hex_data(1,:));
 if length(check_ID) ~= ID_Num
     fprintf('ID: %d\n', check_ID);
     disp('Failed: Number of ID is incorrect');
+    failedBus = setdiff(0:(ID_Num-1),check_ID);
+    fprintf('Failed bus: %d\n',failedBus);
 else
     if (sum(abs((1:ID_Num)-check_ID)) == ID_Num)
         disp('Passed: IDs are correct')
@@ -152,16 +154,20 @@ close(wb_h);
 %% Synchronization
 end_time = zeros(1,AccNum);
 for i = 1:AccNum
-    end_time(i) = acc_data{acc_ind(i),2}(end);
+    if ~isempty(acc_data{acc_ind(i),2})
+        end_time(i) = acc_data{acc_ind(i),2}(end);
+    end
 end
-min_end_time = min(end_time);
+nonzero_ind = (end_time > 0);
+min_end_time = min(end_time(nonzero_ind));
 
-Fs = samp_num(acc_ind)'./end_time;
+Fs = samp_num(acc_ind(nonzero_ind))'./end_time(nonzero_ind);
 min_Fs = min(Fs);
 
 t = (1/min_Fs):(1/min_Fs):min_end_time;
 min_samp_num = length(t);
-for i = acc_ind
+
+for i = acc_ind(nonzero_ind)
     slct_ind = zeros(min_samp_num,1);
     
     t_i = find(acc_data{i,2} >= t(1),1);

@@ -8,20 +8,21 @@
 %--------------------------------------------------------------------------
 close all
 
-expected_samp_time = 2.2;
+expected_samp_time = 4.2;
 
 disp('Sampling...')
 [status,cmdout] = system(sprintf('AccIII.exe %.2f', expected_samp_time));
 
 disp(cmdout)
 
+%%
 if ~status
     [acc_data, Fs, t] = syncAccIII('data.bin','sample_time.txt',10,1);
     
     fprintf('Actually sampling time = %.4f secs\n', t(end));
 end
 
-%--------------------------------------------------------------------------
+%% ------------------------------------------------------------------------
 % % % Spectrum
 % % [ acc_FT, f ] = spectr(acc_data(:,:,ax), Fs);
 % % for q=0:1
