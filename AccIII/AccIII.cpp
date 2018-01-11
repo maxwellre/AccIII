@@ -8,9 +8,32 @@ DWORD RxBytes;
 DWORD TxBytes;
 
 long dwSum = 0;
+unsigned char* fileBuffer = NULL;
 
-int main()
+int main(int argc, char* argv[])
 {
+	int DataNum = 40000 * 24; // Old version default: 1.159 secs
+
+	if (argc == 2)
+	{
+		float samp_time = std::atof(argv[1]);
+		printf("Sample time = %.4f secs\r\n", samp_time);
+		DataNum = (int)(samp_time * ExpFs * AccBusNum * DataByteNum);
+	}
+	else if (argc == 1)
+	{
+		printf("Default sample time = 1 secs\r\n");
+		DataNum = ExpFs * AccBusNum * DataByteNum;
+	}
+	else
+	{
+		TRACE(_T("Only one input argument is allowed!\r\n"));
+		printf("Only one input argument is allowed!\r\n");
+		printf("Default sample time = 1.159 secs\r\n");
+	}
+
+	fileBuffer = new unsigned char[DataNum];
+
 	clock_t t; // checked
 
 	//HANDLE ftHandle;
@@ -98,7 +121,7 @@ int main()
 		dwSum = 0;
 
 		printf("Sampling...\n");
-		while (dwSum < DataNum)   //DataNum
+		while (dwSum < DataNum) 
 		{
 			ftStatus = FT_GetStatus(ftHandle, &RxBytes, &TxBytes, &EventDWord);
 
@@ -106,20 +129,20 @@ int main()
 			{
 				if (RxBytes < 10000)
 				{
-					USBReadData(ftHandle, RxBytes, &dwSum);
+					USBReadData(ftHandle, RxBytes, &dwSum, DataNum, fileBuffer);
 				}
 				else
 				{
 					int iCount = RxBytes / 10000;
 					for (int i = 0; i < iCount; i++)
 					{
-						USBReadData(ftHandle, 10000, &dwSum);
+						USBReadData(ftHandle, 10000, &dwSum, DataNum, fileBuffer);
 					}
 
 					int iMod = RxBytes % 10000;
 					if (iMod > 0)
 					{
-						USBReadData(ftHandle, iMod, &dwSum);
+						USBReadData(ftHandle, iMod, &dwSum, DataNum, fileBuffer);
 					}
 				}
 			}
@@ -135,7 +158,7 @@ int main()
 		FT_Close(ftHandle);
 		printf("Begin to save data into file!\r\n");
 
-		SaveDataResult(dwSum);
+		SaveDataResult(dwSum, fileBuffer);
 		printf("File Save Done!\r\n");
 
 		SaveNum(lPassTime, "sample_time.txt");

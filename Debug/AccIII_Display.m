@@ -4,11 +4,22 @@
 % Updated on 07/14/2017 New data format from new board
 % Updated on 08/15/2017 Corrected unit scale
 % Updated on 09/05/2017 New data reading format
+% Updated on 01/10/2018 Run exe and synchronize data
 %--------------------------------------------------------------------------
 close all
-% [acc_data, Fs ] = decodeAccIII('data.bin','sample_time.txt',10);
 
-[acc_data, Fs, t] = syncAccIII('data.bin','sample_time.txt',10,1);
+expected_samp_time = 2.2;
+
+disp('Sampling...')
+[status,cmdout] = system(sprintf('AccIII.exe %.2f', expected_samp_time));
+
+disp(cmdout)
+
+if ~status
+    [acc_data, Fs, t] = syncAccIII('data.bin','sample_time.txt',10,1);
+    
+    fprintf('Actually sampling time = %.4f secs\n', t(end));
+end
 
 %--------------------------------------------------------------------------
 % % % Spectrum

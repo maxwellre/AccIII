@@ -73,8 +73,13 @@ fclose(file_id2);
 
 read_byte_num = length(hex_data);
 data_num = floor(0.5*read_byte_num);
+dt = samp_time/data_num;
 hex_data = hex_data(1:(2*data_num));
 hex_data = double(reshape(hex_data, [2,data_num])); % Double
+
+% Check valid data
+truncInd = find(hex_data(1,:) >= ID_Num, 1);
+hex_data = hex_data(:,1:(truncInd-1));
 
 check_ID = unique(hex_data(1,:));
 if length(check_ID) ~= ID_Num
@@ -88,7 +93,7 @@ else
     end
 end
 
-dt = samp_time/data_num;
+
 
 % Hex to decimal conversion------------------------------------------------
 wb_h = waitbar(0,'O', 'Name','Converting from HEX to DEC...');

@@ -7,9 +7,8 @@
 
 DWORD BytesReceived;
 unsigned char RxBuffer[10000];
-unsigned char fileBuffer[40000 * 24];
 
-void USBReadData(FT_HANDLE ftHandle, DWORD readBytes, long* dwSum)
+void USBReadData(FT_HANDLE ftHandle, DWORD readBytes, long* dwSum, int dataNum, unsigned char fileBuffer[])
 {
 	FT_STATUS ftStatus;
 	ftStatus = FT_Read(ftHandle, RxBuffer, readBytes, &BytesReceived);
@@ -18,7 +17,7 @@ void USBReadData(FT_HANDLE ftHandle, DWORD readBytes, long* dwSum)
 		long dwSum_org = *dwSum;
 		*dwSum = *dwSum + BytesReceived;
 
-		if (*dwSum <= DataNum)
+		if (*dwSum <= dataNum)
 		{
 			memcpy(fileBuffer + dwSum_org, RxBuffer, BytesReceived);
 		}
@@ -30,7 +29,7 @@ void USBReadData(FT_HANDLE ftHandle, DWORD readBytes, long* dwSum)
 	}
 }
 
-void SaveDataResult(long dwSum)
+void SaveDataResult(long dwSum, unsigned char fileBuffer[])
 {
 	FILE* fp;
 	errno_t err;

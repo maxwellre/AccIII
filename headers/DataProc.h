@@ -1,10 +1,12 @@
 #pragma once
 //------------------------------------------------------------------------------
 #include<string>
-#define DataNum 40000*24
+#define ExpFs 1560 // Expected sampling frequency
+#define AccBusNum 23 // Totally 23 buses each connecting two accelerometers
+#define DataByteNum 24 //Each bus connects two accelerometer each with 3 axies [High + Low] bytes
 
-void USBReadData(FT_HANDLE ftHandle, DWORD readBytes, long* dwSum);
+void USBReadData(FT_HANDLE ftHandle, DWORD readBytes, long* dwSum, int dataNum, unsigned char fileBuffer[]);
 
-void SaveDataResult(long dwSum);
+void SaveDataResult(long dwSum, unsigned char fileBuffer[]);
 
 void SaveNum(float inputValue, std::string fileName);
