@@ -13,6 +13,7 @@
 function [acc_data, Fs ] = decodeAccIII(data_path, meas_time, yRange,...
     is_disp)
 % Created on 09/08/2017 Based on 'readAccIII.m'
+% Updated on 01/11/2018 Minor bug fixed
 %--------------------------------------------------------------------------
 % Configuration
 GSCALE = 0.00073; % 0.73 mg/digit
@@ -68,10 +69,16 @@ data_num = floor(0.5*read_byte_num);
 hex_data = hex_data(1:(2*data_num));
 hex_data = double(reshape(hex_data, [2,data_num])); % Double
 
+% Check valid data
+truncInd = find(hex_data(1,:) >= ID_Num, 1);
+hex_data = hex_data(:,1:(truncInd-1));
+
 check_ID = unique(hex_data(1,:));
 if length(check_ID) ~= ID_Num
     fprintf('ID: %d\n', check_ID);
     disp('Failed: Number of ID is incorrect');
+    failedBus = setdiff(0:(ID_Num-1),check_ID);
+    fprintf('Failed bus: %d\n',failedBus);
 else
     if (sum(abs((1:ID_Num)-check_ID)) == ID_Num)
         disp('Passed: IDs are correct')

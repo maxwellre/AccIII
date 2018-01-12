@@ -167,8 +167,8 @@ int main(int argc, char* argv[])
 
 		//TRACE(_T("Data Number = %d \r\n"), dwSum/(2*6*46));
 
-		//float idDataRate = dwSum / (lPassTime * 6 * 46); // Count ID as data
-		//SaveNum(idDataRate, "data_rate.txt");
+		float idDataRate = dwSum / (lPassTime * 6 * 46); // Count ID as data
+		SaveNum(idDataRate, "data_rate.txt");
 	}
 	else
 	{

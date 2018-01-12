@@ -8,7 +8,7 @@
   <ObjectList object_type="hw_device" gui_info="">
     <Object name="xc7a15t_0" gui_info="">
       <Properties Property="PROBES.FILE" value=""/>
-      <Properties Property="PROGRAM.HW_BITSTREAM" value="$_project_name_.runs/impl_1/async_245_fifo.bit"/>
+      <Properties Property="PROGRAM.HW_BITSTREAM" value=""/>
     </Object>
   </ObjectList>
   <ObjectList object_type="hw_ila" gui_info="">

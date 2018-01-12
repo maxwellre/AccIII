@@ -214,8 +214,8 @@ if is_disp
             'Name',sprintf('%s-axis',axis_label{ax}))
         for k = 1:length(acc_ind)
             subplot(14,3,k)
-            if ~isempty(acc_data{acc_ind(k)})                
-                plot(t, acc_data{acc_ind(k)}(:,ax));
+            if ~isempty(acc_data{acc_ind(k),1})                
+                plot(t, acc_data{acc_ind(k),1}(:,ax));
                 
                 ylabel(sprintf('%d',acc_ind(k)));
                 xlim([t(1) t(end)])

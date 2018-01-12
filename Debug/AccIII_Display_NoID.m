@@ -1,3 +1,12 @@
+close all
+
+expected_samp_time = 4.2;
+
+disp('Sampling...')
+[status,cmdout] = system(sprintf('AccIII.exe %.2f', expected_samp_time));
+
+disp(cmdout)
+
 % Configuration
 read_num = 46;
 half_read = 0.5*read_num; % Must be a integer (= 23)
@@ -68,14 +77,13 @@ acc_data(negInd) = acc_data(negInd) - 65536;
 disp('Format conversion completed.')
 % %--------------------------------------------------------------------------
 %% Analysis ()
-% if 1 %---------------------------------------------------------------Switch
+if 1 %---------------------------------------------------------------Switch
 GSCALE = 0.00073; % 0.73 mg/digit
-% GSCALE = 1; % Unit: bits
 acc_ind = [1:9,11:19,21:29,31:39,41:46];
-% 
-% if 1
+
 % Raw signals------------------------------
-for ax = 1:3 % 1:X-axis, 2:Y-axis, 3:Z-axis
+% for ax = 1:3 % 1:X-axis, 2:Y-axis, 3:Z-axis
+for ax = 3
     figure('Position', get(0,'ScreenSize').*[10 50 0.95 0.8],...
         'Name',sprintf('%s-axis',axis_label{ax}))
     for k = 1:length(acc_ind)
@@ -91,32 +99,37 @@ for ax = 1:3 % 1:X-axis, 2:Y-axis, 3:Z-axis
         end
     end
     xlabel('Time (Secs)')
-% %     xlim([t(1) t(1000)])
-% end
-% % else
-% % slct_i = 16;  
-% % figure('Position', get(0,'ScreenSize').*[10 50 0.95 0.8])
-% % for ax = 1:3 % 1:X-axis, 2:Y-axis, 3:Z-axis
-% %     subplot(3,1,ax)
-% %     plot(t, GSCALE*acc_data(:,acc_ind(slct_i),ax));
-% %     xlim([t(1) t(end)])
-% %     ylabel(sprintf('Acc %d-%s',acc_ind(slct_i),axis_label{ax}));
-% %     ylim([-1 5])
-% % end
-% % xlabel('Time (Secs)')
+%     xlim([t(1) t(1000)])
 end
-% 
-% end %------------------------------------------------------------Switch end
 
+% Spectrum------------------------------
+end %------------------------------------------------------------Switch end
+for ax = 3
+    [ acc_FT, f ] = spectr(GSCALE*acc_data(:,:,ax), Fs);
+    figure('Position', get(0,'ScreenSize').*[10 50 0.95 0.8],...
+        'Name',sprintf('%s-axis',axis_label{ax}))
+    for k = 1:length(acc_ind)
+        subplot(14,3,k)
+        plot(f, acc_FT(:,acc_ind(k)));
+        ylabel(sprintf('%d',acc_ind(k)));
+        xlim([f(1) f(end)])
+        ylim([0 0.4])
+        box off
+        if k<42
+            xticks([])
+        end
+    end
+    xlabel('Frequency (Hz)')
+end
 %--------------------------------------------------------------------------
-%% Analysis ()
+%% Analysis (obsolete)
 % if 0 %---------------------------------------------------------------Switch
 % close all
 % GSCALE = 0.00073; % 0.73 mg/digit
 % 
-% acc_ind = 1:24;
+% acc_ind = [1:9,11:19,21:29,31:39,41:46];
 % 
-% ax = 2; % 1:X-axis, 2:Y-axis, 3:Z-axis
+% ax = 3; % 1:X-axis, 2:Y-axis, 3:Z-axis
 % 
 % % Raw signals
 % for q=0:1
@@ -131,7 +144,7 @@ end
 % xlabel('Time (Secs)')
 % end
 % 
-% % Spectrum
+% %% Spectrum
 % [ acc_FT, f ] = spectr(acc_data(:,:,ax), Fs);
 % for q=0:1
 % figure('Position', get(0,'ScreenSize').*[10 50 0.95 0.8])
