@@ -16,6 +16,7 @@
 function [acc_data, Fs, t] = syncAccIII(data_path, meas_time, yRange,...
     is_disp, sync_err)
 % Created on 01/10/2018 Based on 'decodeAccIII.m'
+% Updated on 01/19/2018 Synchronize data by resampling
 %--------------------------------------------------------------------------
 % Configuration
 GSCALE = 0.00073; % 0.73 mg/digit
@@ -164,47 +165,19 @@ min_end_time = min(end_time(nonzero_ind));
 Fs = samp_num(acc_ind(nonzero_ind))'./end_time(nonzero_ind);
 min_Fs = min(Fs);
 
-t = (1/min_Fs):(1/min_Fs):min_end_time;
-min_samp_num = length(t);
-
+async_data = acc_data;
 for i = acc_ind(nonzero_ind)
-    slct_ind = zeros(min_samp_num,1);
-    
-    t_i = find(acc_data{i,2} >= t(1),1);
-    if t_i > 1
-        [~,slct_i] = min([abs(acc_data{i,2}(t_i-1)-t(1)),...
-            abs(acc_data{i,2}(t_i)-t(1))]); % Select the closest data
-        slct_ind(1) = t_i-2+slct_i;
-    else
-        slct_ind(1) = 1;
-    end
-    
-    for j = 2:min_samp_num
-        t_i = find(acc_data{i,2} >= t(j),1);
-        [~,slct_i] = min([abs(acc_data{i,2}(t_i-1)-t(j)),...
-            abs(acc_data{i,2}(t_i)-t(j))]); % Select the closest data
-        slct_ind(j) = t_i-2+slct_i;
-    end
-    
-    errLevel = length(unique(slct_ind));
-    if errLevel < min_samp_num
-        if sync_err 
-            figure; 
-            hist(slct_ind,1:slct_ind(end));
-            title(sprintf('Synchronization Error of Acc %d: [%d/%d]\n',i,...
-                min_samp_num-errLevel,min_samp_num));
-        else
-            fprintf('Synchronization Error of Acc %d: [%d/%d]\n',i,...
-            min_samp_num-errLevel,min_samp_num);
-        end
-    end
-    
-    acc_data{i,1} = acc_data{i,1}(slct_ind,:);
-    acc_data{i,2} = acc_data{i,2}(slct_ind);
+    [acc_data{i,1},acc_data{i,2}] =...
+        resample(acc_data{i,1},acc_data{i,2},min_Fs);
+    trunc_ind = (acc_data{i,2} <= min_end_time);
+    acc_data{i,1} = acc_data{i,1}(trunc_ind,:);
+    acc_data{i,2} = acc_data{i,2}(trunc_ind);
 end
 
 Fs = min_Fs;
 fprintf('Sampling frequency = %.2f Hz\n',Fs);
+
+t = 0:(1/Fs):(min_end_time-(1/Fs));
 
 %% Analysis 
 if is_disp    
@@ -215,10 +188,15 @@ if is_disp
         for k = 1:length(acc_ind)
             subplot(14,3,k)
             if ~isempty(acc_data{acc_ind(k),1})                
-                plot(t, acc_data{acc_ind(k),1}(:,ax));
+                plot(async_data{acc_ind(k),2}, async_data{acc_ind(k),1}(:,ax));
                 
+                hold on
+                plot(acc_data{acc_ind(k),2}, acc_data{acc_ind(k),1}(:,ax));
+                hold off
+                
+                xlim([0 min_end_time]);
                 ylabel(sprintf('%d',acc_ind(k)));
-                xlim([t(1) t(end)])
+                
                 if yRange > 0
                     ylim([-yRange yRange])
                 end

@@ -19,8 +19,6 @@ disp(cmdout)
 if ~status
     [acc_data, Fs, t] = syncAccIII('data.bin','sample_time.txt',0,1);
     
-%     [acc_data, Fs ] = decodeAccIII('data.bin','sample_time.txt',0,1);
-    
     fprintf('Actually sampling time = %.4f secs\n', t(end));
 end
 
@@ -37,7 +35,6 @@ if 0
             subplot(14,3,k)
             if ~isempty(acc_data{acc_ind(k)}) 
                 samp_freq = Fs;
-%                 samp_freq = Fs(acc_ind(k));
                 [acc_FT,f] = spectr(acc_data{acc_ind(k)}(:,ax),samp_freq);
                 plot(f, acc_FT);
                 

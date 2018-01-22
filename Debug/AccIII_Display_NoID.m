@@ -1,6 +1,6 @@
 close all
 
-expected_samp_time = 4.2;
+expected_samp_time = 2.2;
 
 disp('Sampling...')
 [status,cmdout] = system(sprintf('AccIII.exe %.2f', expected_samp_time));
@@ -82,8 +82,8 @@ GSCALE = 0.00073; % 0.73 mg/digit
 acc_ind = [1:9,11:19,21:29,31:39,41:46];
 
 % Raw signals------------------------------
-% for ax = 1:3 % 1:X-axis, 2:Y-axis, 3:Z-axis
-for ax = 3
+for ax = 1:3 % 1:X-axis, 2:Y-axis, 3:Z-axis
+% for ax = 3
     figure('Position', get(0,'ScreenSize').*[10 50 0.95 0.8],...
         'Name',sprintf('%s-axis',axis_label{ax}))
     for k = 1:length(acc_ind)
