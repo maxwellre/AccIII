@@ -67,7 +67,8 @@ end
 % Compute time-averaged energy
 accAvgEn = zeros(AccNum,1);
 for i = 1:AccNum
-    temp = rssq(acc_data{acc_ind(i),1},2);
+%     temp = rssq(acc_data{acc_ind(i),1},2);
+    temp = rssq(squeeze(acc_data(:,acc_ind(i),:)),2);
     accAvgEn(i) = temp(2737);
 end
 

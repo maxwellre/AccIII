@@ -5,6 +5,7 @@
 % Updated on 08/15/2017 Corrected unit scale
 % Updated on 09/05/2017 New data reading format
 % Updated on 01/10/2018 Run exe and synchronize data
+% Updated on 01/23/2018 Read AccIII (NoID data format)
 %--------------------------------------------------------------------------
 close all
 
@@ -17,7 +18,9 @@ disp(cmdout)
 
 %%
 if ~status
-    [acc_data, Fs, t] = syncAccIII('data.bin','sample_time.txt',0,1);
+%     [acc_data, Fs, t] = syncAccIII('data.bin','sample_time.txt',0,1);
+    
+    [acc_data, t, Fs ] = readAccIII('data.bin','data_rate.txt', 1);
     
     fprintf('Actually sampling time = %.4f secs\n', t(end));
 end

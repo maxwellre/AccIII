@@ -10,6 +10,7 @@
 %--------------------------------------------------------------------------
 function [acc_data, t, Fs ] = readAccIII(data_path, d_rate_path, is_disp)
 % Created on 09/05/2017 Based on 'AccIII_Display.m'
+% Updated on 01/23/2018 Read AccIII (NoID data format)
 %--------------------------------------------------------------------------
 % Configuration
 read_num = 46;
@@ -20,8 +21,8 @@ axis_label = {'X', 'Y', 'Z'};
 
 % Acquire sampling frequency (From 'file_path2')
 if nargin < 2
-    Fs = 1600; % Default sampling frequency = 1600 Hz (accelerometer)
-    disp('Unknown sampling frequency');
+    Fs = 1285; % Default sampling frequency = 1600 Hz (accelerometer)
+    disp('Unknown sampling frequency: set to 1285Hz by default');
 else % Actual sampling frequency
     if ischar(d_rate_path)
         file_id1 = fopen(d_rate_path);
@@ -30,8 +31,8 @@ else % Actual sampling frequency
         Fs = samp_factor{1};
     elseif isnumeric(d_rate_path)
         if isempty(d_rate_path)
-            Fs = 1600; 
-            disp('Unknown sampling frequency');
+            Fs = 1285; 
+            disp('Unknown sampling frequency: set to 1285Hz by default');
         else  
             Fs = d_rate_path;
             disp('Inputed sampling frequency manually');
