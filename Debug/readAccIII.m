@@ -50,15 +50,15 @@ hex_data = fread(file_id2,'*ubit8');
 fclose(file_id2);
 
 read_byte_num = length(hex_data);
-data_num = floor(read_byte_num/read_num);
+data_num = floor(read_byte_num/read_num) -1;
 samp_num = floor(data_num/6); % Three axis X, Y and Z
 
 T = 1/Fs; % Sampling time interval
-t = (1:samp_num)*T;
+t = (0:(samp_num-1))*T;
 fprintf('Sampling time = %.2f secs, Sampling frequency = %.2f Hz\n',...
     t(end),Fs);
 
-hex_data = hex_data(1:(data_num*read_num));
+hex_data = hex_data(read_num + (1:(data_num*read_num)));
 hex_data = double(reshape(hex_data, [read_num,data_num])); % Double
 
 % Hex to decimal conversion------------------------------------------------

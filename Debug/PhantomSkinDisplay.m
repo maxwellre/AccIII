@@ -1,15 +1,15 @@
 %% Phantom skin display
 % Created on 01/21/2018
 %--------------------------------------------------------------------------
-close all
+% close all
 
 %--------------------------------------------------------------------------
 % Important Parameters
-Alpha = 200; % The influence parameter of each accelerometer position
-Range = 1000; % The influence range of each accelerometer position
-
+Alpha = 400; % The influence parameter of each accelerometer position
+%--------------------------------------------------------------------------
 AccNum = 42; % Accelerometer number
 acc_ind = setdiff(1:46,[10,20,30,40]);
+PixelPerMM = imgLen/280; % (300 DPI)
 %--------------------------------------------------------------------------
 if ~exist('acc_data','var')
     error('AccIII data required!');
@@ -41,7 +41,7 @@ acc_Posi = acc_Posi(acc_order,:);
 
 %--------------------------------------------------------------------------
 if 0
-figure('Position',[60,50,860,800]); 
+figure('Position',[60,50,850,800]); 
 imshow(acc_loc_image); 
 hold on; 
 scatter(acc_Posi(:,2),acc_Posi(:,1),'y','filled'); 
@@ -67,14 +67,13 @@ end
 % Compute time-averaged energy
 accAvgEn = zeros(AccNum,1);
 for i = 1:AccNum
-%     temp = rssq(acc_data{acc_ind(i),1},2);
     temp = rssq(squeeze(acc_data(:,acc_ind(i),:)),2);
-    accAvgEn(i) = temp(2737);
+    accAvgEn(i) = rms(temp);
 end
 
 %% ------------------------------------------------------------------------
 % Render the energy map
-Phi = 100./(accDistMap+Alpha);
+Phi = 1./(accDistMap+Alpha);
 Phi = bsxfun(@rdivide, Phi, sum(Phi,3));
 
 enMap = zeros(imgLen);
@@ -82,7 +81,37 @@ for i = 1:AccNum
     enMap = enMap + Phi(:,:,i)*accAvgEn(i);
 end
 
-figure('Position',[60,50,860,800]); 
+%----------------------- Rescale the map -----------------------
+mapOffset = min(accAvgEn(:));
+mapRange = max(accAvgEn(:)) - mapOffset;
+enMapOffset = min(enMap(:));
+enMapRange = max(enMap(:)) - enMapOffset;
+enMap = (enMap - enMapOffset)*mapRange/enMapRange + mapOffset;
+%---------------------------------------------------------------
+
+figure('Position',[60,50,850,800]); 
+colormap(jet(1000));
 imagesc(enMap);
+cb_h = colorbar;
+ylabel(cb_h, 'RMS Amplitude (g)', 'FontSize',12)
+
 axis equal;
 box off;
+
+hold on; 
+scatter(acc_Posi(:,2),acc_Posi(:,1),6,'k','filled'); 
+for i = 1:AccNum
+    text(acc_Posi(i,2)+40,acc_Posi(i,1)+5,sprintf('%d',acc_ind(i)),...
+        'Color','k')
+end
+hold off
+axis([0 imgLen 0 imgLen]);
+
+set(gca,'xaxisLocation','top', 'FontSize',12)
+actualTicks = 0:20:280;
+xticks(PixelPerMM*actualTicks);
+xticklabels(actualTicks);
+xlabel('mm');
+yticks(PixelPerMM*actualTicks);
+yticklabels(actualTicks);
+ylabel('mm')
