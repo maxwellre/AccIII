@@ -7,7 +7,7 @@ if ~exist('acc_data','var')
     error('AccIII data required!');
 end
 %--------------------------------------------------------------------------
-disp_acc_i = 34; % Display selected accelerometer signal waveform
+disp_acc_i = 22; % Display selected accelerometer signal waveform
 disp_t_start = 1.0;
 disp_t_end = 1.2;
 
@@ -29,11 +29,11 @@ yRange = [min(slctChannels(:)), max(slctChannels(:))];
 % smoothData = filter(Filter, smoothData);
 % smooth_t = t;
 %--------------------------------------------------------------------------
-% Smoothed
-% Smooth_Fs = 2000; 
-% [smoothData,smooth_t] = resample(squeeze(acc_data(:,disp_acc_i,:),...
+% % Smoothed (Up-sample)
+% Smooth_Fs = 4000; 
+% [smoothData,smooth_t] = resample(squeeze(acc_data(:,disp_acc_i,:)),...
 %   t,Smooth_Fs);
-
+% 
 % smooth_ind = (smooth_t >= disp_t_start) & (smooth_t <= disp_t_end);
 
 %--------------------------------------------------------------------------
@@ -42,9 +42,10 @@ figure('Position',[260,150,600,400]);
 for ax = 1:3
     subplot(3,1,ax)
     plot(t(t_ind),slctChannels(:,ax));
+    
 %     hold on
 %     plot(smooth_t(smooth_ind),smoothData(smooth_ind,ax));
-%     hold off
+
     if ax == 1
         title(sprintf('Acc %d',disp_acc_i));
     end

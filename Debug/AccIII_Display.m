@@ -63,7 +63,7 @@ if 1
     yMax = max(temp(:));
     
     figure('Position', get(0,'ScreenSize').*[10 50 0.95 0.8],...
-        'Name',sprintf('%s-axis',axis_label{ax}))
+        'Name','Spectrum')
 
     for k = 1:length(acc_ind)
         subplot(14,3,k)
