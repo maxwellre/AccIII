@@ -124,6 +124,7 @@ int main(int argc, char* argv[])
 		while (dwSum < DataNum) 
 		{
 			ftStatus = FT_GetStatus(ftHandle, &RxBytes, &TxBytes, &EventDWord);
+			//printf("ftStatus = %d, RxBytes = %d\n", ftStatus, RxBytes);
 
 			if ((ftStatus == FT_OK) && (RxBytes > 0))
 			{
