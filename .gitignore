@@ -1,6 +1,7 @@
 .vs/
 AccIII.VC.db
 AccIII/Debug/
+DataAnalysis/Data
 Debug/data.bin
 Debug/sample_time.txt
 Debug/data_rate.txt
@@ -11,3 +12,4 @@ FPGAProgram/Final_Overclock_DeviceID_with_value/vivado_*.jou
 FPGAProgram/Final_Overclock_DeviceID_with_value/vivado_*.log
 FPGAProgram/No_fifo_no_ID/vivado_*.jou
 FPGAProgram/No_fifo_no_ID/vivado_*.log
+*.pdf
