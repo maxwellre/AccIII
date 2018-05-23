@@ -93,7 +93,6 @@ methods %------------------------------------------------------------------
         
     p_vect = bsxfun(@minus,obj.v_posi(v_ind,:),obj.v_posi(center_i,:));
     
-
     % Exclude the center vertex
     ind_in = (v_ind ~= center_i);
     v_ind = v_ind(ind_in);
