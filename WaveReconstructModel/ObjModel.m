@@ -168,7 +168,7 @@ methods %------------------------------------------------------------------
     obj.v_sim = ones(obj.v_num,1); 
     obj.v_sim = obj.v_sim .*sim_limit;    
     obj.v_sim(acc_i) = 0; % Distance value for accelerometer vertex is zero
-    
+
     propagate(obj, acc_i, [0,0,0], is_disp);
 
     end

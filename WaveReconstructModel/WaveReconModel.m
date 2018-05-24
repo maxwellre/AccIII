@@ -115,44 +115,47 @@ acc_posi = [% Digit V --------------------
 acc_num = size(acc_posi,1);
 
 % -------------------------------------------------------------------------
-% Wave propagation simulation
-sim_radius = 64; % (Default: 50)    
-dist_map = zeros(m_obj.v_num,acc_num);
-tic
-parfor sim_i = 1:acc_num
-    acc_i = findVertex(m_obj, acc_posi(sim_i,:));
-    waveSim(m_obj, acc_i, -hand_plane, sim_radius, 0);
-    dist_map(:,sim_i) = m_obj.v_sim;
-    fprintf('Simulation time = %.2f min\n', (toc/60));
-end
-save('WaveReconModel.mat','dist_map','m_obj');
-disp('Simulated propagation model saved!')
+% % Wave propagation simulation
+% sim_radius = 64; % (mm)   
+% dist_map = zeros(m_obj.v_num,acc_num);
+% tic
+% parfor sim_i = 1:acc_num
+%     acc_i = findVertex(m_obj, acc_posi(sim_i,:));
+%     fprintf('Simulation for Acc %d started\n',Acc_Ind(sim_i))
+%     waveSim(m_obj, acc_i, -hand_plane, sim_radius, 0);
+%     dist_map(:,sim_i) = m_obj.v_sim;   
+% end
+% fprintf('Simulation time = %.2f min\n', (toc/60));
+% save('WaveReconModel.mat','dist_map','m_obj');
+% disp('Simulated propagation model saved!')
       
 %% Plot the hand
-if 0 %---------------------------------------------------------------Switch
+if 1 %---------------------------------------------------------------Switch
 disp_acc_num = 1;
 figure('Position',get(0,'ScreenSize').*[0,0,1,0.95])
-% hold on
-for sim_i = 1:acc_num
-% for sim_i = 1
-    v_color = repmat(Skin_Color,[m_obj.v_num,1]);
-%     v_color(:,1) = dist_map(:,sim_i)/sim_radius;
-    scatter3(v_posi_X, v_posi_Y, v_posi_Z,20,v_color,'.') 
-    hold on
-    scatter3(acc_posi(:,1), acc_posi(:,2), acc_posi(:,3),...
-        'filled', 'MarkerFaceColor','m', 'MarkerEdgeColor','m')
-    scatter3(acc_posi(sim_i,1), acc_posi(sim_i,2), acc_posi(sim_i,3),...
-        'filled', 'MarkerFaceColor','r')   
-    if disp_acc_num
+sim_i = 33;
+v_color = repmat(Skin_Color,[m_obj.v_num,1]);
+temp = repmat(ones(1,3),[m_obj.v_num,1]);
+temp(:,2) = dist_map(:,sim_i)/sim_radius;
+temp(:,3) = dist_map(:,sim_i)/sim_radius;
+ind = dist_map(:,sim_i) < 64;
+v_color(ind,:) = temp(ind,:);
+scatter3(v_posi_X, v_posi_Y, v_posi_Z,50,v_color,'.') 
+hold on
+scatter3(acc_posi(:,1), acc_posi(:,2), acc_posi(:,3),...
+    'filled', 'MarkerFaceColor','k', 'MarkerEdgeColor','w')
+% scatter3(acc_posi(sim_i,1), acc_posi(sim_i,2), acc_posi(sim_i,3),...
+%     'filled', 'MarkerFaceColor','r')    
+xlabel('X')
+ylabel('Y')
+zlabel('Z')
+axis equal
+view(-hand_plane)
+grid off
+if disp_acc_num
+    for sim_i = 1:acc_num
         text(acc_posi(sim_i,1), acc_posi(sim_i,2), acc_posi(sim_i,3)+5,...
             num2str(Acc_Ind(sim_i)),'FontSize',20)
     end
-    hold off
-    xlabel('X')
-    ylabel('Y')
-    zlabel('Z')
-    axis equal
-    view(-hand_plane)
-    drawnow
 end
 end %----------------------------------------------------------------Switch
