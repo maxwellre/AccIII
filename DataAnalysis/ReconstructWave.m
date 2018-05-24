@@ -5,8 +5,11 @@ addpath('../WaveReconstructModel/');
 % -------------------------------------------------------------------------
 Data_Path = 'Data';
 axis_label = {'X', 'Y', 'Z'};
-
-gest_name = 'Tap1to5';
+% -------------------------------------------------------------------------
+% gest_name = 'Tap1to5';
+% gest_name = '020Hz_sine';
+gest_name = '100Hz_sine';
+% gest_name = '300Hz_sine';
 %--------------------------------------------------------------------------
 [acc_data, t, Fs ] = readAccIII(fullfile(Data_Path,gest_name,'data.bin'),...
     fullfile(Data_Path,gest_name,'data_rate.txt'), 0);
@@ -19,8 +22,8 @@ if ~exist('m_obj','var')
 end
 
 %--------------------------------------------------------------------------
-disp_t_start = 0.5;
-disp_t_end = 3.0;
+disp_t_start = 1.0;
+disp_t_end = 1.2;
 
 disp_acc_i = setdiff(1:46,[10,20,30,40]);
 disp_num = length(disp_acc_i);
@@ -45,7 +48,6 @@ elseif disp_num > 1
     end
 end
 
-
 Phi = 17./(dist_map+25.5) - 0.087;
 Phi(Phi < 0) = 0;
 Phi = bsxfun(@rdivide, Phi, sum(Phi,2));
@@ -54,13 +56,13 @@ Phi(isnan(Phi)) = 0;
 v_color = Phi*(proj_waveform');
 
 %%
-slow_factor = 50; %(Slow-down the video)
+slow_factor = 100; %(Slow-down the video)
 
 color_range = [min(v_color(:)), max(v_color(:))];
 frame_num = size(proj_waveform,1);
 frame_rate = Fs/slow_factor;
 
-v_h = VideoWriter(sprintf('%s.avi',gest_name));
+v_h = VideoWriter(sprintf('%s_slow%dx.avi',gest_name,slow_factor));
 v_h.FrameRate = frame_rate;
 open(v_h);
 curr_fig = figure('Position',get(0,'ScreenSize').*[0,0,0.7,0.95]);
@@ -69,7 +71,7 @@ t_interval = 1000/Fs; % (ms)
 for i = 1:frame_num
     scatter3(m_obj.v_posi(:,1), m_obj.v_posi(:,2), m_obj.v_posi(:,3),...
         100,v_color(:,i),'Filled')    
-    caxis(color_range);
+%     caxis(color_range);
     xlabel('X')
     ylabel('Y')
     zlabel('Z')
