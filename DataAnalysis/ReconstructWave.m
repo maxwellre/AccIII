@@ -7,6 +7,7 @@ Data_Path = 'Data';
 axis_label = {'X', 'Y', 'Z'};
 % -------------------------------------------------------------------------
 % gest_name = 'Tap1to5';
+% gest_name = 'TapKeyboardRandomly';
 % gest_name = '020Hz_sine';
 gest_name = '100Hz_sine';
 % gest_name = '300Hz_sine';
@@ -21,13 +22,17 @@ if ~exist('m_obj','var')
     load('SimRadius64mm_StepSize2mm_120Degree_42Acc.mat','m_obj');
 end
 
-%--------------------------------------------------------------------------
+%% ------------------------------------------------------------------------
 disp_t_start = 1.0;
 disp_t_end = 1.2;
 
 disp_acc_i = setdiff(1:46,[10,20,30,40]);
 disp_num = length(disp_acc_i);
 
+ref_ind = 31413;
+%--------------------------------------------------------------------------
+% DC-filtering
+acc_data = bsxfun(@minus, acc_data,mean(acc_data,1));
 %--------------------------------------------------------------------------
 t_ind = (t >= disp_t_start) & (t <= disp_t_end);
 if disp_num == 1
@@ -45,8 +50,10 @@ elseif disp_num > 1
         proj_vector = proj_vector./norm(proj_vector);
         proj_waveform(:,i) = squeeze(slctChannels(:,i,:))*...
                     proj_vector;
+%         proj_waveform(:,i) = amp;
     end
 end
+% plot(t(t_ind),proj_waveform)
 
 Phi = 17./(dist_map+25.5) - 0.087;
 Phi(Phi < 0) = 0;
@@ -55,29 +62,46 @@ Phi(isnan(Phi)) = 0;
 
 v_color = Phi*(proj_waveform');
 
-%%
+%% Produce video of wave propagation
+Default_View = [-95.3710 49.2741];
+
 slow_factor = 100; %(Slow-down the video)
 
 color_range = [min(v_color(:)), max(v_color(:))];
 frame_num = size(proj_waveform,1);
 frame_rate = Fs/slow_factor;
 
+azimuth_angle = [linspace(30, -60, floor(0.5*frame_num)),...
+                 linspace(-60, 30, round(0.5*frame_num))];
+elevation_angle = [linspace(-20, 0, floor(0.5*frame_num)),...
+                   linspace(0, -20, round(0.5*frame_num))];
+
 v_h = VideoWriter(sprintf('%s_slow%dx.avi',gest_name,slow_factor));
 v_h.FrameRate = frame_rate;
 open(v_h);
 curr_fig = figure('Position',get(0,'ScreenSize').*[0,0,0.7,0.95]);
+set(curr_fig, 'Color', 'None')
 colormap(jet(1000));
 t_interval = 1000/Fs; % (ms)
 for i = 1:frame_num
     scatter3(m_obj.v_posi(:,1), m_obj.v_posi(:,2), m_obj.v_posi(:,3),...
-        100,v_color(:,i),'Filled')    
+        3,v_color(:,i),'Filled')    
 %     caxis(color_range);
-    xlabel('X')
-    ylabel('Y')
-    zlabel('Z')
+    xticks(-10:20:130)
+    xlabel('X (mm)')
+    yticks(50:20:250)
+    ylabel('Y (mm)')
+    zticks(-60:20:60)
+    zlabel('Z (mm)')
     axis equal
-    view([-0.0234, 0.0022, 0.0273])
-    text(10,30,sprintf('t = %.1f ms',i*t_interval))
+    view(Default_View+[azimuth_angle(i) elevation_angle(i)])
+    text(0,80,-30,sprintf('t = %.1f ms',i*t_interval),'FontSize',20,...
+        'Color','w')
+    c = colorbar('Color','w','Box','off');
+    c.Label.String = 'Acceleration Amplitude (g)';
+%     grid off
+    set(gca,'FontSize',24,'Color','k','XColor','w','YColor','w',...
+        'ZColor','w')
     writeVideo(v_h,getframe(curr_fig));
 end
 close(v_h);
