@@ -13,3 +13,4 @@ FPGAProgram/Final_Overclock_DeviceID_with_value/vivado_*.log
 FPGAProgram/No_fifo_no_ID/vivado_*.jou
 FPGAProgram/No_fifo_no_ID/vivado_*.log
 *.pdf
+*.eps

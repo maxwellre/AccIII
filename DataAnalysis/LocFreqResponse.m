@@ -15,7 +15,7 @@ if ~( exist('acc_data','var')&&exist('t','var')&&exist('Fs','var') )
     t = cell(data_num,1);
     Fs = zeros(data_num,1);
     for i = 1:data_num
-        [acc_data{i}, t{i}, Fs{i} ] =...
+        [acc_data{i}, t{i}, Fs(i) ] =...
             readAccIII(fullfile(Data_Path,Measure_Type{i},'data.bin'),...
             fullfile(Data_Path,Measure_Type{i},'data_rate.txt'), 0);
         fprintf('Data %s loaded\n',Measure_Type{i})
@@ -30,9 +30,9 @@ for i = 1:data_num
     curr_sigX = acc_data{i}(t_ind,acc_ind,1);
     curr_sigY = acc_data{i}(t_ind,acc_ind,2);
     curr_sigZ = acc_data{i}(t_ind,acc_ind,3);
-    axSpectX = spectr(curr_sigX, Fs{i}, freqRange);
-    axSpectY = spectr(curr_sigY, Fs{i}, freqRange);
-    [axSpectZ, freq{i}] = spectr(curr_sigZ, Fs{i}, freqRange);
+    axSpectX = spectr(curr_sigX, Fs(i), freqRange);
+    axSpectY = spectr(curr_sigY, Fs(i), freqRange);
+    [axSpectZ, freq{i}] = spectr(curr_sigZ, Fs(i), freqRange);
     accSpect(i,:) = mean((axSpectX.^2+axSpectY.^2+axSpectZ.^2).^0.5);
     [~,ind] = max(accSpect(i,:));
     fprintf('[%s] Highest amplitude: Acc %d\n',Measure_Type{i},...
@@ -41,17 +41,32 @@ for i = 1:data_num
 end
 
 %% Plot frequency response
+% Plot_Sytle = {'r.','b.','k.','g.','r+','b+','k+','g+'};
+Color_Pool = [0, 130, 200; 40, 180, 55; 145, 30, 180; 245, 130, 48;
+              230, 25, 75; 205, 185, 25; 0, 0, 0; 0, 0, 128]./255;
+disp_acc_ind = 32:39;
+FR_Range = 1:647;
+plt_h = [];
 baseSpect = accSpect(:,(acc_ind==31));
 figure('Name','RMS amplitude', 'Position',[120,120,840,600]);
 hold on
-for acc_i = 32:39
-    discreteTF = accSpect(:,(acc_ind==acc_i))./baseSpect;
-    plot(Measure_Freq,20*log10(discreteTF))
+for i = 1:length(disp_acc_ind)
+    discreteTF = accSpect(:,(acc_ind==disp_acc_ind(i)))./baseSpect;
+    logTF = 20*log10(discreteTF);
+    fit_h = fit(Measure_Freq',logTF,'smoothingspline');
+    
+    dplt_h = plot(Measure_Freq,logTF,'.','MarkerSize',10,...
+        'Color',Color_Pool(i,:));
+%     curr_color = get(dplt_h,'Color');
+    plt_h = [plt_h, plot(FR_Range,fit_h(FR_Range),'Color',Color_Pool(i,:))];
+
+%     plt_h = [plt_h, plot(FR_Range,fit_h(FR_Range))];
 end
 hold off
-legend(sprintfc('Acc %d',32:39),'Location','northeastoutside')
+legend(plt_h, sprintfc('Acc %d',disp_acc_ind),'Location','northeastoutside')
 legend boxoff
+xlim([0 650])
 xlabel('Frequency (Hz)')
 ylabel('Frequency response (dB)')
 set(gca,'FontSize',16)
-print(gcf,'LocDependFreqResponse','-dpdf','-painters');
+% print(gcf,'LocDependFreqResponse','-dpdf','-painters');
