@@ -13,8 +13,10 @@ gest_name = '100Hz_sine';
 % gest_name = '300Hz_sine';
 % gest_name = '500Hz_sine';
 %--------------------------------------------------------------------------
-% [acc_data, t, Fs ] = readAccIII(fullfile(Data_Path,gest_name,'data.bin'),...
-%     fullfile(Data_Path,gest_name,'data_rate.txt'), 0);
+if 0
+[acc_data, t, Fs ] = readAccIII(fullfile(Data_Path,gest_name,'data.bin'),...
+    fullfile(Data_Path,gest_name,'data_rate.txt'), 0);
+end
 
 if ~exist('dist_map','var')
     load('SimRadius64mm_StepSize2mm_120Degree_42Acc.mat','dist_map');
@@ -79,11 +81,12 @@ threhold = 0.7;
 fade_ind = (v_rms < threhold);
 orig_ind = ~fade_ind;
 
-v_white = ones(sum(fade_ind),3);
+% v_white = ones(sum(fade_ind),3);
 
-% digitII_dist = dist_map(fade_ind,31);
-% digitII_dist = digitII_dist/max(digitII_dist);
-% fade_ratio = 1-exp(-10*digitII_dist);
+disp_ind = (dist_map(:,31) < 64);
+digitII_dist = dist_map(disp_ind,31)./max(dist_map(disp_ind,31));
+fade_ratio = 1-exp(-3*digitII_dist);
+v_fadeColor = 0.2*ones(sum(disp_ind),3);
 
 %% Produce video of wave propagation
 Default_View = [-95.3710 49.2741];
@@ -108,8 +111,10 @@ cMapLen = 1000;
 cMap = colormap(jet(cMapLen));
 t_interval = 1000/Fs; % (ms)
 for i = 1:frame_num
-    scatter3(m_obj.v_posi(orig_ind,1), m_obj.v_posi(orig_ind,2),...
-        m_obj.v_posi(orig_ind,3), 3,v_color(orig_ind,i),'Filled');   
+%     scatter3(m_obj.v_posi(orig_ind,1), m_obj.v_posi(orig_ind,2),...
+%         m_obj.v_posi(orig_ind,3), 3,v_color(orig_ind,i),'Filled');   
+    scatter3(m_obj.v_posi(disp_ind,1), m_obj.v_posi(disp_ind,2),...
+        m_obj.v_posi(disp_ind,3), 3,v_color(disp_ind,i),'Filled'); 
     hold on
     currCR = caxis;
     xticks(-10:20:130)
@@ -128,14 +133,23 @@ for i = 1:frame_num
     set(gca,'FontSize',24,'Color','k','XColor','w','YColor','w',...
         'ZColor','w');
     % Fading --------------------------------------------------------------
-    cMap_ind = fix(cMapLen*(v_color(fade_ind,i) - currCR(1))/...
-        (currCR(2)-currCR(1)))+1;
-    curr_color = squeeze(ind2rgb(cMap_ind,cMap));
+%     cMap_ind = fix(cMapLen*(v_color(fade_ind,i) - currCR(1))/...
+%         (currCR(2)-currCR(1)))+1;
+%     curr_color = squeeze(ind2rgb(cMap_ind,cMap));
 %     fade_ratio = (v_color(fade_ind,i)/max(abs(v_color(fade_ind,i)))).^2;
-%     v_fade = fade_ratio.*v_white + (1-fade_ratio).*curr_color;
+
+    cMap_ind = fix(cMapLen*(v_color(disp_ind,i) - currCR(1))/...
+            (currCR(2)-currCR(1)))+1;
+    curr_color = squeeze(ind2rgb(cMap_ind,cMap));
+       
+    v_fade = fade_ratio.*v_fadeColor + (1-fade_ratio).*curr_color;
+    
+    scatter3(m_obj.v_posi(disp_ind,1), m_obj.v_posi(disp_ind,2),...
+        m_obj.v_posi(disp_ind,3), 3,v_fade,'Filled');  
+    
     s_h = scatter3(m_obj.v_posi(fade_ind,1), m_obj.v_posi(fade_ind,2),...
-        m_obj.v_posi(fade_ind,3), 3, 'w', 'Filled'); 
-    s_h.MarkerFaceAlpha = 0.1;
+        m_obj.v_posi(fade_ind,3), 3, 0.2*ones(1,3), 'Filled'); 
+%     s_h.MarkerFaceAlpha = 0.5;
     caxis(currCR);
     % ---------------------------------------------------------------------
     hold off
