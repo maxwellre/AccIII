@@ -14,3 +14,5 @@ FPGAProgram/No_fifo_no_ID/vivado_*.jou
 FPGAProgram/No_fifo_no_ID/vivado_*.log
 *.pdf
 *.eps
+*.avi
+*.asv

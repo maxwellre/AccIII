@@ -11,9 +11,10 @@ axis_label = {'X', 'Y', 'Z'};
 % gest_name = '020Hz_sine';
 gest_name = '100Hz_sine';
 % gest_name = '300Hz_sine';
+% gest_name = '500Hz_sine';
 %--------------------------------------------------------------------------
-[acc_data, t, Fs ] = readAccIII(fullfile(Data_Path,gest_name,'data.bin'),...
-    fullfile(Data_Path,gest_name,'data_rate.txt'), 0);
+% [acc_data, t, Fs ] = readAccIII(fullfile(Data_Path,gest_name,'data.bin'),...
+%     fullfile(Data_Path,gest_name,'data_rate.txt'), 0);
 
 if ~exist('dist_map','var')
     load('SimRadius64mm_StepSize2mm_120Degree_42Acc.mat','dist_map');
@@ -62,10 +63,22 @@ Phi(isnan(Phi)) = 0;
 
 v_color = Phi*(proj_waveform');
 
+%% Resolve flicking problem 
+% ref_color = v_color(ref_ind,:);
+% v_color = bsxfun(@minus, v_color,ref_color);
+
+% figure;hist([min(v_color,[],2),max(v_color,[],2)],100)
+
+threshold = [-0.9 1.1];
+thres_max = max(threshold);
+m_ind = (v_color > threshold(1)) & (v_color < 0);
+p_ind = (v_color >= 0) & (v_color < threshold(2));
+
+
 %% Produce video of wave propagation
 Default_View = [-95.3710 49.2741];
 
-slow_factor = 100; %(Slow-down the video)
+slow_factor = 200; %(Slow-down the video)
 
 color_range = [min(v_color(:)), max(v_color(:))];
 frame_num = size(proj_waveform,1);
@@ -85,8 +98,10 @@ colormap(jet(1000));
 t_interval = 1000/Fs; % (ms)
 for i = 1:frame_num
     scatter3(m_obj.v_posi(:,1), m_obj.v_posi(:,2), m_obj.v_posi(:,3),...
-        3,v_color(:,i),'Filled')    
+        3,v_color(:,i),'Filled');   
+    hold on
 %     caxis(color_range);
+    color_range = caxis
     xticks(-10:20:130)
     xlabel('X (mm)')
     yticks(50:20:250)
@@ -102,6 +117,15 @@ for i = 1:frame_num
 %     grid off
     set(gca,'FontSize',24,'Color','k','XColor','w','YColor','w',...
         'ZColor','w')
+    v_nega = v_color(m_ind(:,i),i);
+    scatter3(m_obj.v_posi(m_ind(:,i),1), m_obj.v_posi(m_ind(:,i),2),...
+        m_obj.v_posi(m_ind(:,i),3),...
+        3,'m','Filled'); 
+    v_posi = v_color(p_ind(:,i),i);
+    scatter3(m_obj.v_posi(p_ind(:,i),1), m_obj.v_posi(p_ind(:,i),2),...
+        m_obj.v_posi(p_ind(:,i),3),...
+        3,'m','Filled'); 
+    color_range2 = caxis
     writeVideo(v_h,getframe(curr_fig));
 end
 close(v_h);
