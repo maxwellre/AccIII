@@ -100,8 +100,7 @@ for i = 1:frame_num
     scatter3(m_obj.v_posi(:,1), m_obj.v_posi(:,2), m_obj.v_posi(:,3),...
         3,v_color(:,i),'Filled');   
     hold on
-%     caxis(color_range);
-    color_range = caxis
+    color_range = caxis;
     xticks(-10:20:130)
     xlabel('X (mm)')
     yticks(50:20:250)
@@ -120,12 +119,13 @@ for i = 1:frame_num
     v_nega = v_color(m_ind(:,i),i);
     scatter3(m_obj.v_posi(m_ind(:,i),1), m_obj.v_posi(m_ind(:,i),2),...
         m_obj.v_posi(m_ind(:,i),3),...
-        3,'m','Filled'); 
+        3,v_color(m_ind(:,i),i).*((v_nega./threshold(1)).^4),'Filled'); 
     v_posi = v_color(p_ind(:,i),i);
     scatter3(m_obj.v_posi(p_ind(:,i),1), m_obj.v_posi(p_ind(:,i),2),...
         m_obj.v_posi(p_ind(:,i),3),...
-        3,'m','Filled'); 
-    color_range2 = caxis
+        3,v_color(p_ind(:,i),i).*((v_posi./threshold(2)).^4),'Filled'); 
+    caxis(color_range);
+    hold off
     writeVideo(v_h,getframe(curr_fig));
 end
 close(v_h);
