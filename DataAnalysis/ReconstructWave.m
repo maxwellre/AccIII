@@ -10,7 +10,7 @@ axis_label = {'X', 'Y', 'Z'};
 % gest_name = 'TapKeyboardRandomly';
 % gest_name = '020Hz_sine';
 gest_name = '100Hz_sine';
-% gest_name = '300Hz_sine';
+% gest_name = '200Hz_sine';
 % gest_name = '500Hz_sine';
 %--------------------------------------------------------------------------
 if 0
@@ -76,17 +76,24 @@ v_color = Phi*(proj_waveform');
 % m_ind = (v_color > threshold(1)) & (v_color < 0);
 % p_ind = (v_color >= 0) & (v_color < threshold(2));
 
+if ~exist('digitII_dist_map','var')
+    load('SimRadius128mm_digitII_tip.mat','digitII_dist_map');
+end
+
 v_rms = rms(v_color,2);
 threhold = 0.7;
-fade_ind = (v_rms < threhold);
+% fade_ind = (v_rms < threhold);
+fade_ind = (digitII_dist_map > 90);
 orig_ind = ~fade_ind;
 
-% v_white = ones(sum(fade_ind),3);
+% max(digitII_dist_map(orig_ind))
 
-disp_ind = (dist_map(:,31) < 64);
-digitII_dist = dist_map(disp_ind,31)./max(dist_map(disp_ind,31));
-fade_ratio = 1-exp(-3*digitII_dist);
-v_fadeColor = 0.2*ones(sum(disp_ind),3);
+temp = digitII_dist_map(fade_ind);
+temp = temp - min(temp);
+digitII_dist = temp./max(temp);
+fade_ratio = 1-exp(-4*digitII_dist);
+
+v_fadeColor = 0.2*ones(sum(fade_ind),3);
 
 %% Produce video of wave propagation
 Default_View = [-95.3710 49.2741];
@@ -111,10 +118,8 @@ cMapLen = 1000;
 cMap = colormap(jet(cMapLen));
 t_interval = 1000/Fs; % (ms)
 for i = 1:frame_num
-%     scatter3(m_obj.v_posi(orig_ind,1), m_obj.v_posi(orig_ind,2),...
-%         m_obj.v_posi(orig_ind,3), 3,v_color(orig_ind,i),'Filled');   
-    scatter3(m_obj.v_posi(disp_ind,1), m_obj.v_posi(disp_ind,2),...
-        m_obj.v_posi(disp_ind,3), 3,v_color(disp_ind,i),'Filled'); 
+    scatter3(m_obj.v_posi(orig_ind,1), m_obj.v_posi(orig_ind,2),...
+        m_obj.v_posi(orig_ind,3), 3,v_color(orig_ind,i),'Filled');   
     hold on
     currCR = caxis;
     xticks(-10:20:130)
@@ -138,17 +143,17 @@ for i = 1:frame_num
 %     curr_color = squeeze(ind2rgb(cMap_ind,cMap));
 %     fade_ratio = (v_color(fade_ind,i)/max(abs(v_color(fade_ind,i)))).^2;
 
-    cMap_ind = fix(cMapLen*(v_color(disp_ind,i) - currCR(1))/...
+    cMap_ind = fix(cMapLen*(v_color(fade_ind,i) - currCR(1))/...
             (currCR(2)-currCR(1)))+1;
     curr_color = squeeze(ind2rgb(cMap_ind,cMap));
        
     v_fade = fade_ratio.*v_fadeColor + (1-fade_ratio).*curr_color;
     
-    scatter3(m_obj.v_posi(disp_ind,1), m_obj.v_posi(disp_ind,2),...
-        m_obj.v_posi(disp_ind,3), 3,v_fade,'Filled');  
+    scatter3(m_obj.v_posi(fade_ind,1), m_obj.v_posi(fade_ind,2),...
+        m_obj.v_posi(fade_ind,3), 3,v_fade,'Filled');  
     
-    s_h = scatter3(m_obj.v_posi(fade_ind,1), m_obj.v_posi(fade_ind,2),...
-        m_obj.v_posi(fade_ind,3), 3, 0.2*ones(1,3), 'Filled'); 
+%     s_h = scatter3(m_obj.v_posi(fade_ind,1), m_obj.v_posi(fade_ind,2),...
+%         m_obj.v_posi(fade_ind,3), 3, 0.2*ones(1,3), 'Filled'); 
 %     s_h.MarkerFaceAlpha = 0.5;
     caxis(currCR);
     % ---------------------------------------------------------------------
