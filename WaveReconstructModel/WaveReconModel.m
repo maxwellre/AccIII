@@ -115,10 +115,10 @@ acc_posi = [% Digit V --------------------
 acc_num = size(acc_posi,1);
 
 % -------------------------------------------------------------------------
-% Propagation simulation from the tip of digit II
+% % Propagation simulation from the tip of digit II
 % digitII_tip_posi = [37.89 230.3 -20.95];
 % tic
-% sim_radius = 128; % (mm)   
+% sim_radius = 256; % (mm)   
 % tip_ind = findVertex(m_obj, digitII_tip_posi);
 % waveSim(m_obj, tip_ind, -hand_plane, sim_radius, 0);
 % digitII_dist_map = m_obj.v_sim;  
@@ -146,21 +146,23 @@ disp_acc_num = 1;
 figure('Position',get(0,'ScreenSize').*[0,0,1,0.95])
 sim_i = 31;
 v_color = repmat(Skin_Color,[m_obj.v_num,1]);
-temp = repmat(ones(1,3),[m_obj.v_num,1]);
+% temp = repmat(ones(1,3),[m_obj.v_num,1]);
 
-temp(:,2) = dist_map(:,sim_i)/sim_radius;
-temp(:,3) = dist_map(:,sim_i)/sim_radius;
-ind = dist_map(:,sim_i) < sim_radius;
+% temp(:,2) = dist_map(:,sim_i)/sim_radius;
+% temp(:,3) = dist_map(:,sim_i)/sim_radius;
+% ind = dist_map(:,sim_i) < sim_radius;
 
 % temp(:,2) = digitII_dist_map/sim_radius;
 % temp(:,3) = digitII_dist_map/sim_radius;
 % ind = digitII_dist_map < sim_radius;
+% v_color(ind,:) = temp(ind,:);
 
-v_color(ind,:) = temp(ind,:);
 scatter3(v_posi_X, v_posi_Y, v_posi_Z,50,v_color,'.') 
 hold on
 scatter3(acc_posi(:,1), acc_posi(:,2), acc_posi(:,3),...
     'filled', 'MarkerFaceColor','k', 'MarkerEdgeColor','w')
+% quiver3(acc_posi(:,1), acc_posi(:,2), acc_posi(:,3),...
+%     proj_vect(1,:)',proj_vect(2,:)',proj_vect(3,:)');
 % scatter3(acc_posi(sim_i,1), acc_posi(sim_i,2), acc_posi(sim_i,3),...
 %     'filled', 'MarkerFaceColor','r')    
 xlabel('X')
