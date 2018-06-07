@@ -59,13 +59,13 @@ elseif disp_num > 1
     proj_waveform = zeros(t_ind_num,disp_num);
     for i = 1:disp_num
         slctChannels(:,i,:) = acc_data(t_ind,disp_acc_i(i),:);
-        amp = slctChannels(:,i,1).^2 + slctChannels(:,i,2).^2 +...
-              slctChannels(:,i,3).^2;
-        [~,max_i] = max(amp);
-        proj_vector = squeeze(slctChannels(max_i,i,:));
-        proj_vector = proj_vector./norm(proj_vector);
-        proj_waveform(:,i) = squeeze(slctChannels(:,i,:))*...
-                    proj_vector;
+        amp = (slctChannels(:,i,1).^2 + slctChannels(:,i,2).^2 +...
+              slctChannels(:,i,3).^2).^0.5;
+%         [~,max_i] = max(amp);
+%         proj_vector = squeeze(slctChannels(max_i,i,:));
+%         proj_vector = proj_vector./norm(proj_vector);
+%         proj_waveform(:,i) = squeeze(slctChannels(:,i,:))*...
+%                     proj_vector;
         proj_waveform(:,i) = amp;
     end
 end
@@ -100,17 +100,18 @@ for i = 1:frame_num
     subpltPosi = [col_i/col_num, (0.08+(row_num-1-row_i)/row_num),...
         0.9/col_num, 1/row_num];
     subplot('Position',subpltPosi)
-%     scatter3(m_obj.v_posi(:,1), m_obj.v_posi(:,2), m_obj.v_posi(:,3),...
-%         1,v_color(:,i),'Filled')  
-%     scatter3(m_obj.v_posi([1,end],1), m_obj.v_posi([1,end],2),...
-%         m_obj.v_posi([1,end],3), 10,'m','Filled') 
+    scatter3(m_obj.v_posi(:,1), m_obj.v_posi(:,2), m_obj.v_posi(:,3),...
+        1,v_color(:,i),'Filled')  
+    hold on
+    scatter3(m_obj.v_posi([1,end],1), m_obj.v_posi([1,end],2),...
+        m_obj.v_posi([1,end],3), 10,'m','Filled') 
     caxis(color_range);
     if (row_i == row_num-1) && (col_i == col_num-1)
         xlabel('X (mm)')
         ylabel('Y (mm)')
         zlabel('Z (mm)')
-%         scatter3(m_obj.v_posi(:,1), m_obj.v_posi(:,2), m_obj.v_posi(:,3),...
-%         1,v_color(:,i),'Filled')  
+        scatter3(m_obj.v_posi(:,1), m_obj.v_posi(:,2), m_obj.v_posi(:,3),...
+        1,v_color(:,i),'Filled')  
     else
         axis off
     end
@@ -145,5 +146,5 @@ for i = 1:frame_num
     view(Default_View)
     set(gca,'FontSize',20,'Color','w','XColor',ctext,'YColor',ctext,...
         'ZColor',ctext)
-    print('-r600',fig2,sprintf('%s_%03d',gest_name,i),'-dpng');
+%     print('-r600',fig2,sprintf('%s_%03d',gest_name,i),'-dpng');
 end
