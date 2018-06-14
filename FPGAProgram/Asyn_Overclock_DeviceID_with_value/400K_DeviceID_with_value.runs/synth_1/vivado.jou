@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2016.1 (64-bit)
+# SW Build 1538259 on Fri Apr  8 15:45:27 MDT 2016
+# IP Build 1537824 on Fri Apr  8 04:28:57 MDT 2016
+# Start of session at: Wed Jan 03 18:29:18 2018
+# Process ID: 8812
+# Current directory: D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_Overclock_DeviceID_with_value/400K_DeviceID_with_value.runs/synth_1
+# Command line: vivado.exe -log async_245_fifo.vds -mode batch -messageDb vivado.pb -notrace -source async_245_fifo.tcl
+# Log file: D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_Overclock_DeviceID_with_value/400K_DeviceID_with_value.runs/synth_1/async_245_fifo.vds
+# Journal file: D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/Final_Overclock_DeviceID_with_value/400K_DeviceID_with_value.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source async_245_fifo.tcl -notrace
