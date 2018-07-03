@@ -54,7 +54,8 @@ t_ind_num = sum(t_ind);
 % t_ind = 1913:1922; % Tap II
 % t_ind = [3381,3412,3447,3507,3568,3574,3582,3675,3788,3902];
 % t_ind = [1415,1919,2413,2916,3425]; % Tap I to V
-t_ind = [727:730,734:737,740,743,745,746,747];
+% t_ind = [727:730,734:737,740,743:747];
+t_ind = [727,729,736,743,745];
 
 t_ind_num = length(t_ind);
 
@@ -92,7 +93,7 @@ ctext = 'k'; % Color of axes and text
 color_range = [min(v_color(:)), max(v_color(:))];
 frame_num = size(proj_waveform,1);
 
-row_num = 2;
+row_num = 1;
 col_num = ceil(frame_num/row_num);
 
 fig1 = figure('Position',get(0,'ScreenSize').*[20,80,0.98,0.8]);
@@ -110,8 +111,8 @@ for i = 1:frame_num
     scatter3(m_obj.v_posi(:,1), m_obj.v_posi(:,2), m_obj.v_posi(:,3),...
         1,v_color(:,i),'Filled')  
     hold on
-    scatter3(m_obj.v_posi([1,end],1), m_obj.v_posi([1,end],2),...
-        m_obj.v_posi([1,end],3), 10,'m','Filled') 
+% % % % %     scatter3(m_obj.v_posi([1,end],1), m_obj.v_posi([1,end],2),...
+% % % % %         m_obj.v_posi([1,end],3), 10,'m','Filled') 
     caxis(color_range);
     if (row_i == row_num-1) && (col_i == col_num-1)
         xlabel('X (mm)')
@@ -156,5 +157,5 @@ for i = 1:frame_num
         'ZColor',ctext)
     hold off
 
-%     print('-r600',fig2,sprintf('%s_%03d',gest_name,i),'-dpng');
+    print('-r600',fig2,sprintf('%s_%03d',gest_name,i),'-dpng');
 end
