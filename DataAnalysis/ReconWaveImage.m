@@ -17,11 +17,13 @@ axis_label = {'X', 'Y', 'Z'};
 %         230, 25, 75
 %        ]./255;
 % cmap = [linspace(0,1,1000)', zeros(1000,1), linspace(1,0,1000)'];
-cmap = 0.7*jet(1000);
+cmap = 0.8*jet(1000);
 
 %% ------------------------------------------------------------------------
-gest_name = 'Tap1to5';
+% gest_name = 'Tap1to5';
 % gest_name = '100Hz_sine';
+% gest_name = 'PricisionGripCylinder';
+gest_name = 'GrabHandleAndRelease';
 % -------------------------------------------------------------------------
 [acc_data, t, Fs ] = readAccIII(fullfile(Data_Path,gest_name,'data.bin'),...
     fullfile(Data_Path,gest_name,'data_rate.txt'), 0);
@@ -36,6 +38,8 @@ end
 %% ------------------------------------------------------------------------
 disp_t_start = 0.0;
 disp_t_end = 5.0;
+% disp_t_start = 0.55; % GrabHandleAndRelease
+% disp_t_end = 0.6; % GrabHandleAndRelease
 
 disp_acc_i = setdiff(1:46,[10,20,30,40]);
 disp_num = length(disp_acc_i);
@@ -44,11 +48,14 @@ disp_num = length(disp_acc_i);
 % DC-filtering
 acc_data = bsxfun(@minus, acc_data,mean(acc_data,1));
 %--------------------------------------------------------------------------
-% t_ind = (t >= disp_t_start) & (t <= disp_t_end);
-% t_ind_num = sum(t_ind);
+t_ind = (t >= disp_t_start) & (t <= disp_t_end);
+t_ind_num = sum(t_ind);
 
-% t_ind = [1415, 1919, 2413, 2916, 3425];
-t_ind = 1913:1922;
+% t_ind = 1913:1922; % Tap II
+% t_ind = [3381,3412,3447,3507,3568,3574,3582,3675,3788,3902];
+% t_ind = [1415,1919,2413,2916,3425]; % Tap I to V
+t_ind = [727:730,734:737,740,743,745,746,747];
+
 t_ind_num = length(t_ind);
 
 if disp_num == 1
@@ -122,7 +129,7 @@ for i = 1:frame_num
     if (row_i == row_num-1) && (col_i == 1)
         c = colorbar('Color',ctext,'Box','off','Location','south');
         cbarPosi = get(c,'Position');
-        c.Label.Position = [80*cbarPosi(1) -20*cbarPosi(2)];
+        c.Label.Position = [20*cbarPosi(1) -20*cbarPosi(2)];
         c.Label.String = sprintf('Acceleration Amplitude (%.1f - %.1f g)',...
             color_range);
     end
@@ -139,12 +146,15 @@ fig2.InvertHardcopy = 'off';
 colormap(cmap);
 for i = 1:frame_num
     scatter3(m_obj.v_posi(:,1), m_obj.v_posi(:,2), m_obj.v_posi(:,3),...
-        1,v_color(:,i),'Filled')    
+        12,v_color(:,i),'Filled','MarkerEdgeColor',[0.3 0.3 0.3],'LineWidth',0.4) 
+    
     caxis(color_range);
     axis off
     axis equal
     view(Default_View)
     set(gca,'FontSize',20,'Color','w','XColor',ctext,'YColor',ctext,...
         'ZColor',ctext)
+    hold off
+
 %     print('-r600',fig2,sprintf('%s_%03d',gest_name,i),'-dpng');
 end
