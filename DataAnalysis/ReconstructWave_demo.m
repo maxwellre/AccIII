@@ -16,7 +16,11 @@ axis_label = {'X', 'Y', 'Z'};
 % gest_name = 'PricisionGripCylinder';
 % gest_name = 'PowerGripCylinder';
 % gest_name = 'WritingRETouch';
-gest_name = 'GrabHandleAndRelease';
+% gest_name = 'GrabHandleAndRelease';
+% gest_name = 'ClickMouse_II_III';
+% gest_name = 'TapKeyBoard2018';
+gest_name = 'TapKeyboardRandomly';
+
 %--------------------------------------------------------------------------
 if 1
 [acc_data, t, Fs ] = readAccIII(fullfile(Data_Path,gest_name,'data.bin'),...
@@ -31,14 +35,14 @@ if ~exist('m_obj','var')
 end
 
 %% ------------------------------------------------------------------------
-% disp_t_start = 0;
-% disp_t_end = 5;
+disp_t_start = 0;
+disp_t_end = 5;
 % disp_t_start = 1.4; % TapII
 % disp_t_end = 1.6; % TapII
 % disp_t_start = 0.36; % WritingRETouch
 % disp_t_end = 0.52; % WritingRETouch
-disp_t_start = 0.55;
-disp_t_end = 0.6;
+% disp_t_start = 0.55; % GrabHandleAndRelease
+% disp_t_end = 0.6; % GrabHandleAndRelease
 
 disp_acc_i = setdiff(1:46,[10,20,30,40]);
 disp_num = length(disp_acc_i);
@@ -51,8 +55,9 @@ acc_data = bsxfun(@minus, acc_data,mean(acc_data,1));
 t_ind = (t >= disp_t_start) & (t <= disp_t_end);
 
 % t_ind = zeros(size(t_ind));
-% t_ind([1401:1450,1901:1950,2401:2450,2891:2940,3401:3450]) = 1;
+% t_ind([2961:2980,3061:3080]) = 1;
 % t_ind = logical(t_ind);
+
 t_ind_num = sum(t_ind);
 
 if disp_num == 1
