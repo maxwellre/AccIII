@@ -8,6 +8,10 @@ axis_label = {'X', 'Y', 'Z'};
 [acc_data, t, Fs ] = readAccIII([Data_Path,'data.bin'],...
     [Data_Path,'data_rate.txt'], 0);
 %--------------------------------------------------------------------------
+% DC-filtering
+acc_data = bsxfun(@minus, acc_data,mean(acc_data,1));
+disp('DC removed')
+%--------------------------------------------------------------------------
 if ~exist('acc_data','var')
     error('AccIII data required!');
 end
@@ -35,13 +39,19 @@ elseif disp_num > 1
 %         amp = slctChannels(:,i,1).^2 + slctChannels(:,i,2).^2 +...
 %               slctChannels(:,i,3).^2;
 %         [~,max_i] = max(amp);
-%         proj_vector = squeeze(slctChannels(max_i,i,:));
+%         proj_vector = squeeze(slctChannels(max_i,i,:)); % Max-instant-amp
+        
+%         proj_vector=[std(slctChannels(:,i,1));std(slctChannels(:,i,2));...
+%             std(slctChannels(:,i,3))]; % STD-vector
+        
 %         proj_vector = proj_vector./norm(proj_vector);
 %         proj_waveform(:,i) = squeeze(slctChannels(:,i,:))*...
 %                     proj_vector;
                 
-        proj_waveform(:,i) = slctChannels(:,i,3); % Display Z-axis only
-        proj_waveform(:,i) = proj_waveform(:,i)-mean(proj_waveform(:,i));
+          [coeff,score,~] = pca(squeeze(slctChannels(:,i,:))); % PCA
+          proj_waveform(:,i) = score(:,1);
+                
+%         proj_waveform(:,i) = slctChannels(:,i,3); % Display Z-axis only
     end
 end
 
