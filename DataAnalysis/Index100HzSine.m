@@ -1,5 +1,6 @@
 %% Signal waveform on hand (Index 100Hz Sinewave stimulus)
 % Created on 05/17/2018
+% Updated on 07/04/2018 display Z-axis instead of max-amp projection
 %--------------------------------------------------------------------------
 Data_Path = 'Data/100Hz_sine/';
 axis_label = {'X', 'Y', 'Z'};
@@ -15,9 +16,8 @@ disp_t_start = 1;
 disp_t_end = 1.2;
 
 % Display selected accelerometer signal waveform
-% disp_acc_i = 21:29; 
-% disp_acc_i = 31:39;
-disp_acc_i = setdiff(1:46,[10,20,30,40]);
+disp_acc_i = 31:39;
+% disp_acc_i = setdiff(1:46,[10,20,30,40]);
 disp_num = length(disp_acc_i);
 
 %--------------------------------------------------------------------------
@@ -31,13 +31,17 @@ elseif disp_num > 1
     proj_waveform = zeros(sum(t_ind),disp_num);
     for i = 1:disp_num
         slctChannels(:,i,:) = acc_data(t_ind,disp_acc_i(i),:);
-        amp = slctChannels(:,i,1).^2 + slctChannels(:,i,2).^2 +...
-              slctChannels(:,i,3).^2;
-        [~,max_i] = max(amp);
-        proj_vector = squeeze(slctChannels(max_i,i,:));
-        proj_vector = proj_vector./norm(proj_vector);
-        proj_waveform(:,i) = squeeze(slctChannels(:,i,:))*...
-                    proj_vector;
+        
+%         amp = slctChannels(:,i,1).^2 + slctChannels(:,i,2).^2 +...
+%               slctChannels(:,i,3).^2;
+%         [~,max_i] = max(amp);
+%         proj_vector = squeeze(slctChannels(max_i,i,:));
+%         proj_vector = proj_vector./norm(proj_vector);
+%         proj_waveform(:,i) = squeeze(slctChannels(:,i,:))*...
+%                     proj_vector;
+                
+        proj_waveform(:,i) = slctChannels(:,i,3); % Display Z-axis only
+        proj_waveform(:,i) = proj_waveform(:,i)-mean(proj_waveform(:,i));
     end
 end
 
@@ -63,7 +67,7 @@ end
 %--------------------------------------------------------------------------
 % 1) Figure showing A 100 Hz sinewave stimuli was applied to the tip of 
 %    digit II of the subject.
-if 0 %---------------------------------------------------------------switch
+if 1 %---------------------------------------------------------------switch
 % Plot waveform (raw or smoothed)
 if disp_num == 1
     figure('Position',[260,150,600,400]);
@@ -92,9 +96,9 @@ elseif disp_num > 1
     
     yRange = [min(proj_waveform(:)), max(proj_waveform(:))];
     
-%     figure('Name','%Projected raw signal waveform',...
-%         'Position',[120,60,840,400]);
-    figure('units','normalized','outerposition',[0 0 1 1])
+    figure('Name','%Projected raw signal waveform',...
+        'Position',[120,60,840,400]);
+%     figure('units','normalized','outerposition',[0 0 1 1])
 
     for i = 1:disp_num
         subplot(row_num,3,i);
@@ -104,7 +108,8 @@ elseif disp_num > 1
         box off;
         
         if (mod(i,3) == 1)&&(floor(i/3)==floor(0.5*row_num))
-            ylabel('Amplitude (g)');
+%             ylabel('Amplitude (g)');
+            ylabel('Z-Axis Amplitude (g)');
         else
             yticks([]);
 %             set(gca,'YColor','none');
@@ -121,13 +126,13 @@ elseif disp_num > 1
     end
 end
 
-% print(gcf,'AccIIISignalWaveform','-dpdf','-painters');
+print(gcf,'AccIIISignalWaveform','-dpdf','-painters');
 end %----------------------------------------------------------------switch
 
 %% ------------------------------------------------------------------------
 % 2) Figure showing the RMS amplitude measured at every location
 %    (bar chart of amplitude vs sensor number)
-if 1 %---------------------------------------------------------------switch
+if 0 %---------------------------------------------------------------switch
     t_ind = (t >= 0.005) & (t <= 5.005);
     
     accAmp = (acc_data(:,:,1).^2+acc_data(:,:,2).^2+...
@@ -141,5 +146,5 @@ if 1 %---------------------------------------------------------------switch
     xticks([1,9,11,19,21,29,31,39,41,46]);
     box off
     
-    print(gcf,'Index100HzSineRMSAMP','-dpdf','-painters');
+%     print(gcf,'Index100HzSineRMSAMP','-dpdf','-painters');
 end %----------------------------------------------------------------switch
