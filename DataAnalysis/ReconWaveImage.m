@@ -20,10 +20,10 @@ axis_label = {'X', 'Y', 'Z'};
 cmap = 0.8*jet(1000);
 
 %% ------------------------------------------------------------------------
-% gest_name = 'Tap1to5';
+gest_name = 'Tap1to5';
 % gest_name = '100Hz_sine';
 % gest_name = 'PricisionGripCylinder';
-gest_name = 'GrabHandleAndRelease';
+% gest_name = 'GrabHandleAndRelease';
 % -------------------------------------------------------------------------
 [acc_data, t, Fs ] = readAccIII(fullfile(Data_Path,gest_name,'data.bin'),...
     fullfile(Data_Path,gest_name,'data_rate.txt'), 0);
@@ -48,33 +48,53 @@ disp_num = length(disp_acc_i);
 % DC-filtering
 acc_data = bsxfun(@minus, acc_data,mean(acc_data,1));
 %--------------------------------------------------------------------------
-t_ind = (t >= disp_t_start) & (t <= disp_t_end);
-t_ind_num = sum(t_ind);
+% % Lowpass-filtering (Ineffective)
+% for i = 1:3
+%     acc_data(:,:,i) = lowpass(acc_data(:,:,i),1000,Fs);
+% end
+%--------------------------------------------------------------------------
+% t_ind = (t >= disp_t_start) & (t <= disp_t_end);
+% t_ind_num = sum(t_ind);
 
 % t_ind = 1913:1922; % Tap II
 % t_ind = [3381,3412,3447,3507,3568,3574,3582,3675,3788,3902];
-% t_ind = [1415,1919,2413,2916,3425]; % Tap I to V
-% t_ind = [727:730,734:737,740,743:747];
-t_ind = [727,729,736,743,745];
-
+t_ind = [1415,1919,2413,2916,3425]; % Tap I to V
+% t_ind = [727,729,736,743,745]; % GrabHandleAndRelease
 t_ind_num = length(t_ind);
 
-if disp_num == 1
-    slctChannels = squeeze(acc_data(t_ind,disp_acc_i,:));
-    yRange = [min(slctChannels(:)), max(slctChannels(:))];
-elseif disp_num > 1
-    slctChannels = zeros(t_ind_num,disp_num,3);
-    proj_waveform = zeros(t_ind_num,disp_num);
-    for i = 1:disp_num
-        slctChannels(:,i,:) = acc_data(t_ind,disp_acc_i(i),:);
-        amp = (slctChannels(:,i,1).^2 + slctChannels(:,i,2).^2 +...
-              slctChannels(:,i,3).^2).^0.5;
-%         [~,max_i] = max(amp);
-%         proj_vector = squeeze(slctChannels(max_i,i,:));
-%         proj_vector = proj_vector./norm(proj_vector);
-%         proj_waveform(:,i) = squeeze(slctChannels(:,i,:))*...
-%                     proj_vector;
-        proj_waveform(:,i) = amp;
+% % Display single frame amplitude (before 07/12/2018)
+% if disp_num == 1
+%     slctChannels = squeeze(acc_data(t_ind,disp_acc_i,:));
+%     yRange = [min(slctChannels(:)), max(slctChannels(:))];
+% elseif disp_num > 1
+%     slctChannels = zeros(t_ind_num,disp_num,3);
+%     proj_waveform = zeros(t_ind_num,disp_num);
+%     for i = 1:disp_num
+%         slctChannels(:,i,:) = acc_data(t_ind,disp_acc_i(i),:);
+%         amp = (slctChannels(:,i,1).^2 + slctChannels(:,i,2).^2 +...
+%               slctChannels(:,i,3).^2).^0.5;
+% %         [~,max_i] = max(amp);
+% %         proj_vector = squeeze(slctChannels(max_i,i,:));
+% %         proj_vector = proj_vector./norm(proj_vector);
+% %         proj_waveform(:,i) = squeeze(slctChannels(:,i,:))*...
+% %                     proj_vector;
+%         proj_waveform(:,i) = amp;
+%     end
+% end
+
+% Display window RMS amplitude (after 07/12/2018)
+win_ind = -124:199;
+
+slctChannels = cell(t_ind_num,disp_num);
+proj_waveform = zeros(t_ind_num,disp_num);
+for t_i = 1:t_ind_num
+    for i = 1:disp_num   
+        slctChannels{t_i,i} = squeeze(acc_data(t_ind(t_i)+win_ind,...
+            disp_acc_i(i),:));
+%         plot(slctChannels{t_i,i}*9.8);pause(0.1);
+        amp = (slctChannels{t_i,i}(:,1).^2+slctChannels{t_i,i}(:,2).^2 +...
+            slctChannels{t_i,i}(:,3).^2).^0.5;
+        proj_waveform(t_i,i) = rms(amp);
     end
 end
 
@@ -113,7 +133,7 @@ for i = 1:frame_num
     hold on
 % % % % %     scatter3(m_obj.v_posi([1,end],1), m_obj.v_posi([1,end],2),...
 % % % % %         m_obj.v_posi([1,end],3), 10,'m','Filled') 
-    caxis(color_range);
+%     caxis(color_range);
     if (row_i == row_num-1) && (col_i == col_num-1)
         xlabel('X (mm)')
         ylabel('Y (mm)')
@@ -127,6 +147,8 @@ for i = 1:frame_num
     view(Default_View)
     text(150,150,50,sprintf('%.2f ms',(t_ind(i)-t_ind(1))*t_interval),...
         'FontSize',20, 'Color',ctext)
+    
+    fprintf('Range: %.2f - %.2f\n',caxis);
     if (row_i == row_num-1) && (col_i == 1)
         c = colorbar('Color',ctext,'Box','off','Location','south');
         cbarPosi = get(c,'Position');
@@ -147,9 +169,10 @@ fig2.InvertHardcopy = 'off';
 colormap(cmap);
 for i = 1:frame_num
     scatter3(m_obj.v_posi(:,1), m_obj.v_posi(:,2), m_obj.v_posi(:,3),...
-        12,v_color(:,i),'Filled','MarkerEdgeColor',[0.3 0.3 0.3],'LineWidth',0.4) 
+        12,v_color(:,i),'Filled','MarkerEdgeColor',[0.3 0.3 0.3],...
+        'LineWidth',0.4) 
     
-    caxis(color_range);
+%     caxis(color_range);
     axis off
     axis equal
     view(Default_View)
@@ -157,5 +180,5 @@ for i = 1:frame_num
         'ZColor',ctext)
     hold off
 
-    print('-r600',fig2,sprintf('%s_%03d',gest_name,i),'-dpng');
+%     print('-r600',fig2,sprintf('%s_%03d',gest_name,i),'-dpng');
 end

@@ -44,7 +44,7 @@ yMin = min(slctChannels(:));
 
 %--------------------------------------------------------------------------
 %% Display all accelerometer waveforms
-offsetStep = 6.0;
+offsetStep = 1.0;
 figure('Position',[120,90,840,900],'Color','white')
 for ax = 1:3
     subplot('Position',[0.05+0.3*(ax-1),0.04,0.28,0.92])
@@ -73,42 +73,42 @@ end
 print(gcf,'AllAccWaveform','-dpdf','-painters');
 
 %% Display all accelerometer waveforms in 3D
-time = 1000*t(t_ind)';
-time = time - time(1);
-offsetStep = 10.0;
-figure('Position',[120,90,840,900],'Color','white')
-for ax = 1:3
-    subplot('Position',[0.05+0.3*(ax-1),0.04,0.3,0.92])
-    hold on
-    for i = 1:disp_num
-        offset = offsetStep*(i-1);
-        y = offset*ones(size(slctChannels(:,i,ax)));
-        plot3(time,y,slctChannels(:,i,ax),'Color',[0.3 0.3 0.3]);    
-        zlim([yMin yMax])
-%         zlim([-0.5 yMax])
-    end
-%     xlim([time(1) time(end)])
-    box off;
-    if ax ~= 1
-        yticks([]);
-        set(gca,'YColor','none');
-    else
-        yticks(0:offsetStep:offsetStep*(disp_num-1))
-        yticklabels(1:disp_num)
-        ylabel('Acc')
-        zlabel('Amplitude (g)')
-    end
-    if ax ~= 2
-        xticks([]);
-        set(gca,'XColor','none');
-    else
-        xlabel('Time (ms)')
-    end
-    title(sprintf('%s-axis',axis_label{ax}))
-    set(gca,'FontSize',16)
-    view([-10 60]) 
-end
-print(gcf,'AllAccWaveform3D','-dpdf','-painters');
+% time = 1000*t(t_ind)';
+% time = time - time(1);
+% offsetStep = 10.0;
+% figure('Position',[120,90,840,900],'Color','white')
+% for ax = 1:3
+%     subplot('Position',[0.05+0.3*(ax-1),0.04,0.3,0.92])
+%     hold on
+%     for i = 1:disp_num
+%         offset = offsetStep*(i-1);
+%         y = offset*ones(size(slctChannels(:,i,ax)));
+%         plot3(time,y,slctChannels(:,i,ax),'Color',[0.3 0.3 0.3]);    
+%         zlim([yMin yMax])
+% %         zlim([-0.5 yMax])
+%     end
+% %     xlim([time(1) time(end)])
+%     box off;
+%     if ax ~= 1
+%         yticks([]);
+%         set(gca,'YColor','none');
+%     else
+%         yticks(0:offsetStep:offsetStep*(disp_num-1))
+%         yticklabels(1:disp_num)
+%         ylabel('Acc')
+%         zlabel('Amplitude (g)')
+%     end
+%     if ax ~= 2
+%         xticks([]);
+%         set(gca,'XColor','none');
+%     else
+%         xlabel('Time (ms)')
+%     end
+%     title(sprintf('%s-axis',axis_label{ax}))
+%     set(gca,'FontSize',16)
+%     view([-10 60]) 
+% end
+% print(gcf,'AllAccWaveform3D','-dpdf','-painters');
 
 %% Individual subplot
 if 0 %---------------------------------------------------------------switch
