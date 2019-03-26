@@ -16,3 +16,4 @@ FPGAProgram/No_fifo_no_ID/vivado_*.log
 *.eps
 *.avi
 *.asv
+*.mat
