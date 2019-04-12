@@ -53,15 +53,15 @@ for i = 1:data_num
     end
 end
 %__________________________________________________________________________
-if 0 
+if 1 
 %% Pearson Correlation Analysis
 CorrMat = NaN(data_num,data_num);
-for i = 1:data_num
+for i = 8:data_num
     for j = i:data_num
         corrRes = zeros(segDuration*dsFreq*2-1,1);
         for ch_i = acc_ind
-            sig1 = accAmp{i}(:,ch_i)./std(accAmp{i}(:));
-            sig2 = accAmp{j}(:,ch_i)./std(accAmp{j}(:));
+            sig1 = accAmp{i}(:,ch_i)./std(accAmp{i}(:,ch_i));
+            sig2 = accAmp{j}(:,ch_i)./std(accAmp{j}(:,ch_i));
             corrRes = corrRes +xcorr(sig1,sig2);
         end
         CorrMat(i,j) = max(abs(corrRes));
@@ -84,76 +84,76 @@ h.YDisplayLabels = Measure_Type;
 end %______________________________________________________________________
 
 %% Frequency Band Analysis
-freqBand = [0, 10, 20, 40, 80, 160, 320, 640];
-freqBandNum = length(freqBand)-1;
-
-spectEn = cell(data_num,1);
-for i = 1:data_num
-    spectEn{i} = nan(freqBandNum,disp_num);
-    
-    [accSpect,f] = spectr(accAmp{i}(:,acc_ind),dsFreq);
-    for j = 1:freqBandNum
-        minF = find(f > freqBand(j));
-        maxF = find(f <= freqBand(j+1));
-        freRange = intersect(minF,maxF); % Frequency band index
-        spectEn{i}(j,:) = rms(accSpect(freRange,:));
-    end
-end
+% freqBand = [0, 10, 20, 40, 80, 160, 320, 640];
+% freqBandNum = length(freqBand)-1;
+% 
+% spectEn = cell(data_num,1);
+% for i = 1:data_num
+%     spectEn{i} = nan(freqBandNum,disp_num);
+%     
+%     [accSpect,f] = spectr(accAmp{i}(:,acc_ind),dsFreq);
+%     for j = 1:freqBandNum
+%         minF = find(f > freqBand(j));
+%         maxF = find(f <= freqBand(j+1));
+%         freRange = intersect(minF,maxF); % Frequency band index
+%         spectEn{i}(j,:) = rms(accSpect(freRange,:));
+%     end
+% end
 
 %% Plot Spectrum Engergy Distribution
-figure('Position',[40,80,860,820],'Color','w');
-colormap(flipud(gray(1000)));
-for i = 1:data_num
-    subplot(8,2,i);
-    imagesc(spectEn{i});
-    box off;
-    if (mod(i,2)==0)
-        set(gca,'yTick',[]);
-    else
-        set(gca,'yTick',(0:freqBandNum)+0.5,'yTickLabels',freqBand);
-    end
-    
-    if (i == 7)
-        ylabel('Frequency (Hz)');
-    end
-    
-    if (i < 15)
-        set(gca,'xTick',[]);
-    else
-% currTicks = get(gca,'xTick'); set(gca,'xTickLabels',acc_ind(currTicks));
-        set(gca,'xTick',1:42,'xTickLabels',acc_ind);
-    end
-    
-    if (i == 16)
-        xlabel('Accelerometer #');
-    end
-    
-    text(16,-0.6,Measure_Type{i},'Interpreter', 'none');
-end
+% figure('Position',[40,80,860,820],'Color','w');
+% colormap(flipud(gray(1000)));
+% for i = 1:data_num
+%     subplot(8,2,i);
+%     imagesc(spectEn{i});
+%     box off;
+%     if (mod(i,2)==0)
+%         set(gca,'yTick',[]);
+%     else
+%         set(gca,'yTick',(0:freqBandNum)+0.5,'yTickLabels',freqBand);
+%     end
+%     
+%     if (i == 7)
+%         ylabel('Frequency (Hz)');
+%     end
+%     
+%     if (i < 15)
+%         set(gca,'xTick',[]);
+%     else
+% % currTicks = get(gca,'xTick'); set(gca,'xTickLabels',acc_ind(currTicks));
+%         set(gca,'xTick',1:42,'xTickLabels',acc_ind);
+%     end
+%     
+%     if (i == 16)
+%         xlabel('Accelerometer #');
+%     end
+%     
+%     text(16,-0.6,Measure_Type{i},'Interpreter', 'none');
+% end
 
 %%
-FlatSpectEn = [];
-for i = 1:data_num
-    FlatSpectEn = [FlatSpectEn;spectEn{i}(:)'];  
-end
-pairedDist = pdist(FlatSpectEn);
-
-% DissimilarMat = squareform(pairedDist);
+% FlatSpectEn = [];
+% for i = 1:data_num
+%     FlatSpectEn = [FlatSpectEn;spectEn{i}(:)'];  
+% end
+% pairedDist = pdist(FlatSpectEn);
+% 
+% % DissimilarMat = squareform(pairedDist);
+% % figure('Position',[40,80,860,820],'Color','w');
+% % h = heatmap(DissimilarMat);
+% % h.YLabel = 'Gesture';
+% % h.XLabel = 'Gesture';
+% % h.Colormap = (gray(1000));
+% % h.CellLabelFormat = '%.2f';
+% % h.FontSize = 10;
+% % h.GridVisible = 'off';
+% % h.XDisplayLabels = Measure_Type;
+% % h.YDisplayLabels = Measure_Type;
+% 
 % figure('Position',[40,80,860,820],'Color','w');
-% h = heatmap(DissimilarMat);
-% h.YLabel = 'Gesture';
-% h.XLabel = 'Gesture';
-% h.Colormap = (gray(1000));
-% h.CellLabelFormat = '%.2f';
-% h.FontSize = 10;
-% h.GridVisible = 'off';
-% h.XDisplayLabels = Measure_Type;
-% h.YDisplayLabels = Measure_Type;
-
-figure('Position',[40,80,860,820],'Color','w');
-dendrogram(linkage(pairedDist,'single'),...
-    'Labels',Measure_Type);
-xtickangle(40); set(gca, 'TickLabelInterpreter', 'none')
+% dendrogram(linkage(pairedDist,'single'),...
+%     'Labels',Measure_Type);
+% xtickangle(40); set(gca, 'TickLabelInterpreter', 'none')
 
 %% Time Series Modeling Preparation 
 % slct_measure = 1;
