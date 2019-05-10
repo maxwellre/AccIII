@@ -1,0 +1,26 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" --include "../../../prj_ft2232h.ip_user_files/ipstatic/clk_wiz_v5_3_1"
+sv xil_defaultlib  "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_base.sv" --include "../../../prj_ft2232h.ip_user_files/ipstatic/clk_wiz_v5_3_1"
+sv xil_defaultlib  "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_dpdistram.sv" --include "../../../prj_ft2232h.ip_user_files/ipstatic/clk_wiz_v5_3_1"
+sv xil_defaultlib  "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_dprom.sv" --include "../../../prj_ft2232h.ip_user_files/ipstatic/clk_wiz_v5_3_1"
+sv xil_defaultlib  "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_sdpram.sv" --include "../../../prj_ft2232h.ip_user_files/ipstatic/clk_wiz_v5_3_1"
+sv xil_defaultlib  "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_spram.sv" --include "../../../prj_ft2232h.ip_user_files/ipstatic/clk_wiz_v5_3_1"
+sv xil_defaultlib  "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_sprom.sv" --include "../../../prj_ft2232h.ip_user_files/ipstatic/clk_wiz_v5_3_1"
+sv xil_defaultlib  "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_tdpram.sv" --include "../../../prj_ft2232h.ip_user_files/ipstatic/clk_wiz_v5_3_1"
+verilog xil_defaultlib  "../../../prj_ft2232h.srcs/sources_1/new/iic_savemod.v" --include "../../../prj_ft2232h.ip_user_files/ipstatic/clk_wiz_v5_3_1"
+verilog fifo_generator_v13_1_1  "../../../prj_ft2232h.ip_user_files/ipstatic/fifo_generator_v13_1_1/simulation/fifo_generator_vlog_beh.v" --include "../../../prj_ft2232h.ip_user_files/ipstatic/clk_wiz_v5_3_1"
+verilog fifo_generator_v13_1_1  "../../../prj_ft2232h.ip_user_files/ipstatic/fifo_generator_v13_1_1/hdl/fifo_generator_v13_1_rfs.v" --include "../../../prj_ft2232h.ip_user_files/ipstatic/clk_wiz_v5_3_1"
+verilog xil_defaultlib  "../../../prj_ft2232h.srcs/sources_1/ip/fifo_buf/sim/fifo_buf.v" --include "../../../prj_ft2232h.ip_user_files/ipstatic/clk_wiz_v5_3_1"
+verilog xil_defaultlib  "../../../prj_ft2232h.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_clk_wiz.v" --include "../../../prj_ft2232h.ip_user_files/ipstatic/clk_wiz_v5_3_1"
+verilog xil_defaultlib  "../../../prj_ft2232h.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.v" --include "../../../prj_ft2232h.ip_user_files/ipstatic/clk_wiz_v5_3_1"
+verilog xil_defaultlib  "../../../prj_ft2232h.srcs/sources_1/new/sys_rst.v" --include "../../../prj_ft2232h.ip_user_files/ipstatic/clk_wiz_v5_3_1"
+verilog xil_defaultlib  "../../../prj_ft2232h.srcs/sources_1/new/iic_demo.v" --include "../../../prj_ft2232h.ip_user_files/ipstatic/clk_wiz_v5_3_1"
+verilog xil_defaultlib  "../../../prj_ft2232h.srcs/sources_1/new/fifo_proc.v" --include "../../../prj_ft2232h.ip_user_files/ipstatic/clk_wiz_v5_3_1"
+verilog xil_defaultlib  "../../../prj_ft2232h.srcs/sources_1/imports/new/async_245_fifo.v" --include "../../../prj_ft2232h.ip_user_files/ipstatic/clk_wiz_v5_3_1"
+verilog xil_defaultlib  "../../../prj_ft2232h.srcs/sim_1/new/async_245_fifo_tb.v" --include "../../../prj_ft2232h.ip_user_files/ipstatic/clk_wiz_v5_3_1"
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
