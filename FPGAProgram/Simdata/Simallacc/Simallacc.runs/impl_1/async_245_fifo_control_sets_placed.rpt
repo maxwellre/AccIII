@@ -1,0 +1,63 @@
+Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2016.1 (win64) Build 1538259 Fri Apr  8 15:45:27 MDT 2016
+| Date         : Thu May 09 18:47:29 2019
+| Host         : CORSAIRONE running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file async_245_fifo_control_sets_placed.rpt
+| Design       : async_245_fifo
+| Device       : xc7a15t
+-------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Flip-Flop Distribution
+3. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    10 |
+| Unused register locations in slices containing registers |    35 |
++----------------------------------------------------------+-------+
+
+
+2. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |               0 |            0 |
+| No           | No                    | Yes                    |               7 |            4 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | Yes                    |              54 |           18 |
+| Yes          | Yes                   | No                     |               0 |            0 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+3. Detailed Control Set Information
+-----------------------------------
+
++------------------+-------------------------------+------------------+------------------+----------------+
+|   Clock Signal   |         Enable Signal         | Set/Reset Signal | Slice Load Count | Bel Load Count |
++------------------+-------------------------------+------------------+------------------+----------------+
+|  i_clk_IBUF_BUFG | nolabel_line311/o_led_i_1_n_0 | SYS_RST/o_rst    |                1 |              1 |
+|  i_clk_IBUF_BUFG | USB_Handle/o_rd_i_1_n_0       | SYS_RST/o_rst    |                1 |              1 |
+|  i_clk_IBUF_BUFG | USB_Handle/o_wr_i_1_n_0       | SYS_RST/o_rst    |                1 |              1 |
+|  i_clk_IBUF_BUFG |                               | i_rst_IBUF       |                1 |              2 |
+|  i_clk_IBUF_BUFG |                               | SYS_RST/o_rst    |                3 |              5 |
+|  i_clk_IBUF_BUFG | nolabel_line311/i             | SYS_RST/o_rst    |                2 |              5 |
+|  i_clk_IBUF_BUFG | nolabel_line311/j[4]_i_1_n_0  | SYS_RST/o_rst    |                2 |              6 |
+|  i_clk_IBUF_BUFG | USB_Handle/data[7]_i_1_n_0    | SYS_RST/o_rst    |                2 |              8 |
+|  i_clk_IBUF_BUFG | USB_Handle/i[15]_i_1_n_0      | SYS_RST/o_rst    |                4 |             16 |
+|  i_clk_IBUF_BUFG | USB_Handle/j[15]_i_1_n_0      | SYS_RST/o_rst    |                5 |             16 |
++------------------+-------------------------------+------------------+------------------+----------------+
+
+

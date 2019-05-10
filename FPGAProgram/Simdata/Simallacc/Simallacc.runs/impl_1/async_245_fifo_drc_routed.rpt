@@ -1,0 +1,145 @@
+Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2016.1 (win64) Build 1538259 Fri Apr  8 15:45:27 MDT 2016
+| Date         : Thu May 09 18:47:44 2019
+| Host         : CORSAIRONE running 64-bit major release  (build 9200)
+| Command      : report_drc -file async_245_fifo_drc_routed.rpt -pb async_245_fifo_drc_routed.pb
+| Design       : async_245_fifo
+| Device       : xc7a15tftg256-1
+| Speed File   : -1
+-------------------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max violations: <unlimited>
+             Violations found: 23
+
+2. REPORT DETAILS
+-----------------
+RPBF-3#1 Warning
+IO port buffering is incomplete  
+Device port sda[0] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#2 Warning
+IO port buffering is incomplete  
+Device port sda[10] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#3 Warning
+IO port buffering is incomplete  
+Device port sda[11] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#4 Warning
+IO port buffering is incomplete  
+Device port sda[12] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#5 Warning
+IO port buffering is incomplete  
+Device port sda[13] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#6 Warning
+IO port buffering is incomplete  
+Device port sda[14] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#7 Warning
+IO port buffering is incomplete  
+Device port sda[15] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#8 Warning
+IO port buffering is incomplete  
+Device port sda[16] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#9 Warning
+IO port buffering is incomplete  
+Device port sda[17] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#10 Warning
+IO port buffering is incomplete  
+Device port sda[18] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#11 Warning
+IO port buffering is incomplete  
+Device port sda[19] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#12 Warning
+IO port buffering is incomplete  
+Device port sda[1] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#13 Warning
+IO port buffering is incomplete  
+Device port sda[20] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#14 Warning
+IO port buffering is incomplete  
+Device port sda[21] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#15 Warning
+IO port buffering is incomplete  
+Device port sda[22] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#16 Warning
+IO port buffering is incomplete  
+Device port sda[2] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#17 Warning
+IO port buffering is incomplete  
+Device port sda[3] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#18 Warning
+IO port buffering is incomplete  
+Device port sda[4] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#19 Warning
+IO port buffering is incomplete  
+Device port sda[5] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#20 Warning
+IO port buffering is incomplete  
+Device port sda[6] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#21 Warning
+IO port buffering is incomplete  
+Device port sda[7] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#22 Warning
+IO port buffering is incomplete  
+Device port sda[8] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#23 Warning
+IO port buffering is incomplete  
+Device port sda[9] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+
