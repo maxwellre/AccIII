@@ -56,21 +56,22 @@ module fifo_proc(
         
      end else begin     
         case (i)
-         8'd0: if (i_start_en) begin i <= 8'd1; end            
+         8'd0: if (i_start_en) begin i <= 8'd1; o_led <= 1'b1; end            
          8'd1: begin o_iic_en <= 1'b1; i <= 8'd2; end  
-         8'd2: begin o_iic_en <= 1'b0; i <= 8'd6; end 
+         8'd2: begin o_iic_en <= 1'b0; i <= 8'd5; end 
          
-         8'd3: begin usb_en <= 1'b1; i <= 8'd4; end
-         8'd4: begin usb_en <= 1'b1; i <= 8'd5; end                
-         8'd5: if (usb_done)begin i <= j; usb_en <= 1'b0; end  
+         8'd3: begin usb_en <= 1'b1; i <= 8'd4; end            
+         8'd4: if (usb_done)begin i <= j; usb_en <= 1'b0; end  
+          
+         //8'd5:  if (iic_done == 23'b000_0000_0000_0000_0001_1111)   
+         8'd5:  if (iic_done == 23'b111_1111_1111_1111_1111_1111) i <= 8'd6;  
          
-         8'd6:  if (iic_done[0] == 1'b1) 
-                    begin usb_data <= iic_data[00]; i <= 8'd3; j <= 8'd01; o_led <= 1'b1; end  
-         /* 8'd6:  if (iic_done == 23'b111_1111_1111_1111_1111_1111)   
-                begin usb_data <= iic_data[00]; i <= 8'd3; j <= 8'd07; o_led <= 1'b1; end  
+         8'd6:  begin usb_data <= iic_data[00]; i <= 8'd3; j <= 8'd07; end  
          8'd7:  begin usb_data <= iic_data[01]; i <= 8'd3; j <= 8'd08; end     
          8'd8:  begin usb_data <= iic_data[02]; i <= 8'd3; j <= 8'd09; end  
          8'd9:  begin usb_data <= iic_data[03]; i <= 8'd3; j <= 8'd10; end  
+         
+         //8'd10: begin usb_data <= iic_data[04]; i <= 8'd3; j <= 8'd01; end  
          8'd10: begin usb_data <= iic_data[04]; i <= 8'd3; j <= 8'd11; end  
          8'd11: begin usb_data <= iic_data[05]; i <= 8'd3; j <= 8'd12; end  
          8'd12: begin usb_data <= iic_data[06]; i <= 8'd3; j <= 8'd13; end  
@@ -89,7 +90,7 @@ module fifo_proc(
          8'd25: begin usb_data <= iic_data[19]; i <= 8'd3; j <= 8'd26; end  
          8'd26: begin usb_data <= iic_data[20]; i <= 8'd3; j <= 8'd27; end  
          8'd27: begin usb_data <= iic_data[21]; i <= 8'd3; j <= 8'd28; end  
-         8'd28: begin usb_data <= iic_data[22]; i <= 8'd3; j <= 8'd01; end  */                                     
+         8'd28: begin usb_data <= iic_data[22]; i <= 8'd3; j <= 8'd01; end                                      
         endcase
         
        /************

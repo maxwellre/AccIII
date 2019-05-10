@@ -6,6 +6,7 @@
 % Updated on 09/05/2017 New data reading format
 % Updated on 01/10/2018 Run exe and synchronize data
 % Updated on 01/23/2018 Read AccIII (NoID data format)
+% Updated on 05/09/2019 Acc Revive whole hand measurement
 %--------------------------------------------------------------------------
 close all
 %--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ disp(cmdout)
 %%
 if ~status
     if NoID
-        [acc_data, t, Fs ] = readAccIII('data.bin','data_rate.txt', 1);
+        [acc_data, t, Fs ] = readAccRevi('data.bin','data_rate.txt', 1);
         trunc_ind = (t <= expected_samp_time);
         t = t(trunc_ind);
         acc_data = acc_data(trunc_ind,:,:); % Truncate

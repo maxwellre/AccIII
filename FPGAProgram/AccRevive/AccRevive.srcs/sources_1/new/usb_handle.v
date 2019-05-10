@@ -93,7 +93,6 @@ module usb_handle(
                 16'd2   :begin  
                             if (data == 8'h55)       //receive 0x55 from PC;
                             begin 
-                            //o_led <= 1'b1; 
                                 o_start_en <= 1'b1;    //enable iic module;
                                 i <= 16'd3; 
                                 isQ <= 1'd1;
@@ -110,19 +109,15 @@ module usb_handle(
                          end   
                 //---------------------------------------------------                       
                 16'd4   :if (i_txe == 1'b0)
-                         begin  
-                            j <= j+1'b1; 
-                            if( j == 16'd2 ) 
-                            begin 
-                               o_wr <= 1'b0;             //begin to send data;
-                               j <= 16'd0; 
-                               i <= 16'd5;
-                            end                             
+                         begin   
+                           o_wr <= 1'b0;             //begin to send data;
+                           j <= 16'd0; 
+                           i <= 16'd5;                           
                          end   
                //---------------------------------------------------    
                16'd5   :begin
                             j <= j+1'b1; 
-                           if( j == 16'd9 ) 
+                           if( j == 16'd6 ) 
                            begin 
                               send_done <= 1'd1;
                               o_wr <= 1'b1;          //end to send data;

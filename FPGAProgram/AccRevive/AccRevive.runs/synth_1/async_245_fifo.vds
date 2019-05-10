@@ -2,8 +2,8 @@
 # Vivado v2016.1 (64-bit)
 # SW Build 1538259 on Fri Apr  8 15:45:27 MDT 2016
 # IP Build 1537824 on Fri Apr  8 04:28:57 MDT 2016
-# Start of session at: Thu May 09 20:05:04 2019
-# Process ID: 10864
+# Start of session at: Thu May 09 23:37:34 2019
+# Process ID: 13700
 # Current directory: D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.runs/synth_1
 # Command line: vivado.exe -log async_245_fifo.vds -mode batch -messageDb vivado.pb -notrace -source async_245_fifo.tcl
 # Log file: D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.runs/synth_1/async_245_fifo.vds
@@ -15,25 +15,25 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a15t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a15t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 4212 
+INFO: Helper process launched with PID 5432 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 268.176 ; gain = 61.020
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 268.660 ; gain = 61.438
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'async_245_fifo' [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:22]
 INFO: [Synth 8-638] synthesizing module 'sys_rst' [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/sys_rst.v:23]
 INFO: [Synth 8-256] done synthesizing module 'sys_rst' (1#1) [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/sys_rst.v:23]
 INFO: [Synth 8-638] synthesizing module 'iic_demo' [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/iic_demo.v:22]
 INFO: [Synth 8-638] synthesizing module 'iic_savemod' [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/iic_savemod.v:23]
-	Parameter FCLK bound to: 10'b0001111101 
-	Parameter FHALF bound to: 10'b0000111110 
-	Parameter FQUARTER bound to: 10'b0000011111 
-	Parameter THIGH bound to: 10'b0000011110 
-	Parameter TLOW bound to: 10'b0001000001 
-	Parameter TR bound to: 10'b0000001111 
-	Parameter TF bound to: 10'b0000001111 
-	Parameter THD_STA bound to: 10'b0000011110 
-	Parameter TSU_STA bound to: 10'b0000011110 
-	Parameter TSU_STO bound to: 10'b0000011110 
+	Parameter FCLK bound to: 10'b0000111110 
+	Parameter FHALF bound to: 10'b0000011111 
+	Parameter FQUARTER bound to: 10'b0000001111 
+	Parameter THIGH bound to: 10'b0000001111 
+	Parameter TLOW bound to: 10'b0000100000 
+	Parameter TR bound to: 10'b0000000111 
+	Parameter TF bound to: 10'b0000000111 
+	Parameter THD_STA bound to: 10'b0000001111 
+	Parameter TSU_STA bound to: 10'b0000001111 
+	Parameter TSU_STO bound to: 10'b0000001111 
 	Parameter WRFUNC1 bound to: 5'b00111 
 	Parameter WRFUNC2 bound to: 5'b01001 
 	Parameter RDFUNC bound to: 5'b10011 
@@ -46,157 +46,34 @@ WARNING: [Synth 8-387] label required on module instance [D:/Yitian/MaxDrive/Acc
 INFO: [Synth 8-638] synthesizing module 'fifo_proc' [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:22]
 INFO: [Synth 8-155] case statement is not full and has no default [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:58]
 WARNING: [Synth 8-3848] Net iic_data[0] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[22] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[21] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[20] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[19] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[18] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[17] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[16] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[15] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[14] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[13] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[12] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[11] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[10] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[9] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[8] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[7] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[6] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[5] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[4] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[3] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[2] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
 WARNING: [Synth 8-3848] Net iic_data[1] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[2] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[3] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[4] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[5] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[6] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[7] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[8] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[9] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[10] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[11] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[12] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[13] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[14] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[15] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[16] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[17] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[18] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[19] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[20] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[21] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[22] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
 INFO: [Synth 8-256] done synthesizing module 'fifo_proc' (4#1) [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:22]
 INFO: [Synth 8-638] synthesizing module 'usb_handle' [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/usb_handle.v:23]
 INFO: [Synth 8-256] done synthesizing module 'usb_handle' (5#1) [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/usb_handle.v:23]
-WARNING: [Synth 8-3848] Net iic_data[22] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[21] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[20] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[19] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[18] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[17] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[16] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[15] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[14] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[13] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[12] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[11] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[10] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[9] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[8] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[7] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[6] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[5] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[4] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[3] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[2] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
-WARNING: [Synth 8-3848] Net iic_data[1] in module/entity async_245_fifo does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:46]
 INFO: [Synth 8-256] done synthesizing module 'async_245_fifo' (6#1) [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:22]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[175]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[174]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[173]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[172]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[171]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[170]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[169]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[168]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[167]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[166]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[165]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[164]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[163]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[162]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[161]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[160]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[159]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[158]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[157]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[156]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[155]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[154]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[153]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[152]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[151]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[150]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[149]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[148]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[147]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[146]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[145]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[144]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[143]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[142]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[141]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[140]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[139]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[138]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[137]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[136]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[135]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[134]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[133]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[132]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[131]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[130]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[129]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[128]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[127]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[126]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[125]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[124]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[123]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[122]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[121]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[120]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[119]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[118]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[117]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[116]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[115]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[114]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[113]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[112]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[111]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[110]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[109]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[108]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[107]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[106]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[105]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[104]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[103]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[102]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[101]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[100]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[99]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[98]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[97]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[96]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[95]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[94]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[93]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[92]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[91]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[90]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[89]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[88]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[87]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[86]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[85]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[84]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[83]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[82]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[81]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[80]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[79]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[78]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[77]
-WARNING: [Synth 8-3331] design fifo_proc has unconnected port iic_data_bus[76]
-INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 305.512 ; gain = 98.355
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 306.094 ; gain = 98.871
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -206,7 +83,7 @@ Report Check Netlist:
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 305.512 ; gain = 98.355
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 306.094 ; gain = 98.871
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a15tftg256-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -222,22 +99,22 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 601.285 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 612.102 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 612.102 ; gain = 404.879
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a15tftg256-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 612.102 ; gain = 404.879
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 612.102 ; gain = 404.879
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5587] ROM size for "Go" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5587] ROM size for "Go" is below threshold of ROM address width. It will be mapped to LUTs
@@ -255,6 +132,8 @@ INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5587] ROM size for "r_data" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "usb_data" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "o_iic_en" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
@@ -262,7 +141,7 @@ INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "data" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "isQ" won't be mapped to RAM because it is too sparse
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 612.102 ; gain = 404.879
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -275,54 +154,54 @@ Start RTL Component Statistics
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     32 Bit       Adders := 1     
+	   2 Input     32 Bit       Adders := 23    
 	   2 Input     16 Bit       Adders := 1     
-	   2 Input     10 Bit       Adders := 1     
-	   2 Input      5 Bit       Adders := 1     
-	   2 Input      3 Bit       Adders := 1     
+	   2 Input     10 Bit       Adders := 23    
+	   2 Input      5 Bit       Adders := 23    
+	   2 Input      3 Bit       Adders := 23    
 +---Registers : 
 	               16 Bit    Registers := 1     
-	               10 Bit    Registers := 1     
-	                8 Bit    Registers := 12    
-	                6 Bit    Registers := 1     
-	                5 Bit    Registers := 1     
-	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 17    
+	               10 Bit    Registers := 23    
+	                8 Bit    Registers := 166   
+	                6 Bit    Registers := 23    
+	                5 Bit    Registers := 23    
+	                2 Bit    Registers := 23    
+	                1 Bit    Registers := 171   
 +---Muxes : 
-	   2 Input     16 Bit        Muxes := 4     
+	   2 Input     16 Bit        Muxes := 3     
 	   7 Input     16 Bit        Muxes := 2     
-	  11 Input     10 Bit        Muxes := 1     
-	   2 Input     10 Bit        Muxes := 1     
-	   2 Input      8 Bit        Muxes := 8     
-	  15 Input      8 Bit        Muxes := 2     
-	  31 Input      8 Bit        Muxes := 5     
-	   8 Input      8 Bit        Muxes := 1     
-	  11 Input      6 Bit        Muxes := 1     
-	  16 Input      6 Bit        Muxes := 1     
-	   2 Input      6 Bit        Muxes := 2     
-	  12 Input      5 Bit        Muxes := 1     
-	   9 Input      5 Bit        Muxes := 1     
-	   2 Input      5 Bit        Muxes := 2     
-	  15 Input      4 Bit        Muxes := 1     
-	  11 Input      4 Bit        Muxes := 1     
-	  15 Input      3 Bit        Muxes := 3     
-	  11 Input      3 Bit        Muxes := 1     
-	  31 Input      3 Bit        Muxes := 1     
-	   2 Input      3 Bit        Muxes := 1     
-	  11 Input      2 Bit        Muxes := 2     
-	  31 Input      2 Bit        Muxes := 3     
-	   2 Input      2 Bit        Muxes := 2     
-	   2 Input      1 Bit        Muxes := 59    
-	   5 Input      1 Bit        Muxes := 4     
-	  11 Input      1 Bit        Muxes := 8     
-	  15 Input      1 Bit        Muxes := 6     
-	   4 Input      1 Bit        Muxes := 4     
-	   3 Input      1 Bit        Muxes := 5     
-	   6 Input      1 Bit        Muxes := 1     
-	  12 Input      1 Bit        Muxes := 1     
-	  16 Input      1 Bit        Muxes := 2     
-	  31 Input      1 Bit        Muxes := 4     
-	   8 Input      1 Bit        Muxes := 7     
+	  11 Input     10 Bit        Muxes := 23    
+	   2 Input     10 Bit        Muxes := 23    
+	   2 Input      8 Bit        Muxes := 163   
+	  15 Input      8 Bit        Muxes := 46    
+	  31 Input      8 Bit        Muxes := 115   
+	  30 Input      8 Bit        Muxes := 2     
+	  11 Input      6 Bit        Muxes := 23    
+	  16 Input      6 Bit        Muxes := 23    
+	   2 Input      6 Bit        Muxes := 46    
+	  12 Input      5 Bit        Muxes := 23    
+	   9 Input      5 Bit        Muxes := 23    
+	   2 Input      5 Bit        Muxes := 46    
+	  15 Input      4 Bit        Muxes := 23    
+	  11 Input      4 Bit        Muxes := 23    
+	  15 Input      3 Bit        Muxes := 69    
+	  11 Input      3 Bit        Muxes := 23    
+	  31 Input      3 Bit        Muxes := 23    
+	   2 Input      3 Bit        Muxes := 23    
+	  11 Input      2 Bit        Muxes := 46    
+	  31 Input      2 Bit        Muxes := 69    
+	   2 Input      2 Bit        Muxes := 24    
+	   2 Input      1 Bit        Muxes := 896   
+	   5 Input      1 Bit        Muxes := 92    
+	  11 Input      1 Bit        Muxes := 184   
+	  15 Input      1 Bit        Muxes := 138   
+	   4 Input      1 Bit        Muxes := 92    
+	   3 Input      1 Bit        Muxes := 115   
+	   6 Input      1 Bit        Muxes := 23    
+	  12 Input      1 Bit        Muxes := 23    
+	  16 Input      1 Bit        Muxes := 46    
+	  31 Input      1 Bit        Muxes := 92    
+	  30 Input      1 Bit        Muxes := 6     
 	   7 Input      1 Bit        Muxes := 10    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -398,10 +277,10 @@ Detailed RTL Component Info :
 	                8 Bit    Registers := 3     
 	                1 Bit    Registers := 3     
 +---Muxes : 
-	   2 Input      8 Bit        Muxes := 1     
-	   8 Input      8 Bit        Muxes := 1     
-	   8 Input      1 Bit        Muxes := 7     
-	   2 Input      1 Bit        Muxes := 7     
+	   2 Input      8 Bit        Muxes := 2     
+	  30 Input      8 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 8     
+	  30 Input      1 Bit        Muxes := 6     
 Module usb_handle 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -411,7 +290,7 @@ Detailed RTL Component Info :
 	                8 Bit    Registers := 2     
 	                1 Bit    Registers := 5     
 +---Muxes : 
-	   2 Input     16 Bit        Muxes := 4     
+	   2 Input     16 Bit        Muxes := 3     
 	   7 Input     16 Bit        Muxes := 2     
 	   2 Input      2 Bit        Muxes := 1     
 	   2 Input      1 Bit        Muxes := 14    
@@ -428,28 +307,96 @@ BRAMs: 50 (col length: RAMB18 60 RAMB36 30)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
-Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 601.285 ; gain = 394.129
+Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 612.102 ; gain = 404.879
 ---------------------------------------------------------------------------------
 Start Cross Boundary Optimization
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "isQ" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "IIC_NUM_00/U1/i" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "IIC_NUM_00/U1/i" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "IIC_NUM_00/U1/i" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "IIC_NUM_00/U1/isAck" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "IIC_NUM_00/U1/rSDA" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "IIC_NUM_00/U1/rSCL" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "IIC_NUM_00/U1/rSDA" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "IIC_NUM_00/U1/rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "isAck" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSCL" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
+INFO: [Common 17-14] Message 'Synth 8-5546' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:28 . Memory (MB): peak = 612.102 ; gain = 404.879
 ---------------------------------------------------------------------------------
-Finished Parallel Reinference  : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished Parallel Reinference  : Time (s): cpu = 00:00:23 ; elapsed = 00:00:28 . Memory (MB): peak = 612.102 ; gain = 404.879
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -464,7 +411,99 @@ ROM:
 +---------------+---------------------+---------------+----------------+
 |Module Name    | RTL Object          | Depth x Width | Implemented As | 
 +---------------+---------------------+---------------+----------------+
+|async_245_fifo | IIC_NUM_22/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_21/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_20/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_19/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_18/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_17/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_16/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_15/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_14/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_13/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_12/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_11/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_10/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_09/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_08/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_07/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_06/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_05/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_04/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_03/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_02/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_01/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_00/r_data   | 32x1          | LUT            | 
 |async_245_fifo | IIC_NUM_00/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_01/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_02/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_03/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_04/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_05/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_06/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_07/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_08/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_09/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_10/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_11/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_12/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_13/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_14/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_15/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_16/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_17/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_18/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_19/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_20/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_21/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_22/reg_addr | 32x8          | LUT            | 
+|fifo_proc      | j                   | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_22/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_21/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_20/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_19/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_18/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_17/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_16/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_15/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_14/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_13/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_12/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_11/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_10/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_09/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_08/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_07/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_06/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_05/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_04/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_03/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_02/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_01/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_00/r_data   | 32x1          | LUT            | 
+|async_245_fifo | IIC_NUM_00/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_01/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_02/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_03/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_04/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_05/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_06/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_07/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_08/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_09/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_10/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_11/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_12/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_13/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_14/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_15/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_16/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_17/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_18/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_19/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_20/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_21/reg_addr | 32x8          | LUT            | 
+|async_245_fifo | IIC_NUM_22/reg_addr | 32x8          | LUT            | 
 +---------------+---------------------+---------------+----------------+
 
 ---------------------------------------------------------------------------------
@@ -476,6 +515,72 @@ Start Area Optimization
 INFO: [Synth 8-3886] merging instance 'IIC_NUM_00/j_reg[6]' (FDCE) to 'IIC_NUM_00/j_reg[7]'
 INFO: [Synth 8-3886] merging instance 'IIC_NUM_00/j_reg[7]' (FDCE) to 'IIC_NUM_00/j_reg[5]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_00/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_01/j_reg[6]' (FDCE) to 'IIC_NUM_01/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_01/j_reg[7]' (FDCE) to 'IIC_NUM_01/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_01/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_02/j_reg[6]' (FDCE) to 'IIC_NUM_02/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_02/j_reg[7]' (FDCE) to 'IIC_NUM_02/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_02/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_03/j_reg[6]' (FDCE) to 'IIC_NUM_03/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_03/j_reg[7]' (FDCE) to 'IIC_NUM_03/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_03/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_04/j_reg[6]' (FDCE) to 'IIC_NUM_04/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_04/j_reg[7]' (FDCE) to 'IIC_NUM_04/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_04/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_05/j_reg[6]' (FDCE) to 'IIC_NUM_05/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_05/j_reg[7]' (FDCE) to 'IIC_NUM_05/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_05/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_06/j_reg[6]' (FDCE) to 'IIC_NUM_06/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_06/j_reg[7]' (FDCE) to 'IIC_NUM_06/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_06/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_07/j_reg[6]' (FDCE) to 'IIC_NUM_07/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_07/j_reg[7]' (FDCE) to 'IIC_NUM_07/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_07/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_08/j_reg[6]' (FDCE) to 'IIC_NUM_08/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_08/j_reg[7]' (FDCE) to 'IIC_NUM_08/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_08/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_09/j_reg[6]' (FDCE) to 'IIC_NUM_09/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_09/j_reg[7]' (FDCE) to 'IIC_NUM_09/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_09/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_10/j_reg[6]' (FDCE) to 'IIC_NUM_10/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_10/j_reg[7]' (FDCE) to 'IIC_NUM_10/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_10/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_11/j_reg[6]' (FDCE) to 'IIC_NUM_11/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_11/j_reg[7]' (FDCE) to 'IIC_NUM_11/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_11/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_12/j_reg[6]' (FDCE) to 'IIC_NUM_12/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_12/j_reg[7]' (FDCE) to 'IIC_NUM_12/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_12/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_13/j_reg[6]' (FDCE) to 'IIC_NUM_13/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_13/j_reg[7]' (FDCE) to 'IIC_NUM_13/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_13/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_14/j_reg[6]' (FDCE) to 'IIC_NUM_14/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_14/j_reg[7]' (FDCE) to 'IIC_NUM_14/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_14/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_15/j_reg[6]' (FDCE) to 'IIC_NUM_15/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_15/j_reg[7]' (FDCE) to 'IIC_NUM_15/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_15/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_16/j_reg[6]' (FDCE) to 'IIC_NUM_16/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_16/j_reg[7]' (FDCE) to 'IIC_NUM_16/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_16/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_17/j_reg[6]' (FDCE) to 'IIC_NUM_17/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_17/j_reg[7]' (FDCE) to 'IIC_NUM_17/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_17/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_18/j_reg[6]' (FDCE) to 'IIC_NUM_18/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_18/j_reg[7]' (FDCE) to 'IIC_NUM_18/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_18/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_19/j_reg[6]' (FDCE) to 'IIC_NUM_19/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_19/j_reg[7]' (FDCE) to 'IIC_NUM_19/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_19/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_20/j_reg[6]' (FDCE) to 'IIC_NUM_20/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_20/j_reg[7]' (FDCE) to 'IIC_NUM_20/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_20/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_21/j_reg[6]' (FDCE) to 'IIC_NUM_21/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_21/j_reg[7]' (FDCE) to 'IIC_NUM_21/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_21/j_reg[5] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_22/j_reg[6]' (FDCE) to 'IIC_NUM_22/j_reg[7]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_22/j_reg[7]' (FDCE) to 'IIC_NUM_22/j_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_22/j_reg[5] )
 INFO: [Synth 8-3886] merging instance 'IIC_NUM_00/w_data_reg[7]' (FDCE) to 'IIC_NUM_00/w_data_reg[4]'
 INFO: [Synth 8-3886] merging instance 'IIC_NUM_00/reg_addr_reg[7]' (FDCE) to 'IIC_NUM_00/reg_addr_reg[6]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_00/w_data_reg[6] )
@@ -485,51 +590,227 @@ INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_
 INFO: [Synth 8-3886] merging instance 'IIC_NUM_00/w_data_reg[3]' (FDCE) to 'IIC_NUM_00/w_data_reg[2]'
 INFO: [Synth 8-3886] merging instance 'IIC_NUM_00/w_data_reg[2]' (FDCE) to 'IIC_NUM_00/w_data_reg[1]'
 INFO: [Synth 8-3886] merging instance 'IIC_NUM_00/w_data_reg[1]' (FDCE) to 'IIC_NUM_00/w_data_reg[0]'
-INFO: [Synth 8-3886] merging instance 'IIC_NUM_00/U1/Go_reg[5]' (FDCE) to 'IIC_NUM_00/U1/Go_reg[4]'
-INFO: [Synth 8-3886] merging instance 'IIC_NUM_00/U1/Go_reg[4]' (FDCE) to 'IIC_NUM_00/U1/Go_reg[3]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_00/U1/Go_reg[3] )
-INFO: [Synth 8-3886] merging instance 'nolabel_line311/j_reg[7]' (FDCE) to 'nolabel_line311/j_reg[1]'
-INFO: [Synth 8-3886] merging instance 'nolabel_line311/j_reg[6]' (FDCE) to 'nolabel_line311/j_reg[1]'
-INFO: [Synth 8-3886] merging instance 'nolabel_line311/j_reg[5]' (FDCE) to 'nolabel_line311/j_reg[1]'
-INFO: [Synth 8-3886] merging instance 'nolabel_line311/j_reg[3]' (FDCE) to 'nolabel_line311/j_reg[1]'
-INFO: [Synth 8-3886] merging instance 'nolabel_line311/j_reg[4]' (FDCE) to 'nolabel_line311/j_reg[1]'
-INFO: [Synth 8-3886] merging instance 'nolabel_line311/j_reg[2]' (FDCE) to 'nolabel_line311/j_reg[1]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\nolabel_line311/j_reg[1] )
-WARNING: [Synth 8-3332] Sequential element (IIC_NUM_00/j_reg[7]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (IIC_NUM_00/j_reg[6]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (IIC_NUM_00/j_reg[5]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (IIC_NUM_00/i_reg[7]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (IIC_NUM_00/i_reg[6]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (IIC_NUM_00/i_reg[5]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (IIC_NUM_00/U1/Go_reg[5]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (IIC_NUM_00/U1/Go_reg[4]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (IIC_NUM_00/U1/Go_reg[3]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (IIC_NUM_00/reg_addr_reg[7]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (IIC_NUM_00/reg_addr_reg[6]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (IIC_NUM_00/reg_addr_reg[4]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (IIC_NUM_00/w_data_reg[7]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (IIC_NUM_00/w_data_reg[6]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (IIC_NUM_00/w_data_reg[4]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (IIC_NUM_00/w_data_reg[3]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (IIC_NUM_00/w_data_reg[2]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (IIC_NUM_00/w_data_reg[1]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (IIC_NUM_00/U1/D_NOT_OUT1_reg[6]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (nolabel_line311/j_reg[7]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (nolabel_line311/j_reg[6]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (nolabel_line311/j_reg[5]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (nolabel_line311/j_reg[4]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (nolabel_line311/j_reg[3]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (nolabel_line311/j_reg[2]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (nolabel_line311/j_reg[1]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (nolabel_line311/i_reg[7]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (nolabel_line311/i_reg[6]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (nolabel_line311/i_reg[5]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (nolabel_line311/i_reg[4]) is unused and will be removed from module async_245_fifo.
-WARNING: [Synth 8-3332] Sequential element (nolabel_line311/i_reg[3]) is unused and will be removed from module async_245_fifo.
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_01/w_data_reg[7]' (FDCE) to 'IIC_NUM_01/w_data_reg[4]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_01/reg_addr_reg[7]' (FDCE) to 'IIC_NUM_01/reg_addr_reg[6]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_01/w_data_reg[6] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_01/reg_addr_reg[6]' (FDCE) to 'IIC_NUM_01/reg_addr_reg[4]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_01/w_data_reg[4]' (FDCE) to 'IIC_NUM_01/w_data_reg[3]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_01/reg_addr_reg[4] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_01/w_data_reg[3]' (FDCE) to 'IIC_NUM_01/w_data_reg[2]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_01/w_data_reg[2]' (FDCE) to 'IIC_NUM_01/w_data_reg[1]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_01/w_data_reg[1]' (FDCE) to 'IIC_NUM_01/w_data_reg[0]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_02/w_data_reg[7]' (FDCE) to 'IIC_NUM_02/w_data_reg[4]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_02/reg_addr_reg[7]' (FDCE) to 'IIC_NUM_02/reg_addr_reg[6]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_02/w_data_reg[6] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_02/reg_addr_reg[6]' (FDCE) to 'IIC_NUM_02/reg_addr_reg[4]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_02/w_data_reg[4]' (FDCE) to 'IIC_NUM_02/w_data_reg[3]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_02/reg_addr_reg[4] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_02/w_data_reg[3]' (FDCE) to 'IIC_NUM_02/w_data_reg[2]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_02/w_data_reg[2]' (FDCE) to 'IIC_NUM_02/w_data_reg[1]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_02/w_data_reg[1]' (FDCE) to 'IIC_NUM_02/w_data_reg[0]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_03/w_data_reg[7]' (FDCE) to 'IIC_NUM_03/w_data_reg[4]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_03/reg_addr_reg[7]' (FDCE) to 'IIC_NUM_03/reg_addr_reg[6]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_03/w_data_reg[6] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_03/reg_addr_reg[6]' (FDCE) to 'IIC_NUM_03/reg_addr_reg[4]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_03/w_data_reg[4]' (FDCE) to 'IIC_NUM_03/w_data_reg[3]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_03/reg_addr_reg[4] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_03/w_data_reg[3]' (FDCE) to 'IIC_NUM_03/w_data_reg[2]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_03/w_data_reg[2]' (FDCE) to 'IIC_NUM_03/w_data_reg[1]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_03/w_data_reg[1]' (FDCE) to 'IIC_NUM_03/w_data_reg[0]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_04/w_data_reg[7]' (FDCE) to 'IIC_NUM_04/w_data_reg[4]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_04/reg_addr_reg[7]' (FDCE) to 'IIC_NUM_04/reg_addr_reg[6]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_04/w_data_reg[6] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_04/reg_addr_reg[6]' (FDCE) to 'IIC_NUM_04/reg_addr_reg[4]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_04/w_data_reg[4]' (FDCE) to 'IIC_NUM_04/w_data_reg[3]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_04/reg_addr_reg[4] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_04/w_data_reg[3]' (FDCE) to 'IIC_NUM_04/w_data_reg[2]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_04/w_data_reg[2]' (FDCE) to 'IIC_NUM_04/w_data_reg[1]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_04/w_data_reg[1]' (FDCE) to 'IIC_NUM_04/w_data_reg[0]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_05/w_data_reg[7]' (FDCE) to 'IIC_NUM_05/w_data_reg[4]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_05/reg_addr_reg[7]' (FDCE) to 'IIC_NUM_05/reg_addr_reg[6]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_05/w_data_reg[6] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_05/reg_addr_reg[6]' (FDCE) to 'IIC_NUM_05/reg_addr_reg[4]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_05/w_data_reg[4]' (FDCE) to 'IIC_NUM_05/w_data_reg[3]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_05/reg_addr_reg[4] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_05/w_data_reg[3]' (FDCE) to 'IIC_NUM_05/w_data_reg[2]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_05/w_data_reg[2]' (FDCE) to 'IIC_NUM_05/w_data_reg[1]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_05/w_data_reg[1]' (FDCE) to 'IIC_NUM_05/w_data_reg[0]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_06/w_data_reg[7]' (FDCE) to 'IIC_NUM_06/w_data_reg[4]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_06/reg_addr_reg[7]' (FDCE) to 'IIC_NUM_06/reg_addr_reg[6]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_06/w_data_reg[6] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_06/reg_addr_reg[6]' (FDCE) to 'IIC_NUM_06/reg_addr_reg[4]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_06/w_data_reg[4]' (FDCE) to 'IIC_NUM_06/w_data_reg[3]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_06/reg_addr_reg[4] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_06/w_data_reg[3]' (FDCE) to 'IIC_NUM_06/w_data_reg[2]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_06/w_data_reg[2]' (FDCE) to 'IIC_NUM_06/w_data_reg[1]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_06/w_data_reg[1]' (FDCE) to 'IIC_NUM_06/w_data_reg[0]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_07/w_data_reg[7]' (FDCE) to 'IIC_NUM_07/w_data_reg[4]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_07/reg_addr_reg[7]' (FDCE) to 'IIC_NUM_07/reg_addr_reg[6]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_07/w_data_reg[6] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_07/reg_addr_reg[6]' (FDCE) to 'IIC_NUM_07/reg_addr_reg[4]'
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_07/w_data_reg[4]' (FDCE) to 'IIC_NUM_07/w_data_reg[3]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_07/reg_addr_reg[4] )
+INFO: [Synth 8-3886] merging instance 'IIC_NUM_07/w_data_reg[3]' (FDCE) to 'IIC_NUM_07/w_data_reg[2]'
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_08/w_data_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_08/reg_addr_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_09/w_data_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_09/reg_addr_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_10/w_data_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_10/reg_addr_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_11/w_data_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_11/reg_addr_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_12/w_data_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_12/reg_addr_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_13/w_data_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_13/reg_addr_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_14/w_data_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_14/reg_addr_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_15/w_data_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_15/reg_addr_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_16/w_data_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_16/reg_addr_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_17/w_data_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_17/reg_addr_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_18/w_data_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_18/reg_addr_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_19/w_data_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_19/reg_addr_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_20/w_data_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_20/reg_addr_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_21/w_data_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_21/reg_addr_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_22/w_data_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_22/reg_addr_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_00/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_01/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_02/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_03/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_04/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_05/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_06/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_07/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_08/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_09/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_10/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_11/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_12/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_13/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_14/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_15/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_16/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_17/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_18/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_19/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_20/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_21/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\IIC_NUM_22/U1 /\Go_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (nolabel_line311/\j_reg[5] )
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__1.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__1.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__1.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__1.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__2.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__2.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__2.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__2.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__3.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__3.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__3.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__3.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__4.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__4.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__4.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__4.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__5.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__5.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__5.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__5.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__6.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__6.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__6.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__6.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__7.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__7.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__7.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__7.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__8.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__8.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__8.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__8.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__9.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__9.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__9.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__9.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__10.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__10.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__10.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__10.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__11.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__11.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__11.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__11.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__12.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__12.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__12.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__12.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__13.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__13.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__13.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__13.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__14.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__14.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__14.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__14.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__15.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__15.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__15.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__15.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__16.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__16.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__16.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__16.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__17.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__17.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__17.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__17.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__18.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__18.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__18.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__18.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__19.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__19.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__19.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__19.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__20.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__20.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__20.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__20.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__21.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__21.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__21.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__21.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod__22.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod__22.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod__22.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod__22.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[5]) is unused and will be removed from module iic_savemod.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[4]) is unused and will be removed from module iic_savemod.
+WARNING: [Synth 8-3332] Sequential element (Go_reg[3]) is unused and will be removed from module iic_savemod.
+WARNING: [Synth 8-3332] Sequential element (D_NOT_OUT1_reg[6]) is unused and will be removed from module iic_savemod.
+WARNING: [Synth 8-3332] Sequential element (j_reg[7]) is unused and will be removed from module fifo_proc.
+WARNING: [Synth 8-3332] Sequential element (j_reg[6]) is unused and will be removed from module fifo_proc.
+WARNING: [Synth 8-3332] Sequential element (j_reg[5]) is unused and will be removed from module fifo_proc.
+WARNING: [Synth 8-3332] Sequential element (i_reg[7]) is unused and will be removed from module fifo_proc.
+WARNING: [Synth 8-3332] Sequential element (i_reg[6]) is unused and will be removed from module fifo_proc.
+WARNING: [Synth 8-3332] Sequential element (i_reg[5]) is unused and will be removed from module fifo_proc.
+WARNING: [Synth 8-3332] Sequential element (IIC_NUM_22/j_reg[7]) is unused and will be removed from module async_245_fifo.
+WARNING: [Synth 8-3332] Sequential element (IIC_NUM_22/j_reg[6]) is unused and will be removed from module async_245_fifo.
+INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished Area Optimization : Time (s): cpu = 00:00:39 ; elapsed = 00:00:44 . Memory (MB): peak = 612.102 ; gain = 404.879
 ---------------------------------------------------------------------------------
-Finished Parallel Area Optimization  : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished Parallel Area Optimization  : Time (s): cpu = 00:00:39 ; elapsed = 00:00:44 . Memory (MB): peak = 612.102 ; gain = 404.879
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -543,10 +824,10 @@ Start Timing Optimization
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:45 ; elapsed = 00:00:50 . Memory (MB): peak = 650.125 ; gain = 442.902
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished Timing Optimization : Time (s): cpu = 00:00:47 ; elapsed = 00:00:51 . Memory (MB): peak = 674.902 ; gain = 467.680
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -558,16 +839,16 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished Technology Mapping : Time (s): cpu = 00:00:49 ; elapsed = 00:00:54 . Memory (MB): peak = 780.105 ; gain = 572.883
 ---------------------------------------------------------------------------------
-Finished Parallel Technology Mapping Optimization  : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished Parallel Technology Mapping Optimization  : Time (s): cpu = 00:00:49 ; elapsed = 00:00:54 . Memory (MB): peak = 780.105 ; gain = 572.883
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
 | |RTL Partition |Replication |Instances |
 +-+--------------+------------+----------+
 +-+--------------+------------+----------+
-Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:49 ; elapsed = 00:00:54 . Memory (MB): peak = 780.105 ; gain = 572.883
 ---------------------------------------------------------------------------------
 Start IO Insertion
 ---------------------------------------------------------------------------------
@@ -584,7 +865,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished IO Insertion : Time (s): cpu = 00:00:50 ; elapsed = 00:00:55 . Memory (MB): peak = 780.105 ; gain = 572.883
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -597,7 +878,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:50 ; elapsed = 00:00:55 . Memory (MB): peak = 780.105 ; gain = 572.883
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -609,25 +890,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:51 ; elapsed = 00:00:56 . Memory (MB): peak = 780.105 ; gain = 572.883
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:51 ; elapsed = 00:00:56 . Memory (MB): peak = 780.105 ; gain = 572.883
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:51 ; elapsed = 00:00:56 . Memory (MB): peak = 780.105 ; gain = 572.883
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:51 ; elapsed = 00:00:56 . Memory (MB): peak = 780.105 ; gain = 572.883
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -645,50 +926,93 @@ Report Cell Usage:
 +------+-------+------+
 |1     |BUFG   |     1|
 |2     |CARRY4 |     4|
-|3     |LUT1   |    20|
-|4     |LUT2   |    26|
-|5     |LUT3   |    38|
-|6     |LUT4   |    51|
-|7     |LUT5   |    54|
-|8     |LUT6   |   115|
-|9     |MUXF7  |     1|
-|10    |FDCE   |   128|
-|11    |FDPE   |     9|
+|3     |LUT1   |   109|
+|4     |LUT2   |   614|
+|5     |LUT3   |   315|
+|6     |LUT4   |   641|
+|7     |LUT5   |   897|
+|8     |LUT6   |  2672|
+|9     |MUXF7  |   103|
+|10    |FDCE   |  1498|
+|11    |FDPE   |   132|
 |12    |IBUF   |     4|
-|13    |IOBUF  |     9|
-|14    |OBUF   |     4|
-|15    |OBUFT  |    22|
+|13    |IOBUF  |    31|
+|14    |OBUF   |    26|
 +------+-------+------+
 
 Report Instance Areas: 
-+------+------------------+------------+------+
-|      |Instance          |Module      |Cells |
-+------+------------------+------------+------+
-|1     |top               |            |   486|
-|2     |  IIC_NUM_00      |iic_demo    |   284|
-|3     |    U1            |iic_savemod |   232|
-|4     |  SYS_RST         |sys_rst     |     2|
-|5     |  USB_Handle      |usb_handle  |   138|
-|6     |  nolabel_line311 |fifo_proc   |    22|
-+------+------------------+------------+------+
++------+------------------+---------------+------+
+|      |Instance          |Module         |Cells |
++------+------------------+---------------+------+
+|1     |top               |               |  7047|
+|2     |  IIC_NUM_00      |iic_demo       |   293|
+|3     |    U1            |iic_savemod_43 |   234|
+|4     |  IIC_NUM_01      |iic_demo_0     |   293|
+|5     |    U1            |iic_savemod_42 |   234|
+|6     |  IIC_NUM_02      |iic_demo_1     |   295|
+|7     |    U1            |iic_savemod_41 |   234|
+|8     |  IIC_NUM_03      |iic_demo_2     |   293|
+|9     |    U1            |iic_savemod_40 |   234|
+|10    |  IIC_NUM_04      |iic_demo_3     |   293|
+|11    |    U1            |iic_savemod_39 |   237|
+|12    |  IIC_NUM_05      |iic_demo_4     |   293|
+|13    |    U1            |iic_savemod_38 |   234|
+|14    |  IIC_NUM_06      |iic_demo_5     |   293|
+|15    |    U1            |iic_savemod_37 |   234|
+|16    |  IIC_NUM_07      |iic_demo_6     |   293|
+|17    |    U1            |iic_savemod_36 |   234|
+|18    |  IIC_NUM_08      |iic_demo_7     |   293|
+|19    |    U1            |iic_savemod_35 |   234|
+|20    |  IIC_NUM_09      |iic_demo_8     |   294|
+|21    |    U1            |iic_savemod_34 |   237|
+|22    |  IIC_NUM_10      |iic_demo_9     |   295|
+|23    |    U1            |iic_savemod_33 |   234|
+|24    |  IIC_NUM_11      |iic_demo_10    |   293|
+|25    |    U1            |iic_savemod_32 |   234|
+|26    |  IIC_NUM_12      |iic_demo_11    |   293|
+|27    |    U1            |iic_savemod_31 |   234|
+|28    |  IIC_NUM_13      |iic_demo_12    |   293|
+|29    |    U1            |iic_savemod_30 |   234|
+|30    |  IIC_NUM_14      |iic_demo_13    |   293|
+|31    |    U1            |iic_savemod_29 |   237|
+|32    |  IIC_NUM_15      |iic_demo_14    |   293|
+|33    |    U1            |iic_savemod_28 |   234|
+|34    |  IIC_NUM_16      |iic_demo_15    |   293|
+|35    |    U1            |iic_savemod_27 |   234|
+|36    |  IIC_NUM_17      |iic_demo_16    |   293|
+|37    |    U1            |iic_savemod_26 |   234|
+|38    |  IIC_NUM_18      |iic_demo_17    |   293|
+|39    |    U1            |iic_savemod_25 |   234|
+|40    |  IIC_NUM_19      |iic_demo_18    |   294|
+|41    |    U1            |iic_savemod_24 |   237|
+|42    |  IIC_NUM_20      |iic_demo_19    |   293|
+|43    |    U1            |iic_savemod_23 |   234|
+|44    |  IIC_NUM_21      |iic_demo_20    |   279|
+|45    |    U1            |iic_savemod_22 |   220|
+|46    |  IIC_NUM_22      |iic_demo_21    |   293|
+|47    |    U1            |iic_savemod    |   234|
+|48    |  SYS_RST         |sys_rst        |    15|
+|49    |  USB_Handle      |usb_handle     |   135|
+|50    |  nolabel_line311 |fifo_proc      |   104|
++------+------------------+---------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 601.285 ; gain = 394.129
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:51 ; elapsed = 00:00:56 . Memory (MB): peak = 780.105 ; gain = 572.883
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 75 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 601.285 ; gain = 98.355
-Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 601.285 ; gain = 394.129
+Synthesis finished with 0 errors, 0 critical warnings and 443 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:44 ; elapsed = 00:00:50 . Memory (MB): peak = 780.105 ; gain = 266.875
+Synthesis Optimization Complete : Time (s): cpu = 00:00:51 ; elapsed = 00:00:56 . Memory (MB): peak = 780.105 ; gain = 572.883
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 17 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 39 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 9 instances were transformed.
-  IOBUF => IOBUF (IBUF, OBUFT): 9 instances
+  A total of 31 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 31 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-87 Infos, 177 Warnings, 0 Critical Warnings and 0 Errors encountered.
+329 Infos, 124 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 601.285 ; gain = 394.129
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 601.285 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Thu May 09 20:05:27 2019...
+synth_design: Time (s): cpu = 00:00:52 ; elapsed = 00:00:56 . Memory (MB): peak = 780.105 ; gain = 572.883
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.030 . Memory (MB): peak = 780.105 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Thu May 09 23:38:33 2019...

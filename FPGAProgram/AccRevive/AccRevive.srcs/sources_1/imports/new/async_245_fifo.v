@@ -65,7 +65,7 @@ module async_245_fifo(
            .oData(iic_data[0]),
            .oDone(iic_done[0])
            );
-    /*
+    
     iic_demo IIC_NUM_01(
           .CLOCK(i_clk), 
           .RESET(sys_rst),      
@@ -120,7 +120,7 @@ module async_245_fifo(
            .oData(iic_data[5]),
            .oDone(iic_done[5])
            );
-        
+   /* */    
    iic_demo IIC_NUM_06(
            .CLOCK(i_clk), 
            .RESET(sys_rst),      
@@ -307,7 +307,7 @@ module async_245_fifo(
            .oData(iic_data[22]),
            .oDone(iic_done[22])
             );                                                                                                                                                                         
-    */   
+    /**/   
    fifo_proc(
             .i_clk(i_clk),
             .i_rst(sys_rst),  

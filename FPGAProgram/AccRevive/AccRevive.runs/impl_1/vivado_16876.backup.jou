@@ -2,8 +2,8 @@
 # Vivado v2016.1 (64-bit)
 # SW Build 1538259 on Fri Apr  8 15:45:27 MDT 2016
 # IP Build 1537824 on Fri Apr  8 04:28:57 MDT 2016
-# Start of session at: Thu May 09 18:17:06 2019
-# Process ID: 6960
+# Start of session at: Thu May 09 23:38:44 2019
+# Process ID: 16876
 # Current directory: D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.runs/impl_1
 # Command line: vivado.exe -log async_245_fifo.vdi -applog -messageDb vivado.pb -mode batch -source async_245_fifo.tcl -notrace
 # Log file: D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.runs/impl_1/async_245_fifo.vdi
