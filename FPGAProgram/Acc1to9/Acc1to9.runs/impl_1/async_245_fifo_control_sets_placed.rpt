@@ -1,0 +1,110 @@
+Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2016.1 (win64) Build 1538259 Fri Apr  8 15:45:27 MDT 2016
+| Date         : Mon Jun 03 15:47:16 2019
+| Host         : CORSAIRONE running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file async_245_fifo_control_sets_placed.rpt
+| Design       : async_245_fifo
+| Device       : xc7a15t
+-------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Flip-Flop Distribution
+3. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    57 |
+| Unused register locations in slices containing registers |   203 |
++----------------------------------------------------------+-------+
+
+
+2. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |               0 |            0 |
+| No           | No                    | Yes                    |             116 |           62 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | Yes                    |             297 |          139 |
+| Yes          | Yes                   | No                     |               0 |            0 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+3. Detailed Control Set Information
+-----------------------------------
+
++------------------+----------------------------------------+----------------------+------------------+----------------+
+|   Clock Signal   |              Enable Signal             |   Set/Reset Signal   | Slice Load Count | Bel Load Count |
++------------------+----------------------------------------+----------------------+------------------+----------------+
+|  i_clk_IBUF_BUFG | USB_Handle/o_wr_i_1_n_0                | SYS_RST/sys_rst      |                1 |              1 |
+|  i_clk_IBUF_BUFG |                                        | SYS_RST/sys_rst      |                1 |              1 |
+|  i_clk_IBUF_BUFG | IIC_NUM_03/U1/rSCL_i_1__2_n_0          | SYS_RST/sys_rst      |                1 |              1 |
+|  i_clk_IBUF_BUFG | IIC_NUM_01/g0_b0__2_n_0                | SYS_RST/i_reg[7]     |                1 |              1 |
+|  i_clk_IBUF_BUFG | IIC_NUM_04/U1/rSCL_i_1__3_n_0          | SYS_RST/sys_rst      |                1 |              1 |
+|  i_clk_IBUF_BUFG | IIC_NUM_00/U1/rSCL_i_1_n_0             | SYS_RST/sys_rst      |                1 |              1 |
+|  i_clk_IBUF_BUFG | nolabel_line114/o_led_i_1_n_0          | SYS_RST/usb_en_reg   |                1 |              1 |
+|  i_clk_IBUF_BUFG | IIC_NUM_01/U1/rSCL_i_1__0_n_0          | SYS_RST/sys_rst      |                1 |              1 |
+|  i_clk_IBUF_BUFG | IIC_NUM_02/U1/rSCL_i_1__1_n_0          | SYS_RST/sys_rst      |                1 |              1 |
+|  i_clk_IBUF_BUFG | USB_Handle/o_rd_i_1_n_0                | SYS_RST/sys_rst      |                1 |              1 |
+|  i_clk_IBUF_BUFG | USB_Handle/i[15]_i_1_n_0               | SYS_RST/usb_en_reg   |                2 |              3 |
+|  i_clk_IBUF_BUFG | nolabel_line114/i[3]_i_1__4_n_0        | SYS_RST/usb_en_reg   |                1 |              4 |
+|  i_clk_IBUF_BUFG | IIC_NUM_02/U1/i[4]_i_1__1_n_0          | SYS_RST/Go_reg[0][0] |                3 |              5 |
+|  i_clk_IBUF_BUFG | IIC_NUM_02/U1/reg_addr_reg[0][0]       | SYS_RST/AR[0]        |                1 |              5 |
+|  i_clk_IBUF_BUFG | IIC_NUM_00/U1/i[4]_i_1_n_0             | SYS_RST/AR[0]        |                4 |              5 |
+|  i_clk_IBUF_BUFG | IIC_NUM_00/U1/E[0]                     | SYS_RST/AR[0]        |                1 |              5 |
+|  i_clk_IBUF_BUFG | IIC_NUM_02/U1/j_reg[0][0]              | SYS_RST/i_reg[7]     |                1 |              5 |
+|  i_clk_IBUF_BUFG | IIC_NUM_00/U1/reg_addr_reg[0][0]       | SYS_RST/AR[0]        |                1 |              5 |
+|  i_clk_IBUF_BUFG | IIC_NUM_02/U1/E[0]                     | SYS_RST/i_reg[7]     |                2 |              5 |
+|  i_clk_IBUF_BUFG | IIC_NUM_00/U1/i_reg[0]_0[0]            | SYS_RST/AR[0]        |                3 |              5 |
+|  i_clk_IBUF_BUFG | IIC_NUM_01/U1/E[0]                     | SYS_RST/i_reg[7]     |                2 |              5 |
+|  i_clk_IBUF_BUFG | IIC_NUM_01/U1/j_reg[0][0]              | SYS_RST/i_reg[7]     |                2 |              5 |
+|  i_clk_IBUF_BUFG | IIC_NUM_01/U1/reg_addr_reg[0][0]       | SYS_RST/AR[0]        |                2 |              5 |
+|  i_clk_IBUF_BUFG | IIC_NUM_03/U1/E[0]                     | SYS_RST/i_reg[7]     |                2 |              5 |
+|  i_clk_IBUF_BUFG | IIC_NUM_03/U1/j_reg[0][0]              | SYS_RST/i_reg[7]     |                2 |              5 |
+|  i_clk_IBUF_BUFG | IIC_NUM_03/U1/reg_addr_reg[0][0]       | SYS_RST/AR[0]        |                1 |              5 |
+|  i_clk_IBUF_BUFG | IIC_NUM_04/U1/i[4]_i_1__3_n_0          | SYS_RST/Go_reg[0][0] |                3 |              5 |
+|  i_clk_IBUF_BUFG | IIC_NUM_04/U1/E[0]                     | SYS_RST/i_reg[7]     |                3 |              5 |
+|  i_clk_IBUF_BUFG | IIC_NUM_04/U1/j_reg[0][0]              | SYS_RST/i_reg[7]     |                3 |              5 |
+|  i_clk_IBUF_BUFG | IIC_NUM_04/U1/reg_addr_reg[0][0]       | SYS_RST/AR[0]        |                2 |              5 |
+|  i_clk_IBUF_BUFG | IIC_NUM_03/U1/i[4]_i_1__2_n_0          | SYS_RST/Go_reg[0][0] |                4 |              5 |
+|  i_clk_IBUF_BUFG | IIC_NUM_01/U1/i[4]_i_1__0_n_0          | SYS_RST/Go_reg[0][0] |                3 |              5 |
+|  i_clk_IBUF_BUFG |                                        | i_rst_IBUF           |                1 |              6 |
+|  i_clk_IBUF_BUFG | IIC_NUM_01/U1/D_NOT_OUT1[7]_i_1__0_n_0 | SYS_RST/usb_en_reg   |                4 |              7 |
+|  i_clk_IBUF_BUFG | IIC_NUM_02/U1/D_NOT_OUT1[7]_i_1__1_n_0 | SYS_RST/usb_en_reg   |                3 |              7 |
+|  i_clk_IBUF_BUFG | IIC_NUM_01/g0_b0__2_n_0                | SYS_RST/AR[0]        |                2 |              7 |
+|  i_clk_IBUF_BUFG | IIC_NUM_03/U1/D_NOT_OUT1[7]_i_1__2_n_0 | SYS_RST/usb_en_reg   |                4 |              7 |
+|  i_clk_IBUF_BUFG | IIC_NUM_04/U1/D_NOT_OUT1[7]_i_1__3_n_0 | SYS_RST/usb_en_reg   |                2 |              7 |
+|  i_clk_IBUF_BUFG | IIC_NUM_00/U1/D_NOT_OUT1[7]_i_1_n_0    | SYS_RST/usb_en_reg   |                4 |              7 |
+|  i_clk_IBUF_BUFG | IIC_NUM_04/g0_b0_n_0                   | SYS_RST/i_reg[7]     |                1 |              8 |
+|  i_clk_IBUF_BUFG | IIC_NUM_00/g0_b0__3_n_0                | SYS_RST/AR[0]        |                3 |              8 |
+|  i_clk_IBUF_BUFG | USB_Handle/data[7]_i_1_n_0             | SYS_RST/i_reg[7]     |                3 |              8 |
+|  i_clk_IBUF_BUFG | USB_Handle/r_data[7]_i_1_n_0           | SYS_RST/usb_en_reg   |                1 |              8 |
+|  i_clk_IBUF_BUFG | IIC_NUM_02/g0_b0__1_n_0                | SYS_RST/i_reg[7]     |                1 |              8 |
+|  i_clk_IBUF_BUFG | IIC_NUM_03/g0_b0__0_n_0                | SYS_RST/i_reg[7]     |                2 |              8 |
+|  i_clk_IBUF_BUFG | IIC_NUM_01/U1/C1[9]_i_1__0_n_0         | SYS_RST/Go_reg[0][0] |                7 |             10 |
+|  i_clk_IBUF_BUFG | IIC_NUM_00/U1/C1[9]_i_1_n_0            | SYS_RST/AR[0]        |                9 |             10 |
+|  i_clk_IBUF_BUFG |                                        | SYS_RST/i_reg[7]     |                9 |             10 |
+|  i_clk_IBUF_BUFG | IIC_NUM_02/U1/C1[9]_i_1__1_n_0         | SYS_RST/Go_reg[0][0] |                8 |             10 |
+|  i_clk_IBUF_BUFG | IIC_NUM_03/U1/C1[9]_i_1__2_n_0         | SYS_RST/Go_reg[0][0] |                7 |             10 |
+|  i_clk_IBUF_BUFG | IIC_NUM_04/U1/C1[9]_i_1__3_n_0         | SYS_RST/usb_en_reg   |                6 |             10 |
+|  i_clk_IBUF_BUFG |                                        | SYS_RST/usb_en_reg   |               11 |             12 |
+|  i_clk_IBUF_BUFG | nolabel_line114/j[3]_i_1_n_0           | SYS_RST/usb_en_reg   |                4 |             12 |
+|  i_clk_IBUF_BUFG | USB_Handle/i[15]_i_1_n_0               | SYS_RST/i_reg[7]     |                5 |             13 |
+|  i_clk_IBUF_BUFG | USB_Handle/j[15]_i_1_n_0               | SYS_RST/usb_en_reg   |                6 |             16 |
+|  i_clk_IBUF_BUFG |                                        | SYS_RST/AR[0]        |               13 |             36 |
+|  i_clk_IBUF_BUFG |                                        | SYS_RST/Go_reg[0][0] |               27 |             51 |
++------------------+----------------------------------------+----------------------+------------------+----------------+
+
+

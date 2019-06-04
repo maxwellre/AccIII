@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7a15tftg256-1" LaunchTime="1557470253">
-  <File Type="RDS-PROPCONSTRS" Name="async_245_fifo_drc_synth.rpt"/>
   <File Type="PA-TCL" Name="async_245_fifo.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="async_245_fifo_drc_synth.rpt"/>
   <File Type="RDS-RDS" Name="async_245_fifo.vds"/>
   <File Type="RDS-UTIL" Name="async_245_fifo_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="async_245_fifo_utilization_synth.pb"/>
