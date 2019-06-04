@@ -174,8 +174,9 @@ int main(int argc, char* argv[])
 	else
 	{
 		// FT_SetBitMode FAILED!
+		FT_Close(ftHandle);
 	}
-	FT_Close(ftHandle);
-
+	
+	free(fileBuffer); // Free buffer memory to avoid memory leak
 	return 0;
 }

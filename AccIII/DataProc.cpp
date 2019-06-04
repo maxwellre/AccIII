@@ -38,7 +38,8 @@ void SaveDataResult(long dwSum, unsigned char fileBuffer[])
 	else
 		TRACE("The file was opened\n");
 
-	fwrite(fileBuffer, sizeof(byte), dwSum, fp);
+	size_t write_size = fwrite(fileBuffer, sizeof(byte), dwSum, fp);
+	TRACE(_T("wrote %d elements\r\n"), write_size);
 	fclose(fp);
 }
 
