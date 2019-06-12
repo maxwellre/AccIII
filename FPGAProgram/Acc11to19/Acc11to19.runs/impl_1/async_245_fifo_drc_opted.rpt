@@ -1,0 +1,70 @@
+Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2016.1 (win64) Build 1538259 Fri Apr  8 15:45:27 MDT 2016
+| Date         : Thu Jun 06 18:01:27 2019
+| Host         : CORSAIRONE running 64-bit major release  (build 9200)
+| Command      : report_drc -file async_245_fifo_drc_opted.rpt
+| Design       : async_245_fifo
+| Device       : xc7a15tftg256-1
+| Speed File   : -1
+------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max violations: <unlimited>
+             Violations found: 8
+
+2. REPORT DETAILS
+-----------------
+IOSR-1#1 Warning
+IOB set reset sharing  
+IO io_data[0] connects to flops which have these SYS_RST/i_reg[7], SYS_RST/usb_en_reg set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
+Related violations: <none>
+
+IOSR-1#2 Warning
+IOB set reset sharing  
+IO io_data[1] connects to flops which have these SYS_RST/i_reg[7], SYS_RST/usb_en_reg set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
+Related violations: <none>
+
+IOSR-1#3 Warning
+IOB set reset sharing  
+IO io_data[2] connects to flops which have these SYS_RST/i_reg[7], SYS_RST/usb_en_reg set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
+Related violations: <none>
+
+IOSR-1#4 Warning
+IOB set reset sharing  
+IO io_data[3] connects to flops which have these SYS_RST/i_reg[7], SYS_RST/usb_en_reg set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
+Related violations: <none>
+
+IOSR-1#5 Warning
+IOB set reset sharing  
+IO io_data[4] connects to flops which have these SYS_RST/i_reg[7], SYS_RST/usb_en_reg set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
+Related violations: <none>
+
+IOSR-1#6 Warning
+IOB set reset sharing  
+IO io_data[5] connects to flops which have these SYS_RST/i_reg[7], SYS_RST/usb_en_reg set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
+Related violations: <none>
+
+IOSR-1#7 Warning
+IOB set reset sharing  
+IO io_data[6] connects to flops which have these SYS_RST/i_reg[7], SYS_RST/usb_en_reg set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
+Related violations: <none>
+
+IOSR-1#8 Warning
+IOB set reset sharing  
+IO io_data[7] connects to flops which have these SYS_RST/i_reg[7], SYS_RST/usb_en_reg set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
+Related violations: <none>
+
+

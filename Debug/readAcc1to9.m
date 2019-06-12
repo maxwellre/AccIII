@@ -30,7 +30,7 @@ else % Actual sampling frequency
     elseif isnumeric(d_rate_path)
         if isempty(d_rate_path)
             Fs = 1310; 
-            disp('Unknown sampling frequency: set to 1285Hz by default');
+            disp('Unknown sampling frequency: set to 1310Hz by default');
         else  
             Fs = d_rate_path;
             disp('Inputed sampling frequency manually');

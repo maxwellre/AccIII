@@ -12,7 +12,7 @@ close all
 %--------------------------------------------------------------------------
 NoID = 1;
 
-expected_samp_time = 2;
+expected_samp_time = 5;
 
 disp('Sampling...')
 if NoID
@@ -41,7 +41,7 @@ end
 
 %% ------------------------------------------------------------------------
 % Spectrum analysis
-if 1    
+if 0    
     axis_label = {'X', 'Y', 'Z'};
     acc_ind = setdiff(1:46,[10,20,30,40]);
     
