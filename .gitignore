@@ -1,6 +1,8 @@
 .vs/
 AccIII.VC.db
 AccIII/Debug/
+AccIII/*.bin
+AccIII/*.txt
 DataAnalysis/Data
 Debug/data.bin
 Debug/sample_time.txt

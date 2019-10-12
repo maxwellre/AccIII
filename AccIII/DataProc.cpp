@@ -17,10 +17,10 @@ void USBReadData(FT_HANDLE ftHandle, DWORD readBytes, long* dwSum, int dataNum, 
 		long dwSum_org = *dwSum;
 		*dwSum = *dwSum + BytesReceived;
 
-		if (*dwSum <= dataNum)
-		{
-			memcpy(fileBuffer + dwSum_org, RxBuffer, BytesReceived);
-		}
+		//if (*dwSum <= dataNum)
+		//{
+		//	memcpy(fileBuffer + dwSum_org, RxBuffer, BytesReceived);
+		//}
 	}
 	else
 	{

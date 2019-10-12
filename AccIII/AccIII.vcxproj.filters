@@ -16,6 +16,12 @@
     <ClCompile Include="USBCommDlg.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="window.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="qcustomplot.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\headers\DataProc.h">
@@ -31,6 +37,15 @@
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="..\headers\USBCommDlg.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\headers\window.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\headers\qcustomplot.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\headers\ui_window.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>
