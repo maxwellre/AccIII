@@ -1,6 +1,7 @@
 .vs/
 AccIII.VC.db
 AccIII/Debug/
+AccIIIQtUI/*Debug/
 DataAnalysis/Data
 Debug/data.bin
 Debug/sample_time.txt
@@ -18,3 +19,4 @@ FPGAProgram/No_fifo_no_ID/vivado_*.log
 *.asv
 *.mat
 *.zip
+*.opendb

@@ -10,12 +10,6 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="USBComm.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="USBCommDlg.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\headers\DataProc.h">
@@ -25,12 +19,6 @@
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="..\headers\stdafx.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\headers\USBComm.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\headers\USBCommDlg.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>

@@ -157,15 +157,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="USBComm.cpp" />
-    <ClCompile Include="USBCommDlg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\headers\DataProc.h" />
     <ClInclude Include="..\headers\ftd2xx.h" />
     <ClInclude Include="..\headers\stdafx.h" />
-    <ClInclude Include="..\headers\USBComm.h" />
-    <ClInclude Include="..\headers\USBCommDlg.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
