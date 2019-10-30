@@ -1,9 +1,11 @@
+#pragma once
 // Functions for Data Processing
 
-#include "stdafx.h"
 #include <fstream> 
 #include <iostream>
 #include "DataProc.h"
+
+#include"ftd2xx.h"
 
 DWORD BytesReceived;
 unsigned char RxBuffer[10000];
@@ -25,7 +27,7 @@ void USBReadData(FT_HANDLE ftHandle, DWORD readBytes, long* dwSum, int dataNum, 
 	else
 	{
 		// FT_Read Failed  
-		TRACE(_T("FT_Read Failed! ftStatus = %d\r\n"), ftStatus);
+        //TRACE(_T("FT_Read Failed! ftStatus = %d\r\n"), ftStatus);
 	}
 }
 
@@ -33,13 +35,13 @@ void SaveDataResult(long dwSum, unsigned char fileBuffer[])
 {
 	FILE* fp;
 	errno_t err;
-	if ((err = fopen_s(&fp, "data.bin", "wb")) != 0)
-		TRACE("The file was not opened\n");
-	else
-		TRACE("The file was opened\n");
+//	if ((err = fopen_s(&fp, "data.bin", "wb")) != 0)
+//        //TRACE("The file was not opened\n");
+//	else
+//        //TRACE("The file was opened\n");
 
 	size_t write_size = fwrite(fileBuffer, sizeof(byte), dwSum, fp);
-	TRACE(_T("wrote %d elements\r\n"), write_size);
+    //TRACE(_T("wrote %d elements\r\n"), write_size);
 	fclose(fp);
 }
 

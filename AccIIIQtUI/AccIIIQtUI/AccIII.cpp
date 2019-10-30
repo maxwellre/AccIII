@@ -1,10 +1,10 @@
 // FT2232H56QTest.cpp : 
 
-#include "stdafx.h"
 #include "DataProc.h"
 
-#include "window.h"
+#include "mainwindow.h"
 #include <QApplication>
+#include"ftd2xx.h"
 
 DWORD EventDWord;
 DWORD RxBytes;
@@ -17,10 +17,10 @@ int main(int argc, char* argv[])
 {
 	int DataNum = 40000 * 24; // Old version default: 1.159 secs
 
-	// QT program initialization
-	//QApplication a(argc, argv);
-	//Window w;
-	//w.show();
+//    QT program initialization
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
 
 	if (argc == 2)
 	{
@@ -35,7 +35,6 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-		TRACE(_T("Only one input argument is allowed!\r\n"));
 		printf("Only one input argument is allowed!\r\n");
 		printf("Default sample time = 1.159 secs\r\n");
 	}
