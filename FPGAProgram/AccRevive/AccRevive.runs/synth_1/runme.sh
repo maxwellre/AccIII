@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.runs/synth_1'
+HD_PWD='D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

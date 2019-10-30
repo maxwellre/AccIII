@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<webTalkData  fileName='usage_statistics_webtalk.xml'  majorVersion='1' minorVersion='0' timeStamp='Thu May 09 23:40:10 2019'>
+<webTalkData  fileName='usage_statistics_webtalk.xml'  majorVersion='1' minorVersion='0' timeStamp='Wed Oct 30 13:05:38 2019'>
 <section name="__ROOT__" level="0" order="1" description="">
  <section name="software_version_and_target_device" level="1" order="1" description="">
   <keyValuePair key="beta" value="FALSE" description="" />
   <keyValuePair key="build_version" value="1538259" description="" />
-  <keyValuePair key="date_generated" value="Thu May 09 23:40:10 2019" description="" />
+  <keyValuePair key="date_generated" value="Wed Oct 30 13:05:38 2019" description="" />
   <keyValuePair key="os_platform" value="WIN64" description="" />
   <keyValuePair key="product_version" value="Vivado v2016.1 (64-bit)" description="" />
   <keyValuePair key="project_id" value="495610190ad44c93bd536a3d49756f9b" description="" />
-  <keyValuePair key="project_iteration" value="100" description="" />
+  <keyValuePair key="project_iteration" value="101" description="" />
   <keyValuePair key="random_id" value="8c041c683d2d59949886ea924b5b21f8" description="" />
   <keyValuePair key="registration_id" value="" description="" />
   <keyValuePair key="route_design" value="TRUE" description="" />
@@ -294,7 +294,7 @@
    <keyValuePair key="nets" value="7061" description="" />
    <keyValuePair key="pins" value="39341" description="" />
    <keyValuePair key="pll" value="0" description="" />
-   <keyValuePair key="router_runtime" value="19.412000" description="" />
+   <keyValuePair key="router_runtime" value="18.767000" description="" />
    <keyValuePair key="router_timing_driven" value="1" description="" />
    <keyValuePair key="threads" value="2" description="" />
    <keyValuePair key="timing_constraints_exist" value="1" description="" />
@@ -337,10 +337,10 @@
    <keyValuePair key="-verilog_define" value="default::[not_specified]" description="" />
   </section>
   <section name="usage" level="2" order="2" description="">
-   <keyValuePair key="elapsed" value="00:00:54s" description="" />
+   <keyValuePair key="elapsed" value="00:00:58s" description="" />
    <keyValuePair key="hls_ip" value="0" description="" />
-   <keyValuePair key="memory_gain" value="572.883MB" description="" />
-   <keyValuePair key="memory_peak" value="780.105MB" description="" />
+   <keyValuePair key="memory_gain" value="576.176MB" description="" />
+   <keyValuePair key="memory_peak" value="783.199MB" description="" />
   </section>
  </section>
  <section name="unisim_transformation" level="1" order="7" description="">
@@ -383,7 +383,7 @@
  </section>
  <section name="vivado_usage" level="1" order="8" description="">
   <section name="other_data" level="2" order="1" description="">
-   <keyValuePair key="guimode" value="77" description="" />
+   <keyValuePair key="guimode" value="79" description="" />
   </section>
   <section name="project_data" level="2" order="2" description="">
    <keyValuePair key="constraintsetcount" value="1" description="" />

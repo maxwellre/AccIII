@@ -1,13 +1,14 @@
-
-*** Running vivado
-    with args -log async_245_fifo.vdi -applog -m64 -messageDb vivado.pb -mode batch -source async_245_fifo.tcl -notrace
-
-
-****** Vivado v2016.1 (64-bit)
-  **** SW Build 1538259 on Fri Apr  8 15:45:27 MDT 2016
-  **** IP Build 1537824 on Fri Apr  8 04:28:57 MDT 2016
-    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
-
+#-----------------------------------------------------------
+# Vivado v2016.1 (64-bit)
+# SW Build 1538259 on Fri Apr  8 15:45:27 MDT 2016
+# IP Build 1537824 on Fri Apr  8 04:28:57 MDT 2016
+# Start of session at: Wed Oct 30 13:03:48 2019
+# Process ID: 17108
+# Current directory: D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.runs/impl_1
+# Command line: vivado.exe -log async_245_fifo.vdi -applog -messageDb vivado.pb -mode batch -source async_245_fifo.tcl -notrace
+# Log file: D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.runs/impl_1/async_245_fifo.vdi
+# Journal file: D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
 source async_245_fifo.tcl -notrace
 Design is defaulting to srcset: sources_1
 Design is defaulting to constrset: constrs_1
@@ -438,66 +439,3 @@ Running Vector-less Activity Propagation...
 
 Finished Running Vector-less Activity Propagation
 INFO: [Common 17-206] Exiting Vivado at Wed Oct 30 13:04:39 2019...
-
-*** Running vivado
-    with args -log async_245_fifo.vdi -applog -m64 -messageDb vivado.pb -mode batch -source async_245_fifo.tcl -notrace
-
-
-****** Vivado v2016.1 (64-bit)
-  **** SW Build 1538259 on Fri Apr  8 15:45:27 MDT 2016
-  **** IP Build 1537824 on Fri Apr  8 04:28:57 MDT 2016
-    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
-
-source async_245_fifo.tcl -notrace
-Command: open_checkpoint async_245_fifo_routed.dcp
-
-Starting open_checkpoint Task
-
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 207.043 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 39 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
-INFO: [Project 1-479] Netlist was created with Vivado 2016.1
-INFO: [Device 21-403] Loading part xc7a15tftg256-1
-INFO: [Project 1-570] Preparing netlist for logic optimization
-Parsing XDC File [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.runs/impl_1/.Xil/Vivado-8112-CORSAIRONE/dcp/async_245_fifo.xdc]
-Finished Parsing XDC File [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.runs/impl_1/.Xil/Vivado-8112-CORSAIRONE/dcp/async_245_fifo.xdc]
-Reading XDEF placement.
-Reading placer database...
-Reading XDEF routing.
-Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.326 . Memory (MB): peak = 452.125 ; gain = 3.922
-Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
-Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.326 . Memory (MB): peak = 452.125 ; gain = 3.922
-INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 31 instances were transformed.
-  IOBUF => IOBUF (IBUF, OBUFT): 31 instances
-
-INFO: [Project 1-604] Checkpoint was created with Vivado v2016.1 (64-bit) build 1538259
-Attempting to get a license for feature 'Implementation' and/or device 'xc7a15t'
-INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a15t'
-Running DRC as a precondition to command write_bitstream
-INFO: [DRC 23-27] Running DRC with 2 threads
-WARNING: [DRC 23-20] Rule violation (IOSR-1) IOB set reset sharing - IO io_data[0] connects to flops which have these SYS_RST/i_reg[7], SYS_RST/C1_reg[6][0] set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-WARNING: [DRC 23-20] Rule violation (IOSR-1) IOB set reset sharing - IO io_data[1] connects to flops which have these SYS_RST/i_reg[7], SYS_RST/C1_reg[6][0] set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-WARNING: [DRC 23-20] Rule violation (IOSR-1) IOB set reset sharing - IO io_data[2] connects to flops which have these SYS_RST/i_reg[7], SYS_RST/C1_reg[6][0] set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-WARNING: [DRC 23-20] Rule violation (IOSR-1) IOB set reset sharing - IO io_data[3] connects to flops which have these SYS_RST/i_reg[7], SYS_RST/C1_reg[6][0] set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-WARNING: [DRC 23-20] Rule violation (IOSR-1) IOB set reset sharing - IO io_data[4] connects to flops which have these SYS_RST/i_reg[7], SYS_RST/C1_reg[6][0] set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-WARNING: [DRC 23-20] Rule violation (IOSR-1) IOB set reset sharing - IO io_data[5] connects to flops which have these SYS_RST/i_reg[7], SYS_RST/C1_reg[6][0] set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-WARNING: [DRC 23-20] Rule violation (IOSR-1) IOB set reset sharing - IO io_data[6] connects to flops which have these SYS_RST/i_reg[7], SYS_RST/C1_reg[6][0] set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-WARNING: [DRC 23-20] Rule violation (IOSR-1) IOB set reset sharing - IO io_data[7] connects to flops which have these SYS_RST/i_reg[7], SYS_RST/C1_reg[6][0] set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-INFO: [Vivado 12-3199] DRC finished with 0 Errors, 8 Warnings
-INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
-INFO: [Designutils 20-2272] Running write_bitstream with 2 threads.
-Loading data files...
-Loading site data...
-Loading route data...
-Processing options...
-Creating bitmap...
-Creating bitstream...
-Writing bitstream ./async_245_fifo.bit...
-Writing bitstream ./async_245_fifo.bin...
-INFO: [Vivado 12-1842] Bitgen Completed Successfully.
-INFO: [Project 1-120] WebTalk data collection is mandatory when using a WebPACK part without a full Vivado license. To see the specific WebTalk data collected for your design, open the usage_statistics_webtalk.html or usage_statistics_webtalk.xml file in the implementation directory.
-INFO: [Common 17-83] Releasing license: Implementation
-write_bitstream: Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 824.504 ; gain = 372.379
-INFO: [Vivado_Tcl 4-395] Unable to parse hwdef file async_245_fifo.hwdef
-INFO: [Common 17-206] Exiting Vivado at Wed Oct 30 13:05:38 2019...
