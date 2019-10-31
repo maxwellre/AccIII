@@ -6,8 +6,8 @@ DataAnalysis/Data
 Debug/data.bin
 Debug/sample_time.txt
 Debug/data_rate.txt
-AccIIITwin/AccIII/*.bin
-AccIIITwin/AccIII/*.txt
+AccIIITwin/*.bin
+AccIIITwin/*.txt
 AccIIITwin/AccIII/Debug/*.bin
 AccIIITwin/AccIII/Debug/*.txt
 AccIIITwin/AccIII/Debug/*.tlog/
@@ -28,3 +28,4 @@ FPGAProgram/No_fifo_no_ID/vivado_*.log
 *.mat
 *.zip
 *.opendb
+*.mat

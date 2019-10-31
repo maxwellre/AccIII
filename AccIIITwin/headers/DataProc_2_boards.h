@@ -1,7 +1,7 @@
 #pragma once
 //------------------------------------------------------------------------------
 #include<string>
-#define ExpFs 1310 // Expected sampling frequency
+#define ExpFs 1298 // Expected sampling frequency
 #define AccBusNum 23 // Totally 23 buses each connecting two accelerometers
 #define DataByteNum 24 //Each bus connects two accelerometer each with 3 axies [High + Low] bytes
 

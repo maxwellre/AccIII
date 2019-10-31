@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
 	else if (argc == 1)
 	{
 		printf("Default sample time = 1 secs\r\n");
-		DataNum_A = ExpFs * AccBusNum * DataByteNum; // AccBusNum = 23 for a whole accelerometer array, reduce the number for special configurations
+		DataNum_A = 1.5*ExpFs * AccBusNum * DataByteNum; // AccBusNum = 23 for a whole accelerometer array, reduce the number for special configurations
 		DataNum_B = ExpFs * AccBusNum * DataByteNum; // AccBusNum = 23 for a whole accelerometer array, reduce the number for special configurations	
 	}
 	else
