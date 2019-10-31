@@ -6,8 +6,8 @@ DataAnalysis/Data
 Debug/data.bin
 Debug/sample_time.txt
 Debug/data_rate.txt
-AccIIITwin/*.bin
-AccIIITwin/*.txt
+AccIIITwin/*/*.bin
+AccIIITwin/*/*.txt
 AccIIITwin/AccIII/Debug/*.bin
 AccIIITwin/AccIII/Debug/*.txt
 AccIIITwin/AccIII/Debug/*.tlog/
