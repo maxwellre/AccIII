@@ -64,10 +64,10 @@ odd_ind = 1:2:read_num;
 even_ind = 2:2:read_num;
 acc_data = zeros(samp_num, read_num, 3);
 
-wb_h = waitbar(0, 'O', 'Name','Converting from HEX to DEC...');
+% wb_h = waitbar(0, 'O', 'Name','Converting from HEX to DEC...');
 count = 0;
 for i=1:samp_num
-    waitbar(i/samp_num,wb_h,sprintf('Processing sample %d',i));
+%     waitbar(i/samp_num,wb_h,sprintf('Processing sample %d',i));
     
     % Odd number sensor (Pull up)
     for j=1:3
@@ -87,7 +87,7 @@ for i=1:samp_num
         end
     end
 end
-close(wb_h);
+% close(wb_h);
 
 %=========================== Format correction ============================
 negInd = find(acc_data > 32767); % Negative data

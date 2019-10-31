@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="AccIII_2_boards.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DataProc_2_boards.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\headers\ftd2xx.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\headers\stdafx.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\headers\DataProc_2_boards.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header">
+      <UniqueIdentifier>{3dcbb01f-cb39-40ac-afe3-c366bf331f77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{16902194-1cdd-498d-bfd7-fb25b673e2e0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

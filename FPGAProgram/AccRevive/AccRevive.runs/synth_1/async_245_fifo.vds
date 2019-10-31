@@ -2,12 +2,12 @@
 # Vivado v2016.1 (64-bit)
 # SW Build 1538259 on Fri Apr  8 15:45:27 MDT 2016
 # IP Build 1537824 on Fri Apr  8 04:28:57 MDT 2016
-# Start of session at: Thu May 09 23:37:34 2019
-# Process ID: 13700
-# Current directory: D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.runs/synth_1
+# Start of session at: Wed Oct 30 13:01:54 2019
+# Process ID: 9336
+# Current directory: D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.runs/synth_1
 # Command line: vivado.exe -log async_245_fifo.vds -mode batch -messageDb vivado.pb -notrace -source async_245_fifo.tcl
-# Log file: D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.runs/synth_1/async_245_fifo.vds
-# Journal file: D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.runs/synth_1\vivado.jou
+# Log file: D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.runs/synth_1/async_245_fifo.vds
+# Journal file: D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
 source async_245_fifo.tcl -notrace
 Command: synth_design -top async_245_fifo -part xc7a15tftg256-1
@@ -15,15 +15,15 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a15t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a15t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 5432 
+INFO: Helper process launched with PID 13532 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 268.660 ; gain = 61.438
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 268.707 ; gain = 61.684
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'async_245_fifo' [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:22]
-INFO: [Synth 8-638] synthesizing module 'sys_rst' [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/sys_rst.v:23]
-INFO: [Synth 8-256] done synthesizing module 'sys_rst' (1#1) [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/sys_rst.v:23]
-INFO: [Synth 8-638] synthesizing module 'iic_demo' [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/iic_demo.v:22]
-INFO: [Synth 8-638] synthesizing module 'iic_savemod' [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/iic_savemod.v:23]
+INFO: [Synth 8-638] synthesizing module 'async_245_fifo' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:22]
+INFO: [Synth 8-638] synthesizing module 'sys_rst' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/sys_rst.v:23]
+INFO: [Synth 8-256] done synthesizing module 'sys_rst' (1#1) [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/sys_rst.v:23]
+INFO: [Synth 8-638] synthesizing module 'iic_demo' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/iic_demo.v:22]
+INFO: [Synth 8-638] synthesizing module 'iic_savemod' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/iic_savemod.v:23]
 	Parameter FCLK bound to: 10'b0000111110 
 	Parameter FHALF bound to: 10'b0000011111 
 	Parameter FQUARTER bound to: 10'b0000001111 
@@ -37,43 +37,43 @@ INFO: [Synth 8-638] synthesizing module 'iic_savemod' [D:/Yitian/MaxDrive/AccIII
 	Parameter WRFUNC1 bound to: 5'b00111 
 	Parameter WRFUNC2 bound to: 5'b01001 
 	Parameter RDFUNC bound to: 5'b10011 
-INFO: [Synth 8-155] case statement is not full and has no default [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/iic_savemod.v:69]
-INFO: [Synth 8-155] case statement is not full and has no default [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/iic_savemod.v:152]
-INFO: [Synth 8-256] done synthesizing module 'iic_savemod' (2#1) [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/iic_savemod.v:23]
-INFO: [Synth 8-155] case statement is not full and has no default [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/iic_demo.v:80]
-INFO: [Synth 8-256] done synthesizing module 'iic_demo' (3#1) [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/iic_demo.v:22]
-WARNING: [Synth 8-387] label required on module instance [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:311]
-INFO: [Synth 8-638] synthesizing module 'fifo_proc' [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:22]
-INFO: [Synth 8-155] case statement is not full and has no default [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:58]
-WARNING: [Synth 8-3848] Net iic_data[0] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[1] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[2] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[3] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[4] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[5] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[6] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[7] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[8] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[9] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[10] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[11] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[12] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[13] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[14] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[15] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[16] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[17] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[18] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[19] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[20] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[21] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-WARNING: [Synth 8-3848] Net iic_data[22] in module/entity fifo_proc does not have driver. [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
-INFO: [Synth 8-256] done synthesizing module 'fifo_proc' (4#1) [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:22]
-INFO: [Synth 8-638] synthesizing module 'usb_handle' [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/usb_handle.v:23]
-INFO: [Synth 8-256] done synthesizing module 'usb_handle' (5#1) [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/usb_handle.v:23]
-INFO: [Synth 8-256] done synthesizing module 'async_245_fifo' (6#1) [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:22]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/iic_savemod.v:69]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/iic_savemod.v:152]
+INFO: [Synth 8-256] done synthesizing module 'iic_savemod' (2#1) [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/iic_savemod.v:23]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/iic_demo.v:80]
+INFO: [Synth 8-256] done synthesizing module 'iic_demo' (3#1) [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/iic_demo.v:22]
+WARNING: [Synth 8-387] label required on module instance [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:311]
+INFO: [Synth 8-638] synthesizing module 'fifo_proc' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:22]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:58]
+WARNING: [Synth 8-3848] Net iic_data[0] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[1] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[2] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[3] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[4] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[5] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[6] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[7] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[8] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[9] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[10] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[11] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[12] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[13] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[14] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[15] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[16] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[17] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[18] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[19] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[20] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[21] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+WARNING: [Synth 8-3848] Net iic_data[22] in module/entity fifo_proc does not have driver. [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:41]
+INFO: [Synth 8-256] done synthesizing module 'fifo_proc' (4#1) [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/fifo_proc.v:22]
+INFO: [Synth 8-638] synthesizing module 'usb_handle' [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/usb_handle.v:23]
+INFO: [Synth 8-256] done synthesizing module 'usb_handle' (5#1) [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/new/usb_handle.v:23]
+INFO: [Synth 8-256] done synthesizing module 'async_245_fifo' (6#1) [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/sources_1/imports/new/async_245_fifo.v:22]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 306.094 ; gain = 98.871
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 306.094 ; gain = 99.070
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -83,38 +83,38 @@ Report Check Netlist:
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 306.094 ; gain = 98.871
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 306.094 ; gain = 99.070
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a15tftg256-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/constrs_1/new/ft2232_constraint.xdc]
-Finished Parsing XDC File [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/constrs_1/new/ft2232_constraint.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/Yitian/MaxDrive/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/constrs_1/new/ft2232_constraint.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/async_245_fifo_propImpl.xdc].
+Parsing XDC File [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/constrs_1/new/ft2232_constraint.xdc]
+Finished Parsing XDC File [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/constrs_1/new/ft2232_constraint.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/Yitian/OneDrive - ece.ucsb.edu/AccIII/FPGAProgram/AccRevive/AccRevive.srcs/constrs_1/new/ft2232_constraint.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/async_245_fifo_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/async_245_fifo_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 612.102 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 613.566 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 612.102 ; gain = 404.879
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 613.566 ; gain = 406.543
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a15tftg256-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 612.102 ; gain = 404.879
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 613.566 ; gain = 406.543
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 612.102 ; gain = 404.879
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 613.566 ; gain = 406.543
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5587] ROM size for "Go" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5587] ROM size for "Go" is below threshold of ROM address width. It will be mapped to LUTs
@@ -141,7 +141,7 @@ INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "data" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "isQ" won't be mapped to RAM because it is too sparse
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 612.102 ; gain = 404.879
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 613.566 ; gain = 406.543
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -307,7 +307,7 @@ BRAMs: 50 (col length: RAMB18 60 RAMB36 30)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
-Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 612.102 ; gain = 404.879
+Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 613.566 ; gain = 406.543
 ---------------------------------------------------------------------------------
 Start Cross Boundary Optimization
 ---------------------------------------------------------------------------------
@@ -394,9 +394,9 @@ INFO: [Synth 8-5546] ROM "rSDA" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "i" won't be mapped to RAM because it is too sparse
 INFO: [Common 17-14] Message 'Synth 8-5546' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:28 . Memory (MB): peak = 612.102 ; gain = 404.879
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:30 . Memory (MB): peak = 613.566 ; gain = 406.543
 ---------------------------------------------------------------------------------
-Finished Parallel Reinference  : Time (s): cpu = 00:00:23 ; elapsed = 00:00:28 . Memory (MB): peak = 612.102 ; gain = 404.879
+Finished Parallel Reinference  : Time (s): cpu = 00:00:25 ; elapsed = 00:00:30 . Memory (MB): peak = 613.566 ; gain = 406.543
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -808,9 +808,9 @@ WARNING: [Synth 8-3332] Sequential element (IIC_NUM_22/j_reg[7]) is unused and w
 WARNING: [Synth 8-3332] Sequential element (IIC_NUM_22/j_reg[6]) is unused and will be removed from module async_245_fifo.
 INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Area Optimization : Time (s): cpu = 00:00:39 ; elapsed = 00:00:44 . Memory (MB): peak = 612.102 ; gain = 404.879
+Finished Area Optimization : Time (s): cpu = 00:00:41 ; elapsed = 00:00:47 . Memory (MB): peak = 613.566 ; gain = 406.543
 ---------------------------------------------------------------------------------
-Finished Parallel Area Optimization  : Time (s): cpu = 00:00:39 ; elapsed = 00:00:44 . Memory (MB): peak = 612.102 ; gain = 404.879
+Finished Parallel Area Optimization  : Time (s): cpu = 00:00:41 ; elapsed = 00:00:47 . Memory (MB): peak = 613.566 ; gain = 406.543
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -824,10 +824,10 @@ Start Timing Optimization
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:45 ; elapsed = 00:00:50 . Memory (MB): peak = 650.125 ; gain = 442.902
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:47 ; elapsed = 00:00:53 . Memory (MB): peak = 652.945 ; gain = 445.922
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:47 ; elapsed = 00:00:51 . Memory (MB): peak = 674.902 ; gain = 467.680
+Finished Timing Optimization : Time (s): cpu = 00:00:49 ; elapsed = 00:00:55 . Memory (MB): peak = 677.707 ; gain = 470.684
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -839,16 +839,16 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:49 ; elapsed = 00:00:54 . Memory (MB): peak = 780.105 ; gain = 572.883
+Finished Technology Mapping : Time (s): cpu = 00:00:51 ; elapsed = 00:00:58 . Memory (MB): peak = 783.199 ; gain = 576.176
 ---------------------------------------------------------------------------------
-Finished Parallel Technology Mapping Optimization  : Time (s): cpu = 00:00:49 ; elapsed = 00:00:54 . Memory (MB): peak = 780.105 ; gain = 572.883
+Finished Parallel Technology Mapping Optimization  : Time (s): cpu = 00:00:51 ; elapsed = 00:00:58 . Memory (MB): peak = 783.199 ; gain = 576.176
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
 | |RTL Partition |Replication |Instances |
 +-+--------------+------------+----------+
 +-+--------------+------------+----------+
-Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:49 ; elapsed = 00:00:54 . Memory (MB): peak = 780.105 ; gain = 572.883
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:51 ; elapsed = 00:00:58 . Memory (MB): peak = 783.199 ; gain = 576.176
 ---------------------------------------------------------------------------------
 Start IO Insertion
 ---------------------------------------------------------------------------------
@@ -865,7 +865,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:50 ; elapsed = 00:00:55 . Memory (MB): peak = 780.105 ; gain = 572.883
+Finished IO Insertion : Time (s): cpu = 00:00:53 ; elapsed = 00:00:59 . Memory (MB): peak = 783.199 ; gain = 576.176
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -878,7 +878,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:50 ; elapsed = 00:00:55 . Memory (MB): peak = 780.105 ; gain = 572.883
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:53 ; elapsed = 00:00:59 . Memory (MB): peak = 783.199 ; gain = 576.176
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -890,25 +890,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:51 ; elapsed = 00:00:56 . Memory (MB): peak = 780.105 ; gain = 572.883
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:53 ; elapsed = 00:01:00 . Memory (MB): peak = 783.199 ; gain = 576.176
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:51 ; elapsed = 00:00:56 . Memory (MB): peak = 780.105 ; gain = 572.883
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:53 ; elapsed = 00:01:00 . Memory (MB): peak = 783.199 ; gain = 576.176
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:51 ; elapsed = 00:00:56 . Memory (MB): peak = 780.105 ; gain = 572.883
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:53 ; elapsed = 00:01:00 . Memory (MB): peak = 783.199 ; gain = 576.176
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:51 ; elapsed = 00:00:56 . Memory (MB): peak = 780.105 ; gain = 572.883
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:53 ; elapsed = 00:01:00 . Memory (MB): peak = 783.199 ; gain = 576.176
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -996,11 +996,11 @@ Report Instance Areas:
 |50    |  nolabel_line311 |fifo_proc      |   104|
 +------+------------------+---------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:51 ; elapsed = 00:00:56 . Memory (MB): peak = 780.105 ; gain = 572.883
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:53 ; elapsed = 00:01:00 . Memory (MB): peak = 783.199 ; gain = 576.176
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 443 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:44 ; elapsed = 00:00:50 . Memory (MB): peak = 780.105 ; gain = 266.875
-Synthesis Optimization Complete : Time (s): cpu = 00:00:51 ; elapsed = 00:00:56 . Memory (MB): peak = 780.105 ; gain = 572.883
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:44 ; elapsed = 00:00:52 . Memory (MB): peak = 783.199 ; gain = 268.703
+Synthesis Optimization Complete : Time (s): cpu = 00:00:53 ; elapsed = 00:01:00 . Memory (MB): peak = 783.199 ; gain = 576.176
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 39 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -1013,6 +1013,6 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 INFO: [Common 17-83] Releasing license: Synthesis
 329 Infos, 124 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:52 ; elapsed = 00:00:56 . Memory (MB): peak = 780.105 ; gain = 572.883
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.030 . Memory (MB): peak = 780.105 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Thu May 09 23:38:33 2019...
+synth_design: Time (s): cpu = 00:00:54 ; elapsed = 00:01:00 . Memory (MB): peak = 783.199 ; gain = 576.176
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.034 . Memory (MB): peak = 783.199 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 30 13:02:57 2019...

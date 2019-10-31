@@ -1,12 +1,24 @@
 .vs/
 AccIII.VC.db
 AccIII/Debug/
+<<<<<<< HEAD
 AccIII/*.bin
 AccIII/*.txt
+=======
+AccIIIQtUI/*Debug/
+>>>>>>> removeQT
 DataAnalysis/Data
 Debug/data.bin
 Debug/sample_time.txt
 Debug/data_rate.txt
+AccIIITwin/*/*.bin
+AccIIITwin/*/*.txt
+AccIIITwin/AccIII/Debug/*.bin
+AccIIITwin/AccIII/Debug/*.txt
+AccIIITwin/AccIII/Debug/*.tlog/
+AccIIITwin/AccIII/Debug/*.pdb
+AccIIITwin/AccIII/Debug/*.idb
+AccIIITwin/AccIII/Debug/*.obj
 Debug/AccIII_PhantomSkin_Location.jpg
 temp/
 ipch/
@@ -20,3 +32,8 @@ FPGAProgram/No_fifo_no_ID/vivado_*.log
 *.asv
 *.mat
 *.zip
+<<<<<<< HEAD
+=======
+*.opendb
+*.mat
+>>>>>>> removeQT

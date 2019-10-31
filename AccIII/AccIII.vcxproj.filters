@@ -10,6 +10,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="USBComm.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -22,6 +23,8 @@
     <ClCompile Include="qcustomplot.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+=======
+>>>>>>> removeQT
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\headers\DataProc.h">
@@ -33,6 +36,7 @@
     <ClInclude Include="..\headers\stdafx.h">
       <Filter>Header</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="..\headers\USBComm.h">
       <Filter>Header</Filter>
     </ClInclude>
@@ -48,6 +52,8 @@
     <ClInclude Include="..\headers\ui_window.h">
       <Filter>Header</Filter>
     </ClInclude>
+=======
+>>>>>>> removeQT
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
