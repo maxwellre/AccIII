@@ -4,14 +4,15 @@
 #include "DataProc_2_boards.h"
 
 DWORD EventDWord;
-DWORD RxBytes;
+DWORD RxBytes_A;
+DWORD RxBytes_B;
 DWORD TxBytes;
 
 long dwSum_A = 0;
 long dwSum_B = 0;
 
-unsigned char* fileBuffer_B = NULL;
 unsigned char* fileBuffer_A = NULL;
+unsigned char* fileBuffer_B = NULL;
 
 int main(int argc, char* argv[])
 {	
@@ -92,55 +93,61 @@ int main(int argc, char* argv[])
 		dwSum_B = 0;
 
 		printf("Sampling...\n");
-		while ( (dwSum_A < DataNum_B) || (dwSum_B < DataNum_B) )
+		while ( (dwSum_A < DataNum_A) || (dwSum_B < DataNum_B) )
 		{
-			ftStatus_A = FT_GetStatus(ftHandle_A, &RxBytes, &TxBytes, &EventDWord);
-
-			if ((ftStatus_A == FT_OK) && (RxBytes > 0))
+			if (dwSum_A < DataNum_A)
 			{
-				if (RxBytes < 10000)
-				{
-					USBReadData(ftHandle_A, RxBytes, &dwSum_A, DataNum_A, fileBuffer_A);
-				}
-				else
-				{
-					int iCount = RxBytes / 10000;
-					for (int i = 0; i < iCount; i++)
-					{
-						USBReadData(ftHandle_A, 10000, &dwSum_A, DataNum_A, fileBuffer_A);
-					}
+				ftStatus_A = FT_GetStatus(ftHandle_A, &RxBytes_A, &TxBytes, &EventDWord);
 
-					int iMod = RxBytes % 10000;
-					if (iMod > 0)
+				if ((ftStatus_A == FT_OK) && (RxBytes_A > 0))
+				{
+					if (RxBytes_A < 10000)
 					{
-						USBReadData(ftHandle_A, iMod, &dwSum_A, DataNum_A, fileBuffer_A);
+						USBReadData(ftHandle_A, RxBytes_A, &dwSum_A, DataNum_A, fileBuffer_A);
+					}
+					else
+					{
+						int iCount_A = RxBytes_A / 10000;
+						for (int i = 0; i < iCount_A; i++)
+						{
+							USBReadData(ftHandle_A, 10000, &dwSum_A, DataNum_A, fileBuffer_A);
+						}
+
+						int iMod_A = RxBytes_A % 10000;
+						if (iMod_A > 0)
+						{
+							USBReadData(ftHandle_A, iMod_A, &dwSum_A, DataNum_A, fileBuffer_A);
+						}
 					}
 				}
 			}
-
-			ftStatus_B = FT_GetStatus(ftHandle_B, &RxBytes, &TxBytes, &EventDWord);
-
-			if ((ftStatus_B == FT_OK) && (RxBytes > 0))
+			
+			if (dwSum_B < DataNum_B)
 			{
-				if (RxBytes < 10000)
-				{
-					USBReadData(ftHandle_B, RxBytes, &dwSum_B, DataNum_B, fileBuffer_B);
-				}
-				else
-				{
-					int iCount = RxBytes / 10000;
-					for (int i = 0; i < iCount; i++)
-					{
-						USBReadData(ftHandle_B, 10000, &dwSum_B, DataNum_B, fileBuffer_B);
-					}
+				ftStatus_B = FT_GetStatus(ftHandle_B, &RxBytes_B, &TxBytes, &EventDWord);
 
-					int iMod = RxBytes % 10000;
-					if (iMod > 0)
+				if ((ftStatus_B == FT_OK) && (RxBytes_B > 0))
+				{
+					if (RxBytes_B < 10000)
 					{
-						USBReadData(ftHandle_B, iMod, &dwSum_B, DataNum_B, fileBuffer_B);
+						USBReadData(ftHandle_B, RxBytes_B, &dwSum_B, DataNum_B, fileBuffer_B);
+					}
+					else
+					{
+						int iCount_B = RxBytes_B / 10000;
+						for (int i = 0; i < iCount_B; i++)
+						{
+							USBReadData(ftHandle_B, 10000, &dwSum_B, DataNum_B, fileBuffer_B);
+						}
+
+						int iMod_B = RxBytes_B % 10000;
+						if (iMod_B > 0)
+						{
+							USBReadData(ftHandle_B, iMod_B, &dwSum_B, DataNum_B, fileBuffer_B);
+						}
 					}
 				}
-			}
+			}			
 		}
 
 		QueryPerformanceCounter(&lPostTime);
@@ -170,6 +177,9 @@ int main(int argc, char* argv[])
 	}
 	FT_Close(ftHandle_A);
 	FT_Close(ftHandle_B);
+
+	delete(fileBuffer_A);
+	delete(fileBuffer_B);
 
 	return 0;
 }
