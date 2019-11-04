@@ -12,7 +12,7 @@ close all
 %--------------------------------------------------------------------------
 NoID = 1;
 
-expected_samp_time = 5;
+expected_samp_time = 13;
 
 disp('Sampling...')
 if NoID
