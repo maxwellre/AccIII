@@ -1,8 +1,6 @@
 // Functions for Data Processing
 
 #include "stdafx.h"
-#include <fstream> 
-#include <iostream>
 #include "DataProc_2_boards.h"
 
 DWORD BytesReceived;
@@ -101,10 +99,33 @@ void SaveDataResult(long dwSum, unsigned char fileBuffer[], std::string fileName
 	fclose(fp);
 }
 
+// Create a new file and save the data
 void SaveNum(float inputValue, std::string fileName)
 {
 	std::ofstream ofs;
 	ofs.open(fileName);
 	ofs << inputValue << std::endl;
+	ofs.close();
+}
+
+// Adding data to an existing saved file
+void SaveTickTime(std::queue<float> inputStack, float tickFreq, std::string fileName)
+{
+	std::ofstream ofs;
+	ofs.open(fileName, std::ios_base::app);
+
+	ofs << std::endl; // Add an empty line for separation
+
+	float startTick = inputStack.front();
+	inputStack.pop();
+	ofs << std::fixed << std::setprecision(10) << 0.0 << std::endl;
+
+	while (!inputStack.empty())
+	{
+		float pTime = ( (inputStack.front() - startTick) / tickFreq);
+		inputStack.pop();
+		ofs << std::fixed << std::setprecision(10) << pTime << std::endl;
+	}
+
 	ofs.close();
 }
