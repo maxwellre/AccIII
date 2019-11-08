@@ -41,7 +41,7 @@ accEnB = acc_data_B(:,:,1).^2 +acc_data_B(:,:,2).^2 +acc_data_B(:,:,3).^2;
 accTotalEnA = sum(accEnA,2);
 accTotalEnB = sum(accEnB,2);
 
-threshVal = 0.6;    % Starting Threshold Value
+threshVal = 0.25;    % Starting Threshold Value
 foundOnsets = 10;
 
 % Onset detection using total energy (A)
@@ -77,7 +77,7 @@ while (foundOnsets ~= 0)
 end
 
 
-threshVal = 0.6;    % Starting Threshold Value
+threshVal = 0.25;    % Starting Threshold Value
 foundOnsets = 10;
 
 % Onset detection using total energy (B)

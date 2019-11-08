@@ -2,10 +2,11 @@
 addpath('../../WaveReconstructModel/');
 % -------------------------------------------------------------------------
 
-dataPath = '.\Tap Plamar\TapPalm_Loc4.mat';
+dataPath = './FullSetData_Yit/Tap Palmar/TapPalm_Loc4_1Hz.mat';
 
 TrialNum = 11;
-correctFactor = [0.9993 1.0090]; % Mean factor (STD = 0.0008 Hz)
+
+avgLen = 0.2; % Average time length (secs) 
 
 arrayLabel = {'Palm', 'Dorsum'};
 % -------------------------------------------------------------------------
@@ -24,11 +25,11 @@ Phi(isnan(Phi)) = 0;
 
 % -------------------------------------------------------------------------
 % Data segmentation
-dataSeg = segmentData(dataPath, TrialNum, 0, correctFactor);
+dataSeg = segmentDataOrigin(dataPath, TrialNum, 0);
 
-if 0 % -------------------------------------------------------------------- 
+if 1 % -------------------------------------------------------------------- 
 %% (Optional) show all signals
-dispInd = 1:100;
+dispInd = 1:round(avgLen*1300);
 figure('Position',get(0,'ScreenSize').*[20,20,0.9,0.9]);
 for i = 1:TrialNum
     for j = 1:3
@@ -47,7 +48,6 @@ accInd = setdiff(1:46,[10,20,30,40]);
 accNum = length(accInd);
 
 %--------------------------------------------------------------------------
-avgLen = 0.1; % Average time length (secs) 
 avgSegRMSEn = nan(2,TrialNum,accNum); % Averaged segment RMS energy
 for i = 1:TrialNum % Trial index
     for b = 1:2 % Board index
