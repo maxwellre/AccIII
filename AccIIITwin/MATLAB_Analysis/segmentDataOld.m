@@ -9,7 +9,7 @@
 % Outputs:
 %   1. 'output_data' - Segmentated data [t_A | data_A | t_B | data_B]
 %--------------------------------------------------------------------------
-function output_data = segmentData(dataPath, trialNum, inspectSeg,...
+function output_data = segmentDataOld(dataPath, trialNum, inspectSeg,...
     correctFactor)
 % Created on 11/04/2019 
 % Created by Yitian Shao (yitianshao@ucsb.edu)
@@ -25,15 +25,11 @@ end
 
 load(dataPath);
 
-% Remove spikes at beginning and end of measurements
-indA=1:round(expected_samp_time*Fs_A);
-indB=1:round(expected_samp_time*Fs_B);
-
-acc_data_A = acc_data_A(indA+2,:,:);
-acc_data_B = acc_data_B(indB+2,:,:);
-
-t_A=(0:size(acc_data_A,1)-1)/Fs_A;
-t_B=(0:size(acc_data_B,1)-1)/Fs_B;
+% Sampling frequency and time stamps correction (for old data)
+Fs_A = Fs_A*correctFactor(1);
+Fs_B = Fs_B*correctFactor(2);
+t_A = t_A./correctFactor(1);
+t_B = t_B./correctFactor(2);
 
 % Compute total energy of all channels and axes
 accEnA = acc_data_A(:,:,1).^2 +acc_data_A(:,:,2).^2 +acc_data_A(:,:,3).^2;

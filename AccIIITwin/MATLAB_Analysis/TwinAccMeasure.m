@@ -6,29 +6,35 @@
 %--------------------------------------------------------------------------
 % 2019/10/31: Palm is A, Dorsum is B
 %--------------------------------------------------------------------------
+close all;
+
 ProgramPath = '..\AccIII\Debug\';
 
-inspectMeasurement = 0; % Display measurement if set to 1
+inspectMeasurement = 1; % Display measurement if set to 1
 
 expected_samp_time = 12.2; % Measurement time ( < 12.5 secs)
 
 StimSignals; % Prepare stimulus signals for actuator output
 
-% play(tapOut);
-freq = 40
-
-switch freq
-    case 40
-        play(sin40Out);
-    case 80
-        play(sin80Out);
-    case 120
-        play(sin120Out);
-    case 160
-        play(sin160Out);
-    case 320
-        play(sin320Out);
-end
+play(tapOut);
+% freq = 320
+% 
+% switch freq
+%     case 40
+%         play(sin40Out);
+%     case 80
+%         play(sin80Out);
+%     case 120
+%         play(sin120Out);
+%     case 160
+%         play(sin160Out);
+%     case 240
+%         play(sin240Out);
+%     case 320
+%         play(sin320Out);
+%     case 640
+%         play(sin640Out);
+% end
 
 [status,cmdout] = system(sprintf('%sAccIII.exe %.2f',...
     ProgramPath, expected_samp_time*0.51));
@@ -51,9 +57,10 @@ fprintf('After correction: Fs_A = %.1f Hz, Fs_B = %.1f Hz\n',Fs_A,Fs_B);
 ratio_A = Fs_A/ratio_A; ratio_B = Fs_B/ratio_B;
 fprintf('Sampling frequency correction ratio (A | B):\n%.10f,%.10f\n',...
     ratio_A,ratio_B);
-%% Save data
 
-data_name = 'test';
+%% Save data
+data_name = 'Explore/HoldRuler_All';
+% data_name = 'WindowedSine';
 var = 1;
 save(sprintf('%s_%dHz.mat',data_name,var),'acc_data_A','acc_data_B',...
-    't_A','t_B','Fs_A','Fs_B');
+    't','Fs_A','Fs_B','expected_samp_time','tEndA','tEndB','ratio_A','ratio_B');

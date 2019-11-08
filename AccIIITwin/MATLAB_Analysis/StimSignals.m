@@ -24,14 +24,14 @@ win = tukeywin(length(t),.2)';   % Tukey Window
 zeroPad = zeros(1,fs/4);    % 250ms zero padding
 
 % Create the windowed sines
-sin40Sig = 0.45*sin(2*pi*40*t).*win;
-sin80Sig = 0.6*sin(2*pi*80*t).*win;
-sin120Sig = 0.35*sin(2*pi*120*t).*win;
-sin160Sig = 0.3*sin(2*pi*160*t).*win;
-sin240Sig = 0.3*sin(2*pi*240*t).*win;
-sin320Sig = 0.3*sin(2*pi*320*t).*win;
-sin480Sig = 0.3*sin(2*pi*480*t).*win;
-sin640Sig = 0.3*sin(2*pi*640*t).*win;
+sin40Sig = 0.35*sin(2*pi*40*t).*win;
+sin80Sig = 0.26*sin(2*pi*80*t).*win;
+sin120Sig = 0.16*sin(2*pi*120*t).*win;
+sin160Sig = 0.18*sin(2*pi*160*t).*win;
+sin240Sig = 0.18*sin(2*pi*240*t).*win;
+sin320Sig = 0.18*sin(2*pi*320*t).*win;
+sin480Sig = 0.18*sin(2*pi*480*t).*win;
+sin640Sig = 0.18*sin(2*pi*640*t).*win;
 
 % Pad out, repeat
 sin40Sig = repmat([zeroPad sin40Sig zeroPad],1,11);

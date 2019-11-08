@@ -2,7 +2,7 @@
 addpath('../../WaveReconstructModel/');
 % -------------------------------------------------------------------------
 
-dataPath = '.\Tap Plamar\TapPalm_Loc9.mat';
+dataPath = '.\Tap Plamar\TapPalm_Loc4.mat';
 
 TrialNum = 11;
 correctFactor = [0.9993 1.0090]; % Mean factor (STD = 0.0008 Hz)
@@ -15,6 +15,13 @@ end
 if ~exist('m_obj','var')
     load('SimRadius64mm_StepSize2mm_120Degree_42Acc.mat','m_obj');
 end
+
+% Interpolation weight construction
+Phi = 17./(dist_map+25.5) - 0.087;
+Phi(Phi < 0) = 0;
+Phi = bsxfun(@rdivide, Phi, sum(Phi,2));
+Phi(isnan(Phi)) = 0; 
+
 % -------------------------------------------------------------------------
 % Data segmentation
 dataSeg = segmentData(dataPath, TrialNum, 0, correctFactor);
@@ -62,14 +69,34 @@ for i = 1:TrialNum % Trial index
     end
 end
 
-%--------------------------------------------------------------------------
-%% 3D plot
-% Interpolation weight construction
-Phi = 17./(dist_map+25.5) - 0.087;
-Phi(Phi < 0) = 0;
-Phi = bsxfun(@rdivide, Phi, sum(Phi,2));
-Phi(isnan(Phi)) = 0; 
+%% 3D plot of trial average
+v_color{1} = Phi*squeeze(mean(avgSegRMSEn(1,:,:),2)); % A
+v_color{2} = Phi*squeeze(mean(avgSegRMSEn(2,:,:),2)); % B
 
+cmap = jet(1000);
+Default_View = [-100 75];
+ctext = 'k'; % Color of axes and text
+
+fig1 = figure('Position',get(0,'ScreenSize').*[20,80,0.98,0.6]);
+set(fig1, 'Color', 'w');
+for b = 1:2
+    subplot('Position',[0.05+0.48*(b-1),0.05,0.45,0.9]);
+    colormap(cmap);
+    scatter3(m_obj.v_posi(:,1), m_obj.v_posi(:,2), m_obj.v_posi(:,3),...
+       12,v_color{b},'Filled')
+    axis equal;
+    view(Default_View);
+    currLabel = arrayLabel{b};
+    title(currLabel);
+    fprintf('%s [Range: %.2f - %.2f]\n',currLabel, caxis);
+    axis off
+    set(gca,'FontSize',8,'Color','none','XColor',ctext,'YColor',ctext,...
+        'ZColor',ctext)
+end
+
+%--------------------------------------------------------------------------
+if 0 % ------------------------------------------------------------- Swtich
+%% 3D plot of individual trials -------------------------------------------
 v_color{1} = Phi*(squeeze(avgSegRMSEn(1,:,:))'); % A
 v_color{2} = Phi*(squeeze(avgSegRMSEn(2,:,:))'); % B
 
@@ -99,4 +126,5 @@ for b = 1:2
         set(gca,'FontSize',8,'Color','none','XColor',ctext,'YColor',ctext,...
             'ZColor',ctext)
     end
+end
 end

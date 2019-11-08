@@ -30,8 +30,8 @@ tickLinearB = fitlm(1:length(tickB),tickB); % Linear regression model B
 tEndA = predict(tickLinearA,length(tickA)); % Predicted end time A
 tEndB = predict(tickLinearB,length(tickB)); % Predicted end time B
 
-%% For debugging
-% % figure;
-% % plot(tickA); hold on; plot(tickB); ylabel('Time (secs)')
-% % plot([0 length(tickA)], [0 tEndA],'--c');
-% % plot([0 length(tickB)], [0 tEndB],'--y');
+% % % %% For debugging
+% % % figure;
+% % % plot(tickA); hold on; plot(tickB); ylabel('Time (secs)')
+% % % plot([0 length(tickA)], [0 tEndA],'--c');
+% % % plot([0 length(tickB)], [0 tEndB],'--y');
