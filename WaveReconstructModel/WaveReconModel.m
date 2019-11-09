@@ -12,6 +12,7 @@ Skin_Color = [255,223,196]/255;
 Hand_Truncate_Threshold = 40;
 Digit_Diameter = 16; 
 Acc_Ind = setdiff(1:46,[10,20,30,40]);
+Acc_Ind = [Acc_Ind,Acc_Ind]; % TwinAccArray configuration
 % -------------------------------------------------------------------------
 % Loading vertices of a 3D model from a .obj file
 file_id = fopen('arm.obj');
@@ -121,42 +122,49 @@ acc_posi_ext = [
             104.5+1  169.9+0.9  43.05-2.17  % 04 (MP) 
             93.5  133.9  22 % 05 (MH)
             99.87+3.03  152.9+3  43.08-13.68  % 06 (PP)         
-            76.9  97.9  14.7 % 07 (MB)
-            81.9 120.9 17.3 % 08 (MS)
-            65.9 80.9 13.8 % 09 (C) 
+            85.33 98.88 23 % 76.9  97.9  14.7 % 07 (MB)
+            86.9 117.9 18.78 % 81.9 120.9 17.3 % 08 (MS)
+            76.66 83 23 % 65.9 80.9 13.8 % 09 (C) 
             % Digit IV -------------------
             103.7+1.2  203.9-1  32.93-3  % 11 (DP)
             90.92+0.44  208.9+2  30.02-3  % 12 (DP)
             95.9+1.2   189.8-1  35.06-3  % 13 (MP)
             82.93+0.44  194.8+2  31.05-3  % 14 (MP)
-            82.9   138.9  17.8  % 15 (MH)
+            77 144.9 16 % 82.9   138.9  17.8  % 15 (MH)
             81.9   166.9  22.8 % 16 (PP)
-            65.9   103.9  13.4  % 17 (MB)
-            67.9   127.9  14.6 % 18 (MS)
-            58.9   91.9   9.58 % 19 (C)
+            72.9 103.9 13.53 % 65.9   103.9  13.4  % 17 (MB)
+            70.9 123.9 15.44 % 67.9   127.9  14.6 % 18 (MS)
+            69.87 85.92 14.08 % 58.9   91.9   9.58 % 19 (C)
             % Digit III ------------------
             81.91+1.52  223.9-1  16.06-3  % 21 (DP)
             67.89-0.62  228.4-0.5  13.05-3  % 22 (DP)
             76.54+1.52  206.9-1  19.05-3  % 23 (MP)
             60.64-0.62  211.9-0.5  15.05-3  % 24 (MP)
-            66   150.9   12 % 25 (MH)
+            61.78 150.9 10.11 % 66   150.9   12 % 25 (MH)
             61.9  180.9  10.54 % 26 (PP)
-            53.84  107.9  11.1 % 27 (MB)
-            53.79  131.9  11.1 % 28 (MS)
-            49   91.9  0.88 % 29 (C)
+            54.9 107.9 11.8 % 53.84  107.9  11.1 % 27 (MB)
+            56.05 130.9 12 % 53.79  131.9  11.1 % 28 (MS)
+            58 85.88 9 % 49   91.9  0.88 % 29 (C)
             % Digit II -------------------
-            42.89  212.9  -13.52 % 31 (DP)
-            28.75  211.9  -16.95 % 32 (DP)
-            43.89  195.9  -7.366 % 33 (MP)
-            27.72  194.9  -10.95 % 34 (MP)
+            42.89+1.43  212.9-2  -13.52-3 % 31 (DP)
+            28.75+0.15  211.9-1  -16.95-3 % 32 (DP)
+            43.89+1.43  195.9-2  -7.366-3 % 33 (MP)
+            27.72+0.15  194.9-1  -10.95-3 % 34 (MP)
             46.34  154.9  0.05 % 35 (MH)
-            39.92  176.8  -11.0 % 36 (PP)
-             % 37 (MB)
-             % 38 (MS)
-             % 39 (C) 
+            39.92  176.8  -12 % 36 (PP)
+            44.4   110.9   -3.95 % 37 (MB)
+            41.9   135.9   -0.34% 38 (MS)
+            48.89 88.88 1.493 % 41.9   92.88  -7.47 % 39 (C) 
+            % Digit I --------------------
+            31.9 129.7 -10.77 % 28.98  131.9  -8.94 % 41 (betw MS)
+            36.45 117.9 -14.95 % 9.87  116.8  -8.86 % 42 (betw MS MB)
+            37.89 89.88 -8.322 % 40.4  98.9  -10.95 % 43 (C) 
+            32.9 105.9 -18.94 % 31.9  109.9  -20.4 % 44 (MS)
+            14.43  152.9  -42.95 % 45 (DP)
+            22.25  129.9  -29.95 % 46 (PP)
            ];
             
-% acc_posi = [acc_posi;acc_posi_ext]; % Add extended positions 
+acc_posi = [acc_posi;acc_posi_ext]; % Add extended positions 
 acc_num = size(acc_posi,1);
 
 % -------------------------------------------------------------------------
@@ -187,7 +195,7 @@ acc_num = size(acc_posi,1);
       
 %% Plot the hand
 if 1 %---------------------------------------------------------------Switch
-disp_acc_num = 1;
+disp_acc_num = 0;
 figure('Position',get(0,'ScreenSize').*[0,0,1,0.95])
 sim_i = 31;
 v_color = repmat(Skin_Color,[m_obj.v_num,1]);
@@ -202,14 +210,14 @@ v_color = repmat(Skin_Color,[m_obj.v_num,1]);
 % ind = digitII_dist_map < sim_radius;
 % v_color(ind,:) = temp(ind,:);
 
-% scatter3(v_posi_X, v_posi_Y, v_posi_Z,50,v_color,'.') 
-scatter3(v_posi_X(palm_ind), v_posi_Y(palm_ind), v_posi_Z(palm_ind),50,...
-    v_color(palm_ind,:),'.') 
+scatter3(v_posi_X, v_posi_Y, v_posi_Z,50,v_color,'.') 
 hold on
+% scatter3(v_posi_X(palm_ind),v_posi_Y(palm_ind),v_posi_Z(palm_ind),50,'c','.') 
+
 scatter3(acc_posi(:,1), acc_posi(:,2), acc_posi(:,3),...
     'filled', 'MarkerFaceColor','k', 'MarkerEdgeColor','w')
-scatter3(acc_posi_ext(:,1), acc_posi_ext(:,2), acc_posi_ext(:,3),...
-    'filled', 'MarkerFaceColor','r', 'MarkerEdgeColor','w')
+% scatter3(acc_posi_ext(:,1), acc_posi_ext(:,2), acc_posi_ext(:,3),...
+%     'filled', 'MarkerFaceColor','r', 'MarkerEdgeColor','w')
 % quiver3(acc_posi(:,1), acc_posi(:,2), acc_posi(:,3),...
 %     proj_vect(1,:)',proj_vect(2,:)',proj_vect(3,:)');
 % scatter3(acc_posi(sim_i,1), acc_posi(sim_i,2), acc_posi(sim_i,3),...
@@ -218,12 +226,14 @@ xlabel('X')
 ylabel('Y')
 zlabel('Z')
 axis equal
-view(-hand_plane)
+view(hand_plane)
 grid off
 if disp_acc_num
     for sim_i = 1:acc_num
         text(acc_posi(sim_i,1), acc_posi(sim_i,2), acc_posi(sim_i,3)+5,...
-            num2str(Acc_Ind(sim_i)),'FontSize',20)
+            num2str(Acc_Ind(sim_i)),'FontSize',20,'Color','k')
+%         text(acc_posi_ext(sim_i,1), acc_posi_ext(sim_i,2),...
+%             acc_posi_ext(sim_i,3)-10,num2str(Acc_Ind(sim_i)),'FontSize',20)
     end
 end
 end %----------------------------------------------------------------Switch
