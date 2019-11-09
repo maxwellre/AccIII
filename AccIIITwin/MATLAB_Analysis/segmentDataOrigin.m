@@ -40,7 +40,7 @@ accEnB = acc_data_B(:,:,1).^2 +acc_data_B(:,:,2).^2 +acc_data_B(:,:,3).^2;
 accTotalEnA = sum(accEnA,2);
 accTotalEnB = sum(accEnB,2);
 
-thresh_ratio = 0.05;
+thresh_ratio = 0.03;
 
 % Onset detection using total energy (A)
 temp = accTotalEnA - mean(accTotalEnA);

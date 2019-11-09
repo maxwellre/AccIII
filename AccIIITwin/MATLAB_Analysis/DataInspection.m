@@ -2,7 +2,7 @@
 addpath('../../WaveReconstructModel/');
 % -------------------------------------------------------------------------
 
-dataPath = './FullSetData_Yit/Tap Palmar/TapPalm_Loc4_1Hz.mat';
+dataPath = './FullSetData_Yit/Tap Palmar/TapPalm_Loc10_1Hz.mat';
 
 TrialNum = 11;
 
@@ -27,7 +27,7 @@ Phi(isnan(Phi)) = 0;
 % Data segmentation
 dataSeg = segmentDataOrigin(dataPath, TrialNum, 0);
 
-if 1 % -------------------------------------------------------------------- 
+if 0 % -------------------------------------------------------------------- 
 %% (Optional) show all signals
 dispInd = 1:round(avgLen*1300);
 figure('Position',get(0,'ScreenSize').*[20,20,0.9,0.9]);
@@ -62,6 +62,8 @@ for i = 1:TrialNum % Trial index
         
         for j = 1:accNum % Accelerometer index
             temp = squeeze(accData(1:avgEndInd,accInd(j),:));
+            
+%             temp = highpass(temp, 80, 1300);
             
             amp = (temp(:,1).^2 + temp(:,2).^2 + temp(:,3).^2).^0.5;
             avgSegRMSEn(b,i,j) = rms(amp);
