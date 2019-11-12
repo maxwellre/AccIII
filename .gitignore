@@ -32,4 +32,5 @@ FPGAProgram/No_fifo_no_ID/vivado_*.log
 *.zip
 *.opendb
 *.mat
-
+*.png
+*.jpg
