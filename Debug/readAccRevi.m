@@ -116,7 +116,7 @@ if is_disp
             ylim([-16 16])
             %         ylim([-2 2])
             box off
-            if k<42
+            if k < 42
                 xticks([])
             end
         end
