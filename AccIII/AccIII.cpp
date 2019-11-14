@@ -1,10 +1,10 @@
 // FT2232H56QTest.cpp : 
 
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "DataProc.h"
 
-#include "window.h"
-#include <QApplication>
+//#include "window.h"
+//#include <QApplication>
 
 DWORD EventDWord;
 DWORD RxBytes;
@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-		TRACE(_T("Only one input argument is allowed!\r\n"));
+		//TRACE(_T("Only one input argument is allowed!\r\n"));
 		printf("Only one input argument is allowed!\r\n");
 		printf("Default sample time = 1.159 secs\r\n");
 	}

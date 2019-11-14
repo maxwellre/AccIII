@@ -1,0 +1,21 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "msvc build",
+        "type": "shell",
+        "command": "cl.exe",
+        "args": ["/EHsc", "/Zi", "/Fe:", "AccIII.exe", "AccIII.cpp",
+          "/I","C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.23.28105\\include",
+        "/I","${workspaceFolder}/../headers"],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "presentation": {
+          "reveal": "always"
+        },
+        "problemMatcher": "$msCompile"
+      }
+    ]
+  }
