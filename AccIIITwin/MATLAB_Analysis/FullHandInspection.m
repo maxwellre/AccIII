@@ -1,7 +1,7 @@
 % -------------------------------------------------------------------------
 addpath('../../WaveReconstructModel/');
 % -------------------------------------------------------------------------
-locNum = 11
+locNum = 2
 
 dataPath = sprintf('./FullSetData_Yit/Tap Palmar/TapPalm_Loc%d_1Hz.mat',...
     locNum);

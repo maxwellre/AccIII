@@ -2,7 +2,8 @@
 addpath('../../WaveReconstructModel/');
 % -------------------------------------------------------------------------
 
-dataPath = './FullSetData_Yit/Tap Palmar/TapPalm_Loc10_1Hz.mat';
+% dataPath = './FullSetData_Yit/Tap Palmar/TapPalm_Loc10_1Hz.mat';
+dataPath = './FullSetData_Bha/Tap Palmar/TapPalm_Loc1.mat';
 
 TrialNum = 11;
 
@@ -25,9 +26,9 @@ Phi(isnan(Phi)) = 0;
 
 % -------------------------------------------------------------------------
 % Data segmentation
-dataSeg = segmentDataOrigin(dataPath, TrialNum, 0);
+dataSeg = segmentDataOrigin(dataPath, TrialNum, 1);
 
-if 0 % -------------------------------------------------------------------- 
+if 1 % -------------------------------------------------------------------- 
 %% (Optional) show all signals
 dispInd = 1:round(avgLen*1300);
 figure('Position',get(0,'ScreenSize').*[20,20,0.9,0.9]);
