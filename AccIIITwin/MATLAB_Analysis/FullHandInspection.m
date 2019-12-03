@@ -125,12 +125,12 @@ for b = 1:2
     set(gca,'FontSize',8,'Color','none','XColor',ctext,'YColor',ctext,...
         'ZColor',ctext)
     
-    print(fig_h,sprintf('RevFig_ComparePalmDorsum/Loc%d_%s',...
-        locNum,currLabel),'-dpng','-r600');
-    
 %     print(fig_h,sprintf('RevFig_ComparePalmDorsum/Loc%d_%s',...
-%         locNum,currLabel),'-dpdf','-painters'); % Vectorized Graphics
-    pause(0.1); close(fig_h);
+%         locNum,currLabel),'-dpng','-r600');    
+% % % %     print(fig_h,sprintf('RevFig_ComparePalmDorsum/Loc%d_%s',...
+% % % %         locNum,currLabel),'-dpdf','-painters'); % Vectorized Graphics
+    pause(0.1); 
+%     close(fig_h);
 end
 
 %--------------------------------------------------------------------------
