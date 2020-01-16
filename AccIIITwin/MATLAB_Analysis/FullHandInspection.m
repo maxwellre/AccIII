@@ -1,18 +1,33 @@
 % -------------------------------------------------------------------------
 addpath('../../WaveReconstructModel/');
 % -------------------------------------------------------------------------
-locNum = 2
+locNum = 10;
 
-dataPath = sprintf('./FullSetData_Yit/Tap Palmar/TapPalm_Loc%d_1Hz.mat',...
-    locNum);
+sinFreq = 160;
+
+% dataPath = sprintf('./FullSetData_Yit/Tap Palmar/TapPalm_Loc%d_1Hz.mat',...
+%     locNum);
+
+% dataPath = sprintf('./FullSetData_Yit/Loc%d/WindowedSine_%dHz.mat',...
+%     locNum,sinFreq);
+dataPath = sprintf('./FullSetData_Bha/Loc%d/WindowedSine_%dHz.mat',...
+    locNum,sinFreq);
+
+disp(dataPath);
 
 TrialNum = 10;
 
-avgLen = 0.3; % Average time length (secs) 
+avgLen = 0.25; % Average time length (secs) 
 
-arrayLabel = {'Palm', 'Dorsum'};
+% arrayLabel = {'Palm', 'Dorsum'};
+if (sinFreq == 1)
+    arrayLabel = {'Tap_Palm', 'Tap_Dorsum'};
+else
+    arrayLabel = {sprintf('Sin_%dHz_Palm',sinFreq),...
+        sprintf('Sin_%dHz_Dorsum',sinFreq)};
+end
 
-% handPlane = [0.0234307671, -0.0022175929, -0.0272901326];
+% % % handPlane = [0.0234307671, -0.0022175929, -0.0272901326];
 
 % -------------------------------------------------------------------------
 if ~exist('dist_map','var')
@@ -95,7 +110,7 @@ avgSegRMSEn_FullHand = [squeeze(avgSegRMSEn(1,:,:)),...
 v_color = Phi*(mean(avgSegRMSEn_FullHand(1:10,:),1)');
 
 cmap = jet(1000);
-% % % cmap = cmap(1:end-60,:);
+cmap = cmap(1:end-50,:); % Remove dark region of the colorbar
 
 Default_View = [-100 75];
 ctext = 'k'; % Color of axes and text
@@ -121,12 +136,14 @@ for b = 1:2
     fprintf('%s [Range (g): %.2f - %.2f]\n',currLabel, caxis);
     fprintf('%s [Range (m/s^2): %.2f - %.2f]\n',currLabel, caxis.*9.8);
     axis off
-%     colorbar('TickLabels',[],'Ticks',[],'box','off');
+% %     colorbar('TickLabels',[],'Ticks',[],'box','off');
     set(gca,'FontSize',8,'Color','none','XColor',ctext,'YColor',ctext,...
         'ZColor',ctext)
     
-%     print(fig_h,sprintf('RevFig_ComparePalmDorsum/Loc%d_%s',...
-%         locNum,currLabel),'-dpng','-r600');    
+% %     print(fig_h,sprintf('RevFig_ComparePalmDorsum/Loc%d_%s',...
+% %         locNum,currLabel),'-dpng','-r600');   
+%     print(fig_h,sprintf('RevIEEEFig_NontipLoc/Loc%d_%s',...
+%         locNum,currLabel),'-dpng','-r600'); 
 % % % %     print(fig_h,sprintf('RevFig_ComparePalmDorsum/Loc%d_%s',...
 % % % %         locNum,currLabel),'-dpdf','-painters'); % Vectorized Graphics
     pause(0.1); 
@@ -134,3 +151,4 @@ for b = 1:2
 end
 
 %--------------------------------------------------------------------------
+

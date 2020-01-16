@@ -1,0 +1,38 @@
+#-----------------------------------------------------------
+# Vivado v2016.1 (64-bit)
+# SW Build 1538259 on Fri Apr  8 15:45:27 MDT 2016
+# IP Build 1537824 on Fri Apr  8 04:28:57 MDT 2016
+# Start of session at: Thu Jun 06 19:01:23 2019
+# Process ID: 6396
+# Current directory: D:/Yitian/MaxDrive/AccIII/FPGAProgram/Acc1to9
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent13924 D:\Yitian\MaxDrive\AccIII\FPGAProgram\Acc1to9\Acc1to9.xpr
+# Log file: D:/Yitian/MaxDrive/AccIII/FPGAProgram/Acc1to9/vivado.log
+# Journal file: D:/Yitian/MaxDrive/AccIII/FPGAProgram/Acc1to9\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/Yitian/MaxDrive/AccIII/FPGAProgram/Acc1to9/Acc1to9.xpr
+update_compile_order -fileset sources_1
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {D:/Yitian/MaxDrive/AccIII/FPGAProgram/Acc1to9/Acc1to9.runs/impl_1/async_245_fifo.bit} [lindex [get_hw_devices] 0]
+current_hw_device [lindex [get_hw_devices] 0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {D:/Yitian/MaxDrive/AccIII/FPGAProgram/Acc1to9/Acc1to9.runs/impl_1/async_245_fifo.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+disconnect_hw_server localhost:3121
+connect_hw_server
+disconnect_hw_server localhost:3121
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {D:/Yitian/MaxDrive/AccIII/FPGAProgram/Acc1to9/Acc1to9.runs/impl_1/async_245_fifo.bit} [lindex [get_hw_devices] 0]
+current_hw_device [lindex [get_hw_devices] 0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {D:/Yitian/MaxDrive/AccIII/FPGAProgram/Acc1to9/Acc1to9.runs/impl_1/async_245_fifo.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]

@@ -29,6 +29,10 @@ Overlord = 1; % Force a 1 second interval for segmentation
 
 load(dataPath);
 
+if ~exist('expected_samp_time','var')
+    expected_samp_time = floor(min([t_A(end),t_B(end)]));
+end
+
 % Remove spikes at beginning and end of measurements
 indA=1:round(expected_samp_time*Fs_A);
 indB=1:round(expected_samp_time*Fs_B);

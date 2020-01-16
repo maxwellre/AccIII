@@ -1,10 +1,7 @@
 // FT2232H56QTest.cpp : 
 
-//#include "stdafx.h"
+#include "stdafx.h"
 #include "DataProc.h"
-
-//#include "window.h"
-//#include <QApplication>
 
 DWORD EventDWord;
 DWORD RxBytes;
@@ -16,11 +13,6 @@ unsigned char* fileBuffer = NULL;
 int main(int argc, char* argv[])
 {
 	int DataNum = 40000 * 24; // Old version default: 1.159 secs
-
-	// QT program initialization
-	//QApplication a(argc, argv);
-	//Window w;
-	//w.show();
 
 	if (argc == 2)
 	{
@@ -42,7 +34,7 @@ int main(int argc, char* argv[])
 
 	fileBuffer = new unsigned char[DataNum];
 
-	//clock_t t; // checked
+	clock_t t; // checked
 
 	//HANDLE ftHandle;
 	FT_HANDLE ftHandle;
@@ -128,69 +120,59 @@ int main(int argc, char* argv[])
 
 		dwSum = 0;
 
-		DWORD BytesReceivedTest;
-		DWORD readBytesTest = 0;
-
-		unsigned char RxBuffer[10000];
-
 		printf("Sampling...\n");
 		while (dwSum < DataNum) 
 		{
-			ftStatus = FT_Read(ftHandle, RxBuffer, readBytesTest, &BytesReceivedTest);
+			ftStatus = FT_GetStatus(ftHandle, &RxBytes, &TxBytes, &EventDWord);
+			printf("ftStatus = %d, RxBytes = %d\n", ftStatus, RxBytes);
 
-			//int temp = (int)RxBuffer[0];
-
-			//w.dataUpdate(temp);
-
-			//printf("ftStatus = %d, RxBytes = %d\n", ftStatus, RxBytes);
-
-		//	if ((ftstatus == ft_ok) && (rxbytes > 0))
-		//	{
-		//		ftstatus = ft_read(fthandle, rxbuffer, &rxbytes, &bytesreceived);
+			if ((ftstatus == ft_ok) && (rxbytes > 0))
+			{
+				ftstatus = ft_read(fthandle, rxbuffer, &rxbytes, &bytesreceived);
 
 
-		//		if (rxbytes < 10000)
-		//		{
-		//			usbreaddata(fthandle, rxbytes, &dwsum, datanum, filebuffer);
-		//		}
-		//		else
-		//		{
-		//			int icount = rxbytes / 10000;
-		//			for (int i = 0; i < icount; i++)
-		//			{
-		//				usbreaddata(fthandle, 10000, &dwsum, datanum, filebuffer);
-		//			}
+				if (rxbytes < 10000)
+				{
+					usbreaddata(fthandle, rxbytes, &dwsum, datanum, filebuffer);
+				}
+				else
+				{
+					int icount = rxbytes / 10000;
+					for (int i = 0; i < icount; i++)
+					{
+						usbreaddata(fthandle, 10000, &dwsum, datanum, filebuffer);
+					}
 
-		//			int imod = rxbytes % 10000;
-		//			if (imod > 0)
-		//			{
-		//				usbreaddata(fthandle, imod, &dwsum, datanum, filebuffer);
-		//			}
-		//		}
-		//	}
+					int imod = rxbytes % 10000;
+					if (imod > 0)
+					{
+						usbreaddata(fthandle, imod, &dwsum, datanum, filebuffer);
+					}
+				}
+			}
 		}
 
-		//QueryPerformanceCounter(&lPostTime);
-		//float lPassTick = lPostTime.QuadPart - lPreTime.QuadPart;
-		//float lPassTime = lPassTick / (float)lFrequency.QuadPart;
+		QueryPerformanceCounter(&lPostTime);
+		float lPassTick = lPostTime.QuadPart - lPreTime.QuadPart;
+		float lPassTime = lPassTick / (float)lFrequency.QuadPart;
 
 		////float USB_data_speed = dwSum / (lPassTime * 1024 * 1024);
 		////TRACE(_T("USB_data_speed : %f \r\n"), USB_data_speed);
 
-		//FT_Close(ftHandle);
-		//printf("Begin to save data into file!\r\n");
+		FT_Close(ftHandle);
+		printf("Begin to save data into file!\r\n");
 
-		//SaveDataResult(dwSum, fileBuffer);
-		//printf("File Save Done!\r\n");
+		SaveDataResult(dwSum, fileBuffer);
+		printf("File Save Done!\r\n");
 
-		//SaveNum(lPassTime, "sample_time.txt");
+		SaveNum(lPassTime, "sample_time.txt");
 
 		////TRACE(_T("Time passed : %f \r\n"), lPassTime);
 
 		////TRACE(_T("Data Number = %d \r\n"), dwSum/(2*6*46));
 
-		//float idDataRate = dwSum / (lPassTime * 6 * 46); // Count ID as data
-		//SaveNum(idDataRate, "data_rate.txt");
+		float idDataRate = dwSum / (lPassTime * 6 * 46); // Count ID as data
+		SaveNum(idDataRate, "data_rate.txt");
 	}
 	else
 	{
@@ -201,5 +183,4 @@ int main(int argc, char* argv[])
 	free(fileBuffer); // Free buffer memory to avoid memory leak
 
 	return 0;
-	//return a.exec(); // Exit the QT program
 }
