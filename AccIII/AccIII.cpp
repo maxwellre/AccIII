@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-		//TRACE(_T("Only one input argument is allowed!\r\n"));
+		TRACE(_T("Only one input argument is allowed!\r\n"));
 		printf("Only one input argument is allowed!\r\n");
 		printf("Default sample time = 1.159 secs\r\n");
 	}
@@ -124,29 +124,26 @@ int main(int argc, char* argv[])
 		while (dwSum < DataNum) 
 		{
 			ftStatus = FT_GetStatus(ftHandle, &RxBytes, &TxBytes, &EventDWord);
-			printf("ftStatus = %d, RxBytes = %d\n", ftStatus, RxBytes);
+			//printf("ftStatus = %d, RxBytes = %d\n", ftStatus, RxBytes);
 
-			if ((ftstatus == ft_ok) && (rxbytes > 0))
+			if ((ftStatus == FT_OK) && (RxBytes > 0))
 			{
-				ftstatus = ft_read(fthandle, rxbuffer, &rxbytes, &bytesreceived);
-
-
-				if (rxbytes < 10000)
+				if (RxBytes < 10000)
 				{
-					usbreaddata(fthandle, rxbytes, &dwsum, datanum, filebuffer);
+					USBReadData(ftHandle, RxBytes, &dwSum, DataNum, fileBuffer);
 				}
 				else
 				{
-					int icount = rxbytes / 10000;
-					for (int i = 0; i < icount; i++)
+					int iCount = RxBytes / 10000;
+					for (int i = 0; i < iCount; i++)
 					{
-						usbreaddata(fthandle, 10000, &dwsum, datanum, filebuffer);
+						USBReadData(ftHandle, 10000, &dwSum, DataNum, fileBuffer);
 					}
 
-					int imod = rxbytes % 10000;
-					if (imod > 0)
+					int iMod = RxBytes % 10000;
+					if (iMod > 0)
 					{
-						usbreaddata(fthandle, imod, &dwsum, datanum, filebuffer);
+						USBReadData(ftHandle, iMod, &dwSum, DataNum, fileBuffer);
 					}
 				}
 			}
@@ -156,8 +153,8 @@ int main(int argc, char* argv[])
 		float lPassTick = lPostTime.QuadPart - lPreTime.QuadPart;
 		float lPassTime = lPassTick / (float)lFrequency.QuadPart;
 
-		////float USB_data_speed = dwSum / (lPassTime * 1024 * 1024);
-		////TRACE(_T("USB_data_speed : %f \r\n"), USB_data_speed);
+		//float USB_data_speed = dwSum / (lPassTime * 1024 * 1024);
+		//TRACE(_T("USB_data_speed : %f \r\n"), USB_data_speed);
 
 		FT_Close(ftHandle);
 		printf("Begin to save data into file!\r\n");
@@ -167,9 +164,9 @@ int main(int argc, char* argv[])
 
 		SaveNum(lPassTime, "sample_time.txt");
 
-		////TRACE(_T("Time passed : %f \r\n"), lPassTime);
+		//TRACE(_T("Time passed : %f \r\n"), lPassTime);
 
-		////TRACE(_T("Data Number = %d \r\n"), dwSum/(2*6*46));
+		//TRACE(_T("Data Number = %d \r\n"), dwSum/(2*6*46));
 
 		float idDataRate = dwSum / (lPassTime * 6 * 46); // Count ID as data
 		SaveNum(idDataRate, "data_rate.txt");
@@ -181,6 +178,5 @@ int main(int argc, char* argv[])
 	}
 	
 	free(fileBuffer); // Free buffer memory to avoid memory leak
-
 	return 0;
 }
