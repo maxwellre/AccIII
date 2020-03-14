@@ -20,6 +20,7 @@ Debug/AccIII_PhantomSkin_Location.jpg
 temp/
 temp*/
 ipch/
+Data/
 FPGAProgram/Final_Overclock_DeviceID_with_value/vivado_*.jou
 FPGAProgram/Final_Overclock_DeviceID_with_value/vivado_*.log
 FPGAProgram/No_fifo_no_ID/vivado_*.jou
@@ -34,3 +35,4 @@ FPGAProgram/No_fifo_no_ID/vivado_*.log
 *.mat
 *.png
 *.jpg
+*.mp4
