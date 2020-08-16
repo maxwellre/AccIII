@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 2.6)
 
-project (AccIIIReader)
+project (AccIIIListener)
 
 set(INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
 set(SOURCES_DIR ${CMAKE_SOURCE_DIR}/src)
@@ -22,6 +22,6 @@ target_link_libraries (AccIIIDriver ftd2xx Threads::Threads)
 
 # --- Main ---
 set(CMAKE_BUILD_TYPE RelWithDebInfo)
-add_executable(${PROJECT_NAME} AccIIIReader.cpp)
+add_executable(${PROJECT_NAME} AccIIIListener.cpp)
 target_link_libraries (${PROJECT_NAME} LINK_PUBLIC AccIIIDriver)
 
