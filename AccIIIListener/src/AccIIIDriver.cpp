@@ -7,10 +7,10 @@
 
 #include "AccIIIListener/AccIIIDriver.h"
 
-
+#include <iostream>
 AccIIIDriver::AccIIIDriver() {
     this->ftHandle = NULL;
-    this->ftStatus = std::numeric_limits<unsigned int>::min();
+    this->ftStatus = 1;// std::numeric_limits<unsigned int>::min();
 }
 
 AccIIIDriver::~AccIIIDriver() {
@@ -29,10 +29,10 @@ bool AccIIIDriver::ft_open() {
     Mode = 0x00; //reset mode
     LatencyTimer = 2;
 
-    if (ftStatus != FT_Open(0, &ftHandle)) {
+    if (FT_OK != FT_Open(0, &ftHandle)) {
         errno = ENODEV;
         perror("FT_Open FAILED! ");
-        return false;
+        return true;
     }
 
     if (FT_OK == FT_SetBitMode(ftHandle, Mask, Mode)) {
@@ -75,8 +75,6 @@ bool AccIIIDriver::ft_open() {
 }
 
 bool AccIIIDriver::ft_close() {
-
-    FT_Close(ftHandle);
 
     if( NULL != ftHandle && FT_OK != FT_Close(ftHandle))
     {

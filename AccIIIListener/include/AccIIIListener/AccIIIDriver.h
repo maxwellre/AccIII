@@ -10,7 +10,7 @@
 
 #include <errno.h>
 #include <limits>
-#include <pthread.h>
+// #include <pthread.h>
 #include <stdio.h>
 
 #include "../../libs/ftd2xx.h"
