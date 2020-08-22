@@ -10,10 +10,22 @@ set(EXT_LIB_DIR ${CMAKE_SOURCE_DIR}/libs)
 include_directories(${INCLUDE_DIR})
 
 # --- External libraries ---
-link_directories("${PROJECT_SOURCE_DIR}/libs")
+# add link to the library in the main cmakeLists file
+if (WIN32)
+	if (CMAKE_CL_64)
+		set(FTD2XX_LIB_PATH ${EXT_LIB_DIR}/ftd2xx/win64)
+	else ()
+		set(FTD2XX_LIB_PATH ${EXT_LIB_DIR}/ftd2xx/win32)
+	endif ()
+endif (WIN32)
+if (UNIX)
+		set(FTD2XX_LIB_PATH ${EXT_LIB_DIR}/ftd2xx/unix)
+endif (UNIX)
+link_directories("${FTD2XX_LIB_PATH}")
 add_subdirectory(${EXT_LIB_DIR})
 
 # --- AccIII libraries ---
+message("AccIII libraries")
 add_library(AccIIIDriver ${SOURCES_DIR}/AccIIIDriver.cpp)
 if (WIN32)
 	target_link_libraries (AccIIIDriver ftd2xx)

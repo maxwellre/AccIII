@@ -1,34 +1,27 @@
-#include <iostream>
-// #include <pthread.h>
-#include <stdio.h>
+#include <windows.h>
 
 #include "AccIIIListener/AccIIIDriver.h"
 
 using namespace std;
 
-
 int main(int argc, char **argv) {
+
+    int i;
 
     AccIIIDriver * accDriver = new AccIIIDriver();
 
-    if (accDriver->ft_open())
-        cout << "Couldn't open the session." << endl;
-    else
-        cout << "Hello world, opening the session..." << endl;
+    accDriver->ft_open()? cout << "Couldn't open the session." << endl : cout << "Opening the session..." << endl;
+    
+    for (i = 0; i < 100; i++) {
+        accDriver->read_once();
+        //std::cout << accDriver->lastData_to_print() << std::flush;
+        accDriver->lastData_to_print();
+        std::cout << std::endl;
+        Sleep(10);
+    }
+    std::cout << std::endl;
 
-    #ifdef _WIN32
-        cout << "Windows" << endl;
-    #elif unix
-        cout << "Unix" << endl;
-    #else
-        cout << "Other" << endl;
-    #endif
-
-
-    if (accDriver->ft_close())
-        cout << "Couldn't close the session." << endl;
-    else
-        cout << "Goodbye world, closing the session..." << endl;
+    accDriver->ft_close()? cout << "Couldn't close the session." << endl : cout << "Closing the session..." << endl;
 
 	return 0;
 }
