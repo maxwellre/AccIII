@@ -13,28 +13,30 @@ AccIIIDriver::AccIIIDriver() {
     this->ftHandle = NULL;
     this->ftStatus = ~FT_OK;// std::numeric_limits<unsigned int>::min();
 
+    this->EventDWord = 0;
+    this->TxBytes = 0;
     this->RxBytes = 0;
-    this->RxBuffer_length = 10000;
+    this->BytesReceived = 0;
+
+    this->RxBuffer_length = 50000;
     this->RxBuffer = new unsigned char[this->RxBuffer_length]();
+
     this->receivedBytes_maxSize = 5000;
+    this->receivedBytes_2DLength = 0;
 }
 
 AccIIIDriver::~AccIIIDriver() {
 
-    delete[] RxBuffer;
+    delete[] this->RxBuffer;
 }
 
-bool AccIIIDriver::read_raw() {
+long AccIIIDriver::read_raw() {
 
-    DWORD EventDWord;
-    DWORD TxBytes;
-    DWORD BytesReceived;
+    this->ftStatus = FT_GetStatus(this->ftHandle, &this->RxBytes, &this->TxBytes, &this->EventDWord);
 
-    this->ftStatus = FT_GetStatus(this->ftHandle, &this->RxBytes, &TxBytes, &EventDWord);
-
-    if ((FT_OK == this->ftStatus) && (0 < RxBytes))
+    if ((FT_OK == this->ftStatus) && (0 < this->RxBytes))
     {
-        // if current buffer is too small, resize it
+        // if buffer is too small, resize it
         if (this->RxBuffer_length < (int)this->RxBytes)
         {
             this->RxBuffer_length = this->RxBytes;
@@ -42,43 +44,102 @@ bool AccIIIDriver::read_raw() {
             this->RxBuffer = new unsigned char[this->RxBuffer_length]();
         }
 
-        this->ftStatus = FT_Read(this->ftHandle, RxBuffer, RxBytes, &BytesReceived);
+        this->ftStatus = FT_Read(this->ftHandle, this->RxBuffer, this->RxBytes, &this->BytesReceived);
+
+        if (FT_OK != this->ftStatus) {
+            // FT_Read Failed
+            errno = ENOMSG;
+            perror("FT_Write Failed ");
+        }
+        else if (this->BytesReceived != this->RxBytes) {
+            // FT_Read Incomplete 
+            errno = ENOMSG;
+            perror("FT_Write Incomplete ");
+        }
     }
 
-    return false;
+    return this->RxBytes;
 }
-
 
 bool AccIIIDriver::storeRxBuffer() {
     // check if new element can fit in the queue based on predefined max size
     if (this->receivedBytes_maxSize < this->receivedBytes.size() + 1) {
         clearReceivedBytes();
     }
-    this->receivedBytes.push(this->RxBuffer);
+
+    std::vector<Byte> data(this->RxBuffer, this->RxBuffer + this->RxBytes);
+    this->receivedBytes.push_back(data);
+    this->receivedBytes_2DLength += data.size();
 
     return false;
 }
 
 bool AccIIIDriver::clearReceivedBytes() {
 
-    std::queue<unsigned char *> empty;
-    std::swap(this->receivedBytes, empty);
+    std::deque< Byte > emptyQueue;
+    std::swap(this->receivedBytes, emptyQueue);
+    this->receivedBytes_2DLength = 0;
 
     return false;
 }
 
-std::vector<int> AccIIIDriver::decode_once() {
+vector2D_int AccIIIDriver::decode_once(int offset=0) {
     std::vector<int> res;
+    int nbSensors, nbHalfSensor, nbAxis, nbSamples;
+    int nbBytePerValue, offsetHighByte;
+    int t, a, s, incr, offset_even;
+
+    nbBytePerValue = 2;
+    nbAxis = 3;
+    nbSensors = 46;
+    nbSamples = this->receivedBytes_2DLength / (nbSensors * nbBytePerValue);
+    nbHalfSensor = nbSensors / 2;
+    offsetHighByte = nbHalfSensor; // Odd ID sensors Bytes sent first, then Even ID sensors; Low bytes sent first, then High Bytes
+
+    vector2D_int accData_sample(nbSensors, std::vector<int>(nbAxis));
+
+
+    for (int incr = 0; incr < 2; incr++) {
+
+        offset_even = incr * nbHalfSensor;
+
+        for (s = 0; s < nbHalfSensor; s++) {
+            for (a = 0; a < nbAxis; a++) { // Axis X, Y, Z
+                
+                accData_sample[s+offset_even][a] = (((int)this->receivedBytes[s + offsetHighByte] & 0xFF) << 8) | ((int)hex_data[] & 0xFF); //[High,Low]
+
+            }
+        }
+    }
+    
+
+    hex_i = nbAxis * nbHalfSensor;
+
+    for (int j = 0; j < 3; ++j) // Axis X, Y, Z
+    {
+        for (int k = 0; k < HALFREAD; ++k) // Even number Sensor 1,2,...,23
+        {
+            a_sample[6 * k + j + 3] = (((int)hex_data[hex_i + k + HALFREAD] & 0xFF) << 8) | ((int)hex_data[hex_i + k] & 0xFF); //[High,Low]
+
+            if (a_sample[6 * k + j + 3] > 32767) 
+                a_sample[6 * k + j + 3] -= 65536; // # Format correction
+        }
+        hex_i += READNUM;
+    }
+        decoded_data.push_back(a_sample); //  Append a complete sample
+
+        dataSetNum = decoded_data.size();
+        // decoded_data is a vector of size dataSetNum * 138
 
     return res;
 }
+
 bool AccIIIDriver::storeDecodedBytes(std::vector<int> * val) {
 
     this->acc_values.push(*val);
 
     return false;
 }
-
 
 bool AccIIIDriver::ft_open(UCHAR Mask, UCHAR Mode, UCHAR LatencyTimer, char TxBuffer) {
    
@@ -157,37 +218,39 @@ bool AccIIIDriver::read_for(int time_limit) {
 
 bool AccIIIDriver::read_once() {
 
-    read_raw();
-    storeRxBuffer();
+    if (read_raw())
+    {
+        std::cout << "read success with nb bytes = " << this->RxBytes << std::endl;
+        storeRxBuffer();
+    }
 
     return false;
 }
 
 
-std::string  AccIIIDriver::lastData_to_print() {
+std::string  AccIIIDriver::recentData_to_print() {
     std::string res = "";
 
     unsigned char* curBytes;
-    unsigned char* p;
-    int i;
-    int elements_in_curBytes;
+    int i, curBytes_length;
 
-    while(!this->receivedBytes.empty())
+    curBytes_length = 0;
+
+    /*
+    
+    if (!this->receivedBytes.empty())
     {
-        curBytes = this->receivedBytes.front();
-        this->receivedBytes.pop();
-        p = curBytes;
-        elements_in_curBytes = 0;
+        curBytes = this->receivedBytes.back();
 
-        for (i = 0; p[i]; i++) {
-            std::cout << int((unsigned char)p[i]) << " " << std::flush;
-            elements_in_curBytes++;
+        for (i = 0; curBytes[i]; i++) {
+            std::cout << int((unsigned char)curBytes[i]) << " " << std::flush;
+            curBytes_length++;
         }
-        std::cout << ":: " << elements_in_curBytes << std::flush;
+        std::cout << ":: " << curBytes_length << std::flush;
         std::cout << std::endl;
 
         res.append(reinterpret_cast<char*>(curBytes), sizeof(curBytes));
     }
-
+    */
     return res;
 }

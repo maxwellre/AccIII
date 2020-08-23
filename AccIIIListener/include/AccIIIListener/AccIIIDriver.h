@@ -8,6 +8,7 @@
 #ifndef ACCIIIDRIVER_H_
 #define ACCIIIDRIVER_H_
 
+#include <algorithm>    // std::copy
 #include <errno.h>
 #include <iostream>
 #include <limits>
@@ -25,6 +26,12 @@
 
 #include "../../libs/ftd2xx.h"
 
+// To clarify the reading
+typedef unsigned char Byte;
+typedef std::vector< std::vector<int> > vector2D_int;
+typedef std::vector< vector2D_int > vector3D_int;
+
+
 class AccIIIDriver {
 private:
 
@@ -32,16 +39,23 @@ private:
     FT_HANDLE ftHandle; // container for FT_open object
     FT_STATUS ftStatus; // status of ftHandle after calling functions
 
-    // read variables
+    // required variables for FT_read()
+    DWORD EventDWord;
+    DWORD TxBytes;
     DWORD RxBytes;
+    DWORD BytesReceived;
     unsigned char* RxBuffer;
     int RxBuffer_length;
-    int receivedBytes_maxSize;
+
+    // variables of control for receivedBytes
+    int receivedBytes_maxSize; // maximum number of vectors in the queue
+    int receivedBytes_2DLength; // total number of elements in receivedBytes
 
     /**
      * @brief main read called by other functions
+     * @return the value of RxBytes (number of bytes received)
      */
-    bool read_raw();
+    long read_raw();
 
     /**
      * @brief store RxBuffer values into receivedBytes queue
@@ -56,8 +70,10 @@ private:
     /**
      * @brief decode ReceivedBytes for one value of each accelerometer 
      * based on the manner FTD2XX device communication protocol.
+     * @param offset Offset defines the targeted sample 
+     * @return the 2-D vector with X,Y,Z values of each sensor for one sample 
      */
-    std::vector<int> decode_once();
+    vector2D_int decode_once(int offset = 0);
 
     /**
      * @brief store decoded ReceivedBytes values into acc_values queue
@@ -66,12 +82,11 @@ private:
 
 
 public:
-    std::queue<unsigned char*> receivedBytes;
-    std::queue < std::vector<int> > acc_values;
+    std::deque< Byte > receivedBytes;
+    vector3D_int accData;
 
 	AccIIIDriver();
 	virtual ~AccIIIDriver();
-
 
     /**
      * @brief Opening communication with the ftd2xx device.
@@ -106,7 +121,7 @@ public:
     /**
      * @brief convert last data to be print
      */
-    std::string lastData_to_print();
+    std::string recentData_to_print();
 
 };
 

@@ -13,9 +13,9 @@ int main(int argc, char **argv) {
     accDriver->ft_open()? cout << "Couldn't open the session." << endl : cout << "Opening the session..." << endl;
     
     for (i = 0; i < 100; i++) {
+        std::cout << "------------------------" << std::endl;
         accDriver->read_once();
-        //std::cout << accDriver->lastData_to_print() << std::flush;
-        accDriver->lastData_to_print();
+        //accDriver->recentData_to_print();
         std::cout << std::endl;
         Sleep(10);
     }
