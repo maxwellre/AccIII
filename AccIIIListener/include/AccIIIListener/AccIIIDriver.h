@@ -24,6 +24,7 @@
 #include <pthread.h>
 #endif
 
+#include "AccIIIDriver_defines.h"
 #include "../../libs/ftd2xx.h"
 
 // To clarify the reading
@@ -48,8 +49,8 @@ private:
     int RxBuffer_length;
 
     // variables of control for receivedBytes
-    int receivedBytes_maxSize; // maximum number of vectors in the queue
-    int receivedBytes_2DLength; // total number of elements in receivedBytes
+    std::deque< Byte > receivedBytes;
+    int receivedBytes_maxLength; // maximum number of elem
 
     /**
      * @brief main read called by other functions
@@ -67,22 +68,35 @@ private:
      */
     bool clearReceivedBytes();
 
+
+    /**
+     * @brief decode ReceivedBytes for each sample
+     * @param offset Offset defines the targeted sample
+     * @return the 3-D vector with X,Y,Z values of each sensor for each sample
+     */
+    vector3D_int decode();
+
     /**
      * @brief decode ReceivedBytes for one value of each accelerometer 
      * based on the manner FTD2XX device communication protocol.
-     * @param offset Offset defines the targeted sample 
-     * @return the 2-D vector with X,Y,Z values of each sensor for one sample 
+     * @param dataSample Pointer to a 2-D vector to get the results
+     * @param offset Offset defines the targeted sample (from 0 to maximum sample number)
      */
-    vector2D_int decode_once(int offset = 0);
+    bool decode_once(vector2D_int* dataSample, int offset = 0);
+
+
+    bool pop();
+    bool pop_once(int offset = 0);
+
 
     /**
      * @brief store decoded ReceivedBytes values into acc_values queue
      */
-    bool storeDecodedBytes(std::vector<int> * val);
+    bool storeDecodedBytes();
 
 
 public:
-    std::deque< Byte > receivedBytes;
+    // public variable, filled if required
     vector3D_int accData;
 
 	AccIIIDriver();
@@ -118,10 +132,16 @@ public:
      */
     bool read_once();
 
+    bool read_end();
+
     /**
      * @brief convert last data to be print
      */
     std::string recentData_to_print();
+
+
+    /**------------- GETTERS AND SETTERS -------------**/
+    vector3D_int getAccData();
 
 };
 
