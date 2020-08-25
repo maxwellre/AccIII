@@ -12,7 +12,8 @@
 #include <errno.h>
 #include <iostream>
 #include <limits>
-#include <queue>          // std::queue
+#include <limits>       // std::numeric_limits
+#include <queue>        // std::queue
 #include <stdio.h>
 #include <string>
 
@@ -27,11 +28,9 @@
 #include "AccIIIDriver_defines.h"
 #include "../../libs/ftd2xx.h"
 
-// To clarify the reading
 typedef unsigned char Byte;
-typedef std::vector< std::vector<int> > vector2D_int;
+typedef std::vector< std::vector<int16_t> > vector2D_int;
 typedef std::vector< vector2D_int > vector3D_int;
-
 
 class AccIIIDriver {
 private:
@@ -45,12 +44,14 @@ private:
     DWORD TxBytes;
     DWORD RxBytes;
     DWORD BytesReceived;
-    unsigned char* RxBuffer;
-    int RxBuffer_length;
 
-    // variables of control for receivedBytes
+    // Short-term buffer for FT_read()
+    Byte* RxBuffer;
+    int RxBuffer_length;
+    // Infinite resizable buffer of RxBuffer
     std::deque< Byte > receivedBytes;
-    int receivedBytes_maxLength; // maximum number of elem
+    // Organized data
+    vector3D_int accData;
 
     /**
      * @brief main read called by other functions
@@ -64,30 +65,27 @@ private:
     bool storeRxBuffer();
 
     /**
-     * @brief clear receivedBytes is size if bigger than receivedBytes_maxSize
+     * @brief clear receivedBytes
      */
-    bool clearReceivedBytes();
-
+    bool initReceivedBytes();
 
     /**
-     * @brief decode ReceivedBytes for each sample
-     * @param offset Offset defines the targeted sample
-     * @return the 3-D vector with X,Y,Z values of each sensor for each sample
+     * @brief decode byteQueue by frame, sensors and axis in a 3D vector
+     * @param byteQueue The queue of byte that has to be converted
+     * @return the 3-D vector with X,Y,Z values of each sensor for each frame
      */
-    vector3D_int decode();
+    vector3D_int decode(std::deque<Byte> byteQueue);
 
     /**
-     * @brief decode ReceivedBytes for one value of each accelerometer 
+     * @brief decode byteQueue for each axis of each accelerometer for one frame
      * based on the manner FTD2XX device communication protocol.
-     * @param dataSample Pointer to a 2-D vector to get the results
-     * @param offset Offset defines the targeted sample (from 0 to maximum sample number)
+     * @param dataFrame Pointer to a 2-D vector to get the results
+     * @param byteQueue Queue of the size of a frame
      */
-    bool decode_once(vector2D_int* dataSample, int offset = 0);
-
+    bool decode_once(vector2D_int* dataFrame, std::deque<Byte> byteQueue_frame);
 
     bool pop();
     bool pop_once(int offset = 0);
-
 
     /**
      * @brief store decoded ReceivedBytes values into acc_values queue
@@ -95,9 +93,25 @@ private:
     bool storeDecodedBytes();
 
 
+protected:
+    /**------ Protected for Unit Test (Mock class) -------**/
+
+    /**------ ReceivedBytes Modifiers --------------------**/
+    void addtoReceivedBytes(Byte* bp, long length = -1);
+    void addtoReceivedBytes(Byte b);
+    void setReceivedBytes(std::deque<Byte> ByteQueue);
+
+    /**------ AccData Modifiers --------------------------**/
+    void addtoAccData(std::deque<Byte> ByteQueue);
+
+    /**------ Type Converters ----------------------------**/
+    int16_t uint16toint16(uint16_t i);
+    uint16_t bytes2uint16(Byte h, Byte l);
+    uint8_t byte2uint8(Byte b);
+    Byte uint2byte(uint8_t i);
+
+
 public:
-    // public variable, filled if required
-    vector3D_int accData;
 
 	AccIIIDriver();
 	virtual ~AccIIIDriver();
@@ -132,17 +146,9 @@ public:
      */
     bool read_once();
 
-    bool read_end();
-
-    /**
-     * @brief convert last data to be print
-     */
-    std::string recentData_to_print();
-
-
-    /**------------- GETTERS AND SETTERS -------------**/
+    /**------ PUBLIC --- GETTERS -------------------------**/
+    std::deque<Byte> getReceivedBytes();
     vector3D_int getAccData();
-
 };
 
 #endif /* ACCIIIDRIVER_H_ */

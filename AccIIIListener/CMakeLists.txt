@@ -27,15 +27,21 @@ add_subdirectory(${EXT_LIB_DIR})
 # --- AccIII libraries ---
 message("AccIII libraries")
 add_library(AccIIIDriver ${SOURCES_DIR}/AccIIIDriver.cpp)
+add_library(AccIIIDriverMock ${SOURCES_DIR}/AccIIIDriverMock.cpp)
 if (WIN32)
 	target_link_libraries (AccIIIDriver ftd2xx)
+	target_link_libraries (AccIIIDriverMock ftd2xx AccIIIDriver)
 endif (WIN32)
 if (UNIX)
 	target_link_libraries (AccIIIDriver ftd2xx Threads::Threads)
+	target_link_libraries (AccIIIDriverMock ftd2xx Threads::Threads AccIIIDriver)
 endif (UNIX)
 
 # --- Main ---
 set(CMAKE_BUILD_TYPE RelWithDebInfo)
 add_executable(${PROJECT_NAME} AccIIIListener.cpp)
 target_link_libraries (${PROJECT_NAME} LINK_PUBLIC AccIIIDriver)
+
+add_executable(${PROJECT_NAME}_test tests/AccIIIDriver_test.cpp)
+target_link_libraries (${PROJECT_NAME}_test LINK_PUBLIC AccIIIDriverMock)
 

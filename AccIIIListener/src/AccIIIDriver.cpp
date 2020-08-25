@@ -7,7 +7,6 @@
 
 #include "AccIIIListener/AccIIIDriver.h"
 
-
 AccIIIDriver::AccIIIDriver() {
 
     this->ftHandle = NULL;
@@ -19,10 +18,10 @@ AccIIIDriver::AccIIIDriver() {
     this->BytesReceived = 0;
 
     this->RxBuffer_length = 50000;
-    this->RxBuffer = new unsigned char[this->RxBuffer_length]();
+    this->RxBuffer = new Byte[this->RxBuffer_length]();
 
-    this->receivedBytes_maxLength = 10^6;
-    clearReceivedBytes();
+    //this->accData.reserve(1);
+    initReceivedBytes();
 }
 
 AccIIIDriver::~AccIIIDriver() {
@@ -40,10 +39,12 @@ long AccIIIDriver::read_raw() {
             // if buffer is too small, resize it
             this->RxBuffer_length = this->RxBytes;
             delete[] this->RxBuffer;
-            this->RxBuffer = new unsigned char[this->RxBuffer_length]();
+            this->RxBuffer = new Byte[this->RxBuffer_length]();
         }
 
         this->ftStatus = FT_Read(this->ftHandle, this->RxBuffer, this->RxBytes, &this->BytesReceived);
+
+        //std::cout << "RxBytes: " << this->RxBytes << " BytesReceived: " << this->BytesReceived << std::endl;
 
         if (FT_OK != this->ftStatus) {
             // FT_Read Failed
@@ -62,87 +63,73 @@ long AccIIIDriver::read_raw() {
 
 bool AccIIIDriver::storeRxBuffer() {
 
-    if (this->receivedBytes_maxLength < this->receivedBytes.size() + 1) {
-        // if new element can't fit in the queue based on predefined max size
-        //clearReceivedBytes();
-    }
+    addtoReceivedBytes(this->RxBuffer, this->RxBytes);
 
-    long rxl = this->RxBytes;
-    for (int itr = 0; itr < rxl; itr++) {
-        this->receivedBytes.push_back(this->RxBuffer[itr]);
-    }
-    
     return false;
 }
 
-bool AccIIIDriver::clearReceivedBytes() {
+bool AccIIIDriver::initReceivedBytes() {
 
-    std::cout << "clearReceivedBytes..." << std::endl;
     std::deque< Byte > emptyQueue;
     std::swap(this->receivedBytes, emptyQueue);
 
     return false;
 }
 
-vector3D_int AccIIIDriver::decode() {
-    vector2D_int vec2D_sample(ACCIII_NB_SENSORS, std::vector<int>(ACCIII_NB_AXIS));
-    int s, nbCompletedSamples, nbbytesample;
+vector3D_int AccIIIDriver::decode(std::deque<Byte> byteQueue) {
+    std::deque<Byte> byteQueue_frame;
+    std::deque<Byte>::iterator it_start, it_end;
+    int s, nbCompletedFrames, nbbyteframe;
 
-    nbbytesample = ACCIII_NB_BYTEPERSAMPLE; // unexpected behavior when directly used in the operation
-    nbCompletedSamples = (int)this->receivedBytes.size() / nbbytesample;
-    if (this->receivedBytes.size() % nbbytesample) {
-        // remove last sample if incomplete
-        nbCompletedSamples--;
+    nbbyteframe = ACCIII_NB_BYTEPERFRAME; // unexpected behavior when directly used in the operation
+    nbCompletedFrames = (int)byteQueue.size() / nbbyteframe;
+    if (this->receivedBytes.size() % nbbyteframe) {
+        // remove last frame if incomplete
+        nbCompletedFrames--;
     }
 
-    vector3D_int accData_all(nbCompletedSamples, vec2D_sample);
+    vector3D_int accData_all(nbCompletedFrames, vector2D_int(ACCIII_NB_SENSORS, std::vector<int16_t>(ACCIII_NB_AXIS)));
 
-    for (s = 0; s < nbCompletedSamples; s++) {
-        if (decode_once(&accData_all[s], s)) {
-            perror("decode_once error\n");
-            break;
-        }
+    for (s = 0; s < nbCompletedFrames; s++) {
+        it_start = byteQueue.begin() + s*(int)ACCIII_NB_BYTEPERFRAME;
+        it_end = it_start + ACCIII_NB_BYTEPERFRAME;
+        byteQueue_frame.assign(it_start, it_end);
+        decode_once(&accData_all[s], byteQueue_frame);
     }
 
     return accData_all;
 }
 
 
-bool AccIIIDriver::decode_once(vector2D_int *dataSample, int offset) {
+bool AccIIIDriver::decode_once(vector2D_int *dataFrame, std::deque<Byte> byteQueue_frame) {
 
     Byte highByte, lowByte;
-    int a, s, incr, value;
+    int a, s, g, value;
     int sensor_ID, highByte_ID, lowByte_ID;
-    int offset_group, offset_sample;
+    int offset_group;
 
-    offset_sample = offset * ACCIII_NB_BYTEPERSAMPLE;
+    // get position of the current frame
 
-    for (incr = 0; incr < ACCIII_NB_GROUP; incr++) {
+    for (g = 0; g < ACCIII_NB_GROUP; g++) {
         // care about odd ID sensors first, then even ID sensors
-        offset_group = incr * ACCIII_NB_BYTEPERGROUP;
+        offset_group = g * ACCIII_NB_BYTEPERGROUP;
 
         for (s = 0; s < ACCIII_NB_SENSORSPERGROUP; s++) {
             // for each sensor of the current group (odd // even)
-            sensor_ID = s*ACCIII_NB_GROUP + incr;
+            sensor_ID = s*ACCIII_NB_GROUP + g;
 
             for (a = 0; a < ACCIII_NB_AXIS; a++) {
                 // Axis X, Y, Z
-                // chosen sample + chosen group + chosen sensor + chosen axis
-                lowByte_ID = offset_sample + offset_group + s + a*ACCIII_NB_SENSORSPERGROUP*ACCIII_NB_BYTEPERVALUE;
+                // chosen frame + chosen group + chosen sensor + chosen axis
+                lowByte_ID = offset_group + s + a*ACCIII_NB_SENSORSPERGROUP*ACCIII_NB_BYTEPERVALUE;
 
                 // based on the lowByteID, get HighByteID with the offset of the group sensor size
                 highByte_ID = lowByte_ID + ACCIII_OFFSET_HIGHBYTE;
 
-                highByte = this->receivedBytes[highByte_ID];
-                lowByte = this->receivedBytes[lowByte_ID];
-
-                value = ((int)highByte << 8) | (int)lowByte; // [High,Low]
-                if (value > ACCIII_VALUE_MID) {
-                    // sensors give negative and positive values (unsigned -> signed values)
-                    // if last bit if 1, then value is negative
-                    value -= ACCIII_VALUE_MAX;
-                }
-                (*dataSample)[sensor_ID][a] = value;
+                highByte = byteQueue_frame[highByte_ID];
+                lowByte = byteQueue_frame[lowByte_ID];
+                
+                (*dataFrame)[sensor_ID][a] = uint16toint16(bytes2uint16(highByte, lowByte));
             }
         }
     }
@@ -151,19 +138,20 @@ bool AccIIIDriver::decode_once(vector2D_int *dataSample, int offset) {
 }
 
 bool AccIIIDriver::pop() {
-    int s, nbSamples;
 
-    nbSamples = (int)this->receivedBytes.size() / ACCIII_NB_BYTEPERSAMPLE;
+    int s, nbFrames;
 
-    vector2D_int accData_sample(ACCIII_NB_SENSORS, std::vector<int>(ACCIII_NB_AXIS));
-    vector3D_int accData(nbSamples, accData_sample);
+    nbFrames = (int)this->receivedBytes.size() / ACCIII_NB_BYTEPERFRAME;
 
-    for (s = 0; s < nbSamples; s++) {
+    vector2D_int accData_frame(ACCIII_NB_SENSORS, std::vector<int16_t>(ACCIII_NB_AXIS));
+    vector3D_int accData(nbFrames, accData_frame);
+
+    for (s = 0; s < nbFrames; s++) {
         if (pop_once()) {
             perror("decode_once error\n");
             break;
         }
-        accData[s] = accData_sample;
+        accData[s] = accData_frame;
     }
 
     return false;
@@ -171,12 +159,12 @@ bool AccIIIDriver::pop() {
 
 bool AccIIIDriver::pop_once(int offset) {
 
-    int first_elem = offset * ACCIII_NB_BYTEPERSAMPLE;
-    int last_elem = first_elem + ACCIII_NB_BYTEPERSAMPLE;
+    int first_elem = offset * ACCIII_NB_BYTEPERFRAME;
+    int last_elem = first_elem + ACCIII_NB_BYTEPERFRAME;
 
     if ( this->receivedBytes.size() >= last_elem) {
         auto ptr = this->receivedBytes.begin() + first_elem;
-        this->receivedBytes.erase(ptr, ptr + ACCIII_NB_BYTEPERSAMPLE);
+        this->receivedBytes.erase(ptr, ptr + ACCIII_NB_BYTEPERFRAME);
         return false;
     }
     else {
@@ -187,10 +175,8 @@ bool AccIIIDriver::pop_once(int offset) {
 
 bool AccIIIDriver::storeDecodedBytes() {
 
-    vector3D_int data = decode();
+    this->accData = decode(this->receivedBytes);
     //pop();
-
-    this->accData = data;
 
     return false;
 }
@@ -280,45 +266,50 @@ bool AccIIIDriver::read_once() {
     return false;
 }
 
-
-bool AccIIIDriver::read_end() {
-    storeDecodedBytes();
-
-    return false;
+ int16_t AccIIIDriver::uint16toint16(uint16_t i) {
+    return (int16_t)i;
 }
 
-
-
-
-std::string  AccIIIDriver::recentData_to_print() {
-    std::string res = "";
-
-    /*
-    unsigned char* curBytes;
-    int i, curBytes_length;
-
-    curBytes_length = 0;
-
-    
-    if (!this->receivedBytes.empty())
-    {
-        curBytes = this->receivedBytes.back();
-
-        for (i = 0; curBytes[i]; i++) {
-            std::cout << int((unsigned char)curBytes[i]) << " " << std::flush;
-            curBytes_length++;
-        }
-        std::cout << ":: " << curBytes_length << std::flush;
-        std::cout << std::endl;
-
-        res.append(reinterpret_cast<char*>(curBytes), sizeof(curBytes));
-    }
-    */
-    return res;
+uint16_t AccIIIDriver::bytes2uint16(Byte h, Byte l) {
+    return (uint16_t)(byte2uint8(h) << 8 | byte2uint8(l));
 }
 
+uint8_t AccIIIDriver::byte2uint8(Byte b) {
+    return (uint8_t)b;
+}
+
+Byte AccIIIDriver::uint2byte(uint8_t i) {
+    return (Byte)i;
+}
+
+void AccIIIDriver::addtoAccData(std::deque<Byte> ByteQueue) {
+
+    vector3D_int data = decode(ByteQueue);
+    this->accData.insert(std::end(this->accData), std::begin(data), std::end(data));
+}
 
 vector3D_int AccIIIDriver::getAccData() {
-
     return this->accData;
+}
+
+void AccIIIDriver::addtoReceivedBytes(Byte* bp, long length) {
+    int i, stop;
+    
+    length ? stop = length : stop = bp[0];
+
+    for (i = 0; i < stop; i++) {
+        addtoReceivedBytes(bp[i]);
+    }
+}
+
+void AccIIIDriver::addtoReceivedBytes(Byte b) {
+    this->receivedBytes.push_back(b);
+}
+
+void AccIIIDriver::setReceivedBytes(std::deque<Byte> ByteQueue) {
+    this->receivedBytes = ByteQueue;
+}
+
+std::deque<Byte> AccIIIDriver::getReceivedBytes() {
+    return this->receivedBytes;
 }
