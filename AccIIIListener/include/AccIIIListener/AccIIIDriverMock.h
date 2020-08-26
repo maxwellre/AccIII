@@ -1,6 +1,9 @@
 /*
  * AccIIIDriverMock.h
- *
+ * 
+ * Inherits from AccIIIDriver.
+ * Mock class to access protected content during Unit Tests.
+ * 
  *  Created on: Aug 25, 2020
  *      Author: Basil Duvernoy
  */
