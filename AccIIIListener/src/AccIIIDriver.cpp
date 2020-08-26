@@ -79,7 +79,7 @@ bool AccIIIDriver::initReceivedBytes() {
 vector3D_int AccIIIDriver::decode(std::deque<Byte> byteQueue) {
     std::deque<Byte> byteQueue_frame;
     std::deque<Byte>::iterator it_start, it_end;
-    int s, nbCompletedFrames, nbbyteframe;
+    int s, frameOffset, nbCompletedFrames, nbbyteframe;
 
     nbbyteframe = ACCIII_NB_BYTEPERFRAME; // unexpected behavior when directly used in the operation
     nbCompletedFrames = (int)byteQueue.size() / nbbyteframe;
@@ -91,8 +91,9 @@ vector3D_int AccIIIDriver::decode(std::deque<Byte> byteQueue) {
     vector3D_int accData_all(nbCompletedFrames, vector2D_int(ACCIII_NB_SENSORS, std::vector<int16_t>(ACCIII_NB_AXIS)));
 
     for (s = 0; s < nbCompletedFrames; s++) {
-        it_start = byteQueue.begin() + s*(int)ACCIII_NB_BYTEPERFRAME;
-        it_end = it_start + ACCIII_NB_BYTEPERFRAME;
+        frameOffset = s * nbbyteframe;
+        it_start = byteQueue.begin() + frameOffset;
+        it_end = it_start + nbbyteframe;
         byteQueue_frame.assign(it_start, it_end);
         decode_once(&accData_all[s], byteQueue_frame);
     }
@@ -104,15 +105,15 @@ vector3D_int AccIIIDriver::decode(std::deque<Byte> byteQueue) {
 bool AccIIIDriver::decode_once(vector2D_int *dataFrame, std::deque<Byte> byteQueue_frame) {
 
     Byte highByte, lowByte;
-    int a, s, g, value;
+    int a, s, g;
     int sensor_ID, highByte_ID, lowByte_ID;
-    int offset_group;
+    int offsetGroup;
 
     // get position of the current frame
 
     for (g = 0; g < ACCIII_NB_GROUP; g++) {
         // care about odd ID sensors first, then even ID sensors
-        offset_group = g * ACCIII_NB_BYTEPERGROUP;
+        offsetGroup = g * ACCIII_NB_BYTEPERGROUP;
 
         for (s = 0; s < ACCIII_NB_SENSORSPERGROUP; s++) {
             // for each sensor of the current group (odd // even)
@@ -121,7 +122,7 @@ bool AccIIIDriver::decode_once(vector2D_int *dataFrame, std::deque<Byte> byteQue
             for (a = 0; a < ACCIII_NB_AXIS; a++) {
                 // Axis X, Y, Z
                 // chosen frame + chosen group + chosen sensor + chosen axis
-                lowByte_ID = offset_group + s + a*ACCIII_NB_SENSORSPERGROUP*ACCIII_NB_BYTEPERVALUE;
+                lowByte_ID = offsetGroup + s + a*ACCIII_NB_SENSORSPERGROUP*ACCIII_NB_BYTEPERVALUE;
 
                 // based on the lowByteID, get HighByteID with the offset of the group sensor size
                 highByte_ID = lowByte_ID + ACCIII_OFFSET_HIGHBYTE;

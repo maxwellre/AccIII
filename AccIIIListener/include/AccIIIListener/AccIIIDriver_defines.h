@@ -12,8 +12,8 @@
 #define ACCIII_OFFSET_HIGHBYTE ACCIII_NB_SENSORSPERGROUP
 
 // 1 value = 2 Bytes = 0xFFFF = 65535
-#define ACCIII_VALUE_MAX 65535 //std::numeric_limits<uint16_t>::max()
-// 1 value = 2 Bytes = 0x8000 = 65535
-#define ACCIII_VALUE_MID 32768
+#define ACCIII_UINT16_MAX 65535 //std::numeric_limits<uint16_t>::max()
+// 1 value = 2 Bytes = 0x8000 = 32767
+#define ACCIII_INT16_MAX 32767
 
 
