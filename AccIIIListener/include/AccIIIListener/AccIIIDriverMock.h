@@ -20,6 +20,11 @@ protected:
 
 public:
 
+    /**------ RxBuffer Modifiers -------------------------**/
+    int getRxBuffer_length();
+    int getRxBuffer_nbElem();
+    Byte* getRxBuffer();
+
     /**------ ReceivedBytes Modifiers --------------------**/
     void addtoReceivedBytes(Byte* bp, long l);
     void addtoReceivedBytes(Byte b);

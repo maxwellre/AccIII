@@ -9,6 +9,7 @@
 #include "../libs/catch.hpp"
 
 #include "../include/AccIIIListener/AccIIIDriverMock.h"
+#include "../include/AccIIIListener/FileManager.h"
 
 TEST_CASE("AccIIIDriver::constant global variables", "[equality tests]") {
 
@@ -58,6 +59,19 @@ TEST_CASE("AccIIIDriver::Converters", "[Byte, uint8_t, int16_t]") {
 }
 
 
+TEST_CASE("AccIIIDriver::Initialiser", "[RxBuffer, receivedBytes]") {
+
+    AccIIIDriverMock* ad = new AccIIIDriverMock();
+    Byte* rb;
+    long rb_len;
+
+    rb = ad->getRxBuffer();
+    rb_len = (long)strlen((const char*) rb);
+
+    REQUIRE(1 == ad->getRxBuffer_length());
+    REQUIRE(0 == ad->getRxBuffer_nbElem());
+    REQUIRE(rb_len == ad->getRxBuffer_nbElem());
+}
 
 TEST_CASE("AccIIIDriver::Decode", "std::Queue<Byte> to decoded Queue<Int>") {
 
@@ -241,4 +255,11 @@ TEST_CASE("AccIIIDriver::Decode", "std::Queue<Byte> to decoded Queue<Int>") {
 
         REQUIRE(data == data3D_zeros);
     }
+}
+
+
+TEST_CASE("FileManager::Init", "[fileName]") {
+    FileManager* fm = new FileManager();
+
+
 }

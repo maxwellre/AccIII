@@ -1,5 +1,4 @@
 
-#include <fstream>
 #include <windows.h>
 
 #include "AccIIIListener/AccIIIDriver.h"
@@ -20,7 +19,10 @@ int main(int argc, char **argv) {
     accDriver  = new AccIIIDriver();
 
     nok = accDriver->ft_open();
-    nok ? cout << "Couldn't open the session." << endl : cout << "Session opened..." << endl;
+    if (nok)
+        std::cerr << "Couldn't open the session." << std::endl;
+    else
+        std::cout << "Session opened..." << std::endl;
     
     for (i = 0; i < 1000; i++) {
         if (disp) std::cout << i << "," << std::flush;
@@ -30,7 +32,10 @@ int main(int argc, char **argv) {
     if (disp) std::cout << std::endl;
 
     nok = accDriver->ft_close();
-    nok ? cout << "Couldn't close the session." << endl : cout << "Session closed..." << endl;
+    if (nok)
+        std::cerr << "Couldn't close the session." << std::endl;
+    else
+        std::cout << "Session closed..." << std::endl;
     
     data = accDriver->getAccData();
 
@@ -41,18 +46,6 @@ int main(int argc, char **argv) {
             }
             std::cout << std::endl;
         }
-    }
-
-    if (save_data) {
-        ofstream myfile;
-        myfile.open("example.csv");
-        for (int t = 0; t < data[0].size(); t++) {
-            for (int s = 0; s < data[0][0].size(); s++) {
-                myfile << data[t][s][0] << "," << data[t][s][1] << "," << data[t][s][2] << "," << std::flush;
-            }
-            myfile << std::endl;
-        }
-        myfile.close();
     }
 
 	return 0;

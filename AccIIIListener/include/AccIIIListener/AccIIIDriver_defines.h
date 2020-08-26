@@ -1,3 +1,9 @@
+#include <vector>
+
+typedef unsigned char Byte;
+typedef std::vector< std::vector<int16_t> > vector2D_int;
+typedef std::vector< vector2D_int > vector3D_int; 
+
 #define ACCIII_NB_SENSORS 46
 #define ACCIII_NB_GROUP 2
 #define ACCIII_NB_AXIS 3
@@ -15,5 +21,7 @@
 #define ACCIII_UINT16_MAX 65535 //std::numeric_limits<uint16_t>::max()
 // 1 value = 2 Bytes = 0x8000 = 32767
 #define ACCIII_INT16_MAX 32767
+
+
 
 

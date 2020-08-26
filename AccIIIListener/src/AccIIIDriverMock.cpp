@@ -11,6 +11,17 @@
 
 #include "AccIIIListener/AccIIIDriverMock.h"
 
+int AccIIIDriverMock::getRxBuffer_length() {
+	return AccIIIDriver::getRxBuffer_length();
+}
+
+int AccIIIDriverMock::getRxBuffer_nbElem() {
+	return AccIIIDriver::getRxBuffer_nbElem();
+}
+
+Byte* AccIIIDriverMock::getRxBuffer() {
+	return AccIIIDriver::getRxBuffer();
+}
 
 void AccIIIDriverMock::addtoReceivedBytes(Byte* bp, long l = -1) {
 	AccIIIDriver::addtoReceivedBytes(bp, l);

@@ -37,11 +37,13 @@ if (UNIX)
 	target_link_libraries (AccIIIDriverMock ftd2xx Threads::Threads AccIIIDriver)
 endif (UNIX)
 
+add_library(FileManager ${SOURCES_DIR}/FileManager.cpp)
+
 # --- Main ---
 set(CMAKE_BUILD_TYPE RelWithDebInfo)
 add_executable(${PROJECT_NAME} AccIIIListener.cpp)
 target_link_libraries (${PROJECT_NAME} LINK_PUBLIC AccIIIDriver)
 
 add_executable(${PROJECT_NAME}_test tests/AccIIIDriver_test.cpp)
-target_link_libraries (${PROJECT_NAME}_test LINK_PUBLIC AccIIIDriverMock)
+target_link_libraries (${PROJECT_NAME}_test LINK_PUBLIC AccIIIDriverMock FileManager)
 
