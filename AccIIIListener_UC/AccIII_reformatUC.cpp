@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
 	print_header = 1;
 	print_data = 1; 
 
-	float sampleTime = 1;
+	float sampleTime = 3;
 
 	acciii->setSampleTime(sampleTime);
 	acciii->sampleData();
@@ -47,12 +47,21 @@ int main(int argc, char **argv) {
 
 		std::cout << std::endl << "DATA : " << std::endl;
 		data_buffer = acciii->decodeData();
+
 		std::cout << "[" << data_buffer.size() << "," << data_buffer[0].size() << "]" << std::endl;
 		for (int i = 0; i < data_buffer.size(); i++) {
-			//for (int j = 0; j < data_buffer[0].size(); j++) {
+
 			std::cout << setw(8) << data_buffer[i][0] << std::flush;
 			std::cout << setw(8) << data_buffer[i][1] << std::flush;
-			std::cout << setw(8) << data_buffer[i][2] << std::endl;
+			std::cout << setw(8) << data_buffer[i][2] << std::flush;
+
+			std::cout << setw(16) << data_buffer[i][3] << std::flush;
+			std::cout << setw(8)  << data_buffer[i][4] << std::flush;
+			std::cout << setw(8)  << data_buffer[i][5] << std::flush;
+
+			std::cout << setw(16) << data_buffer[i][6] << std::flush;
+			std::cout << setw(8)  << data_buffer[i][7] << std::flush;
+			std::cout << setw(8)  << data_buffer[i][8] << std::endl;
 		}
 	}
 

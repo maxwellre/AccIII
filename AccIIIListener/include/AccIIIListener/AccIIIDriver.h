@@ -11,8 +11,8 @@
 #include <algorithm>    // std::copy
 #include <errno.h>
 #include <iostream>
-#include <limits>
 #include <limits>       // std::numeric_limits
+#include <cmath>
 #include <queue>        // std::queue
 #include <stdio.h>
 #include <string>
@@ -28,6 +28,15 @@
 #include "../../libs/ftd2xx.h"
 
 #include "AccIIIDriver_defines.h"
+
+
+
+const std::vector<Byte> HEADERBYTES_VEC1 = {
+     32, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 
+    117, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 117 };
+const std::vector<Byte> HEADERBYTES_VEC2 = {
+     32, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63,
+    117, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 85 };
 
 class AccIIIDriver {
 private:
@@ -51,6 +60,7 @@ private:
     // Infinite resizable buffer of RxBuffer
     std::deque< Byte > receivedBytes;
     // Organized data
+    std::vector<int> decode_idx;
     vector3D_int accData;
 
     /**
@@ -84,7 +94,7 @@ private:
      * @param dataFrame Pointer to a 2-D vector to get the results;
      * @param byteQueue Queue of the size of a frame.
      */
-    bool decode_frame(vector2D_int* dataFrame, std::deque<Byte> byteQueue_frame);
+    vector2D_int* decode_frame(vector2D_int* dataFrame, std::deque<Byte> byteQueue_frame);
 
     bool pop();
     bool pop_once(int offset = 0);
@@ -176,5 +186,6 @@ public:
     std::deque<Byte> getReceivedBytes();
     vector3D_int getAccData();
 };
+
 
 #endif /* ACCIIIDRIVER_H_ */

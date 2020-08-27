@@ -1,7 +1,7 @@
 #include "acciii.h"
 #include <iostream>
 
-Acciii::Acciii() : GSCALE(0.00073), READNUM(46), HALFREAD((int)(READNUM * 0.5)), sampleTime(1.0)
+Acciii::Acciii() : GSCALE(0.00073), READNUM(48), HALFREAD((int)(READNUM * 0.5)), sampleTime(1.0)
 {
     dwSum = 0;
     fileBuffer = nullptr;

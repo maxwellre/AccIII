@@ -17,10 +17,16 @@ AccIIIDriver::AccIIIDriver() {
     this->RxBytes = 0;
     this->RxBuffer_nbElem = 0;
 
-    this->headerSize = 46+3;// +1; // unit is Byte;
+    this->headerSize = ACCIII_NB_SENSORS + 1; // unit is Byte;
+
+    this->decode_idx.reserve(ACCIII_NB_SENSORS);
+    for (int i = 0; i < ACCIII_NB_SENSORSPERGROUP; i++) {
+        this->decode_idx[i * 2] = i;
+        this->decode_idx[i * 2 + 1] = i + ACCIII_NB_SENSORSPERGROUP;
+    }
 
     this->RxBuffer = NULL;
-    initRxBuffer((2 ^ 17) - 1);
+    initRxBuffer(pow(2, 16));
     initReceivedBytes();
 }
 
@@ -36,46 +42,38 @@ AccIIIDriver::~AccIIIDriver() {
 
 long AccIIIDriver::read_raw(DWORD nbBytes) {
 
-    int nbTry, nbTryMax;
-
-    nbTry = 0;
-    nbTryMax = 1000;
-
-    do {
-        // try getting status
-        this->ftStatus = FT_GetStatus(this->ftHandle, &this->RxBytes, &this->TxBytes, &this->EventDWord);
-        nbTry++;
-    } while (FT_OK != this->ftStatus);
-
-    if (FT_OK != this->ftStatus) {
+    if (FT_OK != FT_GetStatus(this->ftHandle, &this->RxBytes, &this->TxBytes, &this->EventDWord)) {
         // report error if FT_GetStatus is unreachable
-        perror("FT_GetStatus failed 1000 times in a raw ");
+        perror("FT_GetStatus failed ");
+        this->RxBuffer_nbElem = 0;
+        return 0;
     }
 
-    if (nbBytes == -1) {
+    if (-1 == nbBytes || nbBytes > this->RxBytes) {
         // if no specific number of bytes has been chosen, use the number of available Bytes
         nbBytes = this->RxBytes;
     }
 
-    if (0 < nbBytes) {
-        // readable number of byte
-        if (this->RxBuffer_length < (int)nbBytes) {
-            // if buffer is too small, resize it
-            initRxBuffer((int)nbBytes);
-        }
+    if (0 >= nbBytes) {
+        this->RxBuffer_nbElem = 0;
+        return 0;
+    }
 
-        this->ftStatus = FT_Read(this->ftHandle, this->RxBuffer, nbBytes, &this->RxBuffer_nbElem);
+    // readable number of byte
+    if (this->RxBuffer_length < (int)nbBytes) {
+        // if buffer is too small, resize it
+        initRxBuffer((int)nbBytes);
+    }
 
-        if (FT_OK != this->ftStatus) {
-            // FT_Read Failed
-            errno = ENOMSG;
-            perror("FT_Read Failed ");
-        }
-        else if (this->RxBuffer_nbElem != nbBytes) {
-            // FT_Read Incomplete 
-            errno = ENOMSG;
-            perror("FT_Read Incomplete ");
-        }
+    if (FT_OK != FT_Read(this->ftHandle, this->RxBuffer, nbBytes, &this->RxBuffer_nbElem)) {
+        // FT_Read Failed
+        errno = ENOMSG;
+        perror("FT_Read Failed ");
+    }
+    else if (this->RxBuffer_nbElem != nbBytes) {
+        // FT_Read Incomplete 
+        errno = ENOMSG;
+        perror("FT_Read Incomplete ");
     }
 
     return this->RxBuffer_nbElem;
@@ -90,7 +88,7 @@ bool AccIIIDriver::initRxBuffer(int l) {
     this->RxBuffer_length = l;
     this->RxBuffer = new Byte[this->RxBuffer_length]();
 
-    return false;
+    return AD_OK;
 }
 
 bool AccIIIDriver::initReceivedBytes() {
@@ -98,7 +96,7 @@ bool AccIIIDriver::initReceivedBytes() {
     std::deque< Byte > emptyQueue;
     std::swap(this->receivedBytes, emptyQueue);
 
-    return false;
+    return AD_OK;
 }
 
 vector3D_int AccIIIDriver::decode(std::deque<Byte> byteQueue) {
@@ -134,14 +132,12 @@ vector3D_int AccIIIDriver::decode(std::deque<Byte> byteQueue) {
     return accData_all;
 }
 
-bool AccIIIDriver::decode_frame(vector2D_int *dataFrame, std::deque<Byte> byteQueue_frame) {
+vector2D_int* AccIIIDriver::decode_frame(vector2D_int* dataFrame, std::deque<Byte> byteQueue_frame) {
 
     Byte highByte, lowByte;
     int a, s, g;
     int sensor_ID, highByte_ID, lowByte_ID;
-    int offsetGroup, offsetAxis;
-
-    offsetAxis = ACCIII_NB_SENSORSPERGROUP * ACCIII_NB_BYTEPERVALUE;
+    int offsetGroup;
 
     // get position of the current frame
     for (g = 0; g < ACCIII_NB_GROUP; g++) {
@@ -150,26 +146,28 @@ bool AccIIIDriver::decode_frame(vector2D_int *dataFrame, std::deque<Byte> byteQu
 
         for (s = 0; s < ACCIII_NB_SENSORSPERGROUP; s++) {
             // for each sensor of the current group (odd // even)
-            sensor_ID = s*ACCIII_NB_GROUP + g;
+            sensor_ID = s * ACCIII_NB_GROUP + g;
 
             for (a = 0; a < ACCIII_NB_AXIS; a++) {
                 // Axis X, Y, Z
                 // chosen frame + chosen group + chosen sensor + chosen axis
-                lowByte_ID = s + a*offsetAxis + offsetGroup;
+                lowByte_ID = s + a * ACCIII_OFFSET_AXIS + offsetGroup;
 
                 // based on the lowByteID, get HighByteID with the offset of the group sensor size
                 highByte_ID = lowByte_ID + ACCIII_OFFSET_HIGHBYTE;
 
                 highByte = byteQueue_frame[highByte_ID];
                 lowByte = byteQueue_frame[lowByte_ID];
-                
+
                 (*dataFrame)[sensor_ID][a] = uint16toint16(bytes2uint16(highByte, lowByte));
             }
         }
     }
-   
-    return false;
+
+    return dataFrame;
 }
+
+
 
 bool AccIIIDriver::pop() {
 
@@ -188,7 +186,7 @@ bool AccIIIDriver::pop() {
         accData[s] = accData_frame;
     }
 
-    return false;
+    return AD_OK;
 }
 
 bool AccIIIDriver::pop_once(int offset) {
@@ -199,10 +197,10 @@ bool AccIIIDriver::pop_once(int offset) {
     if ( this->receivedBytes.size() >= last_elem) {
         auto ptr = this->receivedBytes.begin() + first_elem;
         this->receivedBytes.erase(ptr, ptr + ACCIII_NB_BYTEPERFRAME);
-        return false;
+        return AD_OK;
     }
     else {
-        return true;
+        return !AD_OK;
     }
 }
 
@@ -211,7 +209,7 @@ bool AccIIIDriver::storeDecodedBytes() {
     this->accData = decode(this->receivedBytes);
     //pop();
 
-    return false;
+    return AD_OK;
 }
 
 std::vector<Byte> AccIIIDriver::get_header(int headerSize) {
@@ -223,15 +221,10 @@ std::vector<Byte> AccIIIDriver::get_header(int headerSize) {
     headerSize_left = headerSize;
 
     do {
-        // try until the entire header is entirely flushed
-        std::cout << "headerSize_left..." << std::to_string(headerSize_left) << std::flush;
-
+        // try until the header is entirely flushed
         headerSize_left -= read_raw(headerSize_left);
 
-        std::cout << "->" << std::to_string(headerSize_left) << std::endl;
-        std::cout << "RxBuffer_nbElem: " << std::to_string(RxBuffer_nbElem) << std::endl;
-
-        for (i = 0; i < this->RxBuffer_nbElem; i++) {
+        for (i = 0; i < (int)this->RxBuffer_nbElem; i++) {
             vb.push_back(this->RxBuffer[i]);
         }
 
@@ -244,14 +237,7 @@ bool AccIIIDriver::is_header(int headerSize) {
 
     std::vector<Byte> vb = get_header(headerSize);
 
-    std::cout << "size of the header: " << std::to_string(vb.size()) << std::endl;
-    for (int i = 0; i < vb.size(); i++) {
-        std::cout << std::to_string(byte2uint8(vb[i])) << std::flush;
-        if (i+1 < vb.size()) std::cout << ", " << std::flush;
-    }
-    std::cout << std::endl;
-
-    return true;
+    return (HEADERBYTES_VEC1 == vb || HEADERBYTES_VEC2 == vb);
 }
 
 /**
@@ -321,58 +307,57 @@ bool AccIIIDriver::ft_open(UCHAR Mask, UCHAR Mode, UCHAR LatencyTimer, char TxBu
     if (FT_OK != FT_Open(0, &this->ftHandle)) {
         errno = ENODEV;
         perror("FT_Open FAILED! ");
-        return true;
+        return !AD_OK;
     }
 
     if (FT_OK != FT_SetBitMode(this->ftHandle, Mask, Mode)) {
         errno = ENOMSG;
         perror("FT_SetBitMode FAILED! ");
-        return true;
+        return !AD_OK;
     }
 
     if (FT_OK != FT_SetLatencyTimer(this->ftHandle, LatencyTimer)) {
         errno = ENOMSG;
         perror("FT_SetLatencyTimer FAILED! ");
-        return true;
+        return !AD_OK;
     }
 
     if (FT_OK != FT_SetUSBParameters(this->ftHandle, 0x10000, 0x1)) {
         errno = ENOMSG;
         perror("FT_SetUSBParameters FAILED! ");
-        return true;
+        return !AD_OK;
     }
 
     if (FT_OK != FT_SetFlowControl(this->ftHandle, FT_FLOW_RTS_CTS, 0, 0)) {
         errno = ENOMSG;
         perror("FT_SetFlowControl FAILED! ");
-        return true;
+        return !AD_OK;
     }
 
     if (FT_OK != FT_Purge(this->ftHandle, FT_PURGE_RX)) {
         errno = ENOMSG;
         perror("FT_Purge FAILED! ");
-        return true;
+        return !AD_OK;
     }
 
     if (FT_OK != FT_Write(this->ftHandle, &TxBuffer, sizeof(&TxBuffer), &BytesWritten)) {
         errno = ENOMSG;
         perror("FT_Write Failed ");
-        return true;
+        return !AD_OK;
     }
 
     if (sizeof(&TxBuffer) != BytesWritten) {
         errno = ENOMSG;
         perror("FT_Write Failed: did not correctly wrote the Ready Signal ");
-        return true;
+        return !AD_OK;
     }
 
     if (!is_header(this->headerSize)) {
-        errno = ENOMSG;
-        perror("Remove_header failed");
-        return true;
+        perror("is_header failed : The current header doesn't match the good ones. ");
+        return !AD_OK;
     }
 
-    return false;
+    return AD_OK;
 }
 
 bool AccIIIDriver::ft_close() {
@@ -380,10 +365,10 @@ bool AccIIIDriver::ft_close() {
     if( NULL != ftHandle && FT_OK != FT_Close(ftHandle))
     {
         perror("FT_Close can't be closed\n");
-        return true;
+        return !AD_OK;
     }
 
-    return false;
+    return AD_OK;
 }
 
 bool AccIIIDriver::read_infinite() { return false;}
@@ -397,7 +382,7 @@ bool AccIIIDriver::read_once() {
         addtoReceivedBytes(this->RxBuffer, this->RxBytes);
     }
 
-    return false;
+    return AD_OK;
 }
 
 void AccIIIDriver::end_read() {
@@ -411,5 +396,3 @@ std::deque<Byte> AccIIIDriver::getReceivedBytes() {
 vector3D_int AccIIIDriver::getAccData() {
     return this->accData;
 }
-
-

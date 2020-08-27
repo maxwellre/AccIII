@@ -13,55 +13,53 @@
 
 using namespace std;
 
+
 int main(int argc, char **argv) {
 
     AccIIIDriver* accDriver;
     //vector3D_int data;
     int i;
-    bool nok, disp, disp_data, save_data;
+    bool disp, disp_data, disp_data_2, save_data;
 
     disp = 0;
     disp_data = 1;
+    disp_data_2 =0;
     save_data = 0;
 
     accDriver  = new AccIIIDriver();
 
-    nok = accDriver->ft_open();
-    if (nok) {
+    if (AD_OK != accDriver->ft_open()) {
         std::cerr << "Couldn't open the session." << std::endl;
         return 1;
     }
     else
         std::cout << "Session opened..." << std::endl;
-    
+
+    Sleep(10);
     for (i = 0; i < 100; i++) {
-        if (disp) std::cout << i << "," << std::flush;
         accDriver->read_once();
         Sleep(1);
     }
-    if (disp) std::cout << std::endl;
-
     accDriver->end_read();
 
-    nok = accDriver->ft_close();
-    if (nok) {
+    if (AD_OK != accDriver->ft_close()) {
         std::cerr << "Couldn't close the session." << std::endl;
         return 2;
     }
     else
         std::cout << "Session closed..." << std::endl;
     
-    vector3D_int data = accDriver->getAccData();
-    
+
     if (disp_data) {
+        vector3D_int data = accDriver->getAccData();
         int s_start, s_end;
 
-        s_start = 20;
+        s_start = 10;
         s_end = s_start + 4;
         std::cout << "[" << data.size() << "," << data[0].size() << "," << data[0][0].size() << "]" << std::endl;
         for (int t = 500; t < 1000; t++) {
             std::cout << setw(4) << t << "::" << std::flush;
-           // int s = 10;
+            // int s = 10;
 
             for (int s = s_start; s < s_end; s++) {
                 std::cout << "[" << setw(2) << s << "](" << std::flush;
@@ -74,7 +72,9 @@ int main(int argc, char **argv) {
         }
     }
 
+
     if (save_data) {
+        vector3D_int data = accDriver->getAccData();
         FileManager* fm = new FileManager();
         int cpt = 0;
         std::string fbase = "test";
@@ -95,7 +95,6 @@ int main(int argc, char **argv) {
         fm->addToFile(fname, data);
     }
 
-    
 
 	return 0;
 }
