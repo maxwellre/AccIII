@@ -1,0 +1,92 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.6"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				},
+				{
+					"build" : "libs",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.6"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "libs"
+				}
+			],
+			"name" : "RelWithDebInfo",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "AccIIIListener",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "AccIIIListener::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-AccIIIListener-RelWithDebInfo-a9829d120b9d3e968f19.json",
+					"name" : "AccIIIListener",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "DataProc::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-DataProc-RelWithDebInfo-4418f2f0fb809fbe56fa.json",
+					"name" : "DataProc",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "acciii::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-acciii-RelWithDebInfo-ca8064bcd6c4d0bcaddd.json",
+					"name" : "acciii",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/github/AccIII/AccIIIListener_UC/out/build/x64-Debug (default)",
+		"source" : "D:/github/AccIII/AccIIIListener_UC"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}

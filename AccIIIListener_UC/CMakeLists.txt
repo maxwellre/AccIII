@@ -26,24 +26,20 @@ add_subdirectory(${EXT_LIB_DIR})
 
 # --- AccIII libraries ---
 message("AccIII libraries")
-add_library(AccIIIDriver ${SOURCES_DIR}/AccIIIDriver.cpp)
-add_library(AccIIIDriverMock ${SOURCES_DIR}/AccIIIDriverMock.cpp)
+add_library(DataProc ${SOURCES_DIR}/DataProc.cpp)
+add_library(acciii ${SOURCES_DIR}/acciii.cpp)
 if (WIN32)
-	target_link_libraries (AccIIIDriver ftd2xx)
-	target_link_libraries (AccIIIDriverMock ftd2xx AccIIIDriver)
+	target_link_libraries (DataProc ftd2xx)
 endif (WIN32)
 if (UNIX)
-	target_link_libraries (AccIIIDriver ftd2xx Threads::Threads)
-	target_link_libraries (AccIIIDriverMock ftd2xx Threads::Threads AccIIIDriver)
+	target_link_libraries (DataProc ftd2xx Threads::Threads)
 endif (UNIX)
 
-add_library(FileManager ${SOURCES_DIR}/FileManager.cpp)
+target_link_libraries (acciii ftd2xx DataProc)
 
 # --- Main ---
 set(CMAKE_BUILD_TYPE RelWithDebInfo)
-add_executable(${PROJECT_NAME} AccIIIListener.cpp)
-target_link_libraries (${PROJECT_NAME} LINK_PUBLIC AccIIIDriver FileManager)
+add_executable(${PROJECT_NAME} AccIII_reformatUC.cpp)
+target_link_libraries (${PROJECT_NAME} LINK_PUBLIC acciii)
 
-add_executable(${PROJECT_NAME}_test tests/AccIIIDriver_test.cpp)
-target_link_libraries (${PROJECT_NAME}_test LINK_PUBLIC AccIIIDriverMock FileManager)
 

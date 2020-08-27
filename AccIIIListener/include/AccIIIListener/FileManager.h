@@ -11,24 +11,28 @@
 #include <errno.h>
 #include <iostream>
 #include <fstream> 
+#include <stdio.h>
 
 #include "AccIIIDriver_defines.h"
 
 class FileManager {
 private:
+
 	std::string fileName;
+
 protected:
+
 
 public:
 
     FileManager(std::string fn="");
 	virtual ~FileManager();
 
-	bool createFile(std::string fn);
+	bool existFile(std::string fn);
+	void createFile(std::string fn);
 	bool deleteFile(std::string fn);
 	bool addToFile(std::string fn, vector3D_int data);
-
-
+	
 	/**------ PUBLIC --- GETTERS -------------------------**/
 	std::string getFileName();
 	void setFileName(std::string fn);

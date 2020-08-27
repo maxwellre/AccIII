@@ -68,7 +68,7 @@ TEST_CASE("AccIIIDriver::Initialiser", "[RxBuffer, receivedBytes]") {
     rb = ad->getRxBuffer();
     rb_len = (long)strlen((const char*) rb);
 
-    REQUIRE(1 == ad->getRxBuffer_length());
+    REQUIRE(20000 == ad->getRxBuffer_length());
     REQUIRE(0 == ad->getRxBuffer_nbElem());
     REQUIRE(rb_len == ad->getRxBuffer_nbElem());
 }
@@ -260,6 +260,13 @@ TEST_CASE("AccIIIDriver::Decode", "std::Queue<Byte> to decoded Queue<Int>") {
 
 TEST_CASE("FileManager::Init", "[fileName]") {
     FileManager* fm = new FileManager();
+    std::string fname = "______________test______unitTest.csv";
 
+    REQUIRE(fm->existFile(fname) == false);
 
+    fm->createFile(fname);
+
+    REQUIRE(fm->existFile(fname) == true);
+    REQUIRE(fm->deleteFile(fname) == false);
+    REQUIRE(fm->existFile(fname) == false);
 }

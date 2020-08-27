@@ -1,69 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="AccIII.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="DataProc.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="USBComm.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="USBCommDlg.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="window.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="qcustomplot.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-=======
->>>>>>> removeQT
+    <ClCompile Include="DataProc.cpp" />
+    <ClCompile Include="AccIII.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="USBComm.cpp" />
+    <ClCompile Include="USBCommDlg.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\headers\DataProc.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\headers\ftd2xx.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\headers\stdafx.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="..\headers\USBComm.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\headers\USBCommDlg.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\headers\window.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\headers\qcustomplot.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\headers\ui_window.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-=======
->>>>>>> removeQT
+    <ClInclude Include="..\headers\DataProc.h" />
+    <ClInclude Include="..\headers\ftd2xx.h" />
+    <ClInclude Include="..\headers\stdafx.h" />
+    <ClInclude Include="..\headers\USBComm.h" />
+    <ClInclude Include="..\headers\USBCommDlg.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Header">
-      <UniqueIdentifier>{3dcbb01f-cb39-40ac-afe3-c366bf331f77}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source">
-      <UniqueIdentifier>{16902194-1cdd-498d-bfd7-fb25b673e2e0}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
 </Project>
