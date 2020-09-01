@@ -9,9 +9,11 @@
 #define FILEMANAGER_H_
 
 #include <errno.h>
-#include <iostream>
 #include <fstream> 
+#include <iostream>
 #include <stdio.h>
+#include <string>
+#include <time.h>
 
 #include "AccIIIDriver_defines.h"
 
@@ -24,8 +26,10 @@ protected:
 
 
 public:
-
-    FileManager(std::string fn="");
+	/*
+	* @param fn name of the file. If auto, create a file with the current date, hour, min and sec.
+	*/
+    FileManager(std::string fn="auto");
 	virtual ~FileManager();
 
 	bool existFile(std::string fn);

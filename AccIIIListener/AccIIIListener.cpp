@@ -5,28 +5,45 @@
  *      Author: Basil Duvernoy
  */
 
-#include <windows.h>
+#include <chrono>
 #include <iomanip>
+#include <time.h>
+#include <windows.h>
 
 #include "AccIIIListener/AccIIIDriver.h"
 #include "AccIIIListener/FileManager.h"
 
 using namespace std;
 
+bool basic();
 
 int main(int argc, char **argv) {
 
-    AccIIIDriver* accDriver;
-    //vector3D_int data;
-    int i;
-    bool disp, disp_data, disp_data_2, save_data;
 
-    disp = 0;
+    FileManager* fm = new FileManager();
+    std::cout << fm->getFileName() << std::endl;
+
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+
+    std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << "[µs]" << std::endl;
+    std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "[ns]" << std::endl;
+
+	//basic();
+
+	return 0;
+}
+
+bool basic() {
+
+    AccIIIDriver* accDriver;
+    int i;
+    bool disp_data, save_data;
+
     disp_data = 1;
-    disp_data_2 =0;
     save_data = 0;
 
-    accDriver  = new AccIIIDriver();
+    accDriver = new AccIIIDriver();
 
     if (AD_OK != accDriver->ft_open()) {
         std::cerr << "Couldn't open the session." << std::endl;
@@ -35,7 +52,6 @@ int main(int argc, char **argv) {
     else
         std::cout << "Session opened..." << std::endl;
 
-    Sleep(10);
     for (i = 0; i < 100; i++) {
         accDriver->read_once();
         Sleep(1);
@@ -48,7 +64,7 @@ int main(int argc, char **argv) {
     }
     else
         std::cout << "Session closed..." << std::endl;
-    
+
 
     if (disp_data) {
         vector3D_int data = accDriver->getAccData();
@@ -56,10 +72,10 @@ int main(int argc, char **argv) {
 
         s_start = 10;
         s_end = s_start + 4;
+
         std::cout << "[" << data.size() << "," << data[0].size() << "," << data[0][0].size() << "]" << std::endl;
         for (int t = 500; t < 1000; t++) {
             std::cout << setw(4) << t << "::" << std::flush;
-            // int s = 10;
 
             for (int s = s_start; s < s_end; s++) {
                 std::cout << "[" << setw(2) << s << "](" << std::flush;
@@ -71,7 +87,6 @@ int main(int argc, char **argv) {
             std::cout << std::endl;
         }
     }
-
 
     if (save_data) {
         vector3D_int data = accDriver->getAccData();
@@ -94,9 +109,4 @@ int main(int argc, char **argv) {
 
         fm->addToFile(fname, data);
     }
-
-
-	return 0;
 }
-
-

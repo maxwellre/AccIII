@@ -215,10 +215,12 @@ bool AccIIIDriver::storeDecodedBytes() {
 std::vector<Byte> AccIIIDriver::get_header(int headerSize) {
 
     std::vector<Byte> vb;
-    int i, headerSize_left;
+    int i, headerSize_left, nbTry, nbTryMax;
 
     vb.reserve(headerSize);
     headerSize_left = headerSize;
+    nbTryMax = 1000;
+    nbTry = 0;
 
     do {
         // try until the header is entirely flushed
@@ -228,7 +230,8 @@ std::vector<Byte> AccIIIDriver::get_header(int headerSize) {
             vb.push_back(this->RxBuffer[i]);
         }
 
-    } while (0 < headerSize_left);
+        nbTry++;
+    } while ( (0<headerSize_left) && nbTryMax>nbTry);
 
     return vb;
 }
@@ -380,9 +383,12 @@ bool AccIIIDriver::read_once() {
     {
         //std::cout << "read success with nb bytes = " << this->RxBytes << std::endl;
         addtoReceivedBytes(this->RxBuffer, this->RxBytes);
+        return AD_OK;
     }
+    else
+        return !AD_OK;
 
-    return AD_OK;
+    
 }
 
 void AccIIIDriver::end_read() {

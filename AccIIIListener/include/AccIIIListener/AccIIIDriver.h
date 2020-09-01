@@ -174,6 +174,7 @@ public:
 
     /**
      * @brief read the ftd2xx device once.
+     * @return check if data has been read. If not, return NOT_OK
      */
     bool read_once();
 

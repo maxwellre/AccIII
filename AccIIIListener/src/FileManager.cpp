@@ -8,7 +8,20 @@
 #include "AccIIIListener/FileManager.h"
 
 FileManager::FileManager(std::string fn) {
-	setFileName(fn);
+
+	if ("auto" == fn) {
+		time_t timer;
+		char buffer[26];
+		struct tm* tm_info;
+
+		timer = time(NULL);
+		tm_info = localtime(&timer);
+
+		strftime(buffer, 26, "%Y-%m-%d-%H-%M-%S", tm_info);
+
+		setFileName("data_" + std::string(buffer));
+	}
+
 }
 
 FileManager::~FileManager() {
@@ -30,6 +43,7 @@ FileManager::~FileManager() {
 **/
 
 bool FileManager::existFile(std::string fn) {
+
 	std::ifstream f(fn.c_str());
 	return f.good();
 }
