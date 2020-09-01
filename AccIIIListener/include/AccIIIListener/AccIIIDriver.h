@@ -118,6 +118,11 @@ private:
      */
     bool is_header(int headerSize);
 
+    /*
+    * Print the header with std::cout
+    */
+    void print_header(std::vector<Byte> vb);
+
 protected:
     // Protected for Unit Test (Mock class) 
 

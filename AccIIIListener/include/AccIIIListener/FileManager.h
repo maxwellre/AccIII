@@ -32,10 +32,10 @@ public:
     FileManager(std::string fn="auto");
 	virtual ~FileManager();
 
-	bool existFile(std::string fn);
-	void createFile(std::string fn);
-	bool deleteFile(std::string fn);
-	bool addToFile(std::string fn, vector3D_int data);
+	bool existFile(std::string fn = "auto");
+	void createFile(std::string fn = "auto");
+	bool deleteFile(std::string fn = "auto");
+	bool addToFile(vector3D_int data, std::string fn = "auto");
 	
 	/**------ PUBLIC --- GETTERS -------------------------**/
 	std::string getFileName();

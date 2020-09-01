@@ -19,7 +19,7 @@ FileManager::FileManager(std::string fn) {
 
 		strftime(buffer, 26, "%Y-%m-%d-%H-%M-%S", tm_info);
 
-		setFileName("data_" + std::string(buffer));
+		setFileName("data_" + std::string(buffer) + ".csv");
 	}
 
 }
@@ -44,11 +44,19 @@ FileManager::~FileManager() {
 
 bool FileManager::existFile(std::string fn) {
 
+	if ("auto" == fn) {
+		fn = this->fileName;
+	}
+
 	std::ifstream f(fn.c_str());
 	return f.good();
 }
 
 void FileManager::createFile(std::string fn) {
+
+	if ("auto" == fn) {
+		fn = this->fileName;
+	}
 
 	std::ofstream outfile(fn);
 	outfile << "" << std::flush;
@@ -56,6 +64,11 @@ void FileManager::createFile(std::string fn) {
 }
 
 bool FileManager::deleteFile(std::string fn) {
+
+	if ("auto" == fn) {
+		fn = this->fileName;
+	}
+
 	if (remove(fn.c_str()) != 0) {
 		perror("Error deleting file");
 		return true;
@@ -66,7 +79,11 @@ bool FileManager::deleteFile(std::string fn) {
 	}
 }
 
-bool FileManager::addToFile(std::string fn, vector3D_int data) {
+bool FileManager::addToFile(vector3D_int data, std::string fn) {
+
+	if ("auto" == fn) {
+		fn = this->fileName;
+	}
 
 	if (!existFile(fn)) return true;
 

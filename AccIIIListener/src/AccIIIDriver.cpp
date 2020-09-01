@@ -108,7 +108,7 @@ vector3D_int AccIIIDriver::decode(std::deque<Byte> byteQueue) {
     // get the number of frames
     nbbyteframe = ACCIII_NB_BYTEPERFRAME; // unexpected behavior when directly used in the operation
     nbCompletedFrames = (int)byteQueue.size() / nbbyteframe;
-    if (byteQueue.size() % nbbyteframe) {
+    if ( (0 < nbCompletedFrames) && (byteQueue.size() % nbbyteframe) ) {
         // remove last frame if incomplete
         nbCompletedFrames--;
     }
@@ -219,7 +219,7 @@ std::vector<Byte> AccIIIDriver::get_header(int headerSize) {
 
     vb.reserve(headerSize);
     headerSize_left = headerSize;
-    nbTryMax = 1000;
+    nbTryMax = 10000;
     nbTry = 0;
 
     do {
@@ -239,8 +239,21 @@ std::vector<Byte> AccIIIDriver::get_header(int headerSize) {
 bool AccIIIDriver::is_header(int headerSize) {
 
     std::vector<Byte> vb = get_header(headerSize);
+    bool isheader = (HEADERBYTES_VEC1 == vb || HEADERBYTES_VEC2 == vb);
+    if (!isheader)
+        print_header(vb);
 
-    return (HEADERBYTES_VEC1 == vb || HEADERBYTES_VEC2 == vb);
+    return isheader;
+}
+
+void AccIIIDriver::print_header(std::vector<Byte> vb) {
+    auto vb_len = vb.size();
+
+    std::cout << "Received header values are : " << std::flush;
+    for (int i = 0; i < vb_len; i++) {
+        std::cout << std::to_string(byte2uint8(vb[i])) << " " << std::flush;
+    }
+    std::cout << std::endl;
 }
 
 /**
@@ -387,12 +400,11 @@ bool AccIIIDriver::read_once() {
     }
     else
         return !AD_OK;
-
-    
 }
 
 void AccIIIDriver::end_read() {
     addtoAccData(this->receivedBytes);
+    initReceivedBytes();
 }
 
 std::deque<Byte> AccIIIDriver::getReceivedBytes() {
