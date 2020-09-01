@@ -286,14 +286,25 @@ void AccIIIDriver::addtoReceivedBytes(Byte b) {
     this->receivedBytes.push_back(b);
 }
 
+bool AccIIIDriver::removeFromReceivedBytes(long nbByte) {
+
+    if (nbByte <= this->receivedBytes.size()) {
+        this->receivedBytes.erase(this->receivedBytes.begin(), this->receivedBytes.begin() + nbByte);
+        return AD_OK;
+    }
+    return !AD_OK;
+}
+
 void AccIIIDriver::setReceivedBytes(std::deque<Byte> ByteQueue) {
     this->receivedBytes = ByteQueue;
 }
 
-void AccIIIDriver::addtoAccData(std::deque<Byte> ByteQueue) {
+long AccIIIDriver::addtoAccData(std::deque<Byte> ByteQueue) {
 
     vector3D_int data = decode(ByteQueue);
     this->accData.insert(std::end(this->accData), std::begin(data), std::end(data));
+
+    return data.size() * data[0].size() * data[0][0].size();
 }
 
 int16_t AccIIIDriver::uint16toint16(uint16_t i) {
@@ -388,7 +399,37 @@ bool AccIIIDriver::ft_close() {
 }
 
 bool AccIIIDriver::read_infinite() { return false;}
-bool AccIIIDriver::read_for(int time_limit) { return false;}
+
+bool AccIIIDriver::read_for(int readTime_ms) { 
+    
+    std::chrono::steady_clock::time_point begin;
+    int i;
+    bool noMoreData;
+
+    noMoreData = !AD_OK;
+
+    begin = std::chrono::steady_clock::now();
+    auto int_ms = std::chrono::duration_cast<std::chrono::milliseconds>(begin - begin).count();
+
+    do {
+        read_once();
+        Sleep(1);
+        int_ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - begin).count();
+        //std::cout << "Time difference = " << int_ms << "[ms]" << std::endl;
+    } while (int_ms < readTime_ms);
+
+    //std::cout << "time to flush the remaining data in USB" << std::endl;
+
+    do {
+        noMoreData = read_once();
+    } while (AD_OK == noMoreData);
+
+    std::cout << "time to decode the data" << std::endl;
+    long nbNewData = addtoAccData(this->receivedBytes);
+    removeFromReceivedBytes(nbNewData);
+
+    return AD_OK;
+}
 
 bool AccIIIDriver::read_once() {
 
@@ -403,8 +444,8 @@ bool AccIIIDriver::read_once() {
 }
 
 void AccIIIDriver::end_read() {
-    addtoAccData(this->receivedBytes);
-    initReceivedBytes();
+    long nbNewData = addtoAccData(this->receivedBytes);
+    removeFromReceivedBytes(nbNewData);
 }
 
 std::deque<Byte> AccIIIDriver::getReceivedBytes() {
