@@ -5,10 +5,16 @@
  *      Author: Basil Duvernoy
  */
 
-#include <chrono>
 #include <iomanip>
 #include <time.h>
+
+#ifdef _WIN32
 #include <windows.h>
+#endif
+
+#ifdef linux
+#include <pthread.h>
+#endif
 
 #include "AccIIIListener/AccIIIDriver.h"
 #include "AccIIIListener/FileManager.h"
@@ -20,19 +26,6 @@ bool basic_period();
 
 int main(int argc, char **argv) {
 
-
-    FileManager* fm = new FileManager();
-    std::cout << fm->getFileName() << std::endl;
-
-    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-    Sleep(1000);
-    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-
-    std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::seconds>(end - begin).count() << "[s]" << std::endl;
-    std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
-    std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << "[us]" << std::endl;
-    std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "[ns]" << std::endl;
-
     //basic();
 	basic_period();
 
@@ -42,14 +35,12 @@ int main(int argc, char **argv) {
 bool basic_period() {
 
     AccIIIDriver* accDriver; 
-    std::chrono::steady_clock::time_point begin, end;
     int i, readTime_ms;
-    bool disp_data, save_data, noMoreData;
+    bool disp_data, save_data;
 
-    noMoreData = !AD_OK;
-    readTime_ms = 1 * 1000;
+    readTime_ms = 10 * 1000;
 
-    disp_data = 1;
+    disp_data = 0;
     save_data = 1;
 
     accDriver = new AccIIIDriver();
@@ -61,33 +52,17 @@ bool basic_period() {
     else
         std::cout << "Session opened..." << std::endl;
 
-
-    begin = std::chrono::steady_clock::now();
-    auto int_ms = std::chrono::duration_cast<std::chrono::milliseconds>(begin-begin).count();
-
-    do {
-        accDriver->read_once();
-        Sleep(1);
-        int_ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - begin).count();
-        std::cout << "Time difference = " << int_ms << "[ms]" << std::endl;
-    } while (int_ms < readTime_ms);
+    if (AD_OK != accDriver->read_for(readTime_ms)) {
+        std::cout << "read_for failed..." << std::endl;
+        return 2;
+    }
     
-    std::cout << "time to flush the remaining data in USB" << std::endl;
-
-    do {
-        noMoreData = accDriver->read_once();
-    } while (AD_OK == noMoreData);
-
-    std::cout << "time to decode the data" << std::endl;
-    accDriver->end_read();
-
     if (AD_OK != accDriver->ft_close()) {
         std::cerr << "Couldn't close the session." << std::endl;
-        return 2;
+        return 3;
     }
     else
         std::cout << "Session closed..." << std::endl;
-
 
     if (disp_data) {
         vector3D_int data = accDriver->getAccData();
@@ -114,7 +89,6 @@ bool basic_period() {
     if (save_data) {
         vector3D_int data = accDriver->getAccData();
         FileManager* fm = new FileManager();
-        int cpt = 0;
 
         fm->createFile();
         fm->addToFile(data);

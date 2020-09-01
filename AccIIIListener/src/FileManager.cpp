@@ -91,7 +91,7 @@ bool FileManager::addToFile(vector3D_int data, std::string fn) {
 
 	for (int i = 0; i < data.size(); i++) {
 		for (int j = 0; j < data[0].size(); j++) {
-			outfile << data[i][j][0] << ";" << data[i][j][0] << ";" << data[i][j][0] << std::flush;
+			outfile << data[i][j][0] << ";" << data[i][j][1] << ";" << data[i][j][2] << std::flush;
 			if ((j + 1) == data[0].size()) {
 				// if last sensor
 				outfile << std::endl;

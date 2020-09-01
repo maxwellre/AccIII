@@ -9,10 +9,11 @@
 #define ACCIIIDRIVER_H_
 
 #include <algorithm>    // std::copy
+#include <chrono>
+#include <cmath>
 #include <errno.h>
 #include <iostream>
 #include <limits>       // std::numeric_limits
-#include <cmath>
 #include <queue>        // std::queue
 #include <stdio.h>
 #include <string>
@@ -134,10 +135,14 @@ protected:
     /**------ ReceivedBytes Modifiers --------------------**/
     void addtoReceivedBytes(Byte* bp, long length = -1);
     void addtoReceivedBytes(Byte b);
+    bool removeFromReceivedBytes(long nbByte);
     void setReceivedBytes(std::deque<Byte> ByteQueue);
 
     /**------ AccData Modifiers --------------------------**/
-    void addtoAccData(std::deque<Byte> ByteQueue);
+    /*
+    * @return the number of new values in accData
+    */
+    long addtoAccData(std::deque<Byte> ByteQueue);
 
     /**------ Type Converters ----------------------------**/
     int16_t uint16toint16(uint16_t i);
@@ -175,7 +180,7 @@ public:
      * @brief close communication with the ftd2xx device.
      * @param time_limit value in millisecond that the program reads the ftd2xx device.
      */
-    bool read_for(int time_limit);
+    bool read_for(int readTime);
 
     /**
      * @brief read the ftd2xx device once.
