@@ -9,16 +9,20 @@
 #define ACCIIIDRIVER_H_
 
 #include <algorithm>    // std::copy
+#include <atomic>
 #include <chrono>
 #include <cmath>
 #include <errno.h>
 #include <iostream>
 #include <limits>       // std::numeric_limits
-#include <queue>        // std::queue
+#include <queue>        // std::deque
 #include <stdio.h>
 #include <string>
 
 #ifdef _WIN32
+#include <condition_variable>
+#include <mutex>                // std::mutex, std::unique_lock
+#include <thread>
 #include <windows.h>
 #endif
 
@@ -30,14 +34,6 @@
 
 #include "AccIIIDriver_defines.h"
 
-
-
-const std::vector<Byte> HEADERBYTES_VEC1 = {
-     32, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 
-    117, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 117 };
-const std::vector<Byte> HEADERBYTES_VEC2 = {
-     32, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63,
-    117, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 85 };
 
 class AccIIIDriver {
 private:
@@ -63,6 +59,20 @@ private:
     // Organized data
     std::vector<int> decode_idx;
     vector3D_int accData;
+
+    // Thread related
+    std::mutex m_mutex;
+    std::condition_variable m_condVar;
+    std::atomic<bool> workdone;
+    std::thread readerThread;
+
+    /**
+     * @brief job that the reader thread will do.
+     */
+    bool readerThread_job();
+    bool readerThread_job2();
+
+    bool is_jobdone();
 
     /**
      * @brief main read called by other functions.
@@ -157,14 +167,21 @@ public:
 	virtual ~AccIIIDriver();
 
     /**
-     * @brief Opening communication with the ftd2xx device.
+     * @brief Set communication with the ftd2xx device.
      * @param Mask Mask for FT_SetBitMode function. Default is 0xFF (output mode);
      * @param Mode Mode for FT_SetBitMode function. Default is 0x00 (reset mode);
      * @param LatencyTimer Latency in millisecond for FT_SetLatencyTimer function. Default is 2 (ms);
      * @param TxBuffer Input value for FT_Write function. Needed to say that the program is ready to listen. 
                 Value is 0x55.
      */
-    bool ft_open(UCHAR Mask = 0xff, UCHAR Mode = 0x00, UCHAR LatencyTimer = 2, const char TxBuffer = 0x55);
+    bool ft_open(UCHAR Mask = 0xff, UCHAR Mode = 0x00, UCHAR LatencyTimer = 2);
+
+    /**
+     * @brief Start communication with the ftd2xx device and check the header response.
+     * @param TxBuffer Input value for FT_Write function. Needed to say that the program is ready to listen.
+                Value is 0x55.
+     */
+    bool ft_startCommunication(const char TxBuffer = 0x55);
 
     /**
      * @brief close communication with the ftd2xx device.

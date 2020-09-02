@@ -1,16 +1,23 @@
 /*
- * AccIIIDriver.cpp
+ * AccIIIListener.cpp
  *
  *  Created on: Aug 16, 2020
  *      Author: Basil Duvernoy
  */
 
-#include "AccIIIListener/AccIIIDriver.h"
+#include "AccIIIDriver/AccIIIListener.h"
 
-AccIIIDriver::AccIIIDriver() {
+const std::vector<Byte> HEADERBYTES_VEC1 = {
+     32, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63,
+    117, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 117 };
+const std::vector<Byte> HEADERBYTES_VEC2 = {
+     32, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63,
+    117, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 32, 63, 63, 63, 63, 63, 63, 63, 63, 63, 85 };
+
+AccIIIListener::AccIIIListener() {
 
     this->ftHandle = NULL;
-    this->ftStatus = ~FT_OK;// std::numeric_limits<unsigned int>::min();
+    this->ftStatus = ~FT_OK; // std::numeric_limits<unsigned int>::min();
 
     this->EventDWord = 0;
     this->TxBytes = 0;
@@ -28,9 +35,10 @@ AccIIIDriver::AccIIIDriver() {
     this->RxBuffer = NULL;
     initRxBuffer(pow(2, 16));
     initReceivedBytes();
+
 }
 
-AccIIIDriver::~AccIIIDriver() {
+AccIIIListener::~AccIIIListener() {
 
     delete[] this->RxBuffer;
 }
@@ -40,7 +48,7 @@ AccIIIDriver::~AccIIIDriver() {
    ------ PRIVATE ------------------------------------
 **/
 
-long AccIIIDriver::read_raw(DWORD nbBytes) {
+long AccIIIListener::read_raw(DWORD nbBytes) {
 
     if (FT_OK != FT_GetStatus(this->ftHandle, &this->RxBytes, &this->TxBytes, &this->EventDWord)) {
         // report error if FT_GetStatus is unreachable
@@ -79,7 +87,7 @@ long AccIIIDriver::read_raw(DWORD nbBytes) {
     return this->RxBuffer_nbElem;
 }
 
-bool AccIIIDriver::initRxBuffer(int l) {
+bool AccIIIListener::initRxBuffer(int l) {
 
     if (this->RxBuffer != NULL)
         delete[] this->RxBuffer;
@@ -91,7 +99,7 @@ bool AccIIIDriver::initRxBuffer(int l) {
     return AD_OK;
 }
 
-bool AccIIIDriver::initReceivedBytes() {
+bool AccIIIListener::initReceivedBytes() {
 
     std::deque< Byte > emptyQueue;
     std::swap(this->receivedBytes, emptyQueue);
@@ -99,77 +107,7 @@ bool AccIIIDriver::initReceivedBytes() {
     return AD_OK;
 }
 
-vector3D_int AccIIIDriver::decode(std::deque<Byte> byteQueue) {
-
-    std::deque<Byte> byteQueue_frame;
-    std::deque<Byte>::iterator it_start, it_end;
-    int s, frameOffset, nbCompletedFrames, nbbyteframe;
-
-    // get the number of frames
-    nbbyteframe = ACCIII_NB_BYTEPERFRAME; // unexpected behavior when directly used in the operation
-    nbCompletedFrames = (int)byteQueue.size() / nbbyteframe;
-    if ( (0 < nbCompletedFrames) && (byteQueue.size() % nbbyteframe) ) {
-        // remove last frame if incomplete
-        nbCompletedFrames--;
-    }
-
-    // init result variable
-    vector3D_int accData_all(nbCompletedFrames, vector2D_int(ACCIII_NB_SENSORS, std::vector<int16_t>(ACCIII_NB_AXIS)));
-
-    for (s = 0; s < nbCompletedFrames; s++) {
-        // for each frame, get the decoded data
-
-        frameOffset = s * nbbyteframe;
-
-        it_start = byteQueue.begin() + frameOffset;
-        it_end = it_start + nbbyteframe;
-
-        byteQueue_frame.assign(it_start, it_end);
-
-        decode_frame(&accData_all[s], byteQueue_frame);
-    }
-
-    return accData_all;
-}
-
-vector2D_int* AccIIIDriver::decode_frame(vector2D_int* dataFrame, std::deque<Byte> byteQueue_frame) {
-
-    Byte highByte, lowByte;
-    int a, s, g;
-    int sensor_ID, highByte_ID, lowByte_ID;
-    int offsetGroup;
-
-    // get position of the current frame
-    for (g = 0; g < ACCIII_NB_GROUP; g++) {
-        // care about odd ID sensors first, then even ID sensors
-        offsetGroup = g * ACCIII_NB_BYTEPERGROUP;
-
-        for (s = 0; s < ACCIII_NB_SENSORSPERGROUP; s++) {
-            // for each sensor of the current group (odd // even)
-            sensor_ID = s * ACCIII_NB_GROUP + g;
-
-            for (a = 0; a < ACCIII_NB_AXIS; a++) {
-                // Axis X, Y, Z
-                // chosen frame + chosen group + chosen sensor + chosen axis
-                lowByte_ID = s + a * ACCIII_OFFSET_AXIS + offsetGroup;
-
-                // based on the lowByteID, get HighByteID with the offset of the group sensor size
-                highByte_ID = lowByte_ID + ACCIII_OFFSET_HIGHBYTE;
-
-                highByte = byteQueue_frame[highByte_ID];
-                lowByte = byteQueue_frame[lowByte_ID];
-
-                (*dataFrame)[sensor_ID][a] = uint16toint16(bytes2uint16(highByte, lowByte));
-            }
-        }
-    }
-
-    return dataFrame;
-}
-
-
-
-bool AccIIIDriver::pop() {
+bool AccIIIListener::pop() {
 
     int s, nbFrames;
 
@@ -189,7 +127,7 @@ bool AccIIIDriver::pop() {
     return AD_OK;
 }
 
-bool AccIIIDriver::pop_once(int offset) {
+bool AccIIIListener::pop_once(int offset) {
 
     int first_elem = offset * ACCIII_NB_BYTEPERFRAME;
     int last_elem = first_elem + ACCIII_NB_BYTEPERFRAME;
@@ -204,15 +142,7 @@ bool AccIIIDriver::pop_once(int offset) {
     }
 }
 
-bool AccIIIDriver::storeDecodedBytes() {
-
-    this->accData = decode(this->receivedBytes);
-    //pop();
-
-    return AD_OK;
-}
-
-std::vector<Byte> AccIIIDriver::get_header(int headerSize) {
+std::vector<Byte> AccIIIListener::get_header(int headerSize) {
 
     std::vector<Byte> vb;
     int i, headerSize_left, nbTry, nbTryMax;
@@ -236,7 +166,7 @@ std::vector<Byte> AccIIIDriver::get_header(int headerSize) {
     return vb;
 }
 
-bool AccIIIDriver::is_header(int headerSize) {
+bool AccIIIListener::is_header(int headerSize) {
 
     std::vector<Byte> vb = get_header(headerSize);
     bool isheader = (HEADERBYTES_VEC1 == vb || HEADERBYTES_VEC2 == vb);
@@ -246,12 +176,12 @@ bool AccIIIDriver::is_header(int headerSize) {
     return isheader;
 }
 
-void AccIIIDriver::print_header(std::vector<Byte> vb) {
+void AccIIIListener::print_header(std::vector<Byte> vb) {
     auto vb_len = vb.size();
 
     std::cout << "Received header values are : " << std::flush;
     for (int i = 0; i < vb_len; i++) {
-        std::cout << std::to_string(byte2uint8(vb[i])) << " " << std::flush;
+        std::cout << std::to_string((int)(vb[i])) << " " << std::flush;
     }
     std::cout << std::endl;
 }
@@ -260,19 +190,19 @@ void AccIIIDriver::print_header(std::vector<Byte> vb) {
    ------ PROTECTED ----------------------------------
 **/
 
-int AccIIIDriver::getRxBuffer_length() {
+int AccIIIListener::getRxBuffer_length() {
     return this->RxBuffer_length;
 }
 
-int AccIIIDriver::getRxBuffer_nbElem() {
+int AccIIIListener::getRxBuffer_nbElem() {
     return this->RxBuffer_nbElem;
 }
 
-Byte* AccIIIDriver::getRxBuffer() {
+Byte* AccIIIListener::getRxBuffer() {
     return this->RxBuffer;
 }
 
-void AccIIIDriver::addtoReceivedBytes(Byte* bp, long length) {
+void AccIIIListener::addtoReceivedBytes(Byte* bp, long length) {
     int i, stop;
 
     length ? stop = length : stop = bp[0];
@@ -282,11 +212,11 @@ void AccIIIDriver::addtoReceivedBytes(Byte* bp, long length) {
     }
 }
 
-void AccIIIDriver::addtoReceivedBytes(Byte b) {
+void AccIIIListener::addtoReceivedBytes(Byte b) {
     this->receivedBytes.push_back(b);
 }
 
-bool AccIIIDriver::removeFromReceivedBytes(long nbByte) {
+bool AccIIIListener::removeFromReceivedBytes(long nbByte) {
 
     if (nbByte <= this->receivedBytes.size()) {
         this->receivedBytes.erase(this->receivedBytes.begin(), this->receivedBytes.begin() + nbByte);
@@ -295,40 +225,15 @@ bool AccIIIDriver::removeFromReceivedBytes(long nbByte) {
     return !AD_OK;
 }
 
-void AccIIIDriver::setReceivedBytes(std::deque<Byte> ByteQueue) {
+void AccIIIListener::setReceivedBytes(std::deque<Byte> ByteQueue) {
     this->receivedBytes = ByteQueue;
 }
-
-long AccIIIDriver::addtoAccData(std::deque<Byte> ByteQueue) {
-
-    vector3D_int data = decode(ByteQueue);
-    this->accData.insert(std::end(this->accData), std::begin(data), std::end(data));
-
-    return data.size() * data[0].size() * data[0][0].size();
-}
-
-int16_t AccIIIDriver::uint16toint16(uint16_t i) {
-    return (int16_t)i;
-}
-
-uint16_t AccIIIDriver::bytes2uint16(Byte h, Byte l) {
-    return (uint16_t)(byte2uint8(h) << 8 | byte2uint8(l));
-}
-
-uint8_t AccIIIDriver::byte2uint8(Byte b) {
-    return (uint8_t)b;
-}
-
-Byte AccIIIDriver::uint2byte(uint8_t i) {
-    return (Byte)i;
-}
-
 
 /**
    ------ PUBLIC -------------------------------------
 **/
 
-bool AccIIIDriver::ft_open(UCHAR Mask, UCHAR Mode, UCHAR LatencyTimer, char TxBuffer) {
+bool AccIIIListener::ft_open(UCHAR Mask, UCHAR Mode, UCHAR LatencyTimer) {
     DWORD BytesWritten;
 
     if (FT_OK != FT_Open(0, &this->ftHandle)) {
@@ -367,6 +272,13 @@ bool AccIIIDriver::ft_open(UCHAR Mask, UCHAR Mode, UCHAR LatencyTimer, char TxBu
         return !AD_OK;
     }
 
+    return AD_OK;
+}
+
+bool AccIIIListener::ft_startCommunication(char TxBuffer) {
+
+    DWORD BytesWritten;
+
     if (FT_OK != FT_Write(this->ftHandle, &TxBuffer, sizeof(&TxBuffer), &BytesWritten)) {
         errno = ENOMSG;
         perror("FT_Write Failed ");
@@ -384,10 +296,13 @@ bool AccIIIDriver::ft_open(UCHAR Mask, UCHAR Mode, UCHAR LatencyTimer, char TxBu
         return !AD_OK;
     }
 
+    // notify reader thread that it can start to extract data
+    //this->m_condVar.notify_one();
+
     return AD_OK;
 }
 
-bool AccIIIDriver::ft_close() {
+bool AccIIIListener::ft_close() {
 
     if( NULL != ftHandle && FT_OK != FT_Close(ftHandle))
     {
@@ -398,9 +313,9 @@ bool AccIIIDriver::ft_close() {
     return AD_OK;
 }
 
-bool AccIIIDriver::read_infinite() { return false;}
+bool AccIIIListener::read_infinite() { return false;}
 
-bool AccIIIDriver::read_for(int readTime_ms) { 
+bool AccIIIListener::read_for(int readTime_ms) { 
     
     std::chrono::steady_clock::time_point begin;
     int i;
@@ -424,14 +339,10 @@ bool AccIIIDriver::read_for(int readTime_ms) {
         noMoreData = read_once();
     } while (AD_OK == noMoreData);
 
-    std::cout << "time to decode the data" << std::endl;
-    long nbNewData = addtoAccData(this->receivedBytes);
-    removeFromReceivedBytes(nbNewData);
-
     return AD_OK;
 }
 
-bool AccIIIDriver::read_once() {
+bool AccIIIListener::read_once() {
 
     if (read_raw())
     {
@@ -443,15 +354,6 @@ bool AccIIIDriver::read_once() {
         return !AD_OK;
 }
 
-void AccIIIDriver::end_read() {
-    long nbNewData = addtoAccData(this->receivedBytes);
-    removeFromReceivedBytes(nbNewData);
-}
-
-std::deque<Byte> AccIIIDriver::getReceivedBytes() {
+std::deque<Byte> AccIIIListener::getReceivedBytes() {
     return this->receivedBytes;
-}
-
-vector3D_int AccIIIDriver::getAccData() {
-    return this->accData;
 }

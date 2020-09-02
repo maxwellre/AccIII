@@ -12,7 +12,7 @@ Project organization:
 * src: code developed for the driver
 * tests: Unit Tests to ensure code quality
 
-. Include/AccIIIListener folder:
+. Include/AccIIIDriver folder:
 .. AccIIIDriver.h: header of the Driver class;
 .. AccIIIDriver_defines.h: constant definition and new types (included in accIIIDriver.h);
 .. AccIIIDriverMock.h: header of a class inherited from AccIIIDriver; access to protected variables and methods for Unit Tests;

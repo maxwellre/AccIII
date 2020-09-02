@@ -8,8 +8,8 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "../libs/catch.hpp"
 
-#include "../include/AccIIIListener/AccIIIDriverMock.h"
-#include "../include/AccIIIListener/FileManager.h"
+#include "AccIIIDriverMock.h"
+#include "../include/AccIIIDriver/FileManager.h"
 
 TEST_CASE("AccIIIDriver::constant global variables", "[equality tests]") {
 
@@ -65,12 +65,23 @@ TEST_CASE("AccIIIDriver::Initialiser", "[RxBuffer, receivedBytes]") {
     Byte* rb;
     long rb_len;
 
-    rb = ad->getRxBuffer();
-    rb_len = (long)strlen((const char*) rb);
+    SECTION("RxBuffer") {
+        rb = ad->getRxBuffer();
+        rb_len = (long)strlen((const char*)rb);
 
-    REQUIRE(65536 == ad->getRxBuffer_length());
-    REQUIRE(0 == ad->getRxBuffer_nbElem());
-    REQUIRE(rb_len == ad->getRxBuffer_nbElem());
+        REQUIRE(65536 == ad->getRxBuffer_length());
+        REQUIRE(0 == ad->getRxBuffer_nbElem());
+        REQUIRE(rb_len == ad->getRxBuffer_nbElem());
+    }
+
+
+    SECTION("receivedBytes") {
+
+    }
+
+    SECTION("reader Thread") {
+
+    }
 }
 
 TEST_CASE("AccIIIDriver::Decode", "std::Queue<Byte> to decoded Queue<Int>") {

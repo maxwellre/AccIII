@@ -1,5 +1,5 @@
 /*
- * AccIIIListener.cpp
+ * AccIII_example.cpp
  *
  *  Created on: Aug 16, 2020
  *      Author: Basil Duvernoy
@@ -16,21 +16,74 @@
 #include <pthread.h>
 #endif
 
-#include "AccIIIListener/AccIIIDriver.h"
-#include "AccIIIListener/FileManager.h"
+#include "AccIIIDriver/AccIIIDriver.h"
+#include "AccIIIDriver/FileManager.h"
+
+#include "AccIIIDriver/AccIIIDriver2.h"
 
 using namespace std;
 
 bool basic();
 bool basic_period();
+bool basic_thread();
+bool advance_thread();
 
 int main(int argc, char **argv) {
 
     //basic();
-	basic_period();
+    //basic_period();
+    //basic_thread();
+    advance_thread();
 
-	return 0;
+    return 0;
 }
+
+bool advance_thread() {
+
+    AccIIIDriver2* accDriver;
+    
+    accDriver = new AccIIIDriver2();
+
+    accDriver->initialise();
+
+    Sleep(1000);
+
+    accDriver->startRecording();
+
+    Sleep(1000);
+
+    return AD_OK;
+}
+
+bool basic_thread() {
+
+    AccIIIDriver* accDriver;
+    accDriver = new AccIIIDriver();
+
+    /*
+    if (AD_OK != accDriver->ft_open()) {
+        std::cerr << "Couldn't open the session." << std::endl;
+        return 1;
+    }
+    else
+        std::cout << "Session opened..." << std::endl;
+
+    if (AD_OK != accDriver->ft_startCommunication()) {
+        std::cerr << "Couldn't start the communication." << std::endl;
+        return 1;
+    }
+    else
+        std::cout << "Communication started..." << std::endl;
+
+        */
+    if (AD_OK != accDriver->ft_close()) {
+        std::cerr << "Couldn't close the session." << std::endl;
+        return 3;
+    }
+    else
+        std::cout << "Session closed..." << std::endl;
+}
+
 
 bool basic_period() {
 
@@ -38,10 +91,10 @@ bool basic_period() {
     int i, readTime_ms;
     bool disp_data, save_data;
 
-    readTime_ms = 10 * 1000;
+    readTime_ms = 1 * 1000;
 
-    disp_data = 0;
-    save_data = 1;
+    disp_data = 1;
+    save_data = 0;
 
     accDriver = new AccIIIDriver();
 
@@ -51,6 +104,13 @@ bool basic_period() {
     }
     else
         std::cout << "Session opened..." << std::endl;
+
+    if (AD_OK != accDriver->ft_startCommunication()) {
+        std::cerr << "Couldn't start the session." << std::endl;
+        return 1;
+    }
+    else
+        std::cout << "Session started..." << std::endl;
 
     if (AD_OK != accDriver->read_for(readTime_ms)) {
         std::cout << "read_for failed..." << std::endl;
@@ -114,6 +174,14 @@ bool basic() {
     }
     else
         std::cout << "Session opened..." << std::endl;
+
+    if (AD_OK != accDriver->ft_startCommunication()) {
+        std::cerr << "Couldn't start the session." << std::endl;
+        return 1;
+    }
+    else
+        std::cout << "Session started..." << std::endl;
+
 
     for (i = 0; i < 100; i++) {
         accDriver->read_once();
