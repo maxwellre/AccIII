@@ -11,46 +11,96 @@
 
 #include "AccIIIDriverMock.h"
 
-int AccIIIDriverMock::getRxBuffer_length() {
-	return AccIIIDriver::getRxBuffer_length();
+
+void AccIIIDriverMock::setreadTime(int _readTime_ms) {
+	AccIIIDriver::setreadTime(_readTime_ms);
+}
+int AccIIIDriverMock::getreadTime() {
+	return AccIIIDriver::getreadTime();
 }
 
-int AccIIIDriverMock::getRxBuffer_nbElem() {
-	return AccIIIDriver::getRxBuffer_nbElem();
+void AccIIIDriverMock::seterrorCommunication(bool b) {
+	AccIIIDriver::seterrorCommunication(b);
 }
 
-Byte* AccIIIDriverMock::getRxBuffer() {
-	return AccIIIDriver::getRxBuffer();
+/**------ byteStack Modifiers/Getters/Setters --------**/
+bool AccIIIDriverMock::initbyteStack() {
+	return AccIIIDriver::initbyteStack();
 }
 
-void AccIIIDriverMock::addtoReceivedBytes(Byte* bp, long l = -1) {
-	AccIIIDriver::addtoReceivedBytes(bp, l);
+
+void AccIIIDriverMock::addtobyteStack(Byte* bp, long length) {
+	AccIIIDriver::addtobyteStack(bp, length);
+}
+void AccIIIDriverMock::addtobyteStack(Byte b) {
+	AccIIIDriver:addtobyteStack(b);
 }
 
-void AccIIIDriverMock::addtoReceivedBytes(Byte b) {
-	AccIIIDriver::addtoReceivedBytes(b);
+bool AccIIIDriverMock::removeFrombyteStack(long nbByte) {
+	return AccIIIDriver::removeFrombyteStack(nbByte);
 }
 
-void AccIIIDriverMock::setReceivedBytes(std::deque<Byte> byteQueue) {
-	AccIIIDriver::setReceivedBytes(byteQueue);
+std::deque< Byte > AccIIIDriverMock::getFrombyteStack(long nbByte) {
+	return AccIIIDriver::getFrombyteStack(nbByte);
 }
 
-void AccIIIDriverMock::addtoAccData(std::deque<Byte> ByteQueue) {
-	AccIIIDriver::addtoAccData(ByteQueue);
+int AccIIIDriverMock::getbyteStack_length() {
+	return AccIIIDriver::getbyteStack_length();
 }
 
-int16_t AccIIIDriverMock::uint16toint16(uint16_t i) {
-	return AccIIIDriver::uint16toint16(i);
+/**------ Threads State Modifiers --------------------**/
+void AccIIIDriverMock::setmasterState(StateThread value) {
+	AccIIIDriver::setmasterState(value);
+}
+void AccIIIDriverMock::setlistenerState(StateThread value) {
+	AccIIIDriver::setlistenerState(value);
+}
+void AccIIIDriverMock::setdecoderState(StateThread value) {
+	AccIIIDriver::setdecoderState(value);
+}
+void AccIIIDriverMock::setState(StateThread* state_var, StateThread value) {
+	AccIIIDriver::setState(state_var, value);
 }
 
-uint16_t AccIIIDriverMock::bytes2uint16(Byte h, Byte l) {
-	return AccIIIDriver::bytes2uint16(h,l);
+/**------ Threads State Getters ----------------------**/
+StateThread AccIIIDriverMock::getmasterState() {
+	return AccIIIDriver::getmasterState();
 }
 
-uint8_t AccIIIDriverMock::byte2uint8(Byte b) {
-	return AccIIIDriver::byte2uint8(b);
+StateThread AccIIIDriverMock::getlistenerState() {
+	return AccIIIDriver::getlistenerState();
 }
 
-Byte AccIIIDriverMock::uint2byte(uint8_t i) {
-	return AccIIIDriver::uint2byte(i);
+StateThread AccIIIDriverMock::getdecoderState() {
+	return AccIIIDriver::getdecoderState();
 }
+
+StateThread AccIIIDriverMock::getState(StateThread* state_var) {
+	return AccIIIDriver::getState(state_var);
+}
+
+/**------ Threads State Checkers ---------------------**/
+bool AccIIIDriverMock::is_master(StateThread st) {
+	return AccIIIDriver::is_master(st);
+}
+
+bool AccIIIDriverMock::is_listener(StateThread st) {
+	return AccIIIDriver::is_listener(st);
+}
+
+bool AccIIIDriverMock::is_decoder(StateThread st) {
+	return AccIIIDriver::is_decoder(st);
+}
+
+bool AccIIIDriverMock::are_slaves(StateThread st) {
+	return AccIIIDriver::are_slaves(st);
+}
+
+bool AccIIIDriverMock::areAfter_slaves(StateThread st) {
+	return AccIIIDriver::areAfter_slaves(st);
+}
+
+bool AccIIIDriverMock::is_listenerDone() {
+	return AccIIIDriver::is_listenerDone();
+}
+

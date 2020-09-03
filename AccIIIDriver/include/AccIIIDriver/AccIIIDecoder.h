@@ -10,7 +10,6 @@
 
 #include <algorithm>    // std::copy
 #include <chrono>
-#include <cmath>
 #include <iostream>
 #include <queue>        // std::deque
 

@@ -33,23 +33,29 @@ target_link_libraries (AccIIIListener ftd2xx)
 add_library(AccIIIDecoder ${SOURCES_DIR}/AccIIIDecoder.cpp)
 
 add_library(AccIIIDriver ${SOURCES_DIR}/AccIIIDriver.cpp)
-target_link_libraries (AccIIIDriver ftd2xx)
-
-add_library(AccIIIDriver2 ${SOURCES_DIR}/AccIIIDriver2.cpp)
-target_link_libraries (AccIIIDriver2 ftd2xx AccIIIListener AccIIIDecoder)
+target_link_libraries (AccIIIDriver ftd2xx AccIIIListener AccIIIDecoder)
 
 add_library(FileManager ${SOURCES_DIR}/FileManager.cpp)
 
 # --- Main ---
 set(CMAKE_BUILD_TYPE RelWithDebInfo)
 add_executable(${PROJECT_NAME} AccIII_example.cpp)
-target_link_libraries (${PROJECT_NAME} LINK_PUBLIC AccIIIDriver AccIIIDriver2 FileManager)
+target_link_libraries (${PROJECT_NAME} LINK_PUBLIC AccIIIDriver FileManager)
 
 
 # --- AccIII Tests libraries ---
-#add_library(AccIIIDriverMock ${SOURCES_DIR}/AccIIIDriverMock.cpp)
-#target_link_libraries (AccIIIDriverMock ftd2xx AccIIIDriver)
-#target_link_libraries (AccIIIDriverMock ftd2xx AccIIIDriver)
+add_library(AccIIIDriverMock tests/AccIIIDriverMock.cpp)
+target_link_libraries (AccIIIDriverMock ftd2xx AccIIIDriver)
 
-#add_executable(${PROJECT_NAME}_test tests/AccIIIDriver_test.cpp)
-#target_link_libraries (${PROJECT_NAME}_test LINK_PUBLIC AccIIIDriverMock FileManager)
+add_library(AccIIIListenerMock tests/AccIIIListenerMock.cpp)
+target_link_libraries (AccIIIListenerMock ftd2xx AccIIIListener)
+
+add_library(AccIIIDecoderMock tests/AccIIIDecoderMock.cpp)
+target_link_libraries (AccIIIDecoderMock ftd2xx AccIIIDecoder)
+
+add_executable(${PROJECT_NAME}_test tests/AccIIIDriver_test.cpp)
+target_link_libraries (${PROJECT_NAME}_test LINK_PUBLIC AccIIIDriverMock AccIIIListenerMock AccIIIDecoderMock FileManager)
+
+
+
+

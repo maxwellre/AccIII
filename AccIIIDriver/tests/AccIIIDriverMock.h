@@ -11,7 +11,7 @@
 #ifndef ACCIIIDRIVERMOCK_H_
 #define ACCIIIDRIVERMOCK_H_
 
-#include "AccIIIDriver.h"
+#include "AccIIIDriver/AccIIIDriver.h"
 
 class AccIIIDriverMock : public AccIIIDriver {
 private:
@@ -20,25 +20,39 @@ protected:
 
 public:
 
-    /**------ RxBuffer Modifiers -------------------------**/
-    int getRxBuffer_length();
-    int getRxBuffer_nbElem();
-    Byte* getRxBuffer();
+    void setreadTime(int _readTime_ms);
+    int getreadTime();
+    void seterrorCommunication(bool b);
 
-    /**------ ReceivedBytes Modifiers --------------------**/
-    void addtoReceivedBytes(Byte* bp, long l);
-    void addtoReceivedBytes(Byte b);
-    void setReceivedBytes(std::deque<Byte> byteQueue);
+    /**------ byteStack Modifiers/Getters/Setters --------**/
+    bool initbyteStack();
 
-    /**------ AccData Modifiers --------------------------**/
-    void addtoAccData(std::deque<Byte> ByteQueue);
+    void addtobyteStack(Byte* bp, long length = -1);
+    void addtobyteStack(Byte b);
 
-    /**------ Type Converters ----------------------------**/
-    int16_t uint16toint16(uint16_t i);
-    uint16_t bytes2uint16(Byte h, Byte l);
-    uint8_t byte2uint8(Byte b);
-    Byte uint2byte(uint8_t i);
+    bool removeFrombyteStack(long nbByte);
+    std::deque< Byte > getFrombyteStack(long nbByte);
+    int getbyteStack_length();
 
+    /**------ Threads State Modifiers --------------------**/
+    void setmasterState(StateThread value);
+    void setlistenerState(StateThread value);
+    void setdecoderState(StateThread value);
+    void setState(StateThread* state_var, StateThread value);
+
+    /**------ Threads State Getters ----------------------**/
+    StateThread getmasterState();
+    StateThread getlistenerState();
+    StateThread getdecoderState();
+    StateThread getState(StateThread* state_var);
+
+    /**------ Threads State Checkers ---------------------**/
+    bool is_master(StateThread st);
+    bool is_listener(StateThread st);
+    bool is_decoder(StateThread st);
+    bool are_slaves(StateThread st);
+    bool areAfter_slaves(StateThread st);
+    bool is_listenerDone();
 };
 
 #endif /* ACCIIIDRIVERMOCK_H_ */

@@ -16,9 +16,8 @@
 #include <pthread.h>
 #endif
 
+#include "AccIIIDriver/AccIIIDriver.h"
 #include "AccIIIDriver/FileManager.h"
-
-#include "AccIIIDriver/AccIIIDriver2.h"
 
 using namespace std;
 
@@ -26,22 +25,24 @@ bool advance_thread();
 bool advance_thread_infinite();
 
 int main(int argc, char **argv) {
+
     int errorRaised;
 
     errorRaised = false;
 
-    //errorRaised = advance_thread();
-    errorRaised = advance_thread_infinite();
+    errorRaised = advance_thread();
+    //errorRaised = advance_thread_infinite();
 
     return errorRaised;
 }
 
+
 bool advance_thread_infinite() {
 
-    AccIIIDriver2* accDriver;
+    AccIIIDriver* accDriver;
     bool disp_data;
 
-    accDriver = new AccIIIDriver2();
+    accDriver = new AccIIIDriver();
     disp_data = 1;
 
     if (AD_OK != accDriver->record(50000)) {
@@ -100,12 +101,13 @@ bool advance_thread_infinite() {
     return AD_OK;
 }
 
+
 bool advance_thread() {
 
-    AccIIIDriver2* accDriver;
+    AccIIIDriver* accDriver;
     bool disp_data;
 
-    accDriver = new AccIIIDriver2();
+    accDriver = new AccIIIDriver();
     disp_data = 1;
 
     if (AD_OK != accDriver->record(1000)) {
