@@ -51,12 +51,7 @@ bool advance_thread_infinite() {
         return !AD_OK;
     }
 
-    Sleep(100);
-    if (accDriver->geterrorCommunication()) {
-        // Must join both thread before leaving
-        accDriver->close();
-        return !AD_OK;
-    }
+    Sleep(500);
 
     if (disp_data) {
         int curr_start_idx, s_start, s_end;
@@ -75,7 +70,7 @@ bool advance_thread_infinite() {
             }
 
             //std::cout << "[" << data.size() << "," << data[0].size() << "," << data[0][0].size() << "]" << std::endl;
-            for (int t = curr_start_idx; t < data.size(); t+=5) {
+            for (int t = curr_start_idx; t < data.size(); t+=2) {
                 std::cout << setw(4) << t << "::" << std::flush;
                 for (int s = s_start; s < s_end; s++) {
                     std::cout << "[" << setw(2) << s << "](" << std::flush;
