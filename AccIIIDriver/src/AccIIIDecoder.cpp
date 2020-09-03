@@ -8,7 +8,7 @@
 #include "AccIIIDriver/AccIIIDecoder.h"
 
 AccIIIDecoder::AccIIIDecoder() {
-
+    this->accData = vector3D_int();
 }
 
 AccIIIDecoder::~AccIIIDecoder() {
@@ -86,41 +86,6 @@ vector2D_int* AccIIIDecoder::decode_frame(vector2D_int* dataFrame, std::deque<By
     }
 
     return dataFrame;
-}
-
-bool AccIIIDecoder::pop() {
-
-    int s, nbFrames;
-
-    nbFrames = (int)this->receivedBytes.size() / ACCIII_NB_BYTEPERFRAME;
-
-    vector2D_int accData_frame(ACCIII_NB_SENSORS, std::vector<int16_t>(ACCIII_NB_AXIS));
-    vector3D_int accData(nbFrames, accData_frame);
-
-    for (s = 0; s < nbFrames; s++) {
-        if (pop_once()) {
-            perror("decode_once error\n");
-            break;
-        }
-        accData[s] = accData_frame;
-    }
-
-    return AD_OK;
-}
-
-bool AccIIIDecoder::pop_once(int offset) {
-
-    int first_elem = offset * ACCIII_NB_BYTEPERFRAME;
-    int last_elem = first_elem + ACCIII_NB_BYTEPERFRAME;
-
-    if ( this->receivedBytes.size() >= last_elem) {
-        auto ptr = this->receivedBytes.begin() + first_elem;
-        this->receivedBytes.erase(ptr, ptr + ACCIII_NB_BYTEPERFRAME);
-        return AD_OK;
-    }
-    else {
-        return !AD_OK;
-    }
 }
 
 

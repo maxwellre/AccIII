@@ -7,7 +7,7 @@ set(SOURCES_DIR ${CMAKE_SOURCE_DIR}/src)
 set(EXT_LIB_DIR ${CMAKE_SOURCE_DIR}/libs)
 
 # --- Include directory ---
-include_directories(${INCLUDE_DIR})
+include_directories(${CMAKE_SOURCE_DIR} ${INCLUDE_DIR})
 
 # --- External libraries ---
 # add link to the library in the main cmakeLists file

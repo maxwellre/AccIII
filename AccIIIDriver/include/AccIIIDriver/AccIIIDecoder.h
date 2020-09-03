@@ -9,26 +9,18 @@
 #define ACCIIIDECODER_H_
 
 #include <algorithm>    // std::copy
-#include <atomic>
 #include <chrono>
 #include <cmath>
-#include <errno.h>
 #include <iostream>
-#include <limits>       // std::numeric_limits
 #include <queue>        // std::deque
-#include <stdio.h>
-#include <string>
 
 #include "AccIIIDriver_defines.h"
 
 class AccIIIDecoder {
+
 private:
 
-    // Infinite resizable buffer of RxBuffer
-    std::deque< Byte > receivedBytes;
-
     // Organized data
-    std::vector<int> decode_idx;
     vector3D_int accData;
 
     /**
@@ -46,18 +38,10 @@ private:
      */
     vector2D_int* decode_frame(vector2D_int* dataFrame, std::deque<Byte> byteQueue_frame);
 
-    bool pop();
-    bool pop_once(int offset = 0);
 
 protected:
     // Protected for Unit Test (Mock class) 
-
-    /**------ AccData Modifiers --------------------------**/
-    /*
-    * @return the number of new values in accData
-    */
-    long addtoAccData(std::deque<Byte> ByteQueue);
-
+    
     /**------ Type Converters ----------------------------**/
     int16_t uint16toint16(uint16_t i);
     uint16_t bytes2uint16(Byte h, Byte l);
@@ -70,6 +54,14 @@ public:
 	AccIIIDecoder();
 	virtual ~AccIIIDecoder();
 
+    /*
+    * @return the number of new values in accData
+    */
+    long addtoAccData(std::deque<Byte> ByteQueue);
+
+    /*
+    * @return the current 3D vector of nbFrame x nbSensor x nbAxis
+    */
     vector3D_int getAccData();
 };
 

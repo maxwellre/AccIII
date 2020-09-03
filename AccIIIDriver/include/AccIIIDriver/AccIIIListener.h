@@ -8,18 +8,11 @@
 #ifndef ACCIIILISTENER_H_
 #define ACCIIILISTENER_H_
 
-#include <algorithm>    // std::copy
-#include <atomic>
-#include <chrono>
-#include <cmath>
 #include <errno.h>
 #include <iostream>
-#include <limits>       // std::numeric_limits
-#include <queue>        // std::deque
-#include <stdio.h>
 #include <string>
 
-#include "../../libs/ftd2xx.h"
+#include "libs/ftd2xx.h"
 
 #include "AccIIIDriver_defines.h"
 
@@ -42,11 +35,6 @@ private:
     // Short-term buffer for FT_read()
     Byte* RxBuffer;
     int RxBuffer_length;
-    // Infinite resizable buffer of RxBuffer
-    std::deque< Byte > receivedBytes;
-    // Organized data
-    std::vector<int> decode_idx;
-    vector3D_int accData;
 
     /**
      * @brief main read called by other functions.
@@ -60,14 +48,6 @@ private:
      * @param l length of the buffer; Default is 0.
      */
     bool initRxBuffer(int l = 1);
-
-    /**
-     * @brief clear receivedBytes.
-     */
-    bool initReceivedBytes();
-
-    bool pop();
-    bool pop_once(int offset = 0);
 
     /**
      * @brief get the header
@@ -90,17 +70,6 @@ private:
 
 protected:
     // Protected for Unit Test (Mock class) 
-
-    /**------ RxBuffer Modifiers -------------------------**/
-    int getRxBuffer_length(); 
-    int getRxBuffer_nbElem();
-    Byte* getRxBuffer();
-
-    /**------ ReceivedBytes Modifiers --------------------**/
-    void addtoReceivedBytes(Byte* bp, long length = -1);
-    void addtoReceivedBytes(Byte b);
-    bool removeFromReceivedBytes(long nbByte);
-    void setReceivedBytes(std::deque<Byte> ByteQueue);
 
 public:
 
@@ -130,24 +99,15 @@ public:
     bool ft_close();
 
     /**
-     * @brief read until receiving a stop signal.
-     */
-    bool read_infinite();
-
-    /**
-     * @brief close communication with the ftd2xx device.
-     * @param time_limit value in millisecond that the program reads the ftd2xx device.
-     */
-    bool read_for(int readTime);
-
-    /**
      * @brief read the ftd2xx device once.
      * @return check if data has been read. If not, return NOT_OK
      */
     bool read_once();
 
     /**------ PUBLIC --- GETTERS -------------------------**/
-    std::deque<Byte> getReceivedBytes();
+    Byte* getRxBuffer();
+    int getRxBuffer_length();
+    DWORD getRxBuffer_nbElem();
 };
 
 

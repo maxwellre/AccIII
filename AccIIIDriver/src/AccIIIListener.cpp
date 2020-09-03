@@ -26,15 +26,8 @@ AccIIIListener::AccIIIListener() {
 
     this->headerSize = ACCIII_NB_SENSORS + 1; // unit is Byte;
 
-    this->decode_idx.reserve(ACCIII_NB_SENSORS);
-    for (int i = 0; i < ACCIII_NB_SENSORSPERGROUP; i++) {
-        this->decode_idx[i * 2] = i;
-        this->decode_idx[i * 2 + 1] = i + ACCIII_NB_SENSORSPERGROUP;
-    }
-
     this->RxBuffer = NULL;
     initRxBuffer(pow(2, 16));
-    initReceivedBytes();
 
 }
 
@@ -99,48 +92,7 @@ bool AccIIIListener::initRxBuffer(int l) {
     return AD_OK;
 }
 
-bool AccIIIListener::initReceivedBytes() {
 
-    std::deque< Byte > emptyQueue;
-    std::swap(this->receivedBytes, emptyQueue);
-
-    return AD_OK;
-}
-
-bool AccIIIListener::pop() {
-
-    int s, nbFrames;
-
-    nbFrames = (int)this->receivedBytes.size() / ACCIII_NB_BYTEPERFRAME;
-
-    vector2D_int accData_frame(ACCIII_NB_SENSORS, std::vector<int16_t>(ACCIII_NB_AXIS));
-    vector3D_int accData(nbFrames, accData_frame);
-
-    for (s = 0; s < nbFrames; s++) {
-        if (pop_once()) {
-            perror("decode_once error\n");
-            break;
-        }
-        accData[s] = accData_frame;
-    }
-
-    return AD_OK;
-}
-
-bool AccIIIListener::pop_once(int offset) {
-
-    int first_elem = offset * ACCIII_NB_BYTEPERFRAME;
-    int last_elem = first_elem + ACCIII_NB_BYTEPERFRAME;
-
-    if ( this->receivedBytes.size() >= last_elem) {
-        auto ptr = this->receivedBytes.begin() + first_elem;
-        this->receivedBytes.erase(ptr, ptr + ACCIII_NB_BYTEPERFRAME);
-        return AD_OK;
-    }
-    else {
-        return !AD_OK;
-    }
-}
 
 std::vector<Byte> AccIIIListener::get_header(int headerSize) {
 
@@ -190,51 +142,11 @@ void AccIIIListener::print_header(std::vector<Byte> vb) {
    ------ PROTECTED ----------------------------------
 **/
 
-int AccIIIListener::getRxBuffer_length() {
-    return this->RxBuffer_length;
-}
-
-int AccIIIListener::getRxBuffer_nbElem() {
-    return this->RxBuffer_nbElem;
-}
-
-Byte* AccIIIListener::getRxBuffer() {
-    return this->RxBuffer;
-}
-
-void AccIIIListener::addtoReceivedBytes(Byte* bp, long length) {
-    int i, stop;
-
-    length ? stop = length : stop = bp[0];
-
-    for (i = 0; i < stop; i++) {
-        addtoReceivedBytes(bp[i]);
-    }
-}
-
-void AccIIIListener::addtoReceivedBytes(Byte b) {
-    this->receivedBytes.push_back(b);
-}
-
-bool AccIIIListener::removeFromReceivedBytes(long nbByte) {
-
-    if (nbByte <= this->receivedBytes.size()) {
-        this->receivedBytes.erase(this->receivedBytes.begin(), this->receivedBytes.begin() + nbByte);
-        return AD_OK;
-    }
-    return !AD_OK;
-}
-
-void AccIIIListener::setReceivedBytes(std::deque<Byte> ByteQueue) {
-    this->receivedBytes = ByteQueue;
-}
-
 /**
    ------ PUBLIC -------------------------------------
 **/
 
 bool AccIIIListener::ft_open(UCHAR Mask, UCHAR Mode, UCHAR LatencyTimer) {
-    DWORD BytesWritten;
 
     if (FT_OK != FT_Open(0, &this->ftHandle)) {
         errno = ENODEV;
@@ -296,9 +208,6 @@ bool AccIIIListener::ft_startCommunication(char TxBuffer) {
         return !AD_OK;
     }
 
-    // notify reader thread that it can start to extract data
-    //this->m_condVar.notify_one();
-
     return AD_OK;
 }
 
@@ -313,47 +222,26 @@ bool AccIIIListener::ft_close() {
     return AD_OK;
 }
 
-bool AccIIIListener::read_infinite() { return false;}
+bool AccIIIListener::read_once() {
 
-bool AccIIIListener::read_for(int readTime_ms) { 
-    
-    std::chrono::steady_clock::time_point begin;
-    int i;
-    bool noMoreData;
-
-    noMoreData = !AD_OK;
-
-    begin = std::chrono::steady_clock::now();
-    auto int_ms = std::chrono::duration_cast<std::chrono::milliseconds>(begin - begin).count();
-
-    do {
-        read_once();
-        Sleep(1);
-        int_ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - begin).count();
-        //std::cout << "Time difference = " << int_ms << "[ms]" << std::endl;
-    } while (int_ms < readTime_ms);
-
-    //std::cout << "time to flush the remaining data in USB" << std::endl;
-
-    do {
-        noMoreData = read_once();
-    } while (AD_OK == noMoreData);
+    if (!read_raw()) {
+        return !AD_OK;
+    }
 
     return AD_OK;
 }
 
-bool AccIIIListener::read_once() {
-
-    if (read_raw())
-    {
-        //std::cout << "read success with nb bytes = " << this->RxBytes << std::endl;
-        addtoReceivedBytes(this->RxBuffer, this->RxBytes);
-        return AD_OK;
-    }
-    else
-        return !AD_OK;
+Byte* AccIIIListener::getRxBuffer() {
+    return this->RxBuffer;
 }
 
-std::deque<Byte> AccIIIListener::getReceivedBytes() {
-    return this->receivedBytes;
+int AccIIIListener::getRxBuffer_length() {
+    return this->RxBuffer_length;
 }
+
+DWORD AccIIIListener::getRxBuffer_nbElem() {
+    return this->RxBuffer_nbElem;
+}
+
+
+
