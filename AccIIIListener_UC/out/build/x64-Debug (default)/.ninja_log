@@ -1,0 +1,7 @@
+# ninja log v5
+0	1079	620254492	CMakeFiles/acciii.dir/src/acciii.cpp.obj	8201804a76ee7c29
+1079	1124	620254492	acciii.lib	cf9b8c06b28b1de0
+1	908	620164548	CMakeFiles/DataProc.dir/src/DataProc.cpp.obj	f67a4001a5e3b7bf
+787	976	620257274	AccIIIListener.exe	41b38f6644f48414
+908	973	620164548	DataProc.lib	535917f94bbdb18b
+1	787	620257274	CMakeFiles/AccIIIListener.dir/AccIII_reformatUC.cpp.obj	9a2de605323bf885
